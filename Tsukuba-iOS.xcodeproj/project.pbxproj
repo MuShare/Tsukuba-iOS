@@ -1,0 +1,556 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E4962BE21EB4B08000DF8CAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4962BE11EB4B08000DF8CAE /* AppDelegate.swift */; };
+		E4962BE41EB4B08000DF8CAE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4962BE31EB4B08000DF8CAE /* ViewController.swift */; };
+		E4962BE71EB4B08000DF8CAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4962BE51EB4B08000DF8CAE /* Main.storyboard */; };
+		E4962BEA1EB4B08000DF8CAE /* Tsukuba_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E4962BE81EB4B08000DF8CAE /* Tsukuba_iOS.xcdatamodeld */; };
+		E4962BEC1EB4B08000DF8CAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4962BEB1EB4B08000DF8CAE /* Assets.xcassets */; };
+		E4962BEF1EB4B08000DF8CAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4962BED1EB4B08000DF8CAE /* LaunchScreen.storyboard */; };
+		E4962BFA1EB4B08000DF8CAE /* Tsukuba_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4962BF91EB4B08000DF8CAE /* Tsukuba_iOSTests.swift */; };
+		E4962C051EB4B08000DF8CAE /* Tsukuba_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4962C041EB4B08000DF8CAE /* Tsukuba_iOSUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E4962BF61EB4B08000DF8CAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E4962BD61EB4B08000DF8CAE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E4962BDD1EB4B08000DF8CAE;
+			remoteInfo = "Tsukuba-iOS";
+		};
+		E4962C011EB4B08000DF8CAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E4962BD61EB4B08000DF8CAE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E4962BDD1EB4B08000DF8CAE;
+			remoteInfo = "Tsukuba-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E4962BDE1EB4B08000DF8CAE /* Tsukuba-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tsukuba-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4962BE11EB4B08000DF8CAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E4962BE31EB4B08000DF8CAE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E4962BE61EB4B08000DF8CAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E4962BE91EB4B08000DF8CAE /* Tsukuba_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tsukuba_iOS.xcdatamodel; sourceTree = "<group>"; };
+		E4962BEB1EB4B08000DF8CAE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E4962BEE1EB4B08000DF8CAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E4962BF01EB4B08000DF8CAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4962BF51EB4B08000DF8CAE /* Tsukuba-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tsukuba-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4962BF91EB4B08000DF8CAE /* Tsukuba_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tsukuba_iOSTests.swift; sourceTree = "<group>"; };
+		E4962BFB1EB4B08000DF8CAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4962C001EB4B08000DF8CAE /* Tsukuba-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tsukuba-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4962C041EB4B08000DF8CAE /* Tsukuba_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tsukuba_iOSUITests.swift; sourceTree = "<group>"; };
+		E4962C061EB4B08000DF8CAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E4962BDB1EB4B08000DF8CAE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E4962BF21EB4B08000DF8CAE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E4962BFD1EB4B08000DF8CAE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E4962BD51EB4B08000DF8CAE = {
+			isa = PBXGroup;
+			children = (
+				E4962BE01EB4B08000DF8CAE /* Tsukuba-iOS */,
+				E4962BF81EB4B08000DF8CAE /* Tsukuba-iOSTests */,
+				E4962C031EB4B08000DF8CAE /* Tsukuba-iOSUITests */,
+				E4962BDF1EB4B08000DF8CAE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E4962BDF1EB4B08000DF8CAE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E4962BDE1EB4B08000DF8CAE /* Tsukuba-iOS.app */,
+				E4962BF51EB4B08000DF8CAE /* Tsukuba-iOSTests.xctest */,
+				E4962C001EB4B08000DF8CAE /* Tsukuba-iOSUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E4962BE01EB4B08000DF8CAE /* Tsukuba-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				E4962BE11EB4B08000DF8CAE /* AppDelegate.swift */,
+				E4962BE31EB4B08000DF8CAE /* ViewController.swift */,
+				E4962BE51EB4B08000DF8CAE /* Main.storyboard */,
+				E4962BEB1EB4B08000DF8CAE /* Assets.xcassets */,
+				E4962BED1EB4B08000DF8CAE /* LaunchScreen.storyboard */,
+				E4962BF01EB4B08000DF8CAE /* Info.plist */,
+				E4962BE81EB4B08000DF8CAE /* Tsukuba_iOS.xcdatamodeld */,
+			);
+			path = "Tsukuba-iOS";
+			sourceTree = "<group>";
+		};
+		E4962BF81EB4B08000DF8CAE /* Tsukuba-iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				E4962BF91EB4B08000DF8CAE /* Tsukuba_iOSTests.swift */,
+				E4962BFB1EB4B08000DF8CAE /* Info.plist */,
+			);
+			path = "Tsukuba-iOSTests";
+			sourceTree = "<group>";
+		};
+		E4962C031EB4B08000DF8CAE /* Tsukuba-iOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E4962C041EB4B08000DF8CAE /* Tsukuba_iOSUITests.swift */,
+				E4962C061EB4B08000DF8CAE /* Info.plist */,
+			);
+			path = "Tsukuba-iOSUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E4962BDD1EB4B08000DF8CAE /* Tsukuba-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E4962C091EB4B08000DF8CAE /* Build configuration list for PBXNativeTarget "Tsukuba-iOS" */;
+			buildPhases = (
+				E4962BDA1EB4B08000DF8CAE /* Sources */,
+				E4962BDB1EB4B08000DF8CAE /* Frameworks */,
+				E4962BDC1EB4B08000DF8CAE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Tsukuba-iOS";
+			productName = "Tsukuba-iOS";
+			productReference = E4962BDE1EB4B08000DF8CAE /* Tsukuba-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E4962BF41EB4B08000DF8CAE /* Tsukuba-iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E4962C0C1EB4B08000DF8CAE /* Build configuration list for PBXNativeTarget "Tsukuba-iOSTests" */;
+			buildPhases = (
+				E4962BF11EB4B08000DF8CAE /* Sources */,
+				E4962BF21EB4B08000DF8CAE /* Frameworks */,
+				E4962BF31EB4B08000DF8CAE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E4962BF71EB4B08000DF8CAE /* PBXTargetDependency */,
+			);
+			name = "Tsukuba-iOSTests";
+			productName = "Tsukuba-iOSTests";
+			productReference = E4962BF51EB4B08000DF8CAE /* Tsukuba-iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E4962BFF1EB4B08000DF8CAE /* Tsukuba-iOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E4962C0F1EB4B08000DF8CAE /* Build configuration list for PBXNativeTarget "Tsukuba-iOSUITests" */;
+			buildPhases = (
+				E4962BFC1EB4B08000DF8CAE /* Sources */,
+				E4962BFD1EB4B08000DF8CAE /* Frameworks */,
+				E4962BFE1EB4B08000DF8CAE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E4962C021EB4B08000DF8CAE /* PBXTargetDependency */,
+			);
+			name = "Tsukuba-iOSUITests";
+			productName = "Tsukuba-iOSUITests";
+			productReference = E4962C001EB4B08000DF8CAE /* Tsukuba-iOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E4962BD61EB4B08000DF8CAE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = MuShare;
+				TargetAttributes = {
+					E4962BDD1EB4B08000DF8CAE = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 6ANM44X2CJ;
+						ProvisioningStyle = Automatic;
+					};
+					E4962BF41EB4B08000DF8CAE = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 6ANM44X2CJ;
+						ProvisioningStyle = Automatic;
+						TestTargetID = E4962BDD1EB4B08000DF8CAE;
+					};
+					E4962BFF1EB4B08000DF8CAE = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 6ANM44X2CJ;
+						ProvisioningStyle = Automatic;
+						TestTargetID = E4962BDD1EB4B08000DF8CAE;
+					};
+				};
+			};
+			buildConfigurationList = E4962BD91EB4B08000DF8CAE /* Build configuration list for PBXProject "Tsukuba-iOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E4962BD51EB4B08000DF8CAE;
+			productRefGroup = E4962BDF1EB4B08000DF8CAE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E4962BDD1EB4B08000DF8CAE /* Tsukuba-iOS */,
+				E4962BF41EB4B08000DF8CAE /* Tsukuba-iOSTests */,
+				E4962BFF1EB4B08000DF8CAE /* Tsukuba-iOSUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E4962BDC1EB4B08000DF8CAE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4962BEF1EB4B08000DF8CAE /* LaunchScreen.storyboard in Resources */,
+				E4962BEC1EB4B08000DF8CAE /* Assets.xcassets in Resources */,
+				E4962BE71EB4B08000DF8CAE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E4962BF31EB4B08000DF8CAE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E4962BFE1EB4B08000DF8CAE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E4962BDA1EB4B08000DF8CAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4962BE41EB4B08000DF8CAE /* ViewController.swift in Sources */,
+				E4962BE21EB4B08000DF8CAE /* AppDelegate.swift in Sources */,
+				E4962BEA1EB4B08000DF8CAE /* Tsukuba_iOS.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E4962BF11EB4B08000DF8CAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4962BFA1EB4B08000DF8CAE /* Tsukuba_iOSTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E4962BFC1EB4B08000DF8CAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4962C051EB4B08000DF8CAE /* Tsukuba_iOSUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E4962BF71EB4B08000DF8CAE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E4962BDD1EB4B08000DF8CAE /* Tsukuba-iOS */;
+			targetProxy = E4962BF61EB4B08000DF8CAE /* PBXContainerItemProxy */;
+		};
+		E4962C021EB4B08000DF8CAE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E4962BDD1EB4B08000DF8CAE /* Tsukuba-iOS */;
+			targetProxy = E4962C011EB4B08000DF8CAE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E4962BE51EB4B08000DF8CAE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E4962BE61EB4B08000DF8CAE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E4962BED1EB4B08000DF8CAE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E4962BEE1EB4B08000DF8CAE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E4962C071EB4B08000DF8CAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E4962C081EB4B08000DF8CAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E4962C0A1EB4B08000DF8CAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6ANM44X2CJ;
+				INFOPLIST_FILE = "Tsukuba-iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.mushare.Tsukuba-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		E4962C0B1EB4B08000DF8CAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6ANM44X2CJ;
+				INFOPLIST_FILE = "Tsukuba-iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.mushare.Tsukuba-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		E4962C0D1EB4B08000DF8CAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 6ANM44X2CJ;
+				INFOPLIST_FILE = "Tsukuba-iOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.mushare.Tsukuba-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tsukuba-iOS.app/Tsukuba-iOS";
+			};
+			name = Debug;
+		};
+		E4962C0E1EB4B08000DF8CAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 6ANM44X2CJ;
+				INFOPLIST_FILE = "Tsukuba-iOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.mushare.Tsukuba-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tsukuba-iOS.app/Tsukuba-iOS";
+			};
+			name = Release;
+		};
+		E4962C101EB4B08000DF8CAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 6ANM44X2CJ;
+				INFOPLIST_FILE = "Tsukuba-iOSUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.mushare.Tsukuba-iOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "Tsukuba-iOS";
+			};
+			name = Debug;
+		};
+		E4962C111EB4B08000DF8CAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 6ANM44X2CJ;
+				INFOPLIST_FILE = "Tsukuba-iOSUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.mushare.Tsukuba-iOSUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "Tsukuba-iOS";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E4962BD91EB4B08000DF8CAE /* Build configuration list for PBXProject "Tsukuba-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4962C071EB4B08000DF8CAE /* Debug */,
+				E4962C081EB4B08000DF8CAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E4962C091EB4B08000DF8CAE /* Build configuration list for PBXNativeTarget "Tsukuba-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4962C0A1EB4B08000DF8CAE /* Debug */,
+				E4962C0B1EB4B08000DF8CAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E4962C0C1EB4B08000DF8CAE /* Build configuration list for PBXNativeTarget "Tsukuba-iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4962C0D1EB4B08000DF8CAE /* Debug */,
+				E4962C0E1EB4B08000DF8CAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E4962C0F1EB4B08000DF8CAE /* Build configuration list for PBXNativeTarget "Tsukuba-iOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4962C101EB4B08000DF8CAE /* Debug */,
+				E4962C111EB4B08000DF8CAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E4962BE81EB4B08000DF8CAE /* Tsukuba_iOS.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E4962BE91EB4B08000DF8CAE /* Tsukuba_iOS.xcdatamodel */,
+			);
+			currentVersion = E4962BE91EB4B08000DF8CAE /* Tsukuba_iOS.xcdatamodel */;
+			path = Tsukuba_iOS.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = E4962BD61EB4B08000DF8CAE /* Project object */;
+}
