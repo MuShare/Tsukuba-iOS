@@ -10,18 +10,22 @@ import CoreData
 
 class CategoryDao: DaoTemplate {
     
-    func save(object: NSObject) -> Category {
-        let category = NSEntityDescription.insertNewObject(forEntityName: NSStringFromClass(Category.self),
-                                                           into: context) as! Category
-        category.cid = object.value(forKey: "cid") as? String
-        category.createAt = object.value(forKey: "createAt") as! Int32
-        category.enable = object.value(forKey: "enable") as! Bool
-        category.icon = object.value(forKey: "icon") as? String
-        category.identifier = object.value(forKey: "identifier") as? String
-        category.name = object.value(forKey: "name") as? String
-        category.priority = object.value(forKey: "priority") as! Int16
+    func saveOrUpdate(object: NSObject) -> Category {
+        let cid = object.value(forKey: "cid") as? String
+        var category = getByCid(cid!)
+        if category == nil {
+            category = NSEntityDescription.insertNewObject(forEntityName: NSStringFromClass(Category.self),
+                                                           into: context) as? Category
+        }
+        category?.cid = cid
+        category?.createAt = object.value(forKey: "createAt") as! Int32
+        category?.enable = object.value(forKey: "enable") as! Bool
+        category?.icon = object.value(forKey: "icon") as? String
+        category?.identifier = object.value(forKey: "identifier") as? String
+        category?.name = object.value(forKey: "name") as? String
+        category?.priority = object.value(forKey: "priority") as! Int16
         self.saveContext()
-        return category
+        return category!
     }
     
     func findEnable() -> [Category] {
@@ -29,6 +33,16 @@ class CategoryDao: DaoTemplate {
         request.predicate = NSPredicate(format: "enable=true")
         
         return try! context.fetch(request)
+    }
+    
+    func getByCid(_ cid: String) -> Category? {
+        let request = NSFetchRequest<Category>(entityName: NSStringFromClass(Category.self))
+        request.predicate = NSPredicate(format: "cid=%@", cid)
+        let categories = try! context.fetch(request)
+        if categories.count == 0 {
+            return nil
+        }
+        return categories[0]
     }
 
 }

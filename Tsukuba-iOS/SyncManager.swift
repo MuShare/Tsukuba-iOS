@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import DGElasticPullToRefresh
 
 class SyncManager: NSObject {
     
@@ -42,7 +43,7 @@ class SyncManager: NSObject {
                 // Save updated categories to persistent object.
                 let categories = result?["categories"] as! [NSObject]
                 for category in categories {
-                    _ = self.dao.categoryDao.save(object: category)
+                    _ = self.dao.categoryDao.saveOrUpdate(object: category)
                 }
                 // Save global rev
                 let rev = result?["rev"] as! Int

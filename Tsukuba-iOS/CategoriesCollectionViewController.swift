@@ -8,38 +8,26 @@
 
 import UIKit
 import Kingfisher
+import DGElasticPullToRefresh
 
 class CategoriesCollectionViewController: UICollectionViewController {
     
     let dao = DaoManager.sharedInstance
     var categories: [Category]!
 
+    deinit {
+        self.collectionView?.dg_removePullToRefresh()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         categories = dao.categoryDao.findEnable()
-        
-        // Do any additional setup after loading the view.
+        print(categories)
         SyncManager.sharedInstance.pullCategory { (success) in
             self.categories = self.dao.categoryDao.findEnable()
             self.collectionView?.reloadData()
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -86,5 +74,19 @@ class CategoriesCollectionViewController: UICollectionViewController {
     
     }
     */
+    
+    // MARK: - Service
+    func setDGElasticPullToRefresh () {
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        loadingView.tintColor = UIColor.lightGray
+        self.collectionView?.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+            SyncManager.sharedInstance.pullCategory { (success) in
+                self?.categories = self?.dao.categoryDao.findEnable()
+                self?.collectionView?.reloadData()
+            }
+        }, loadingView: loadingView)
+        self.collectionView?.dg_setPullToRefreshFillColor(UIColor.red)
+        self.collectionView?.dg_setPullToRefreshBackgroundColor((self.collectionView?.backgroundColor)!)
+    }
 
 }
