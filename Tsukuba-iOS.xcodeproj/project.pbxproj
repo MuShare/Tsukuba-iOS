@@ -17,6 +17,7 @@
 		E4089FD71EBAEFA00042221D /* SyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FD61EBAEFA00042221D /* SyncManager.swift */; };
 		E4089FDA1EBAF0250042221D /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FD91EBAF0250042221D /* Global.swift */; };
 		E4089FDC1EBAF2190042221D /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FDB1EBAF2190042221D /* Response.swift */; };
+		E4089FE21EBAF8F40042221D /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FE11EBAF8F40042221D /* CategoryCollectionViewCell.swift */; };
 		E4962BE21EB4B08000DF8CAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4962BE11EB4B08000DF8CAE /* AppDelegate.swift */; };
 		E4962BE71EB4B08000DF8CAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4962BE51EB4B08000DF8CAE /* Main.storyboard */; };
 		E4962BEA1EB4B08000DF8CAE /* Tsukuba.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E4962BE81EB4B08000DF8CAE /* Tsukuba.xcdatamodeld */; };
@@ -55,6 +56,7 @@
 		E4089FD61EBAEFA00042221D /* SyncManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncManager.swift; sourceTree = "<group>"; };
 		E4089FD91EBAF0250042221D /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		E4089FDB1EBAF2190042221D /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		E4089FE11EBAF8F40042221D /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		E4962BDE1EB4B08000DF8CAE /* Tsukuba-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tsukuba-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4962BE11EB4B08000DF8CAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4962BE61EB4B08000DF8CAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				E4962BF01EB4B08000DF8CAE /* Info.plist */,
 				E4962BED1EB4B08000DF8CAE /* LaunchScreen.storyboard */,
 				E4962BE51EB4B08000DF8CAE /* Main.storyboard */,
+				E4089FE11EBAF8F40042221D /* CategoryCollectionViewCell.swift */,
 			);
 			path = "Tsukuba-iOS";
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				E4089FB51EBAE55C0042221D /* DaoManager.swift in Sources */,
 				E4089FA31EBADD170042221D /* CategoriesCollectionViewController.swift in Sources */,
 				E4089FB61EBAE55C0042221D /* DaoTemplate.swift in Sources */,
+				E4089FE21EBAF8F40042221D /* CategoryCollectionViewCell.swift in Sources */,
 				E4089FB81EBAE5830042221D /* CategoryDao.swift in Sources */,
 				E4089FBC1EBAE59E0042221D /* SelectionDao.swift in Sources */,
 				E4962BE21EB4B08000DF8CAE /* AppDelegate.swift in Sources */,

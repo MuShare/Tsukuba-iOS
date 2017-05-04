@@ -7,23 +7,22 @@
 //
 
 import UIKit
-
-private let reuseIdentifier = "Cell"
+import Kingfisher
 
 class CategoriesCollectionViewController: UICollectionViewController {
+    
+    let dao = DaoManager.sharedInstance
+    var categories: [Category]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
+        categories = dao.categoryDao.findEnable()
+        
         // Do any additional setup after loading the view.
         SyncManager.sharedInstance.pullCategory { (success) in
-            
+            self.categories = self.dao.categoryDao.findEnable()
+            self.collectionView?.reloadData()
         }
     }
 
@@ -45,15 +44,15 @@ class CategoriesCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        return categories.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
-    
+        let category = categories[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoryIdentifier",
+                                                      for: indexPath) as! CategoryCollectionViewCell
+        cell.nameLabel.text = category.identifier
+        cell.iconImageView.kf.setImage(with: URL(string: createUrl(category.icon!)))
         return cell
     }
 

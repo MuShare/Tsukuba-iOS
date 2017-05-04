@@ -23,5 +23,12 @@ class CategoryDao: DaoTemplate {
         self.saveContext()
         return category
     }
+    
+    func findEnable() -> [Category] {
+        let request = NSFetchRequest<Category>(entityName: NSStringFromClass(Category.self))
+        request.predicate = NSPredicate(format: "enable=true")
+        
+        return try! context.fetch(request)
+    }
 
 }
