@@ -36,7 +36,8 @@ extension DefaultsKeys {
 enum ErrorCode: Int {
     case badRequest = -99999
     case tokenError = 901
-
+    case emailNotExist = 1022
+    case passwordWrong = 1023
 }
 
 func token() -> String? {
