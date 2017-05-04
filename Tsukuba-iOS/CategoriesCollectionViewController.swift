@@ -22,6 +22,9 @@ class CategoriesCollectionViewController: UICollectionViewController {
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+        SyncManager.sharedInstance.pullCategory { (success) in
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {
