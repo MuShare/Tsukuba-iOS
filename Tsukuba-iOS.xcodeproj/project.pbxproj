@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D3A30465DED0A54864830928 /* Pods_Tsukuba_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44E7EC0007342735A1D800F /* Pods_Tsukuba_iOS.framework */; };
 		E4962BE21EB4B08000DF8CAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4962BE11EB4B08000DF8CAE /* AppDelegate.swift */; };
 		E4962BE41EB4B08000DF8CAE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4962BE31EB4B08000DF8CAE /* ViewController.swift */; };
 		E4962BE71EB4B08000DF8CAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4962BE51EB4B08000DF8CAE /* Main.storyboard */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		251F3A7B6A78E17CB718E63B /* Pods-Tsukuba-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tsukuba-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tsukuba-iOS/Pods-Tsukuba-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		6069AEC1C44BCF1C385A7547 /* Pods-Tsukuba-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tsukuba-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tsukuba-iOS/Pods-Tsukuba-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		E4962BDE1EB4B08000DF8CAE /* Tsukuba-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tsukuba-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4962BE11EB4B08000DF8CAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4962BE31EB4B08000DF8CAE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +52,7 @@
 		E4962C001EB4B08000DF8CAE /* Tsukuba-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tsukuba-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4962C041EB4B08000DF8CAE /* Tsukuba_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tsukuba_iOSUITests.swift; sourceTree = "<group>"; };
 		E4962C061EB4B08000DF8CAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F44E7EC0007342735A1D800F /* Pods_Tsukuba_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tsukuba_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3A30465DED0A54864830928 /* Pods_Tsukuba_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +81,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A0941B9AB6A83BA8AAE365F0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F44E7EC0007342735A1D800F /* Pods_Tsukuba_iOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A80F46868D81B8F88D072248 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				251F3A7B6A78E17CB718E63B /* Pods-Tsukuba-iOS.debug.xcconfig */,
+				6069AEC1C44BCF1C385A7547 /* Pods-Tsukuba-iOS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E4962BD51EB4B08000DF8CAE = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +105,8 @@
 				E4962BF81EB4B08000DF8CAE /* Tsukuba-iOSTests */,
 				E4962C031EB4B08000DF8CAE /* Tsukuba-iOSUITests */,
 				E4962BDF1EB4B08000DF8CAE /* Products */,
+				A80F46868D81B8F88D072248 /* Pods */,
+				A0941B9AB6A83BA8AAE365F0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,9 +159,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E4962C091EB4B08000DF8CAE /* Build configuration list for PBXNativeTarget "Tsukuba-iOS" */;
 			buildPhases = (
+				C9D33EE20E7E99C82C34E7B5 /* [CP] Check Pods Manifest.lock */,
 				E4962BDA1EB4B08000DF8CAE /* Sources */,
 				E4962BDB1EB4B08000DF8CAE /* Frameworks */,
 				E4962BDC1EB4B08000DF8CAE /* Resources */,
+				9E1D8D9AF95E3E3B803619D9 /* [CP] Embed Pods Frameworks */,
+				E4F0B49F5FE9A2B18A41FB3F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -259,6 +286,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9E1D8D9AF95E3E3B803619D9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tsukuba-iOS/Pods-Tsukuba-iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C9D33EE20E7E99C82C34E7B5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E4F0B49F5FE9A2B18A41FB3F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tsukuba-iOS/Pods-Tsukuba-iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E4962BDA1EB4B08000DF8CAE /* Sources */ = {
@@ -419,10 +494,12 @@
 		};
 		E4962C0A1EB4B08000DF8CAE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 251F3A7B6A78E17CB718E63B /* Pods-Tsukuba-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6ANM44X2CJ;
 				INFOPLIST_FILE = "Tsukuba-iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.mushare.Tsukuba-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -432,10 +509,12 @@
 		};
 		E4962C0B1EB4B08000DF8CAE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6069AEC1C44BCF1C385A7547 /* Pods-Tsukuba-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6ANM44X2CJ;
 				INFOPLIST_FILE = "Tsukuba-iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.mushare.Tsukuba-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -520,6 +599,7 @@
 				E4962C0B1EB4B08000DF8CAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E4962C0C1EB4B08000DF8CAE /* Build configuration list for PBXNativeTarget "Tsukuba-iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +608,7 @@
 				E4962C0E1EB4B08000DF8CAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E4962C0F1EB4B08000DF8CAE /* Build configuration list for PBXNativeTarget "Tsukuba-iOSUITests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +617,7 @@
 				E4962C111EB4B08000DF8CAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
