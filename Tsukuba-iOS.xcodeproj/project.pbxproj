@@ -8,10 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		D3A30465DED0A54864830928 /* Pods_Tsukuba_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44E7EC0007342735A1D800F /* Pods_Tsukuba_iOS.framework */; };
+		E4089FA31EBADD170042221D /* CategoriesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FA21EBADD170042221D /* CategoriesCollectionViewController.swift */; };
+		E4089FAB1EBAE3DE0042221D /* Selection+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FA51EBAE3DE0042221D /* Selection+CoreDataClass.swift */; };
+		E4089FAC1EBAE3DE0042221D /* Selection+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FA61EBAE3DE0042221D /* Selection+CoreDataProperties.swift */; };
+		E4089FAD1EBAE3DE0042221D /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FA71EBAE3DE0042221D /* Category+CoreDataClass.swift */; };
+		E4089FAE1EBAE3DE0042221D /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FA81EBAE3DE0042221D /* Category+CoreDataProperties.swift */; };
+		E4089FAF1EBAE3DE0042221D /* Option+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FA91EBAE3DE0042221D /* Option+CoreDataClass.swift */; };
+		E4089FB01EBAE3DE0042221D /* Option+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FAA1EBAE3DE0042221D /* Option+CoreDataProperties.swift */; };
 		E4962BE21EB4B08000DF8CAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4962BE11EB4B08000DF8CAE /* AppDelegate.swift */; };
-		E4962BE41EB4B08000DF8CAE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4962BE31EB4B08000DF8CAE /* ViewController.swift */; };
 		E4962BE71EB4B08000DF8CAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4962BE51EB4B08000DF8CAE /* Main.storyboard */; };
-		E4962BEA1EB4B08000DF8CAE /* Tsukuba_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E4962BE81EB4B08000DF8CAE /* Tsukuba_iOS.xcdatamodeld */; };
+		E4962BEA1EB4B08000DF8CAE /* Tsukuba.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E4962BE81EB4B08000DF8CAE /* Tsukuba.xcdatamodeld */; };
 		E4962BEC1EB4B08000DF8CAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4962BEB1EB4B08000DF8CAE /* Assets.xcassets */; };
 		E4962BEF1EB4B08000DF8CAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4962BED1EB4B08000DF8CAE /* LaunchScreen.storyboard */; };
 		E4962BFA1EB4B08000DF8CAE /* Tsukuba_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4962BF91EB4B08000DF8CAE /* Tsukuba_iOSTests.swift */; };
@@ -38,11 +44,17 @@
 /* Begin PBXFileReference section */
 		251F3A7B6A78E17CB718E63B /* Pods-Tsukuba-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tsukuba-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tsukuba-iOS/Pods-Tsukuba-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		6069AEC1C44BCF1C385A7547 /* Pods-Tsukuba-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tsukuba-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tsukuba-iOS/Pods-Tsukuba-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		E4089FA21EBADD170042221D /* CategoriesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewController.swift; sourceTree = "<group>"; };
+		E4089FA51EBAE3DE0042221D /* Selection+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Selection+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E4089FA61EBAE3DE0042221D /* Selection+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Selection+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E4089FA71EBAE3DE0042221D /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E4089FA81EBAE3DE0042221D /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E4089FA91EBAE3DE0042221D /* Option+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Option+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E4089FAA1EBAE3DE0042221D /* Option+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Option+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E4962BDE1EB4B08000DF8CAE /* Tsukuba-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tsukuba-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4962BE11EB4B08000DF8CAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E4962BE31EB4B08000DF8CAE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E4962BE61EB4B08000DF8CAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E4962BE91EB4B08000DF8CAE /* Tsukuba_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tsukuba_iOS.xcdatamodel; sourceTree = "<group>"; };
+		E4962BE91EB4B08000DF8CAE /* Tsukuba.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Tsukuba.xcdatamodel; sourceTree = "<group>"; };
 		E4962BEB1EB4B08000DF8CAE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E4962BEE1EB4B08000DF8CAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E4962BF01EB4B08000DF8CAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -98,6 +110,20 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E4089FA41EBADD4B0042221D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E4089FA51EBAE3DE0042221D /* Selection+CoreDataClass.swift */,
+				E4089FA61EBAE3DE0042221D /* Selection+CoreDataProperties.swift */,
+				E4089FA71EBAE3DE0042221D /* Category+CoreDataClass.swift */,
+				E4089FA81EBAE3DE0042221D /* Category+CoreDataProperties.swift */,
+				E4089FA91EBAE3DE0042221D /* Option+CoreDataClass.swift */,
+				E4089FAA1EBAE3DE0042221D /* Option+CoreDataProperties.swift */,
+				E4962BE81EB4B08000DF8CAE /* Tsukuba.xcdatamodeld */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		E4962BD51EB4B08000DF8CAE = {
 			isa = PBXGroup;
 			children = (
@@ -123,13 +149,13 @@
 		E4962BE01EB4B08000DF8CAE /* Tsukuba-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				E4089FA41EBADD4B0042221D /* Model */,
+				E4089FA21EBADD170042221D /* CategoriesCollectionViewController.swift */,
 				E4962BE11EB4B08000DF8CAE /* AppDelegate.swift */,
-				E4962BE31EB4B08000DF8CAE /* ViewController.swift */,
-				E4962BE51EB4B08000DF8CAE /* Main.storyboard */,
 				E4962BEB1EB4B08000DF8CAE /* Assets.xcassets */,
-				E4962BED1EB4B08000DF8CAE /* LaunchScreen.storyboard */,
 				E4962BF01EB4B08000DF8CAE /* Info.plist */,
-				E4962BE81EB4B08000DF8CAE /* Tsukuba_iOS.xcdatamodeld */,
+				E4962BED1EB4B08000DF8CAE /* LaunchScreen.storyboard */,
+				E4962BE51EB4B08000DF8CAE /* Main.storyboard */,
 			);
 			path = "Tsukuba-iOS";
 			sourceTree = "<group>";
@@ -340,9 +366,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4962BE41EB4B08000DF8CAE /* ViewController.swift in Sources */,
+				E4089FAE1EBAE3DE0042221D /* Category+CoreDataProperties.swift in Sources */,
+				E4089FA31EBADD170042221D /* CategoriesCollectionViewController.swift in Sources */,
+				E4089FAF1EBAE3DE0042221D /* Option+CoreDataClass.swift in Sources */,
+				E4089FAD1EBAE3DE0042221D /* Category+CoreDataClass.swift in Sources */,
+				E4089FB01EBAE3DE0042221D /* Option+CoreDataProperties.swift in Sources */,
 				E4962BE21EB4B08000DF8CAE /* AppDelegate.swift in Sources */,
-				E4962BEA1EB4B08000DF8CAE /* Tsukuba_iOS.xcdatamodeld in Sources */,
+				E4089FAC1EBAE3DE0042221D /* Selection+CoreDataProperties.swift in Sources */,
+				E4089FAB1EBAE3DE0042221D /* Selection+CoreDataClass.swift in Sources */,
+				E4962BEA1EB4B08000DF8CAE /* Tsukuba.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -622,13 +654,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E4962BE81EB4B08000DF8CAE /* Tsukuba_iOS.xcdatamodeld */ = {
+		E4962BE81EB4B08000DF8CAE /* Tsukuba.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				E4962BE91EB4B08000DF8CAE /* Tsukuba_iOS.xcdatamodel */,
+				E4962BE91EB4B08000DF8CAE /* Tsukuba.xcdatamodel */,
 			);
-			currentVersion = E4962BE91EB4B08000DF8CAE /* Tsukuba_iOS.xcdatamodel */;
-			path = Tsukuba_iOS.xcdatamodeld;
+			currentVersion = E4962BE91EB4B08000DF8CAE /* Tsukuba.xcdatamodel */;
+			path = Tsukuba.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

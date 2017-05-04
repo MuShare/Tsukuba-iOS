@@ -8,11 +8,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Collection View Controller-->
+        <!--Categories Collection View Controller-->
         <scene sceneID="cQP-Nf-1xd">
             <objects>
-                <collectionViewController id="BGT-rU-zRp" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="i7X-Kb-fN2">
+                <collectionViewController id="BGT-rU-zRp" customClass="CategoriesCollectionViewController" customModule="Tsukuba_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="i7X-Kb-fN2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -39,7 +39,7 @@
                     </collectionView>
                     <navigationItem key="navigationItem" id="RWs-tV-Eqz">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" title="Post" id="4gn-Uj-gL4">
+                        <barButtonItem key="leftBarButtonItem" image="write" id="4gn-Uj-gL4">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="YSd-hL-uin">
@@ -51,7 +51,7 @@
                             </segments>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" title="Me" id="xFV-Yx-eOU">
+                        <barButtonItem key="rightBarButtonItem" image="user" id="xFV-Yx-eOU">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>
@@ -78,4 +78,8 @@
             <point key="canvasLocation" x="638" y="153"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="user" width="30" height="30"/>
+        <image name="write" width="30" height="30"/>
+    </resources>
 </document>
