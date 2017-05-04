@@ -22,6 +22,9 @@
 		E4089FE91EBB3A1F0042221D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FE81EBB3A1F0042221D /* LoginViewController.swift */; };
 		E4089FEB1EBB3B990042221D /* CommonTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FEA1EBB3B990042221D /* CommonTool.swift */; };
 		E4089FED1EBB3BF90042221D /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FEC1EBB3BF90042221D /* UserManager.swift */; };
+		E4089FEF1EBB4AD80042221D /* MyProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FEE1EBB4AD80042221D /* MyProfileTableViewController.swift */; };
+		E4089FF11EBB4F160042221D /* AvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FF01EBB4F160042221D /* AvatarViewController.swift */; };
+		E4089FF31EBB50790042221D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4089FF21EBB50790042221D /* Localizable.strings */; };
 		E4962BE21EB4B08000DF8CAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4962BE11EB4B08000DF8CAE /* AppDelegate.swift */; };
 		E4962BE71EB4B08000DF8CAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4962BE51EB4B08000DF8CAE /* Main.storyboard */; };
 		E4962BEA1EB4B08000DF8CAE /* Tsukuba.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E4962BE81EB4B08000DF8CAE /* Tsukuba.xcdatamodeld */; };
@@ -65,6 +68,9 @@
 		E4089FE81EBB3A1F0042221D /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E4089FEA1EBB3B990042221D /* CommonTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonTool.swift; sourceTree = "<group>"; };
 		E4089FEC1EBB3BF90042221D /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		E4089FEE1EBB4AD80042221D /* MyProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileTableViewController.swift; sourceTree = "<group>"; };
+		E4089FF01EBB4F160042221D /* AvatarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarViewController.swift; sourceTree = "<group>"; };
+		E4089FF21EBB50790042221D /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		E4962BDE1EB4B08000DF8CAE /* Tsukuba-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tsukuba-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4962BE11EB4B08000DF8CAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4962BE61EB4B08000DF8CAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -169,6 +175,8 @@
 				E4089FA21EBADD170042221D /* CategoriesCollectionViewController.swift */,
 				E4089FE61EBB36440042221D /* MeTableViewController.swift */,
 				E4089FE81EBB3A1F0042221D /* LoginViewController.swift */,
+				E4089FEE1EBB4AD80042221D /* MyProfileTableViewController.swift */,
+				E4089FF01EBB4F160042221D /* AvatarViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -214,6 +222,7 @@
 				E4089FD81EBAF0020042221D /* Tool */,
 				E4962BE11EB4B08000DF8CAE /* AppDelegate.swift */,
 				E4962BEB1EB4B08000DF8CAE /* Assets.xcassets */,
+				E4089FF21EBB50790042221D /* Localizable.strings */,
 				E4962BF01EB4B08000DF8CAE /* Info.plist */,
 				E4962BED1EB4B08000DF8CAE /* LaunchScreen.storyboard */,
 				E4962BE51EB4B08000DF8CAE /* Main.storyboard */,
@@ -353,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4962BEF1EB4B08000DF8CAE /* LaunchScreen.storyboard in Resources */,
+				E4089FF31EBB50790042221D /* Localizable.strings in Resources */,
 				E4962BEC1EB4B08000DF8CAE /* Assets.xcassets in Resources */,
 				E4962BE71EB4B08000DF8CAE /* Main.storyboard in Resources */,
 			);
@@ -427,10 +437,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4089FEF1EBB4AD80042221D /* MyProfileTableViewController.swift in Sources */,
 				E4089FE91EBB3A1F0042221D /* LoginViewController.swift in Sources */,
 				E4089FD71EBAEFA00042221D /* SyncManager.swift in Sources */,
 				E4089FB51EBAE55C0042221D /* DaoManager.swift in Sources */,
 				E4089FE71EBB36440042221D /* MeTableViewController.swift in Sources */,
+				E4089FF11EBB4F160042221D /* AvatarViewController.swift in Sources */,
 				E4089FA31EBADD170042221D /* CategoriesCollectionViewController.swift in Sources */,
 				E4089FB61EBAE55C0042221D /* DaoTemplate.swift in Sources */,
 				E4089FED1EBB3BF90042221D /* UserManager.swift in Sources */,
