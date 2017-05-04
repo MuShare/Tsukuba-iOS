@@ -9,12 +9,11 @@
 /* Begin PBXBuildFile section */
 		D3A30465DED0A54864830928 /* Pods_Tsukuba_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44E7EC0007342735A1D800F /* Pods_Tsukuba_iOS.framework */; };
 		E4089FA31EBADD170042221D /* CategoriesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FA21EBADD170042221D /* CategoriesCollectionViewController.swift */; };
-		E4089FAB1EBAE3DE0042221D /* Selection+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FA51EBAE3DE0042221D /* Selection+CoreDataClass.swift */; };
-		E4089FAC1EBAE3DE0042221D /* Selection+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FA61EBAE3DE0042221D /* Selection+CoreDataProperties.swift */; };
-		E4089FAD1EBAE3DE0042221D /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FA71EBAE3DE0042221D /* Category+CoreDataClass.swift */; };
-		E4089FAE1EBAE3DE0042221D /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FA81EBAE3DE0042221D /* Category+CoreDataProperties.swift */; };
-		E4089FAF1EBAE3DE0042221D /* Option+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FA91EBAE3DE0042221D /* Option+CoreDataClass.swift */; };
-		E4089FB01EBAE3DE0042221D /* Option+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FAA1EBAE3DE0042221D /* Option+CoreDataProperties.swift */; };
+		E4089FB51EBAE55C0042221D /* DaoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FB31EBAE55C0042221D /* DaoManager.swift */; };
+		E4089FB61EBAE55C0042221D /* DaoTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FB41EBAE55C0042221D /* DaoTemplate.swift */; };
+		E4089FB81EBAE5830042221D /* CategoryDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FB71EBAE5830042221D /* CategoryDao.swift */; };
+		E4089FBA1EBAE58F0042221D /* OptionDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FB91EBAE58F0042221D /* OptionDao.swift */; };
+		E4089FBC1EBAE59E0042221D /* SelectionDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FBB1EBAE59E0042221D /* SelectionDao.swift */; };
 		E4962BE21EB4B08000DF8CAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4962BE11EB4B08000DF8CAE /* AppDelegate.swift */; };
 		E4962BE71EB4B08000DF8CAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4962BE51EB4B08000DF8CAE /* Main.storyboard */; };
 		E4962BEA1EB4B08000DF8CAE /* Tsukuba.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E4962BE81EB4B08000DF8CAE /* Tsukuba.xcdatamodeld */; };
@@ -45,12 +44,11 @@
 		251F3A7B6A78E17CB718E63B /* Pods-Tsukuba-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tsukuba-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tsukuba-iOS/Pods-Tsukuba-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		6069AEC1C44BCF1C385A7547 /* Pods-Tsukuba-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tsukuba-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tsukuba-iOS/Pods-Tsukuba-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		E4089FA21EBADD170042221D /* CategoriesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewController.swift; sourceTree = "<group>"; };
-		E4089FA51EBAE3DE0042221D /* Selection+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Selection+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E4089FA61EBAE3DE0042221D /* Selection+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Selection+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		E4089FA71EBAE3DE0042221D /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E4089FA81EBAE3DE0042221D /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		E4089FA91EBAE3DE0042221D /* Option+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Option+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E4089FAA1EBAE3DE0042221D /* Option+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Option+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E4089FB31EBAE55C0042221D /* DaoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaoManager.swift; sourceTree = "<group>"; };
+		E4089FB41EBAE55C0042221D /* DaoTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaoTemplate.swift; sourceTree = "<group>"; };
+		E4089FB71EBAE5830042221D /* CategoryDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryDao.swift; sourceTree = "<group>"; };
+		E4089FB91EBAE58F0042221D /* OptionDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionDao.swift; sourceTree = "<group>"; };
+		E4089FBB1EBAE59E0042221D /* SelectionDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionDao.swift; sourceTree = "<group>"; };
 		E4962BDE1EB4B08000DF8CAE /* Tsukuba-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tsukuba-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4962BE11EB4B08000DF8CAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4962BE61EB4B08000DF8CAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -113,15 +111,21 @@
 		E4089FA41EBADD4B0042221D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E4089FA51EBAE3DE0042221D /* Selection+CoreDataClass.swift */,
-				E4089FA61EBAE3DE0042221D /* Selection+CoreDataProperties.swift */,
-				E4089FA71EBAE3DE0042221D /* Category+CoreDataClass.swift */,
-				E4089FA81EBAE3DE0042221D /* Category+CoreDataProperties.swift */,
-				E4089FA91EBAE3DE0042221D /* Option+CoreDataClass.swift */,
-				E4089FAA1EBAE3DE0042221D /* Option+CoreDataProperties.swift */,
 				E4962BE81EB4B08000DF8CAE /* Tsukuba.xcdatamodeld */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		E4089FB21EBAE5180042221D /* Dao */ = {
+			isa = PBXGroup;
+			children = (
+				E4089FB31EBAE55C0042221D /* DaoManager.swift */,
+				E4089FB41EBAE55C0042221D /* DaoTemplate.swift */,
+				E4089FB71EBAE5830042221D /* CategoryDao.swift */,
+				E4089FB91EBAE58F0042221D /* OptionDao.swift */,
+				E4089FBB1EBAE59E0042221D /* SelectionDao.swift */,
+			);
+			name = Dao;
 			sourceTree = "<group>";
 		};
 		E4962BD51EB4B08000DF8CAE = {
@@ -149,6 +153,7 @@
 		E4962BE01EB4B08000DF8CAE /* Tsukuba-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				E4089FB21EBAE5180042221D /* Dao */,
 				E4089FA41EBADD4B0042221D /* Model */,
 				E4089FA21EBADD170042221D /* CategoriesCollectionViewController.swift */,
 				E4962BE11EB4B08000DF8CAE /* AppDelegate.swift */,
@@ -366,14 +371,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4089FAE1EBAE3DE0042221D /* Category+CoreDataProperties.swift in Sources */,
+				E4089FB51EBAE55C0042221D /* DaoManager.swift in Sources */,
 				E4089FA31EBADD170042221D /* CategoriesCollectionViewController.swift in Sources */,
-				E4089FAF1EBAE3DE0042221D /* Option+CoreDataClass.swift in Sources */,
-				E4089FAD1EBAE3DE0042221D /* Category+CoreDataClass.swift in Sources */,
-				E4089FB01EBAE3DE0042221D /* Option+CoreDataProperties.swift in Sources */,
+				E4089FB61EBAE55C0042221D /* DaoTemplate.swift in Sources */,
+				E4089FB81EBAE5830042221D /* CategoryDao.swift in Sources */,
+				E4089FBC1EBAE59E0042221D /* SelectionDao.swift in Sources */,
 				E4962BE21EB4B08000DF8CAE /* AppDelegate.swift in Sources */,
-				E4089FAC1EBAE3DE0042221D /* Selection+CoreDataProperties.swift in Sources */,
-				E4089FAB1EBAE3DE0042221D /* Selection+CoreDataClass.swift in Sources */,
+				E4089FBA1EBAE58F0042221D /* OptionDao.swift in Sources */,
 				E4962BEA1EB4B08000DF8CAE /* Tsukuba.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
