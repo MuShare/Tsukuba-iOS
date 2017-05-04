@@ -22,7 +22,7 @@ class MeTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if Defaults[.login]! {
+        if isLogin() {
             titleLabel.text = Defaults[.name]
             subtitleLabel.text = Defaults[.identifier]
         }
@@ -38,7 +38,7 @@ class MeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Sign in
         if indexPath.section == 0 && indexPath.row == 1 {
-            self.performSegue(withIdentifier: Defaults[.login]! ? "profileSegue" : "loginSegue", sender: self)
+            self.performSegue(withIdentifier: isLogin() ? "profileSegue" : "loginSegue", sender: self)
         }
     }
 }
