@@ -30,7 +30,7 @@ class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, U
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         avatarImageView.image = info[UIImagePickerControllerEditedImage] as? UIImage
         picker.dismiss(animated: true, completion: nil)
-        let data = UIImageJPEGRepresentation(avatarImageView.image!, 1.0)
+        let data = UIImageJPEGRepresentation(resizeImage(image: avatarImageView.image!, newWidth: 240)!, 1.0)
         Alamofire.upload(multipartFormData:{ multipartFormData in
             multipartFormData.append(data!, withName: "avatar", fileName: UUID().uuidString, mimeType: "image/jpeg")
         },
@@ -41,6 +41,9 @@ class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, U
                          encodingCompletion: { encodingResult in
                             switch encodingResult {
                             case .success(let upload, _, _):
+                                upload.uploadProgress(closure: { (Progress) in
+                                    print("Upload Progress: \(Progress.fractionCompleted)")
+                                })
                                 upload.responseJSON { response in
                                     debugPrint(response)
                                 }
@@ -48,6 +51,16 @@ class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, U
                                 print(encodingError)
                             }
         })
+    }
+    
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage? {
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
     }
     
     // MARK: - Action
