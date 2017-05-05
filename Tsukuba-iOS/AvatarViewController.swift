@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -27,7 +28,26 @@ class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     // MARK: - UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
+        avatarImageView.image = info[UIImagePickerControllerEditedImage] as? UIImage
+        picker.dismiss(animated: true, completion: nil)
+        let data = UIImageJPEGRepresentation(avatarImageView.image!, 1.0)
+        Alamofire.upload(multipartFormData:{ multipartFormData in
+            multipartFormData.append(data!, withName: "avatar", fileName: UUID().uuidString, mimeType: "image/jpeg")
+        },
+                         usingThreshold: UInt64.init(),
+                         to: createUrl("api/user/avatar"),
+                         method: .post,
+                         headers: tokenHeader(),
+                         encodingCompletion: { encodingResult in
+                            switch encodingResult {
+                            case .success(let upload, _, _):
+                                upload.responseJSON { response in
+                                    debugPrint(response)
+                                }
+                            case .failure(let encodingError):
+                                print(encodingError)
+                            }
+        })
     }
     
     // MARK: - Action
