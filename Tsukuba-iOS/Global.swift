@@ -13,8 +13,8 @@ import Alamofire
 let DEBUG = true
 
 // Server base url
-//let baseUrl = "https://tsukuba.mushare.cn/"
-let baseUrl = "http://127.0.0.1:8080/"
+let baseUrl = "https://tsukuba.mushare.cn/"
+//let baseUrl = "http://127.0.0.1:8080/"
 
 func createUrl(_ relative: String) -> String {
     let requestUrl = baseUrl + relative
@@ -25,6 +25,7 @@ extension DefaultsKeys {
     static let type = DefaultsKey<String?>("type")
     static let identifier = DefaultsKey<String?>("identifier")
     static let name = DefaultsKey<String?>("name")
+    static let avatar = DefaultsKey<String?>("avatar")
     static let deviceToken = DefaultsKey<String?>("deviceToken")
     static let token = DefaultsKey<String?>("token")
     static let login = DefaultsKey<Bool?>("login")

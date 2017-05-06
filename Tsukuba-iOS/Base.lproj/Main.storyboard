@@ -887,6 +887,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Profile" id="6jE-cn-w1p"/>
+                    <connections>
+                        <outlet property="avatarImageView" destination="qWb-Hk-mJy" id="Voh-qi-8k9"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3zz-Oy-3XK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -926,8 +929,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="login:" destination="lGS-O0-lyn" eventType="touchUpInside" id="RMh-ZF-0IE"/>
-                                    <action selector="uploadAvatar:" destination="UXT-bz-bzP" eventType="touchUpInside" id="boV-aI-QqM"/>
+                                    <action selector="uploadAvatar:" destination="UXT-bz-bzP" eventType="touchUpInside" id="ICw-1o-SFC"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -944,6 +946,7 @@
                     <navigationItem key="navigationItem" title="Profile Photo" id="r3d-0q-6hh"/>
                     <connections>
                         <outlet property="avatarImageView" destination="aTH-tZ-cQU" id="lUN-sd-gbH"/>
+                        <outlet property="uploadButton" destination="aam-7l-8Aq" id="vBb-l3-CGR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ObN-El-29y" userLabel="First Responder" sceneMemberID="firstResponder"/>

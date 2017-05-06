@@ -28,3 +28,6 @@ photo_tip = "Choose a photo from library or take a photo.";
 photo_take = "Take Photo";
 photo_simulator_not_support = "iOS Simulator cannot open camera.";
 photo_choose = "Choose from Photos";
+
+upload_profile_photo = "Upload Profie Photo";
+upload_progress = "Upload Progress: ";

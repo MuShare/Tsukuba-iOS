@@ -8,13 +8,15 @@
 
 import UIKit
 import Alamofire
+import SwiftyUserDefaults
 
 class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet var uploadButton: UIButton!
     
     let imagePickerController = UIImagePickerController()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,6 +32,10 @@ class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, U
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         avatarImageView.image = info[UIImagePickerControllerEditedImage] as? UIImage
         picker.dismiss(animated: true, completion: nil)
+        
+        uploadButton.isEnabled = false
+        self.navigationItem.hidesBackButton = true
+        
         let data = UIImageJPEGRepresentation(resizeImage(image: avatarImageView.image!, newWidth: 240)!, 1.0)
         Alamofire.upload(multipartFormData:{ multipartFormData in
             multipartFormData.append(data!, withName: "avatar", fileName: UUID().uuidString, mimeType: "image/jpeg")
@@ -42,13 +48,23 @@ class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, U
                             switch encodingResult {
                             case .success(let upload, _, _):
                                 upload.uploadProgress(closure: { (Progress) in
-                                    print("Upload Progress: \(Progress.fractionCompleted)")
+                                    self.uploadButton.setTitle("\(NSLocalizedString("upload_progress", comment: ""))\(Progress.fractionCompleted * 100)%", for: .normal)
                                 })
-                                upload.responseJSON { response in
-                                    debugPrint(response)
+                                upload.responseJSON { responseObject in
+                                    let response = Response(responseObject)
+                                    if response.statusOK() {
+                                        let result = response.getResult()
+                                        Defaults[.avatar] = result?["avatar"] as? String
+                                    }
+                                    
+                                    self.uploadButton.setTitle(NSLocalizedString("upload_profile_photo", comment: ""), for: .normal)
+                                    self.uploadButton.isEnabled = true
+                                    self.navigationItem.hidesBackButton = false
                                 }
                             case .failure(let encodingError):
-                                print(encodingError)
+                                debugPrint(encodingError)
+                                self.uploadButton.isEnabled = true
+                                self.navigationItem.hidesBackButton = false
                             }
         })
     }
@@ -94,5 +110,5 @@ class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, U
         alertController.addAction(cancel)
         self.present(alertController, animated: true, completion: nil)
     }
-
+    
 }
