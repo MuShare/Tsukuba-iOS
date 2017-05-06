@@ -22,7 +22,7 @@ class CategoriesCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         categories = dao.categoryDao.findEnable()
-        print(categories)
+
         SyncManager.sharedInstance.pullCategory { (success) in
             self.categories = self.dao.categoryDao.findEnable()
             self.collectionView?.reloadData()

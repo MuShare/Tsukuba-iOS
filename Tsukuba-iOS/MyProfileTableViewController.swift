@@ -7,11 +7,12 @@
 //
 
 import UIKit
-import SwiftyUserDefaults
 
 class MyProfileTableViewController: UITableViewController {
 
     @IBOutlet weak var avatarImageView: UIImageView!
+
+    let user = UserManager.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,9 +21,8 @@ class MyProfileTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        debugPrint(createUrl(Defaults[.avatar]!))
-        if Defaults[.avatar] != nil {
-            avatarImageView.kf.setImage(with: URL(string: createUrl(Defaults[.avatar]!)))
+        if user.login {
+            avatarImageView.kf.setImage(with: user.avatarURL)
         }
     }
 

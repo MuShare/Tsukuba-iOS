@@ -35,10 +35,6 @@ extension DefaultsKeys {
     static let version = DefaultsKey<String?>("version")
 }
 
-func isLogin() -> Bool {
-    return Defaults[.login] ?? false
-}
-
 enum ErrorCode: Int {
     case badRequest = -99999
     case tokenError = 901

@@ -15,16 +15,17 @@ class MeTableViewController: UITableViewController {
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
     
+    let user = UserManager.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if isLogin() {
-            titleLabel.text = Defaults[.name]
-            subtitleLabel.text = Defaults[.identifier]
+        if user.login {
+            titleLabel.text = user.name
+            subtitleLabel.text = user.identifier
+            avatarImageView.kf.setImage(with: user.avatarURL)
         }
     }
 
@@ -38,7 +39,8 @@ class MeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Sign in
         if indexPath.section == 0 && indexPath.row == 1 {
-            self.performSegue(withIdentifier: isLogin() ? "profileSegue" : "loginSegue", sender: self)
+            self.performSegue(withIdentifier: user.login ? "profileSegue" : "loginSegue", sender: self)
         }
     }
+    
 }

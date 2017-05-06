@@ -8,24 +8,23 @@
 
 import UIKit
 import Alamofire
-import SwiftyUserDefaults
 
 class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet var uploadButton: UIButton!
     
+    let user = UserManager.sharedInstance
     let imagePickerController = UIImagePickerController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if user.login {
+            avatarImageView.kf.setImage(with: user.avatarURL)
+        }
+        
         imagePickerController.delegate = self
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: - UIImagePickerControllerDelegate
@@ -54,7 +53,7 @@ class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, U
                                     let response = Response(responseObject)
                                     if response.statusOK() {
                                         let result = response.getResult()
-                                        Defaults[.avatar] = result?["avatar"] as? String
+                                        self.user.avatar = result?["avatar"] as! String
                                     }
                                     
                                     self.uploadButton.setTitle(NSLocalizedString("upload_profile_photo", comment: ""), for: .normal)

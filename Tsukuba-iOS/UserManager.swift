@@ -13,6 +13,57 @@ class UserManager: NSObject {
     
     var dao: DaoManager!
     
+    var login: Bool {
+        set(value) {
+            Defaults[.login] = value
+        }
+        get {
+            return Defaults[.login] ?? false
+        }
+    }
+
+    var type: String {
+        set(value) {
+            Defaults[.type] = value
+        }
+        get {
+            return Defaults[.type] ?? ""
+        }
+    }
+
+    var identifier: String {
+        set(value) {
+            Defaults[.identifier] = value
+        }
+        get {
+            return Defaults[.identifier] ?? ""
+        }
+    }
+    
+    var name: String {
+        set(value) {
+            Defaults[.name] = value
+        }
+        get {
+            return Defaults[.name] ?? ""
+        }
+    }
+    
+    var avatar: String {
+        set(value) {
+            Defaults[.avatar] = value
+        }
+        get {
+            return Defaults[.avatar] ?? ""
+        }
+    }
+    
+    var avatarURL: URL? {
+        get {
+            return login ? URL(string: createUrl(avatar)) : nil
+        }
+    }
+    
     static let sharedInstance: UserManager = {
         let instance = UserManager()
         return instance
@@ -42,11 +93,13 @@ class UserManager: NSObject {
                 if response.statusOK() {
                     let result = response.getResult()
                     // Login success, save user information to NSUserDefaults.
-                    Defaults[.type] = "email";
-                    Defaults[.identifier] = email
                     Defaults[.token] = result?["token"] as? String
-                    Defaults[.name] = result?["name"] as? String
-                    Defaults[.login] = true
+                    let user = result?["user"] as! [String: Any]
+                    self.type = "email";
+                    self.identifier = email
+                    self.name = user["name"] as! String
+                    self.avatar = user["avatar"] as! String
+                    self.login = true
                     completionHandler?(true, nil);
                 } else {
                     switch response.errorCode() {
