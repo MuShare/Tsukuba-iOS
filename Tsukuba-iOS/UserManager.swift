@@ -64,6 +64,8 @@ class UserManager: NSObject {
         }
     }
     
+    var avatarUploadingProgress: Double!
+    
     static let sharedInstance: UserManager = {
         let instance = UserManager()
         return instance
@@ -112,7 +114,51 @@ class UserManager: NSObject {
                     }
                 }
         }
+    }
+    
+    func uploadAvatar(_ image: UIImage, success: (() -> Void)?, fail: (() -> Void)?) {
+        let data = UIImageJPEGRepresentation(resizeImage(image: image, newWidth: 480)!, 1.0)
+        Alamofire.upload(multipartFormData:{ multipartFormData in
+            multipartFormData.append(data!, withName: "avatar", fileName: UUID().uuidString, mimeType: "image/jpeg")
+        },
+                         usingThreshold: UInt64.init(),
+                         to: createUrl("api/user/avatar"),
+                         method: .post,
+                         headers: tokenHeader(),
+                         encodingCompletion: { encodingResult in
+                            switch encodingResult {
+                            case .success(let upload, _, _):
+                                upload.uploadProgress(closure: { (Progress) in
+                                    self.avatarUploadingProgress = Progress.fractionCompleted
+                                })
+                                upload.responseJSON { responseObject in
+                                    let response = Response(responseObject)
+                                    if response.statusOK() {
+                                        let result = response.getResult()
+                                        self.avatar = result?["avatar"] as! String
+                                        success?()
+                                    } else {
+                                        fail?()
+                                    }
+                                }
+                            case .failure(let encodingError):
+                                if DEBUG {
+                                    debugPrint(encodingError)
+                                }
+                                fail?()
+                            }
+        })
 
+    }
+    
+    private func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage? {
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
     }
 
 }

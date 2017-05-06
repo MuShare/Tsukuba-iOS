@@ -7,5 +7,6 @@ target 'Tsukuba-iOS' do
     pod 'FacebookCore'
     pod 'FacebookLogin'
     pod 'Kingfisher', '~> 3'
+    pod 'UIImageView+Extension', '~> 0.2'
 end
 

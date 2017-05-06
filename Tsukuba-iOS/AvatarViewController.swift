@@ -35,47 +35,20 @@ class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, U
         uploadButton.isEnabled = false
         self.navigationItem.hidesBackButton = true
         
-        let data = UIImageJPEGRepresentation(resizeImage(image: avatarImageView.image!, newWidth: 240)!, 1.0)
-        Alamofire.upload(multipartFormData:{ multipartFormData in
-            multipartFormData.append(data!, withName: "avatar", fileName: UUID().uuidString, mimeType: "image/jpeg")
-        },
-                         usingThreshold: UInt64.init(),
-                         to: createUrl("api/user/avatar"),
-                         method: .post,
-                         headers: tokenHeader(),
-                         encodingCompletion: { encodingResult in
-                            switch encodingResult {
-                            case .success(let upload, _, _):
-                                upload.uploadProgress(closure: { (Progress) in
-                                    self.uploadButton.setTitle("\(NSLocalizedString("upload_progress", comment: ""))\(Progress.fractionCompleted * 100)%", for: .normal)
-                                })
-                                upload.responseJSON { responseObject in
-                                    let response = Response(responseObject)
-                                    if response.statusOK() {
-                                        let result = response.getResult()
-                                        self.user.avatar = result?["avatar"] as! String
-                                    }
-                                    
-                                    self.uploadButton.setTitle(NSLocalizedString("upload_profile_photo", comment: ""), for: .normal)
-                                    self.uploadButton.isEnabled = true
-                                    self.navigationItem.hidesBackButton = false
-                                }
-                            case .failure(let encodingError):
-                                debugPrint(encodingError)
-                                self.uploadButton.isEnabled = true
-                                self.navigationItem.hidesBackButton = false
-                            }
-        })
-    }
-    
-    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage? {
-        let scale = newWidth / image.size.width
-        let newHeight = image.size.height * scale
-        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
-        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage
+//        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { (timer) in
+//            uploadButton.setTitle("\(NSLocalizedString("upload_progress", comment: ""))\(user.avatarUploadingProgress * 100)%", for: .normal)
+//        }
+ 
+        user.uploadAvatar(avatarImageView.image!,
+                          success:
+        {
+            self.uploadButton.setTitle(NSLocalizedString("upload_profile_photo", comment: ""), for: .normal)
+            self.uploadButton.isEnabled = true
+            self.navigationItem.hidesBackButton = false
+        }) {
+            self.uploadButton.isEnabled = true
+            self.navigationItem.hidesBackButton = false
+        }
     }
     
     // MARK: - Action
