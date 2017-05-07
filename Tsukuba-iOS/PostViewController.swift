@@ -8,12 +8,12 @@
 
 import UIKit
 import Eureka
-import SwiftyJSON
-import Alamofire
 
 class PostViewController: FormViewController {
 
     let dao = DaoManager.sharedInstance
+    let messgae = MessageManager.sharedInstance
+    
     var category: Category!
     var selections: [Selection]!
     
@@ -21,6 +21,7 @@ class PostViewController: FormViewController {
     var messageTitle: String?
     var sell = true
     var price = 0
+    var introduction = ""
     
     var mid: String!
     
@@ -50,8 +51,6 @@ class PostViewController: FormViewController {
             <<< TextRow() {
                 $0.title = "Title"
                 $0.placeholder = "Post title"
-                $0.add(rule: RuleRequired())
-                $0.validationOptions = .validatesOnChange
             }.onChange({ (row) in
                 self.messageTitle = row.value
             })
@@ -59,10 +58,14 @@ class PostViewController: FormViewController {
             <<< IntRow(){
                 $0.title = "Price"
                 $0.placeholder = "0"
-                $0.add(rule: RuleRequired())
-                $0.validationOptions = .validatesOnChange
             }.onChange({ (row) in
                 self.price = row.value ?? 0
+            })
+        
+            <<< TextAreaRow() {
+                $0.placeholder = "Introduction for this post."
+            }.onChange({ (row) in
+                self.introduction = row.value ?? ""
             })
         
         for selection in selections {
@@ -80,6 +83,14 @@ class PostViewController: FormViewController {
 
     }
 
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "pictureSegue" {
+            segue.destination.setValue(mid, forKey: "mid")
+        }
+    }
+    
+    // MARK: - Action
     @IBAction func createMessage(_ sender: Any) {
         if messageTitle == nil {
             showAlert(title: NSLocalizedString("tip_name", comment: ""),
@@ -94,35 +105,22 @@ class PostViewController: FormViewController {
                 oids.append(oid)
             }
         }
-    
-        print(messageTitle!)
-        print(sell)
-        print(price)
-        print(JSON(oids).rawString()!)
 
-        let params: Parameters = [
-            "cid": category.cid!,
-            "title": messageTitle!,
-            "oids": JSON(oids).rawString()!,
-            "price": price,
-            "sell": sell
-
-        ]
-        Alamofire.request(createUrl("api/message/create"),
-                          method: .post,
-                          parameters: params,
-                          encoding: URLEncoding.default,
-                          headers: tokenHeader())
-        .responseJSON { (responseObject) in
-            let response = Response(responseObject)
-            if response.statusOK() {
-                self.mid = response.getResult()["mid"].stringValue
-                print(self.mid)
-            } else {
-                
-            }
-        }
+        replaceBarButtonItemWithActivityIndicator(controller: self)
         
+        messgae.create(title: messageTitle!,
+                       introudction: introduction,
+                       sell: sell,
+                       price: price,
+                       oids: oids,
+                       cid: category.cid!,
+                       success:
+        { (mid) in
+            self.mid = mid
+            self.performSegue(withIdentifier: "pictureSegue", sender: self)
+        }) {
+            
+        }
 
     }
 }

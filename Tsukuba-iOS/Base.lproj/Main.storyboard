@@ -169,7 +169,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a24-9Y-Tlv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1220" y="-1285.9070464767617"/>
+            <point key="canvasLocation" x="2369" y="-1287"/>
         </scene>
         <!--Post-->
         <scene sceneID="4Nx-Rg-F2A">
@@ -182,7 +182,7 @@
                     <view key="view" contentMode="scaleToFill" id="Ct0-MO-ogv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.95675891637802124" green="0.95692259073257446" blue="0.95674854516983032" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Post" id="y14-Lc-4Bv">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="9BD-ce-gVs">
@@ -192,10 +192,63 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="nTJ-ET-PgQ" kind="push" identifier="pictureSegue" id="FUo-jT-FCs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MQt-gr-Ict" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2432.8000000000002" y="-1286.8065967016494"/>
+            <point key="canvasLocation" x="3337" y="-1288"/>
+        </scene>
+        <!--Upload Pictures-->
+        <scene sceneID="MpC-Cy-ezW">
+            <objects>
+                <viewController id="nTJ-ET-PgQ" customClass="PictureViewController" customModule="Tsukuba_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oi5-KZ-yWk"/>
+                        <viewControllerLayoutGuide type="bottom" id="4Km-Lr-Np2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="00g-iA-c9f">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7o4-vA-O92">
+                                <rect key="frame" x="16" y="607" width="343" height="40"/>
+                                <color key="backgroundColor" red="0.97668033840000001" green="0.52403438089999999" blue="0.64906048770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="46c-1W-bza"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Upload">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="choosed:" destination="QzN-i3-dpF" eventType="touchUpInside" id="oHe-6o-RQv"/>
+                                    <action selector="uploadAvatar:" destination="UXT-bz-bzP" eventType="touchUpInside" id="bnX-yi-fEx"/>
+                                    <action selector="uploadPicture:" destination="nTJ-ET-PgQ" eventType="touchUpInside" id="3Id-Wk-uhs"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95675891637802124" green="0.95692259073257446" blue="0.95674854516983032" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="7o4-vA-O92" secondAttribute="leading" id="OKg-le-EeQ"/>
+                            <constraint firstItem="4Km-Lr-Np2" firstAttribute="top" secondItem="7o4-vA-O92" secondAttribute="bottom" constant="20" id="hMa-xc-Thi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7o4-vA-O92" secondAttribute="trailing" id="to7-89-2Cl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Upload Pictures" id="QcU-ki-0SI"/>
+                    <connections>
+                        <outlet property="uploadButton" destination="7o4-vA-O92" id="6NM-oE-crN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oh7-X0-vpy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4221.6000000000004" y="-1288.6056971514245"/>
         </scene>
         <!--Collection View Controller-->
         <scene sceneID="ZM9-Rq-W08">
