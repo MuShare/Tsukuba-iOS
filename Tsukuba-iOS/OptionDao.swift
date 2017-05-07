@@ -7,22 +7,23 @@
 //
 
 import CoreData
+import SwiftyJSON
 
 class OptionDao: DaoTemplate {
     
-    func saveOrUpdate(_ object: NSObject) -> Option {
-        let oid = object.value(forKey: "oid") as! String
+    func saveOrUpdate(_ object: JSON) -> Option {
+        let oid = object["oid"].stringValue
         var option = getByOid(oid)
         if option == nil {
             option = NSEntityDescription.insertNewObject(forEntityName: NSStringFromClass(Option.self),
                                                          into: context) as? Option
         }
         option?.oid = oid
-        option?.createAt = object.value(forKey: "createAt") as! Int32
-        option?.enable = object.value(forKey: "enable") as! Bool
-        option?.identifier = object.value(forKey: "identifier") as? String
-        option?.name = object.value(forKey: "name") as? String
-        option?.priority = object.value(forKey: "priority") as! Int16
+        option?.createAt = object["createAt"].int16Value
+        option?.enable = object["enable"].boolValue
+        option?.identifier = object["identifier"].stringValue
+        option?.name = object["name"].stringValue
+        option?.priority = object["priority"].int16Value
         return option!
     }
     

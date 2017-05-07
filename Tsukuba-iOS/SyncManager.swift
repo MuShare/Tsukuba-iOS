@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import SwiftyUserDefaults
+import SwiftyJSON
 
 class SyncManager: NSObject {
     
@@ -63,15 +64,15 @@ class SyncManager: NSObject {
             let response = Response(responseObject)
             if response.statusOK() {
                 let result = response.getResult()
-                let update = result?["update"] as! Bool
+                let update = result["update"].boolValue
                 if update {
                     // Save updated categories to persistent object.
-                    let categories = result?["categories"] as! [NSObject]
+                    let categories = result["categories"].arrayValue
                     for category in categories {
                         _ = self.dao.categoryDao.saveOrUpdate(category)
                     }
                     // Save global rev
-                    self.categoryRev = result?["rev"] as! Int
+                    self.categoryRev = result["rev"].intValue
                 }
                 completionHandler?(self.categoryRev, update)
             } else {
@@ -93,18 +94,18 @@ class SyncManager: NSObject {
                 let response = Response(responseObject)
                 if response.statusOK() {
                     let result = response.getResult()
-                    let update = result?["update"] as! Bool
+                    let update = result["update"].boolValue
                     if update {
                         // Save updated selections to persistent object.
                         let categories = self.dao.categoryDao.findAllDictionary()
-                        let selections = result?["selections"] as! [NSObject]
+                        let selections = result["selections"].arrayValue
                         for selection in selections {
-                            let cid = selection.value(forKey: "cid") as! String
+                            let cid = selection["cid"].stringValue
                             categories[cid]?.addToSelections(self.dao.selectionDao.saveOrUpdate(selection))
                         }
                         self.dao.saveContext()
                         // Save global rev
-                        self.selectionRev = result?["rev"] as! Int
+                        self.selectionRev = result["rev"].intValue
                     }
                     completionHandler?(self.selectionRev, update)
                 } else {
@@ -126,18 +127,18 @@ class SyncManager: NSObject {
                 let response = Response(responseObject)
                 if response.statusOK() {
                     let result = response.getResult()
-                    let update = result?["update"] as! Bool
+                    let update = result["update"].boolValue
                     if update {
                         // Save updated options to persistent object.
                         let selections = self.dao.selectionDao.findAllDictionary()
-                        let options = result?["options"] as! [NSObject]
+                        let options = result["options"].arrayValue
                         for option in options {
-                            let sid = option.value(forKey: "sid") as! String
+                            let sid = option["sid"].stringValue
                             selections[sid]?.addToOptions(self.dao.optionDao.saveOrUpdate(option))
                         }
                         self.dao.saveContext()
                         // Save global rev
-                        self.optionRev = result?["rev"] as! Int
+                        self.optionRev = result["rev"].intValue
                     }
                     completionHandler?(self.optionRev, update)
                 } else {

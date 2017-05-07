@@ -95,12 +95,12 @@ class UserManager: NSObject {
                 if response.statusOK() {
                     let result = response.getResult()
                     // Login success, save user information to NSUserDefaults.
-                    Defaults[.token] = result?["token"] as? String
-                    let user = result?["user"] as! [String: Any]
+                    Defaults[.token] = result["token"].stringValue
+                    let user = result["user"]
                     self.type = "email";
                     self.identifier = email
-                    self.name = user["name"] as! String
-                    self.avatar = user["avatar"] as! String
+                    self.name = user["name"].stringValue
+                    self.avatar = user["avatar"].stringValue
                     self.login = true
                     completionHandler?(true, nil);
                 } else {
@@ -135,7 +135,7 @@ class UserManager: NSObject {
                                     let response = Response(responseObject)
                                     if response.statusOK() {
                                         let result = response.getResult()
-                                        self.avatar = result?["avatar"] as! String
+                                        self.avatar = result["avatar"].stringValue
                                         success?()
                                     } else {
                                         fail?()

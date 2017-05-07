@@ -7,23 +7,24 @@
 //
 
 import CoreData
+import SwiftyJSON
 
 class CategoryDao: DaoTemplate {
     
-    func saveOrUpdate(_ object: NSObject) -> Category {
-        let cid = object.value(forKey: "cid") as! String
+    func saveOrUpdate(_ object: JSON) -> Category {
+        let cid = object["cid"].stringValue
         var category = getByCid(cid)
         if category == nil {
             category = NSEntityDescription.insertNewObject(forEntityName: NSStringFromClass(Category.self),
                                                            into: context) as? Category
         }
         category?.cid = cid
-        category?.createAt = object.value(forKey: "createAt") as! Int32
-        category?.enable = object.value(forKey: "enable") as! Bool
-        category?.icon = object.value(forKey: "icon") as? String
-        category?.identifier = object.value(forKey: "identifier") as? String
-        category?.name = object.value(forKey: "name") as? String
-        category?.priority = object.value(forKey: "priority") as! Int16
+        category?.createAt = object["createAt"].int16Value
+        category?.enable = object["enable"].boolValue
+        category?.icon = object["icon"].stringValue
+        category?.identifier = object["identifier"].stringValue
+        category?.name = object["name"].stringValue
+        category?.priority = object["priority"].int16Value
         self.saveContext()
         return category!
     }
