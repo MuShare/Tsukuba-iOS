@@ -32,6 +32,11 @@ class SelectionDao: DaoTemplate {
         return try! context.fetch(request)
     }
     
+    func findAll() -> [Selection] {
+        let request = NSFetchRequest<Selection>(entityName: NSStringFromClass(Selection.self))
+        return try! context.fetch(request)
+    }
+    
     func getBySid(_ sid: String) -> Selection? {
         let request = NSFetchRequest<Selection>(entityName: NSStringFromClass(Selection.self))
         request.predicate = NSPredicate(format: "sid=%@", sid)
@@ -40,6 +45,14 @@ class SelectionDao: DaoTemplate {
             return nil
         }
         return selections[0]
+    }
+    
+    func findAllDictionary() -> [String: Selection] {
+        var selections = [String: Selection]()
+        for selection in findAll() {
+            selections[selection.sid!] = selection
+        }
+        return selections
     }
     
 }

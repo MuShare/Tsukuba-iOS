@@ -24,13 +24,17 @@ class CategoriesCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         categories = dao.categoryDao.findEnable()
 
-        sync.pullCategory { (rev) in
+        sync.pullCategory { (rev, update) in
             if rev > 0 {
-                self.categories = self.dao.categoryDao.findEnable()
-                self.collectionView?.reloadData()
-                
-                self.sync.pullSelection({ (rev) in
-                    
+                if update {
+                    self.categories = self.dao.categoryDao.findEnable()
+                    self.collectionView?.reloadData()
+                }
+
+                self.sync.pullSelection({ (rev, update) in
+                    if rev > 0 {
+                        self.sync.pullOption(nil)
+                    }
                 })
             }
         }

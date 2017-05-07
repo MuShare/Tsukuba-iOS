@@ -1,4 +1,5 @@
 use_frameworks!
+platform :ios, '9.0'
 
 target 'Tsukuba-iOS' do
     pod 'Alamofire', '~> 4.2'

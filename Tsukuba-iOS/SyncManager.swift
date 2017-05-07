@@ -50,7 +50,7 @@ class SyncManager: NSObject {
         dao = DaoManager.sharedInstance
     }
 
-    func pullCategory(_ completionHandler: ((Int) -> Void)?) {
+    func pullCategory(_ completionHandler: ((Int, Bool) -> Void)?) {
         let params: Parameters = [
             "rev": self.categoryRev
         ]
@@ -64,24 +64,23 @@ class SyncManager: NSObject {
             if response.statusOK() {
                 let result = response.getResult()
                 let update = result?["update"] as! Bool
-                if !update {
-                    return
+                if update {
+                    // Save updated categories to persistent object.
+                    let categories = result?["categories"] as! [NSObject]
+                    for category in categories {
+                        _ = self.dao.categoryDao.saveOrUpdate(category)
+                    }
+                    // Save global rev
+                    self.categoryRev = result?["rev"] as! Int
                 }
-                // Save updated categories to persistent object.
-                let categories = result?["categories"] as! [NSObject]
-                for category in categories {
-                    _ = self.dao.categoryDao.saveOrUpdate(category)
-                }
-                // Save global rev
-                self.categoryRev = result?["rev"] as! Int
-                completionHandler?(self.categoryRev)
+                completionHandler?(self.categoryRev, update)
             } else {
-                completionHandler?(-1)
+                completionHandler?(-1, false)
             }
         }
     }
     
-    func pullSelection(_ completionHandler: ((Int) -> Void)?) {
+    func pullSelection(_ completionHandler: ((Int, Bool) -> Void)?) {
         let params: Parameters = [
             "rev": self.selectionRev
         ]
@@ -95,22 +94,54 @@ class SyncManager: NSObject {
                 if response.statusOK() {
                     let result = response.getResult()
                     let update = result?["update"] as! Bool
-                    if !update {
-                        return
+                    if update {
+                        // Save updated selections to persistent object.
+                        let categories = self.dao.categoryDao.findAllDictionary()
+                        let selections = result?["selections"] as! [NSObject]
+                        for selection in selections {
+                            let cid = selection.value(forKey: "cid") as! String
+                            categories[cid]?.addToSelections(self.dao.selectionDao.saveOrUpdate(selection))
+                        }
+                        self.dao.saveContext()
+                        // Save global rev
+                        self.selectionRev = result?["rev"] as! Int
                     }
-                    // Save updated categories to persistent object.
-                    let categories = self.dao.categoryDao.findAllDictionary()
-                    let selections = result?["selections"] as! [NSObject]
-                    for selection in selections {
-                        let cid = selection.value(forKey: "cid") as! String
-                        categories[cid]?.addToSelections(self.dao.selectionDao.saveOrUpdate(selection))
-                    }
-                    self.dao.saveContext()
-                    // Save global rev
-                    self.selectionRev = result?["rev"] as! Int
-                    completionHandler?(self.selectionRev)
+                    completionHandler?(self.selectionRev, update)
                 } else {
-                    completionHandler?(-1)
+                    completionHandler?(-1, false)
+                }
+        }
+    }
+    
+    func pullOption(_ completionHandler: ((Int, Bool) -> Void)?) {
+        let params: Parameters = [
+            "rev": self.optionRev
+        ]
+        Alamofire.request(createUrl("api/option/list"),
+                          method: .get,
+                          parameters: params,
+                          encoding: URLEncoding.default,
+                          headers: tokenHeader())
+            .responseJSON { (responseObject) in
+                let response = Response(responseObject)
+                if response.statusOK() {
+                    let result = response.getResult()
+                    let update = result?["update"] as! Bool
+                    if update {
+                        // Save updated options to persistent object.
+                        let selections = self.dao.selectionDao.findAllDictionary()
+                        let options = result?["options"] as! [NSObject]
+                        for option in options {
+                            let sid = option.value(forKey: "sid") as! String
+                            selections[sid]?.addToOptions(self.dao.optionDao.saveOrUpdate(option))
+                        }
+                        self.dao.saveContext()
+                        // Save global rev
+                        self.optionRev = result?["rev"] as! Int
+                    }
+                    completionHandler?(self.optionRev, update)
+                } else {
+                    completionHandler?(-1, false)
                 }
         }
     }
