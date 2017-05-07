@@ -13,6 +13,7 @@ import DGElasticPullToRefresh
 class CategoriesCollectionViewController: UICollectionViewController {
     
     let dao = DaoManager.sharedInstance
+    let sync = SyncManager.sharedInstance
     var categories: [Category]!
 
     deinit {
@@ -23,9 +24,15 @@ class CategoriesCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         categories = dao.categoryDao.findEnable()
 
-        SyncManager.sharedInstance.pullCategory { (success) in
-            self.categories = self.dao.categoryDao.findEnable()
-            self.collectionView?.reloadData()
+        sync.pullCategory { (rev) in
+            if rev > 0 {
+                self.categories = self.dao.categoryDao.findEnable()
+                self.collectionView?.reloadData()
+                
+                self.sync.pullSelection({ (rev) in
+                    
+                })
+            }
         }
     }
 

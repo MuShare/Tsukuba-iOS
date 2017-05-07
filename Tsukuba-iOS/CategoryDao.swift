@@ -10,9 +10,9 @@ import CoreData
 
 class CategoryDao: DaoTemplate {
     
-    func saveOrUpdate(object: NSObject) -> Category {
-        let cid = object.value(forKey: "cid") as? String
-        var category = getByCid(cid!)
+    func saveOrUpdate(_ object: NSObject) -> Category {
+        let cid = object.value(forKey: "cid") as! String
+        var category = getByCid(cid)
         if category == nil {
             category = NSEntityDescription.insertNewObject(forEntityName: NSStringFromClass(Category.self),
                                                            into: context) as? Category
@@ -31,7 +31,11 @@ class CategoryDao: DaoTemplate {
     func findEnable() -> [Category] {
         let request = NSFetchRequest<Category>(entityName: NSStringFromClass(Category.self))
         request.predicate = NSPredicate(format: "enable=true")
-        
+        return try! context.fetch(request)
+    }
+    
+    func findAll() -> [Category] {
+        let request = NSFetchRequest<Category>(entityName: NSStringFromClass(Category.self))
         return try! context.fetch(request)
     }
     
@@ -43,6 +47,14 @@ class CategoryDao: DaoTemplate {
             return nil
         }
         return categories[0]
+    }
+    
+    func findAllDictionary() -> [String: Category] {
+        var categories = [String: Category]()
+        for category in findAll() {
+            categories[category.cid!] = category
+        }
+        return categories
     }
 
 }

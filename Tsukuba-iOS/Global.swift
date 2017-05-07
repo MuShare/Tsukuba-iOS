@@ -57,10 +57,3 @@ func tokenHeader() -> HTTPHeaders? {
     return headers
 }
 
-func categoryRev() -> Int {
-    return Defaults[.categoryRev] ?? 0
-}
-
-func setCategoryRev(_ rev: Int) {
-    Defaults[.categoryRev] = rev
-}
