@@ -60,6 +60,9 @@
                     <navigationItem key="navigationItem" title="Tsukuba eBuy" id="RWs-tV-Eqz">
                         <barButtonItem key="leftBarButtonItem" image="write" id="4gn-Uj-gL4">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="QzN-i3-dpF" kind="push" id="Qhg-LO-ITJ"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="user" id="xFV-Yx-eOU">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -71,7 +74,123 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G71-nH-jaW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1464.8" y="152.47376311844079"/>
+            <point key="canvasLocation" x="1460" y="-382"/>
+        </scene>
+        <!--Select a Category-->
+        <scene sceneID="oqt-kS-yuY">
+            <objects>
+                <viewController id="QzN-i3-dpF" customClass="SelectCategoryViewController" customModule="Tsukuba_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lgY-Xl-NT1"/>
+                        <viewControllerLayoutGuide type="bottom" id="WGb-Wn-iim"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oVE-9D-TEd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0dc-cV-Um0">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="599"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="K4w-dD-cBb">
+                                    <size key="itemSize" width="120" height="140"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="categoryIdentifier" id="v7F-f6-Df3" customClass="CategoryCollectionViewCell" customModule="Tsukuba_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="140"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="140"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tfg-0h-q50">
+                                                    <rect key="frame" x="35" y="33" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="e8c-0T-K7t">
+                                                    <rect key="frame" x="0.0" y="99" width="120" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <connections>
+                                            <outlet property="iconImageView" destination="tfg-0h-q50" id="ufY-BE-5Pe"/>
+                                            <outlet property="nameLabel" destination="e8c-0T-K7t" id="O3X-WL-KUe"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="QzN-i3-dpF" id="Szk-Ac-Typ"/>
+                                    <outlet property="delegate" destination="QzN-i3-dpF" id="1nq-eZ-cGJ"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9OF-zs-2Lj">
+                                <rect key="frame" x="16" y="607" width="343" height="40"/>
+                                <color key="backgroundColor" red="0.97668033840000001" green="0.52403438089999999" blue="0.64906048770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="jmi-R1-b6x"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="choosed:" destination="QzN-i3-dpF" eventType="touchUpInside" id="7E8-2h-JuU"/>
+                                    <action selector="uploadAvatar:" destination="UXT-bz-bzP" eventType="touchUpInside" id="ATu-TV-FkH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90747934579849243" green="0.9047083854675293" blue="0.90758329629898071" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="9OF-zs-2Lj" secondAttribute="leading" id="2PC-FC-OiL"/>
+                            <constraint firstItem="WGb-Wn-iim" firstAttribute="top" secondItem="9OF-zs-2Lj" secondAttribute="bottom" constant="20" id="ICa-Sq-nQ6"/>
+                            <constraint firstItem="0dc-cV-Um0" firstAttribute="top" secondItem="lgY-Xl-NT1" secondAttribute="bottom" constant="-64" id="IOs-5h-doq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0dc-cV-Um0" secondAttribute="trailing" constant="-16" id="Ify-d0-lJY"/>
+                            <constraint firstItem="0dc-cV-Um0" firstAttribute="leading" secondItem="oVE-9D-TEd" secondAttribute="leadingMargin" constant="-16" id="Oe1-WB-WZg"/>
+                            <constraint firstItem="WGb-Wn-iim" firstAttribute="top" secondItem="0dc-cV-Um0" secondAttribute="bottom" constant="68" id="aAD-Jw-enL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9OF-zs-2Lj" secondAttribute="trailing" id="eId-6h-VyC"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Select a Category" id="our-K3-SDW"/>
+                    <connections>
+                        <outlet property="categoriesCollectionView" destination="0dc-cV-Um0" id="spe-uI-z19"/>
+                        <segue destination="pmD-CH-fmv" kind="push" identifier="createMessageSegue" id="4fN-ix-N1n"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a24-9Y-Tlv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1220" y="-1285.9070464767617"/>
+        </scene>
+        <!--Post View Controller-->
+        <scene sceneID="4Nx-Rg-F2A">
+            <objects>
+                <viewController id="pmD-CH-fmv" customClass="PostViewController" customModule="Tsukuba_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HYh-JN-K0W"/>
+                        <viewControllerLayoutGuide type="bottom" id="7uN-la-GUO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ct0-MO-ogv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="y14-Lc-4Bv">
+                        <nil key="title"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MQt-gr-Ict" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2434" y="-1286"/>
         </scene>
         <!--Collection View Controller-->
         <scene sceneID="ZM9-Rq-W08">
@@ -408,7 +527,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WRc-Ha-URO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="638" y="153"/>
+            <point key="canvasLocation" x="634" y="-383"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="JKZ-ZW-g9s">

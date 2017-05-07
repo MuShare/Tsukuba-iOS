@@ -9,5 +9,6 @@ target 'Tsukuba-iOS' do
     pod 'FacebookLogin'
     pod 'Kingfisher', '~> 3'
     pod 'UIImageView+Extension', '~> 0.2'
+    pod 'Eureka', '~> 3.0'
 end
 

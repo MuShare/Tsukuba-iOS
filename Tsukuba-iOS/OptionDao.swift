@@ -32,6 +32,12 @@ class OptionDao: DaoTemplate {
         return try! context.fetch(request)
     }
     
+    func findEnableBySelection(_ selection: Selection) -> [Option] {
+        let request = NSFetchRequest<Option>(entityName: NSStringFromClass(Option.self))
+        request.predicate = NSPredicate(format: "enable=true and selection=%@", selection)
+        return try! context.fetch(request)
+    }
+    
     func getByOid(_ oid: String) -> Option? {
         let request = NSFetchRequest<Option>(entityName: NSStringFromClass(Option.self))
         request.predicate = NSPredicate(format: "oid=%@", oid)

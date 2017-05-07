@@ -32,6 +32,12 @@ class SelectionDao: DaoTemplate {
         return try! context.fetch(request)
     }
     
+    func findEnableByCategory(_ category: Category) -> [Selection] {
+        let request = NSFetchRequest<Selection>(entityName: NSStringFromClass(Selection.self))
+        request.predicate = NSPredicate(format: "enable=true and category=%@", category)
+        return try! context.fetch(request)
+    }
+    
     func findAll() -> [Selection] {
         let request = NSFetchRequest<Selection>(entityName: NSStringFromClass(Selection.self))
         return try! context.fetch(request)

@@ -54,9 +54,8 @@ class CategoriesCollectionViewController: UICollectionViewController {
         cell.iconImageView.kf.setImage(with: URL(string: createUrl(category.icon!)))
         return cell
     }
-
-    // MARK: UICollectionViewDelegate
-
+    
+    
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
