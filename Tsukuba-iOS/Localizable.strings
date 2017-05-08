@@ -23,7 +23,6 @@ sign_in_sign_up = "Sign in to sync request history";
 sign_out_title = "Sign out";
 sign_out_message = "Are you sure to sign out now?";
 
-photo_edit = "Edit Profile Photo";
 photo_tip = "Choose a photo from library or take a photo.";
 photo_take = "Take Photo";
 photo_simulator_not_support = "iOS Simulator cannot open camera.";
@@ -31,3 +30,6 @@ photo_choose = "Choose from Photos";
 
 upload_profile_photo = "Upload Profie Photo";
 upload_progress = "Upload Progress: ";
+
+upload_message_picture = "Upload Picture";
+remove_picture_failed = "Remove picture failed.";

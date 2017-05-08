@@ -12,5 +12,5 @@ class PictureCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var removeButton: UIButton!
     @IBOutlet weak var pictureImageView: UIImageView!
-    
+
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class PictureViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
@@ -16,13 +17,21 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
     let message = MessageManager.sharedInstance
     
     var mid: String!
-    var pictures: [String] = []
+    var pictures: [JSON] = []
     
     let imagePickerController = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.hidesBackButton = true
+        
         imagePickerController.delegate = self
+        imagePickerController.navigationBar.barTintColor = Color.main
+        imagePickerController.navigationBar.tintColor = UIColor.white
+        imagePickerController.navigationBar.titleTextAttributes = [
+            NSForegroundColorAttributeName : UIColor.white
+        ]
     }
     
     // MARK: UICollectionViewDelegateFlowLayout
@@ -38,11 +47,11 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pictureCell", for: indexPath) as! PictureCollectionViewCell
-        cell.pictureImageView.kf.setImage(with: imageURL(pictures[indexPath.row]))
-        
+        let picture = pictures[indexPath.row]
+        cell.pictureImageView.kf.setImage(with: imageURL(picture["path"].stringValue))
         return cell
     }
-
+    
     // MARK: - UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerEditedImage] as! UIImage
@@ -57,10 +66,28 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     // MARK: - Action
+    @IBAction func removePicture(_ sender: UIButton) {
+        let cell = sender.superview?.superview as! PictureCollectionViewCell
+        let indexPath = picturesCollectionView.indexPath(for: cell)!
+        let pid = pictures[indexPath.row]["pid"].stringValue
+        MessageManager.sharedInstance.removePicture(pid) { (success) in
+            if success {
+                self.pictures.remove(at: indexPath.row)
+                self.picturesCollectionView.deleteItems(at: [indexPath])
+            } else {
+                showAlert(title: NSLocalizedString("Tip", comment: ""),
+                          content: NSLocalizedString("remove_picture_failed", comment: ""),
+                          controller: self)
+            }
+        }
+    }
+    
+    
     @IBAction func uploadPicture(_ sender: Any) {
-        let alertController = UIAlertController(title: NSLocalizedString("photo_edit", comment: ""),
+        let alertController = UIAlertController(title: NSLocalizedString("upload_message_picture", comment: ""),
                                                 message: NSLocalizedString("photo_tip", comment: ""),
                                                 preferredStyle: .actionSheet)
+        alertController.view.tintColor = Color.main
         let takePhoto = UIAlertAction(title: NSLocalizedString("photo_take", comment: ""),
                                       style: .default)
         { (action) in
@@ -79,13 +106,17 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
             self.imagePickerController.allowsEditing = true
             self.present(self.imagePickerController, animated: true, completion: nil)
         }
-        let cancel = UIAlertAction(title: NSLocalizedString("title", comment: ""),
+        let cancel = UIAlertAction(title: NSLocalizedString("cancel_name", comment: ""),
                                    style: .cancel,
                                    handler: nil)
         alertController.addAction(takePhoto)
         alertController.addAction(choosePhoto)
         alertController.addAction(cancel)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func finishUpload(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

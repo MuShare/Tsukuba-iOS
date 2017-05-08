@@ -25,6 +25,14 @@ func imageURL(_ source: String) -> URL? {
     return URL(string: createUrl(source))
 }
 
+open class Color: UIColor {
+    open class var main: UIColor {
+        get {
+            return RGB(0xf46d94)
+        }
+    }
+}
+
 extension DefaultsKeys {
     static let type = DefaultsKey<String?>("type")
     static let identifier = DefaultsKey<String?>("identifier")

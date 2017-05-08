@@ -32,7 +32,7 @@ class PostViewController: FormViewController {
         
         selections = dao.selectionDao.findEnableByCategory(category)
         
-        self.view.tintColor = RGB(0xf46d94)
+        self.view.tintColor = Color.main
             
         navigationOptions = RowNavigationOptions.Enabled.union(.SkipCanNotBecomeFirstResponderRow)
         navigationOptionsBackup = navigationOptions

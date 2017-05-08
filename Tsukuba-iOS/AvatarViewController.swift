@@ -26,6 +26,11 @@ class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
         
         imagePickerController.delegate = self
+        imagePickerController.navigationBar.barTintColor = Color.main
+        imagePickerController.navigationBar.tintColor = UIColor.white
+        imagePickerController.navigationBar.titleTextAttributes = [
+            NSForegroundColorAttributeName : UIColor.white
+        ]
     }
     
     // MARK: - UIImagePickerControllerDelegate
@@ -57,9 +62,10 @@ class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     // MARK: - Action
     @IBAction func uploadAvatar(_ sender: Any) {
-        let alertController = UIAlertController(title: NSLocalizedString("photo_edit", comment: ""),
+        let alertController = UIAlertController(title: NSLocalizedString("upload_profile_photo", comment: ""),
                                                 message: NSLocalizedString("photo_tip", comment: ""),
                                                 preferredStyle: .actionSheet)
+        alertController.view.tintColor = Color.main
         let takePhoto = UIAlertAction(title: NSLocalizedString("photo_take", comment: ""),
                                       style: .default)
         { (action) in
@@ -78,7 +84,7 @@ class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, U
             self.imagePickerController.allowsEditing = true
             self.present(self.imagePickerController, animated: true, completion: nil)
         }
-        let cancel = UIAlertAction(title: NSLocalizedString("title", comment: ""),
+        let cancel = UIAlertAction(title: NSLocalizedString("cancel_name", comment: ""),
                                    style: .cancel,
                                    handler: nil)
         alertController.addAction(takePhoto)

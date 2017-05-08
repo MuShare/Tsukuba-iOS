@@ -25,9 +25,7 @@ class MessageManager: NSObject {
     
     func create(title: String, introudction: String, sell: Bool, price: Int, oids: [String], cid: String,
                 success: ((String) -> Void)?, fail: (() -> Void)?) {
-        
-        print(JSON(oids).rawString()!)
-        
+
         let params: Parameters = [
             "cid": cid,
             "title": title,
@@ -53,7 +51,7 @@ class MessageManager: NSObject {
         }
     }
     
-    func uploadPicture(_ image: UIImage, mid: String, completion: ((Bool, String?) -> Void)?) {
+    func uploadPicture(_ image: UIImage, mid: String, completion: ((Bool, JSON?) -> Void)?) {
         let data = UIImageJPEGRepresentation(resizeImage(image: image, newWidth: 480)!, 1.0)
         Alamofire.upload(multipartFormData: { multipartFormData in
             multipartFormData.append(data!, withName: "picture", fileName: UUID().uuidString, mimeType: "image/jpeg")
@@ -72,8 +70,8 @@ class MessageManager: NSObject {
                     upload.responseJSON { responseObject in
                         let response = Response(responseObject)
                         if response.statusOK() {
-                            let path = response.getResult()["path"].stringValue
-                            completion?(true, path)
+                            let picture = response.getResult()["picture"]
+                            completion?(true, picture)
                         } else {
                             completion?(false, nil)
                         }
@@ -87,6 +85,25 @@ class MessageManager: NSObject {
             }
         })
         
+    }
+    
+    func removePicture(_ pid: String, completion: ((Bool) -> Void)?) {
+        let params: Parameters = [
+            "pid": pid
+        ]
+        Alamofire.request(createUrl("api/message/picture"),
+                          method: .delete,
+                          parameters: params,
+                          encoding: URLEncoding.default,
+                          headers: tokenHeader())
+        .responseJSON { (responseObject) in
+            let response = Response(responseObject)
+            if response.statusOK() {
+                completion?(response.getResult()["success"].boolValue)
+            } else {
+                completion?(false)
+            }
+        }
     }
     
 }
