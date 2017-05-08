@@ -16,6 +16,7 @@ class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     let user = UserManager.sharedInstance
     let imagePickerController = UIImagePickerController()
+    var timer: Timer? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,21 +35,24 @@ class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         uploadButton.isEnabled = false
         self.navigationItem.hidesBackButton = true
-        
-//        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { (timer) in
-//            uploadButton.setTitle("\(NSLocalizedString("upload_progress", comment: ""))\(user.avatarUploadingProgress * 100)%", for: .normal)
-//        }
  
-        user.uploadAvatar(avatarImageView.image!,
-                          success:
-        {
-            self.uploadButton.setTitle(NSLocalizedString("upload_profile_photo", comment: ""), for: .normal)
+        timer = Timer.scheduledTimer(
+            timeInterval: TimeInterval(0.1),
+            target      : self,
+            selector    : #selector(updateUploadProgress),
+            userInfo    : nil,
+            repeats     : true)
+        
+        user.uploadAvatar(avatarImageView.image!) { (success) in
             self.uploadButton.isEnabled = true
             self.navigationItem.hidesBackButton = false
-        }) {
-            self.uploadButton.isEnabled = true
-            self.navigationItem.hidesBackButton = false
+            self.timer?.invalidate()
+            self.timer = nil
+            if success {
+                self.uploadButton.setTitle(NSLocalizedString("upload_profile_photo", comment: ""), for: .normal)
+            }
         }
+        
     }
     
     // MARK: - Action
@@ -81,6 +85,12 @@ class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, U
         alertController.addAction(choosePhoto)
         alertController.addAction(cancel)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    // MARK: - Service
+    func updateUploadProgress() {
+        let progress = String(format: "%.2f", user.avatarUploadingProgress * 100)
+        uploadButton.setTitle(NSLocalizedString("upload_progress", comment: "") + progress + "%", for: .normal)
     }
     
 }

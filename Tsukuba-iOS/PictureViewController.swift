@@ -8,11 +8,13 @@
 
 import UIKit
 
-class PictureViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class PictureViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var uploadButton: UIButton!
+    @IBOutlet weak var picturesCollectionView: UICollectionView!
     
     var mid: String!
+    var pictures: [String] = []
     
     let imagePickerController = UIImagePickerController()
     
@@ -20,6 +22,25 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    
+    }
+    
+    // MARK: UICollectionViewDelegateFlowLayout
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.size.width / 2
+        return CGSize(width: width, height: width)
+    }
+    
+    // MARK: UICollectionViewDataSource
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return pictures.count;
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pictureCell", for: indexPath) as! PictureCollectionViewCell
+        cell.pictureImageView.kf.setImage(with: imageURL(pictures[indexPath.row]))
+        
+        return cell
     }
 
     // MARK: - UIImagePickerControllerDelegate

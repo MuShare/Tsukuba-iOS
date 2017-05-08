@@ -25,6 +25,7 @@
 		E4089FEF1EBB4AD80042221D /* MyProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FEE1EBB4AD80042221D /* MyProfileTableViewController.swift */; };
 		E4089FF11EBB4F160042221D /* AvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FF01EBB4F160042221D /* AvatarViewController.swift */; };
 		E4089FF31EBB50790042221D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4089FF21EBB50790042221D /* Localizable.strings */; };
+		E44752931EC0005000EEEA20 /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44752921EC0005000EEEA20 /* PictureCollectionViewCell.swift */; };
 		E489721D1EBED40F0064EA13 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489721C1EBED40F0064EA13 /* PostViewController.swift */; };
 		E489721F1EBEF34E0064EA13 /* SelectCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */; };
 		E48972211EBF62280064EA13 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48972201EBF62280064EA13 /* PictureViewController.swift */; };
@@ -75,6 +76,7 @@
 		E4089FEE1EBB4AD80042221D /* MyProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileTableViewController.swift; sourceTree = "<group>"; };
 		E4089FF01EBB4F160042221D /* AvatarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarViewController.swift; sourceTree = "<group>"; };
 		E4089FF21EBB50790042221D /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		E44752921EC0005000EEEA20 /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
 		E489721C1EBED40F0064EA13 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCategoryViewController.swift; sourceTree = "<group>"; };
 		E48972201EBF62280064EA13 /* PictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				E4089FE11EBAF8F40042221D /* CategoryCollectionViewCell.swift */,
+				E44752921EC0005000EEEA20 /* PictureCollectionViewCell.swift */,
 			);
 			name = Template;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				E4089FEF1EBB4AD80042221D /* MyProfileTableViewController.swift in Sources */,
 				E4089FE91EBB3A1F0042221D /* LoginViewController.swift in Sources */,
 				E489721F1EBEF34E0064EA13 /* SelectCategoryViewController.swift in Sources */,
+				E44752931EC0005000EEEA20 /* PictureCollectionViewCell.swift in Sources */,
 				E4089FD71EBAEFA00042221D /* SyncManager.swift in Sources */,
 				E48972211EBF62280064EA13 /* PictureViewController.swift in Sources */,
 				E4089FB51EBAE55C0042221D /* DaoManager.swift in Sources */,

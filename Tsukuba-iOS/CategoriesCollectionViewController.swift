@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 import DGElasticPullToRefresh
 
-class CategoriesCollectionViewController: UICollectionViewController {
+class CategoriesCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let dao = DaoManager.sharedInstance
     let sync = SyncManager.sharedInstance
@@ -40,8 +40,13 @@ class CategoriesCollectionViewController: UICollectionViewController {
         }
     }
 
+    // MARK: UICollectionViewDelegateFlowLayout
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.size.width / 3
+        return CGSize(width: width, height: width * 1.17)
+    }
+    
     // MARK: UICollectionViewDataSource
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categories.count
     }

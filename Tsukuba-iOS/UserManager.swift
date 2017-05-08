@@ -75,7 +75,7 @@ class UserManager: NSObject {
         dao = DaoManager.sharedInstance
     }
     
-    func login(email: String, password: String, completionHandler: ((Bool, String?) -> Void)?) {
+    func login(email: String, password: String, completion: ((Bool, String?) -> Void)?) {
         let params: Parameters = [
             "email": email,
             "password": password,
@@ -102,13 +102,13 @@ class UserManager: NSObject {
                     self.name = user["name"].stringValue
                     self.avatar = user["avatar"].stringValue
                     self.login = true
-                    completionHandler?(true, nil);
+                    completion?(true, nil);
                 } else {
                     switch response.errorCode() {
                     case ErrorCode.emailNotExist.rawValue:
-                        completionHandler?(false, NSLocalizedString("email_not_exist", comment: ""))
+                        completion?(false, NSLocalizedString("email_not_exist", comment: ""))
                     case ErrorCode.passwordWrong.rawValue:
-                        completionHandler?(false, NSLocalizedString("password_wrong", comment: ""))
+                        completion?(false, NSLocalizedString("password_wrong", comment: ""))
                     default:
                         break
                     }
@@ -116,7 +116,7 @@ class UserManager: NSObject {
         }
     }
     
-    func uploadAvatar(_ image: UIImage, success: (() -> Void)?, fail: (() -> Void)?) {
+    func uploadAvatar(_ image: UIImage, completion: ((Bool) -> Void)?) {
         let data = UIImageJPEGRepresentation(resizeImage(image: image, newWidth: 480)!, 1.0)
         Alamofire.upload(multipartFormData:{ multipartFormData in
             multipartFormData.append(data!, withName: "avatar", fileName: UUID().uuidString, mimeType: "image/jpeg")
@@ -136,16 +136,16 @@ class UserManager: NSObject {
                                     if response.statusOK() {
                                         let result = response.getResult()
                                         self.avatar = result["avatar"].stringValue
-                                        success?()
+                                        completion?(true)
                                     } else {
-                                        fail?()
+                                        completion?(false)
                                     }
                                 }
                             case .failure(let encodingError):
                                 if DEBUG {
                                     debugPrint(encodingError)
                                 }
-                                fail?()
+                                completion?(false)
                             }
         })
 

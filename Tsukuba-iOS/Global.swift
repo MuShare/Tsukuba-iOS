@@ -21,6 +21,10 @@ func createUrl(_ relative: String) -> String {
     return requestUrl
 }
 
+func imageURL(_ source: String) -> URL? {
+    return URL(string: createUrl(source))
+}
+
 extension DefaultsKeys {
     static let type = DefaultsKey<String?>("type")
     static let identifier = DefaultsKey<String?>("identifier")

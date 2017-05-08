@@ -233,16 +233,60 @@
                                     <action selector="uploadPicture:" destination="nTJ-ET-PgQ" eventType="touchUpInside" id="3Id-Wk-uhs"/>
                                 </connections>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6Qz-SV-quH">
+                                <rect key="frame" x="0.0" y="64" width="375" height="535"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="y7j-w5-3Ho">
+                                    <size key="itemSize" width="187" height="187"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="pictureCell" id="9Pm-KG-1Hd" customClass="PictureCollectionViewCell" customModule="Tsukuba_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="187" height="187"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="187" height="187"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rvl-pC-a1s">
+                                                    <rect key="frame" x="0.0" y="0.0" width="187" height="187"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MWt-MA-1Ut">
+                                                    <rect key="frame" x="10" y="9" width="30" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="close"/>
+                                                </button>
+                                            </subviews>
+                                        </view>
+                                        <connections>
+                                            <outlet property="pictureImageView" destination="Rvl-pC-a1s" id="eZb-Bi-de9"/>
+                                            <outlet property="removeButton" destination="MWt-MA-1Ut" id="1dP-IE-Ugz"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="nTJ-ET-PgQ" id="EWG-zE-e5X"/>
+                                    <outlet property="delegate" destination="nTJ-ET-PgQ" id="dqj-v1-cfv"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.95675891637802124" green="0.95692259073257446" blue="0.95674854516983032" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="4Km-Lr-Np2" firstAttribute="top" secondItem="6Qz-SV-quH" secondAttribute="bottom" constant="68" id="7yj-f9-vAY"/>
+                            <constraint firstItem="6Qz-SV-quH" firstAttribute="top" secondItem="oi5-KZ-yWk" secondAttribute="bottom" id="Hu1-do-pOW"/>
                             <constraint firstAttribute="leadingMargin" secondItem="7o4-vA-O92" secondAttribute="leading" id="OKg-le-EeQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6Qz-SV-quH" secondAttribute="trailing" constant="-16" id="ST1-Rd-QBl"/>
+                            <constraint firstItem="6Qz-SV-quH" firstAttribute="leading" secondItem="00g-iA-c9f" secondAttribute="leadingMargin" constant="-16" id="f3E-be-9RV"/>
                             <constraint firstItem="4Km-Lr-Np2" firstAttribute="top" secondItem="7o4-vA-O92" secondAttribute="bottom" constant="20" id="hMa-xc-Thi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7o4-vA-O92" secondAttribute="trailing" id="to7-89-2Cl"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Upload Pictures" id="QcU-ki-0SI"/>
                     <connections>
+                        <outlet property="picturesCollectionView" destination="6Qz-SV-quH" id="8wV-BM-lZm"/>
                         <outlet property="uploadButton" destination="7o4-vA-O92" id="6NM-oE-crN"/>
                     </connections>
                 </viewController>
