@@ -23,9 +23,12 @@ class MeTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         if user.login {
-            titleLabel.text = user.name
-            subtitleLabel.text = user.identifier
-            avatarImageView.kf.setImage(with: user.avatarURL)
+            updateUserInfo()
+            user.pullUser(completion: { (success) in
+                if success {
+                    self.updateUserInfo()
+                }
+            })
         }
     }
 
@@ -41,6 +44,13 @@ class MeTableViewController: UITableViewController {
         if indexPath.section == 0 && indexPath.row == 1 {
             self.performSegue(withIdentifier: user.login ? "profileSegue" : "loginSegue", sender: self)
         }
+    }
+    
+    // MARK: - Service
+    func updateUserInfo() {
+        titleLabel.text = user.name
+        subtitleLabel.text = user.identifier
+        avatarImageView.kf.setImage(with: user.avatarURL)
     }
     
 }

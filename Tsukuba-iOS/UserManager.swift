@@ -75,6 +75,25 @@ class UserManager: NSObject {
         dao = DaoManager.sharedInstance
     }
     
+    func pullUser(completion: ((Bool) -> Void)?) {
+        Alamofire.request(createUrl("/api/user"),
+                          method: .get,
+                          parameters: nil,
+                          encoding: URLEncoding.default,
+                          headers: tokenHeader())
+        .responseJSON { (responseObject) in
+            let response = Response(responseObject)
+            if response.statusOK() {
+                let user = response.getResult()["user"]
+                self.name = user["name"].stringValue
+                self.avatar = user["avatar"].stringValue
+                completion?(true)
+            } else {
+                completion?(false)
+            }
+        }
+    }
+    
     func login(email: String, password: String, completion: ((Bool, String?) -> Void)?) {
         let params: Parameters = [
             "email": email,
