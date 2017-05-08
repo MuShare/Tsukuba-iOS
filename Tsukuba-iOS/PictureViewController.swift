@@ -17,7 +17,9 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
     let message = MessageManager.sharedInstance
     
     var mid: String!
-    var pictures: [JSON] = []
+    var images: [UIImage] = []
+    var pids: [String] = []
+    var uploadingCell: PictureCollectionViewCell!
     
     let imagePickerController = UIImagePickerController()
     
@@ -42,25 +44,30 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     // MARK: UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pictures.count;
+        return images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pictureCell", for: indexPath) as! PictureCollectionViewCell
-        let picture = pictures[indexPath.row]
-        cell.pictureImageView.kf.setImage(with: imageURL(picture["path"].stringValue))
+        cell.pictureImageView.image = images[indexPath.row]
+        if indexPath.row == images.count - 1 {
+            uploadingCell = cell
+        }
         return cell
     }
     
     // MARK: - UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerEditedImage] as! UIImage
+        images.append(image)
         picker.dismiss(animated: true, completion: nil)
+        picturesCollectionView.reloadData()
         
-        message.uploadPicture(image, mid: mid) { (success, path) in
+        message.uploadPicture(image, mid: mid) { (success, picture) in
             if success {
-                self.pictures.append(path!)
-                self.picturesCollectionView.reloadData()
+                self.pids.append((picture?["pid"].stringValue)!)
+                self.uploadingCell.loadingView.isHidden = true
+                self.uploadingCell.removeButton.isHidden = false
             }
         }
     }
@@ -69,10 +76,10 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBAction func removePicture(_ sender: UIButton) {
         let cell = sender.superview?.superview as! PictureCollectionViewCell
         let indexPath = picturesCollectionView.indexPath(for: cell)!
-        let pid = pictures[indexPath.row]["pid"].stringValue
-        MessageManager.sharedInstance.removePicture(pid) { (success) in
+        MessageManager.sharedInstance.removePicture(pids[indexPath.row]) { (success) in
             if success {
-                self.pictures.remove(at: indexPath.row)
+                self.images.remove(at: indexPath.row)
+                self.pids.remove(at: indexPath.row)
                 self.picturesCollectionView.deleteItems(at: [indexPath])
             } else {
                 showAlert(title: NSLocalizedString("Tip", comment: ""),
