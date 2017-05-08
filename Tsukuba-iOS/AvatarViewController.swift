@@ -37,7 +37,7 @@ class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, U
         self.navigationItem.hidesBackButton = true
  
         timer = Timer.scheduledTimer(
-            timeInterval: TimeInterval(0.1),
+            timeInterval: 0.1,
             target      : self,
             selector    : #selector(updateUploadProgress),
             userInfo    : nil,

@@ -64,7 +64,7 @@ class UserManager: NSObject {
         }
     }
     
-    var avatarUploadingProgress: Double!
+    var avatarUploadingProgress: Double! = 0
     
     static let sharedInstance: UserManager = {
         let instance = UserManager()
@@ -155,6 +155,7 @@ class UserManager: NSObject {
                                     if response.statusOK() {
                                         let result = response.getResult()
                                         self.avatar = result["avatar"].stringValue
+                                        self.avatarUploadingProgress = 0
                                         completion?(true)
                                     } else {
                                         completion?(false)
