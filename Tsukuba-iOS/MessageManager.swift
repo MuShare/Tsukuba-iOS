@@ -12,6 +12,7 @@ import SwiftyJSON
 class MessageManager: NSObject {
 
     var dao: DaoManager!
+    var pictureUploadingProgress: Double! = 0
     
     static let sharedInstance: MessageManager = {
         let instance = MessageManager()
@@ -50,6 +51,42 @@ class MessageManager: NSObject {
                     fail?()
                 }
         }
+    }
+    
+    func uploadPicture(_ image: UIImage, mid: String, completion: ((Bool, String?) -> Void)?) {
+        let data = UIImageJPEGRepresentation(resizeImage(image: image, newWidth: 480)!, 1.0)
+        Alamofire.upload(multipartFormData: { multipartFormData in
+            multipartFormData.append(data!, withName: "picture", fileName: UUID().uuidString, mimeType: "image/jpeg")
+        },
+                         usingThreshold: UInt64.init(),
+                         to: createUrl("api/message/picture?mid=" + mid),
+                         method: .post,
+                         headers: tokenHeader(),
+                         encodingCompletion:
+            { encodingResult in
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    upload.uploadProgress { progress in
+                        self.pictureUploadingProgress = progress.fractionCompleted
+                    }
+                    upload.responseJSON { responseObject in
+                        let response = Response(responseObject)
+                        if response.statusOK() {
+                            let path = response.getResult()["path"].stringValue
+                            completion?(true, path)
+                        } else {
+                            completion?(false, nil)
+                        }
+                    }
+                    break
+                case .failure(let encodingError):
+                    if DEBUG {
+                        debugPrint(encodingError)
+                    }
+                    completion?(false, nil)
+            }
+        })
+        
     }
     
 }

@@ -13,8 +13,8 @@ import Alamofire
 let DEBUG = true
 
 // Server base url
-let baseUrl = "https://tsukuba.mushare.cn/"
-//let baseUrl = "http://127.0.0.1:8080/"
+//let baseUrl = "https://tsukuba.mushare.cn/"
+let baseUrl = "http://127.0.0.1:8080/"
 
 func createUrl(_ relative: String) -> String {
     let requestUrl = baseUrl + relative

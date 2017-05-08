@@ -144,41 +144,33 @@ class UserManager: NSObject {
                          to: createUrl("api/user/avatar"),
                          method: .post,
                          headers: tokenHeader(),
-                         encodingCompletion: { encodingResult in
-                            switch encodingResult {
-                            case .success(let upload, _, _):
-                                upload.uploadProgress(closure: { (Progress) in
-                                    self.avatarUploadingProgress = Progress.fractionCompleted
-                                })
-                                upload.responseJSON { responseObject in
-                                    let response = Response(responseObject)
-                                    if response.statusOK() {
-                                        let result = response.getResult()
-                                        self.avatar = result["avatar"].stringValue
-                                        self.avatarUploadingProgress = 0
-                                        completion?(true)
-                                    } else {
-                                        completion?(false)
-                                    }
-                                }
-                            case .failure(let encodingError):
-                                if DEBUG {
-                                    debugPrint(encodingError)
-                                }
-                                completion?(false)
-                            }
+                         encodingCompletion:
+            { encodingResult in
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    upload.uploadProgress { progress in
+                        self.avatarUploadingProgress = progress.fractionCompleted
+                    }
+                    upload.responseJSON { responseObject in
+                        let response = Response(responseObject)
+                        if response.statusOK() {
+                            let result = response.getResult()
+                            self.avatar = result["avatar"].stringValue
+                            self.avatarUploadingProgress = 0
+                            completion?(true)
+                        } else {
+                            completion?(false)
+                        }
+                    }
+                case .failure(let encodingError):
+                    if DEBUG {
+                        debugPrint(encodingError)
+                    }
+                    completion?(false)
+            }
         })
 
     }
-    
-    private func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage? {
-        let scale = newWidth / image.size.width
-        let newHeight = image.size.height * scale
-        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
-        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage
-    }
+
 
 }

@@ -13,6 +13,8 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var uploadButton: UIButton!
     @IBOutlet weak var picturesCollectionView: UICollectionView!
     
+    let message = MessageManager.sharedInstance
+    
     var mid: String!
     var pictures: [String] = []
     
@@ -20,9 +22,7 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    
+        imagePickerController.delegate = self
     }
     
     // MARK: UICollectionViewDelegateFlowLayout
@@ -45,7 +45,15 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
 
     // MARK: - UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let image = info[UIImagePickerControllerEditedImage] as! UIImage
+        picker.dismiss(animated: true, completion: nil)
         
+        message.uploadPicture(image, mid: mid) { (success, path) in
+            if success {
+                self.pictures.append(path!)
+                self.picturesCollectionView.reloadData()
+            }
+        }
     }
     
     // MARK: - Action
