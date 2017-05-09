@@ -83,7 +83,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MLH-2o-a1R">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.9728044867515564" green="0.52052271366119385" blue="0.64741218090057373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.97274798154830933" green="0.52010244131088257" blue="0.6451297402381897" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
@@ -294,11 +294,11 @@
                                                         <action selector="removePicture:" destination="nTJ-ET-PgQ" eventType="touchUpInside" id="Ssg-Pj-xgg"/>
                                                     </connections>
                                                 </button>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xgp-IB-Wvw">
+                                                <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xgp-IB-Wvw">
                                                     <rect key="frame" x="0.0" y="0.0" width="187" height="187"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
-                                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="xi5-WR-KaK">
+                                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="xi5-WR-KaK">
                                                             <rect key="frame" x="75" y="75" width="37" height="37"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </activityIndicatorView>
@@ -308,6 +308,7 @@
                                             </subviews>
                                         </view>
                                         <connections>
+                                            <outlet property="loadingActivityIndicatorView" destination="xi5-WR-KaK" id="XJD-gy-TFr"/>
                                             <outlet property="loadingView" destination="Xgp-IB-Wvw" id="G3P-lj-A8E"/>
                                             <outlet property="pictureImageView" destination="Rvl-pC-a1s" id="eZb-Bi-de9"/>
                                             <outlet property="removeButton" destination="MWt-MA-1Ut" id="1dP-IE-Ugz"/>

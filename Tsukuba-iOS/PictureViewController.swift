@@ -51,6 +51,7 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pictureCell", for: indexPath) as! PictureCollectionViewCell
         cell.pictureImageView.image = images[indexPath.row]
         if indexPath.row == images.count - 1 {
+            cell.startLoading()
             uploadingCell = cell
         }
         return cell
@@ -66,8 +67,7 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         message.uploadPicture(image, mid: mid) { (success, picture) in
             if success {
                 self.pids.append((picture?["pid"].stringValue)!)
-                self.uploadingCell.loadingView.isHidden = true
-                self.uploadingCell.removeButton.isHidden = false
+                self.uploadingCell.stopLoading()
             }
         }
     }
@@ -76,6 +76,7 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBAction func removePicture(_ sender: UIButton) {
         let cell = sender.superview?.superview as! PictureCollectionViewCell
         let indexPath = picturesCollectionView.indexPath(for: cell)!
+        cell.startLoading()
         MessageManager.sharedInstance.removePicture(pids[indexPath.row]) { (success) in
             if success {
                 self.images.remove(at: indexPath.row)
@@ -86,6 +87,7 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
                           content: NSLocalizedString("remove_picture_failed", comment: ""),
                           controller: self)
             }
+            cell.stopLoading()
         }
     }
     
