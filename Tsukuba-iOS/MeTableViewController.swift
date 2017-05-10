@@ -16,6 +16,8 @@ class MeTableViewController: UITableViewController {
     @IBOutlet weak var avatarImageView: UIImageView!
     
     let user = UserManager.sharedInstance
+    var messageSell = true
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,18 +39,30 @@ class MeTableViewController: UITableViewController {
         return 0.01
     }
     
-    
     // MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+
         switch indexPath.row {
         case 1:
             // Sign in or show profile
             self.performSegue(withIdentifier: user.login ? "profileSegue" : "loginSegue", sender: self)
+        case 3:
+            messageSell = true
+            self.performSegue(withIdentifier: "messageSegue", sender: self)
+        case 4:
+            messageSell = false
+            self.performSegue(withIdentifier: "messageSegue", sender: self)
         default:
             break
         }
     }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "messageSegue" {
+            segue.destination.setValue(messageSell, forKey: "sell")
+        } 
+     }
     
     // MARK: - Action
     @IBAction func logout(_ sender: Any) {

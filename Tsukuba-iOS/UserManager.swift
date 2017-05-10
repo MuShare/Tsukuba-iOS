@@ -9,7 +9,7 @@
 import Alamofire
 import SwiftyUserDefaults
 
-class UserManager: NSObject {
+class UserManager {
     
     var dao: DaoManager!
     
@@ -71,7 +71,7 @@ class UserManager: NSObject {
         return instance
     }()
     
-    override init() {
+    init() {
         dao = DaoManager.sharedInstance
     }
     

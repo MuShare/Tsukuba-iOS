@@ -1,0 +1,43 @@
+//
+//  MyMessageTableViewCell.swift
+//  Tsukuba-iOS
+//
+//  Created by lidaye on 10/05/2017.
+//  Copyright © 2017 MuShare. All rights reserved.
+//
+
+import UIKit
+
+class MyMessageTableViewCell: UITableViewCell {
+
+    @IBOutlet weak var coverImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var pricetLabel: UILabel!
+    @IBOutlet weak var updateAtLabel: UILabel!
+    
+    static let formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .medium
+        return formatter
+    }()
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+    
+    func fillWithMessage(_ message: Message) {
+        self.titleLabel.text = message.title
+        self.coverImageView.kf.setImage(with: imageURL(message.cover))
+        self.pricetLabel.text = "￥\(message.price!)"
+        self.updateAtLabel.text = MyMessageTableViewCell.formatter.string(from: message.updateAt)
+    }
+
+}

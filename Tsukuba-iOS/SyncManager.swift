@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyUserDefaults
 import SwiftyJSON
 
-class SyncManager: NSObject {
+class SyncManager {
     
     var dao: DaoManager!
     
@@ -47,7 +47,7 @@ class SyncManager: NSObject {
         return instance
     }()
     
-    override init() {
+    init() {
         dao = DaoManager.sharedInstance
     }
 

@@ -203,6 +203,91 @@
             </objects>
             <point key="canvasLocation" x="2369" y="1681"/>
         </scene>
+        <!--My Messages Table View Controller-->
+        <scene sceneID="LVe-bU-WHS">
+            <objects>
+                <tableViewController id="Q20-3A-u4T" customClass="MyMessagesTableViewController" customModule="Tsukuba_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" id="rmF-uJ-iTd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="myMessageCell" rowHeight="70" id="URo-Vu-WFQ" customClass="MyMessageTableViewCell" customModule="Tsukuba_iOS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="70"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="URo-Vu-WFQ" id="ECe-C0-LtJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="70"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sAS-BO-P2l">
+                                            <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJv-rf-c8d">
+                                            <rect key="frame" x="78" y="7" width="256" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.77982896566390991" green="0.41872984170913696" blue="0.52272826433181763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="rdz-KE-mm9">
+                                            <rect key="frame" x="78" y="32" width="61" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6iG-oD-Foe">
+                                            <rect key="frame" x="143" y="32" width="199" height="14.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Update at" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="F5z-R3-5Eo">
+                                            <rect key="frame" x="78" y="49" width="61" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aVd-nr-Sbp">
+                                            <rect key="frame" x="143" y="49" width="199" height="14.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="SJv-rf-c8d" secondAttribute="trailing" id="4Ql-1S-Ppl"/>
+                                        <constraint firstItem="SJv-rf-c8d" firstAttribute="leading" secondItem="ECe-C0-LtJ" secondAttribute="leadingMargin" constant="70" id="5Qz-S8-ae0"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="6iG-oD-Foe" secondAttribute="trailing" constant="-8" id="AJr-eB-3fb"/>
+                                        <constraint firstItem="SJv-rf-c8d" firstAttribute="top" secondItem="ECe-C0-LtJ" secondAttribute="topMargin" constant="-1" id="HFA-RT-ABx"/>
+                                        <constraint firstItem="aVd-nr-Sbp" firstAttribute="leading" secondItem="ECe-C0-LtJ" secondAttribute="leadingMargin" constant="135" id="RhV-JM-JPb"/>
+                                        <constraint firstItem="6iG-oD-Foe" firstAttribute="leading" secondItem="ECe-C0-LtJ" secondAttribute="leadingMargin" constant="135" id="cUQ-av-0Fb"/>
+                                        <constraint firstItem="6iG-oD-Foe" firstAttribute="top" secondItem="ECe-C0-LtJ" secondAttribute="topMargin" constant="24" id="ro9-jP-J7D"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="aVd-nr-Sbp" secondAttribute="trailing" constant="-8" id="tP0-6D-1J5"/>
+                                        <constraint firstItem="aVd-nr-Sbp" firstAttribute="top" secondItem="ECe-C0-LtJ" secondAttribute="topMargin" constant="41" id="xv6-9E-4Z1"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="coverImageView" destination="sAS-BO-P2l" id="waN-nU-gA8"/>
+                                    <outlet property="pricetLabel" destination="6iG-oD-Foe" id="W77-6w-hMp"/>
+                                    <outlet property="titleLabel" destination="SJv-rf-c8d" id="cxw-cm-oKa"/>
+                                    <outlet property="updateAtLabel" destination="aVd-nr-Sbp" id="WpZ-vX-py2"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Q20-3A-u4T" id="sow-AE-m8D"/>
+                            <outlet property="delegate" destination="Q20-3A-u4T" id="zEd-Az-lJG"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="rDP-Fk-I1Z"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cHe-WD-17O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3337" y="-594"/>
+        </scene>
         <!--Post-->
         <scene sceneID="4Nx-Rg-F2A">
             <objects>
@@ -485,7 +570,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="me_help" translatesAutoresizingMaskIntoConstraints="NO" id="2JY-K4-6OF">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sell" translatesAutoresizingMaskIntoConstraints="NO" id="2JY-K4-6OF">
                                                     <rect key="frame" x="13" y="10" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -515,7 +600,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="me_help" translatesAutoresizingMaskIntoConstraints="NO" id="FJ0-CS-qBM">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="buy" translatesAutoresizingMaskIntoConstraints="NO" id="FJ0-CS-qBM">
                                                     <rect key="frame" x="13" y="10" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -724,6 +809,7 @@
                         <outlet property="titleLabel" destination="bew-pl-P16" id="Ush-Uy-NuB"/>
                         <segue destination="O0p-N1-VyH" kind="push" identifier="profileSegue" id="x8C-Vc-AKb"/>
                         <segue destination="8z3-op-p7r" kind="modal" identifier="loginSegue" id="3gx-ct-8pJ"/>
+                        <segue destination="Q20-3A-u4T" kind="push" identifier="messageSegue" id="69L-Wd-3cu"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Gj-hL-1Ag" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1232,7 +1318,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3zz-Oy-3XK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3337" y="-550"/>
+            <point key="canvasLocation" x="3337" y="-1343"/>
         </scene>
         <!--Profile Photo-->
         <scene sceneID="R2z-Oa-awC">
@@ -1290,11 +1376,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ObN-El-29y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4270" y="-550"/>
+            <point key="canvasLocation" x="4270" y="-1343"/>
         </scene>
     </scenes>
     <resources>
         <image name="back" width="30" height="30"/>
+        <image name="buy" width="30" height="30"/>
         <image name="close" width="30" height="30"/>
         <image name="close_circle" width="30" height="30"/>
         <image name="me_about" width="30" height="30"/>
@@ -1303,6 +1390,7 @@
         <image name="me_help" width="30" height="30"/>
         <image name="me_user" width="60" height="60"/>
         <image name="register_success" width="100" height="100"/>
+        <image name="sell" width="30" height="30"/>
         <image name="user" width="30" height="30"/>
         <image name="write" width="30" height="30"/>
     </resources>

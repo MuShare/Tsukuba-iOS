@@ -9,7 +9,7 @@
 import Alamofire
 import SwiftyJSON
 
-class Response: NSObject {
+class Response {
 
     var data: [String: Any]!
     

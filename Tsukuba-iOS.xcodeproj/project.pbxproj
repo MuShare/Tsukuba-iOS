@@ -31,6 +31,9 @@
 		E489721F1EBEF34E0064EA13 /* SelectCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */; };
 		E48972211EBF62280064EA13 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48972201EBF62280064EA13 /* PictureViewController.swift */; };
 		E48972231EBF64320064EA13 /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48972221EBF64320064EA13 /* MessageManager.swift */; };
+		E48DE54F1EC2D30700E5CA25 /* MyMessagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48DE54E1EC2D30700E5CA25 /* MyMessagesTableViewController.swift */; };
+		E48DE5511EC2D33000E5CA25 /* MyMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48DE5501EC2D33000E5CA25 /* MyMessageTableViewCell.swift */; };
+		E48DE5531EC2D52C00E5CA25 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48DE5521EC2D52C00E5CA25 /* Message.swift */; };
 		E4962BE21EB4B08000DF8CAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4962BE11EB4B08000DF8CAE /* AppDelegate.swift */; };
 		E4962BE71EB4B08000DF8CAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4962BE51EB4B08000DF8CAE /* Main.storyboard */; };
 		E4962BEA1EB4B08000DF8CAE /* Tsukuba.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E4962BE81EB4B08000DF8CAE /* Tsukuba.xcdatamodeld */; };
@@ -82,6 +85,9 @@
 		E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCategoryViewController.swift; sourceTree = "<group>"; };
 		E48972201EBF62280064EA13 /* PictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
 		E48972221EBF64320064EA13 /* MessageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
+		E48DE54E1EC2D30700E5CA25 /* MyMessagesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMessagesTableViewController.swift; sourceTree = "<group>"; };
+		E48DE5501EC2D33000E5CA25 /* MyMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMessageTableViewCell.swift; sourceTree = "<group>"; };
+		E48DE5521EC2D52C00E5CA25 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		E4962BDE1EB4B08000DF8CAE /* Tsukuba-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tsukuba-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4962BE11EB4B08000DF8CAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4962BE61EB4B08000DF8CAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -144,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				E4962BE81EB4B08000DF8CAE /* Tsukuba.xcdatamodeld */,
+				E48DE5521EC2D52C00E5CA25 /* Message.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -191,6 +198,7 @@
 				E48972201EBF62280064EA13 /* PictureViewController.swift */,
 				E489721C1EBED40F0064EA13 /* PostViewController.swift */,
 				E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */,
+				E48DE54E1EC2D30700E5CA25 /* MyMessagesTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -200,6 +208,7 @@
 			children = (
 				E4089FE11EBAF8F40042221D /* CategoryCollectionViewCell.swift */,
 				E41ADBFB1EC151AA006479C5 /* PictureCollectionViewCell.swift */,
+				E48DE5501EC2D33000E5CA25 /* MyMessageTableViewCell.swift */,
 			);
 			name = Template;
 			sourceTree = "<group>";
@@ -457,9 +466,11 @@
 				E489721F1EBEF34E0064EA13 /* SelectCategoryViewController.swift in Sources */,
 				E41ADBFC1EC151AA006479C5 /* PictureCollectionViewCell.swift in Sources */,
 				E4089FD71EBAEFA00042221D /* SyncManager.swift in Sources */,
+				E48DE5511EC2D33000E5CA25 /* MyMessageTableViewCell.swift in Sources */,
 				E48972211EBF62280064EA13 /* PictureViewController.swift in Sources */,
 				E4089FB51EBAE55C0042221D /* DaoManager.swift in Sources */,
 				E4089FE71EBB36440042221D /* MeTableViewController.swift in Sources */,
+				E48DE5531EC2D52C00E5CA25 /* Message.swift in Sources */,
 				E4089FF11EBB4F160042221D /* AvatarViewController.swift in Sources */,
 				E4089FA31EBADD170042221D /* CategoriesCollectionViewController.swift in Sources */,
 				E4089FB61EBAE55C0042221D /* DaoTemplate.swift in Sources */,
@@ -471,6 +482,7 @@
 				E4962BE21EB4B08000DF8CAE /* AppDelegate.swift in Sources */,
 				E4089FEB1EBB3B990042221D /* CommonTool.swift in Sources */,
 				E4089FDC1EBAF2190042221D /* Response.swift in Sources */,
+				E48DE54F1EC2D30700E5CA25 /* MyMessagesTableViewController.swift in Sources */,
 				E4089FBA1EBAE58F0042221D /* OptionDao.swift in Sources */,
 				E4089FDA1EBAF0250042221D /* Global.swift in Sources */,
 				E4962BEA1EB4B08000DF8CAE /* Tsukuba.xcdatamodeld in Sources */,

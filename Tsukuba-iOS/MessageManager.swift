@@ -9,7 +9,7 @@
 import Alamofire
 import SwiftyJSON
 
-class MessageManager: NSObject {
+class MessageManager {
 
     var dao: DaoManager!
     var pictureUploadingProgress: Double! = 0
@@ -19,7 +19,7 @@ class MessageManager: NSObject {
         return instance
     }()
     
-    override init() {
+    init() {
         dao = DaoManager.sharedInstance
     }
     
@@ -102,6 +102,29 @@ class MessageManager: NSObject {
                 completion?(response.getResult()["success"].boolValue)
             } else {
                 completion?(false)
+            }
+        }
+    }
+    
+    func loadMyMessage(_ sell: Bool, completion: ((Bool, [Message]) -> Void)?) {
+        let params: Parameters = [
+            "sell": sell
+        ]
+        Alamofire.request(createUrl("api/message/list/user"),
+                          method: .get,
+                          parameters: params,
+                          encoding: URLEncoding.default,
+                          headers: tokenHeader())
+        .responseJSON { (responseObject) in
+            let response = Response(responseObject)
+            if response.statusOK() {
+                var messages: [Message] = []
+                for object in response.getResult()["messages"].arrayValue {
+                    messages.append(Message(object))
+                }
+                completion?(true, messages)
+            } else {
+                completion?(false, [])
             }
         }
     }
