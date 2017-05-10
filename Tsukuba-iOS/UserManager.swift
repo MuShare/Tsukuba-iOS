@@ -135,6 +135,34 @@ class UserManager {
         }
     }
     
+    func register(email: String, name: String, password: String, completion: ((Bool, String?) -> Void)?) {
+        let parameters: Parameters = [
+            "email": email,
+            "name": name,
+            "password": password
+        ]
+        
+        Alamofire.request(createUrl("api/user/register"),
+                          method: HTTPMethod.post,
+                          parameters: parameters,
+                          encoding: URLEncoding.default,
+                          headers: nil)
+            .responseJSON { responseObject in
+                let response = Response(responseObject)
+                if response.statusOK() {
+                    completion?(true, nil)
+                } else {
+                    switch response.errorCode() {
+                    case ErrorCode.emailRegistered.rawValue:
+                        completion?(false, NSLocalizedString("email_registered", comment: ""))
+                    default:
+                        completion?(false, nil)
+                        break
+                    }
+                }
+        }
+    }
+    
     func logout() {
         self.login = false
         self.type = ""

@@ -28,6 +28,9 @@
 		E41ADBFC1EC151AA006479C5 /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41ADBFB1EC151AA006479C5 /* PictureCollectionViewCell.swift */; };
 		E41F7D011EC34CB8002E8184 /* MessagesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D001EC34CB8002E8184 /* MessagesCollectionViewController.swift */; };
 		E41F7D031EC3604C002E8184 /* MessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D021EC3604C002E8184 /* MessageCollectionViewCell.swift */; };
+		E41F7D081EC369CD002E8184 /* login-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E41F7D071EC369CD002E8184 /* login-bg.jpg */; };
+		E41F7D0A1EC36C2A002E8184 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D091EC36C2A002E8184 /* RegisterViewController.swift */; };
+		E41F7D0C1EC36C4B002E8184 /* EditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D0B1EC36C4B002E8184 /* EditingViewController.swift */; };
 		E42331781EC030FE00C3A6B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E42331771EC030FE00C3A6B0 /* Assets.xcassets */; };
 		E489721D1EBED40F0064EA13 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489721C1EBED40F0064EA13 /* PostViewController.swift */; };
 		E489721F1EBEF34E0064EA13 /* SelectCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */; };
@@ -84,6 +87,9 @@
 		E41ADBFB1EC151AA006479C5 /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
 		E41F7D001EC34CB8002E8184 /* MessagesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesCollectionViewController.swift; sourceTree = "<group>"; };
 		E41F7D021EC3604C002E8184 /* MessageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewCell.swift; sourceTree = "<group>"; };
+		E41F7D071EC369CD002E8184 /* login-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "login-bg.jpg"; sourceTree = "<group>"; };
+		E41F7D091EC36C2A002E8184 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		E41F7D0B1EC36C4B002E8184 /* EditingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditingViewController.swift; sourceTree = "<group>"; };
 		E42331771EC030FE00C3A6B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E489721C1EBED40F0064EA13 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCategoryViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +202,7 @@
 			children = (
 				E4089FF01EBB4F160042221D /* AvatarViewController.swift */,
 				E4089FA21EBADD170042221D /* CategoriesCollectionViewController.swift */,
+				E41F7D0B1EC36C4B002E8184 /* EditingViewController.swift */,
 				E4089FE81EBB3A1F0042221D /* LoginViewController.swift */,
 				E41F7D001EC34CB8002E8184 /* MessagesCollectionViewController.swift */,
 				E4089FE61EBB36440042221D /* MeTableViewController.swift */,
@@ -203,6 +210,7 @@
 				E4089FEE1EBB4AD80042221D /* MyProfileTableViewController.swift */,
 				E48972201EBF62280064EA13 /* PictureViewController.swift */,
 				E489721C1EBED40F0064EA13 /* PostViewController.swift */,
+				E41F7D091EC36C2A002E8184 /* RegisterViewController.swift */,
 				E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */,
 			);
 			name = Controller;
@@ -217,6 +225,15 @@
 				E41F7D021EC3604C002E8184 /* MessageCollectionViewCell.swift */,
 			);
 			name = Template;
+			sourceTree = "<group>";
+		};
+		E41F7D041EC368A0002E8184 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E41F7D071EC369CD002E8184 /* login-bg.jpg */,
+				E4089FF21EBB50790042221D /* Localizable.strings */,
+			);
+			name = "Support Files";
 			sourceTree = "<group>";
 		};
 		E4962BD51EB4B08000DF8CAE = {
@@ -250,9 +267,9 @@
 				E4089FE41EBB36150042221D /* Controller */,
 				E4089FE51EBB36220042221D /* Template */,
 				E4089FD81EBAF0020042221D /* Tool */,
+				E41F7D041EC368A0002E8184 /* Support Files */,
 				E4962BE11EB4B08000DF8CAE /* AppDelegate.swift */,
 				E42331771EC030FE00C3A6B0 /* Assets.xcassets */,
-				E4089FF21EBB50790042221D /* Localizable.strings */,
 				E4962BF01EB4B08000DF8CAE /* Info.plist */,
 				E4962BED1EB4B08000DF8CAE /* LaunchScreen.storyboard */,
 				E4962BE51EB4B08000DF8CAE /* Main.storyboard */,
@@ -395,6 +412,7 @@
 				E4089FF31EBB50790042221D /* Localizable.strings in Resources */,
 				E42331781EC030FE00C3A6B0 /* Assets.xcassets in Resources */,
 				E4962BE71EB4B08000DF8CAE /* Main.storyboard in Resources */,
+				E41F7D081EC369CD002E8184 /* login-bg.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +498,7 @@
 				E4089FF11EBB4F160042221D /* AvatarViewController.swift in Sources */,
 				E4089FA31EBADD170042221D /* CategoriesCollectionViewController.swift in Sources */,
 				E4089FB61EBAE55C0042221D /* DaoTemplate.swift in Sources */,
+				E41F7D0C1EC36C4B002E8184 /* EditingViewController.swift in Sources */,
 				E4089FED1EBB3BF90042221D /* UserManager.swift in Sources */,
 				E41F7D031EC3604C002E8184 /* MessageCollectionViewCell.swift in Sources */,
 				E4089FE21EBAF8F40042221D /* CategoryCollectionViewCell.swift in Sources */,
@@ -495,6 +514,7 @@
 				E4089FDA1EBAF0250042221D /* Global.swift in Sources */,
 				E4962BEA1EB4B08000DF8CAE /* Tsukuba.xcdatamodeld in Sources */,
 				E48972231EBF64320064EA13 /* MessageManager.swift in Sources */,
+				E41F7D0A1EC36C2A002E8184 /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
