@@ -135,6 +135,14 @@ class UserManager: NSObject {
         }
     }
     
+    func logout() {
+        self.login = false
+        self.type = ""
+        self.name = ""
+        self.avatar = ""
+        self.identifier = ""
+    }
+    
     func uploadAvatar(_ image: UIImage, completion: ((Bool) -> Void)?) {
         let data = UIImageJPEGRepresentation(resizeImage(image: image, newWidth: 480)!, 1.0)
         Alamofire.upload(multipartFormData:{ multipartFormData in

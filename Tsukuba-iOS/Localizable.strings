@@ -8,6 +8,9 @@ delete_name = "Delete";
 
 token_error = "User authorization is invalide. Please sign in again!";
 
+me_title = "Sign in / Sign up";
+me_subtitle = "Welcome to Tsukuba, sign in now!";
+
 register_not_validate = "Email, username and password cannot be empty!";
 email_invalidate = "Please input a correct email!";
 back_to_login = "Back";

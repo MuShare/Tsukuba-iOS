@@ -40,10 +40,39 @@ class MeTableViewController: UITableViewController {
     
     // MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Sign in
-        if indexPath.section == 0 && indexPath.row == 1 {
+        print(indexPath.row)
+        switch indexPath.row {
+        case 1:
+            // Sign in or show profile
             self.performSegue(withIdentifier: user.login ? "profileSegue" : "loginSegue", sender: self)
+        default:
+            break
         }
+    }
+    
+    // MARK: - Action
+    @IBAction func logout(_ sender: Any) {
+        // Sign out
+        let alertController = UIAlertController(title: NSLocalizedString("sign_out_title", comment: ""),
+                                                message: NSLocalizedString("sign_out_message", comment: ""),
+                                                preferredStyle: .actionSheet)
+        let logout = UIAlertAction(title: NSLocalizedString("yes_name", comment: ""),
+                                   style: .destructive,
+                                   handler:
+        { (action) in
+            self.user.logout()
+            self.titleLabel.text = NSLocalizedString("me_title", comment: "")
+            self.subtitleLabel.text = NSLocalizedString("me_subtitle", comment: "")
+            self.avatarImageView.image = UIImage(named: "me_user")
+        })
+        
+        let cancel = UIAlertAction(title: NSLocalizedString("cancel_name", comment: ""),
+                                   style: .cancel,
+                                   handler: nil)
+        alertController.addAction(logout)
+        alertController.addAction(cancel)
+        self.present(alertController, animated: true, completion: nil)
+        
     }
     
     // MARK: - Service
@@ -52,5 +81,6 @@ class MeTableViewController: UITableViewController {
         subtitleLabel.text = user.identifier
         avatarImageView.kf.setImage(with: user.avatarURL)
     }
+    
     
 }
