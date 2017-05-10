@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SelectCategoryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class SelectCategoryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     
@@ -25,7 +25,13 @@ class SelectCategoryViewController: UIViewController, UICollectionViewDataSource
         categories = dao.categoryDao.findEnable()
     }
 
-    // MARK: - UICollectionViewDataSource
+    // MARK: UICollectionViewDelegateFlowLayout
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.size.width / 3
+        return CGSize(width: width, height: width * 1.17)
+    }
+    
+    // MARK: UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categories.count
     }
@@ -50,14 +56,14 @@ class SelectCategoryViewController: UIViewController, UICollectionViewDataSource
     }
     
     
-    // MARK: - Navigation
+    // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "createMessageSegue" {
             segue.destination.setValue(selectedCategory, forKey: "category")
         }
     }
 
-    // MARK: - Action
+    // MARK: Action
     @IBAction func choosed(_ sender: Any) {
         if lastSelectedCell == nil {
             return

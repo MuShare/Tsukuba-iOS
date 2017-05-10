@@ -10,6 +10,8 @@ import Alamofire
 import SwiftyJSON
 
 class MessageManager {
+    
+    static let pageSize = 18
 
     var dao: DaoManager!
     var pictureUploadingProgress: Double! = 0
@@ -111,6 +113,31 @@ class MessageManager {
             "sell": sell
         ]
         Alamofire.request(createUrl("api/message/list/user"),
+                          method: .get,
+                          parameters: params,
+                          encoding: URLEncoding.default,
+                          headers: tokenHeader())
+        .responseJSON { (responseObject) in
+            let response = Response(responseObject)
+            if response.statusOK() {
+                var messages: [Message] = []
+                for object in response.getResult()["messages"].arrayValue {
+                    messages.append(Message(object))
+                }
+                completion?(true, messages)
+            } else {
+                completion?(false, [])
+            }
+        }
+    }
+    
+    func loadMessage(_ sell: Bool, cid: String?, seq: Int?, completion: ((Bool, [Message]) -> Void)?) {
+        let params: Parameters = [
+            "sell": sell,
+            "cid": cid ?? "",
+            "seq": seq ?? -1
+        ]
+        Alamofire.request(createUrl("api/message/list"),
                           method: .get,
                           parameters: params,
                           encoding: URLEncoding.default,

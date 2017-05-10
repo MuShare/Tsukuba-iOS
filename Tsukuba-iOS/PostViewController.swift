@@ -83,14 +83,14 @@ class PostViewController: FormViewController {
 
     }
 
-    // MARK: - Navigation
+    // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pictureSegue" {
             segue.destination.setValue(mid, forKey: "mid")
         }
     }
     
-    // MARK: - Action
+    // MARK: Action
     @IBAction func createMessage(_ sender: Any) {
         if messageTitle == nil {
             showAlert(title: NSLocalizedString("tip_name", comment: ""),

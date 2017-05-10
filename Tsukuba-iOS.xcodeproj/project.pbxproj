@@ -26,6 +26,8 @@
 		E4089FF11EBB4F160042221D /* AvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FF01EBB4F160042221D /* AvatarViewController.swift */; };
 		E4089FF31EBB50790042221D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4089FF21EBB50790042221D /* Localizable.strings */; };
 		E41ADBFC1EC151AA006479C5 /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41ADBFB1EC151AA006479C5 /* PictureCollectionViewCell.swift */; };
+		E41F7D011EC34CB8002E8184 /* MessagesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D001EC34CB8002E8184 /* MessagesCollectionViewController.swift */; };
+		E41F7D031EC3604C002E8184 /* MessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D021EC3604C002E8184 /* MessageCollectionViewCell.swift */; };
 		E42331781EC030FE00C3A6B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E42331771EC030FE00C3A6B0 /* Assets.xcassets */; };
 		E489721D1EBED40F0064EA13 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489721C1EBED40F0064EA13 /* PostViewController.swift */; };
 		E489721F1EBEF34E0064EA13 /* SelectCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */; };
@@ -80,6 +82,8 @@
 		E4089FF01EBB4F160042221D /* AvatarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarViewController.swift; sourceTree = "<group>"; };
 		E4089FF21EBB50790042221D /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		E41ADBFB1EC151AA006479C5 /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
+		E41F7D001EC34CB8002E8184 /* MessagesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesCollectionViewController.swift; sourceTree = "<group>"; };
+		E41F7D021EC3604C002E8184 /* MessageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewCell.swift; sourceTree = "<group>"; };
 		E42331771EC030FE00C3A6B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E489721C1EBED40F0064EA13 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCategoryViewController.swift; sourceTree = "<group>"; };
@@ -193,12 +197,13 @@
 				E4089FF01EBB4F160042221D /* AvatarViewController.swift */,
 				E4089FA21EBADD170042221D /* CategoriesCollectionViewController.swift */,
 				E4089FE81EBB3A1F0042221D /* LoginViewController.swift */,
+				E41F7D001EC34CB8002E8184 /* MessagesCollectionViewController.swift */,
 				E4089FE61EBB36440042221D /* MeTableViewController.swift */,
+				E48DE54E1EC2D30700E5CA25 /* MyMessagesTableViewController.swift */,
 				E4089FEE1EBB4AD80042221D /* MyProfileTableViewController.swift */,
 				E48972201EBF62280064EA13 /* PictureViewController.swift */,
 				E489721C1EBED40F0064EA13 /* PostViewController.swift */,
 				E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */,
-				E48DE54E1EC2D30700E5CA25 /* MyMessagesTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -209,6 +214,7 @@
 				E4089FE11EBAF8F40042221D /* CategoryCollectionViewCell.swift */,
 				E41ADBFB1EC151AA006479C5 /* PictureCollectionViewCell.swift */,
 				E48DE5501EC2D33000E5CA25 /* MyMessageTableViewCell.swift */,
+				E41F7D021EC3604C002E8184 /* MessageCollectionViewCell.swift */,
 			);
 			name = Template;
 			sourceTree = "<group>";
@@ -475,7 +481,9 @@
 				E4089FA31EBADD170042221D /* CategoriesCollectionViewController.swift in Sources */,
 				E4089FB61EBAE55C0042221D /* DaoTemplate.swift in Sources */,
 				E4089FED1EBB3BF90042221D /* UserManager.swift in Sources */,
+				E41F7D031EC3604C002E8184 /* MessageCollectionViewCell.swift in Sources */,
 				E4089FE21EBAF8F40042221D /* CategoryCollectionViewCell.swift in Sources */,
+				E41F7D011EC34CB8002E8184 /* MessagesCollectionViewController.swift in Sources */,
 				E4089FB81EBAE5830042221D /* CategoryDao.swift in Sources */,
 				E4089FBC1EBAE59E0042221D /* SelectionDao.swift in Sources */,
 				E489721D1EBED40F0064EA13 /* PostViewController.swift in Sources */,

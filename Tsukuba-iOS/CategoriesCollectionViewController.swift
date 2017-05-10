@@ -16,6 +16,7 @@ class CategoriesCollectionViewController: UICollectionViewController, UICollecti
     let sync = SyncManager.sharedInstance
 
     var categories: [Category]!
+    var selectedCategory: Category!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,4 +65,17 @@ class CategoriesCollectionViewController: UICollectionViewController, UICollecti
         return cell
     }
 
+    // MARK: - UICollectionViewDelegate
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedCategory = categories[indexPath.row]
+        self.performSegue(withIdentifier: "messagesSegue", sender: self)
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "messagesSegue" {
+            segue.destination.setValue(selectedCategory, forKey: "category")
+        }
+    }
+    
 }
