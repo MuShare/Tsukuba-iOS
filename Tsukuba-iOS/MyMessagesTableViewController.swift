@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DGElasticPullToRefresh
 
 class MyMessagesTableViewController: UITableViewController {
     
@@ -15,15 +16,16 @@ class MyMessagesTableViewController: UITableViewController {
     let messageManager = MessageManager.sharedInstance
     var messages: [Message] = []
 
+    deinit {
+        self.tableView?.dg_removePullToRefresh()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.title = sell ? "My sell post" : "My buy post"
-        
-        messageManager.loadMyMessage(sell) { (success, messages) in
-            self.messages = messages
-            self.tableView.reloadData()
-        }
+        setDGElasticPullToRefresh()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -91,5 +93,19 @@ class MyMessagesTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func setDGElasticPullToRefresh() {
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        loadingView.tintColor = UIColor.lightGray
+        self.tableView?.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+            self?.messageManager.loadMyMessage((self?.sell)!) { (success, messages) in
+                self?.messages = messages
+                self?.tableView.reloadData()
+                self?.tableView.dg_stopLoading()
+            }
+        }, loadingView: loadingView)
+        self.tableView?.dg_setPullToRefreshFillColor(UIColor.red)
+        self.tableView?.dg_setPullToRefreshBackgroundColor((self.tableView?.backgroundColor)!)
+    }
 
 }
