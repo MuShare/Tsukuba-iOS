@@ -4,7 +4,7 @@ platform :ios, '9.0'
 target 'Tsukuba-iOS' do
     pod 'Alamofire', '~> 4.2'
     pod 'SwiftyUserDefaults', '~> 3'
-    pod 'DGElasticPullToRefresh', '~> 1.1'
+    pod 'ESPullToRefresh', '~> 2.6'
     pod 'FacebookCore', '~> 0.2'
     pod 'FacebookLogin', '~> 0.2'
     pod 'Kingfisher', '~> 3'
