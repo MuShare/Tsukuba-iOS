@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FacebookCore
+import FacebookLogin
 
 class LoginViewController: EditingViewController {
 
@@ -14,6 +16,8 @@ class LoginViewController: EditingViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loadingActivityIndicatorView: UIActivityIndicatorView!
+    
+    let user = UserManager.sharedInstance
     
     override func viewDidLoad() {
         //Set background image
@@ -42,7 +46,7 @@ class LoginViewController: EditingViewController {
         loginButton.isEnabled = false
         loadingActivityIndicatorView.startAnimating()
         
-        UserManager.sharedInstance.login(email: emailTextField.text!,
+        user.login(email: emailTextField.text!,
                                          password: passwordTextField.text!)
         { (success, message) in
             self.loginButton.isEnabled = true
@@ -59,7 +63,30 @@ class LoginViewController: EditingViewController {
     }
     
     @IBAction func loginWithFacebook(_ sender: Any) {
-        
+        let loginManager = LoginManager()
+        loginManager.logIn([ .publicProfile ], viewController: self) { loginResult in
+            switch loginResult {
+            case .failed(let error):
+                if DEBUG {
+                    print("Facebook OAuth login error: \(error)");
+                }
+            case .cancelled:
+                if DEBUG {
+                    print("User cancelled login.");
+                }
+            case .success(_, _, let accessToken):
+                self.user.facebookLogin(accessToken.authenticationToken, completion: { (success, message) in
+                    if success {
+                        self.dismiss(animated: true, completion: nil)
+                    } else {
+                        showAlert(title: NSLocalizedString("tip_name", comment: ""),
+                                  content: message!,
+                                  controller: self)
+                    }
+                })
+            }
+        }
+
     }
 
 }

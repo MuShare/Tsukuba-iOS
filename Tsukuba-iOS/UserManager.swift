@@ -82,7 +82,6 @@ class UserManager {
         }
     }
     
-    
     var avatarUploadingProgress: Double! = 0
     
     static let sharedInstance: UserManager = {
@@ -140,9 +139,9 @@ class UserManager {
             if response.statusOK() {
                 let result = response.getResult()
                 // Login success, save user information to NSUserDefaults.
-                Defaults[.token] = result["token"].stringValue
-                let user = result["user"]
                 self.type = "email";
+                self.token = result["token"].stringValue
+                let user = result["user"]
                 self.identifier = email
                 self.name = user["name"].stringValue
                 self.avatar = user["avatar"].stringValue
@@ -160,6 +159,46 @@ class UserManager {
                 }
             }
         }
+    }
+    
+    func facebookLogin(_ token: String, completion: ((Bool, String?) -> Void)?) {
+        let params: Parameters = [
+            "accessToken": token,
+            "identifier": UIDevice.current.identifierForVendor!.uuidString,
+            "deviceToken": Defaults[.deviceToken] ?? "",
+            "os": UIDevice.current.systemName,
+            "version": UIDevice.current.systemVersion,
+            "lan": NSLocale.preferredLanguages[0]
+        ]
+        
+        Alamofire.request(createUrl("/api/user/login/facebook"),
+                          method: .post,
+                          parameters: params,
+                          encoding: URLEncoding.default,
+                          headers: nil)
+        .responseJSON(completionHandler: { (responseObject) in
+            let response = Response(responseObject)
+            if response.statusOK() {
+                let result = response.getResult()
+                // Login success, save user information to NSUserDefaults.
+                self.type = "facebook";
+                self.token = result["token"].stringValue
+                let user = result["user"]
+                self.identifier = user["identifier"].stringValue
+                self.name = user["name"].stringValue
+                self.avatar = user["avatar"].stringValue
+                self.userRev = user["rev"].intValue
+                self.login = true
+                completion?(true, nil);
+            } else {
+                switch response.errorCode() {
+                case ErrorCode.facebookAccessTokenInvalid.rawValue:
+                    completion?(false, NSLocalizedString("facebook_oauth_error", comment: ""))
+                default:
+                    break
+                }
+            }
+        })
     }
     
     func reset(email: String, comletion:((Bool, String?) -> Void)?) {
