@@ -35,7 +35,7 @@
 		E42331781EC030FE00C3A6B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E42331771EC030FE00C3A6B0 /* Assets.xcassets */; };
 		E45519411EC44856006A3B73 /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45519401EC44856006A3B73 /* MessageTableViewController.swift */; };
 		E45519431EC453F6006A3B73 /* PicturesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45519421EC453F6006A3B73 /* PicturesTableViewCell.swift */; };
-		E45519491EC45E2E006A3B73 /* DynamicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45519481EC45E2E006A3B73 /* DynamicTableViewCell.swift */; };
+		E455194B1EC4605B006A3B73 /* IntroductionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E455194A1EC4605B006A3B73 /* IntroductionTableViewCell.swift */; };
 		E489721D1EBED40F0064EA13 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489721C1EBED40F0064EA13 /* PostViewController.swift */; };
 		E489721F1EBEF34E0064EA13 /* SelectCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */; };
 		E48972211EBF62280064EA13 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48972201EBF62280064EA13 /* PictureViewController.swift */; };
@@ -99,7 +99,7 @@
 		E42331771EC030FE00C3A6B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E45519401EC44856006A3B73 /* MessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
 		E45519421EC453F6006A3B73 /* PicturesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicturesTableViewCell.swift; sourceTree = "<group>"; };
-		E45519481EC45E2E006A3B73 /* DynamicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicTableViewCell.swift; sourceTree = "<group>"; };
+		E455194A1EC4605B006A3B73 /* IntroductionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroductionTableViewCell.swift; sourceTree = "<group>"; };
 		E489721C1EBED40F0064EA13 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCategoryViewController.swift; sourceTree = "<group>"; };
 		E48972201EBF62280064EA13 /* PictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
@@ -235,7 +235,7 @@
 				E48DE5501EC2D33000E5CA25 /* MyMessageTableViewCell.swift */,
 				E41F7D021EC3604C002E8184 /* MessageCollectionViewCell.swift */,
 				E45519421EC453F6006A3B73 /* PicturesTableViewCell.swift */,
-				E45519481EC45E2E006A3B73 /* DynamicTableViewCell.swift */,
+				E455194A1EC4605B006A3B73 /* IntroductionTableViewCell.swift */,
 			);
 			name = Template;
 			sourceTree = "<group>";
@@ -515,7 +515,6 @@
 				E45519431EC453F6006A3B73 /* PicturesTableViewCell.swift in Sources */,
 				E4089FB61EBAE55C0042221D /* DaoTemplate.swift in Sources */,
 				E45519411EC44856006A3B73 /* MessageTableViewController.swift in Sources */,
-				E45519491EC45E2E006A3B73 /* DynamicTableViewCell.swift in Sources */,
 				E41F7D0C1EC36C4B002E8184 /* EditingViewController.swift in Sources */,
 				E4089FED1EBB3BF90042221D /* UserManager.swift in Sources */,
 				E41F7D031EC3604C002E8184 /* MessageCollectionViewCell.swift in Sources */,
@@ -523,6 +522,7 @@
 				E41F7D011EC34CB8002E8184 /* MessagesCollectionViewController.swift in Sources */,
 				E4089FB81EBAE5830042221D /* CategoryDao.swift in Sources */,
 				E4089FBC1EBAE59E0042221D /* SelectionDao.swift in Sources */,
+				E455194B1EC4605B006A3B73 /* IntroductionTableViewCell.swift in Sources */,
 				E489721D1EBED40F0064EA13 /* PostViewController.swift in Sources */,
 				E4962BE21EB4B08000DF8CAE /* AppDelegate.swift in Sources */,
 				E4089FEB1EBB3B990042221D /* CommonTool.swift in Sources */,

@@ -21,17 +21,16 @@ class MessageTableViewController: UITableViewController {
 
         self.setCustomBack()
         
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 400
+        
         messageManager.detail(messageId) { (success, message) in
             if (success) {
                 self.message = message!
                 self.reloadMessage()
             }
         }
-        
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 400
-        tableView.setNeedsLayout()
-        tableView.layoutIfNeeded()
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,7 +70,6 @@ class MessageTableViewController: UITableViewController {
         default:
             return 0
         }
-        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -81,18 +79,14 @@ class MessageTableViewController: UITableViewController {
             cell.fillWithMessage(message!)
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DynamicCell", for: indexPath) as! DynamicTableViewCell
-            cell.titleLabel.text = "Title"
-            cell.dateLabel.text = "Date"
-            cell.bodyLabel.text = message!.introduction
-            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "introductionCell", for: indexPath) as! IntroductionTableViewCell
+            cell.introductionLabel.text = message!.introduction
             return cell
         default:
             return UITableViewCell()
         }        
     }
     
-
     func reloadMessage() {
         navigationItem.title = message!.title
         tableView.reloadData()
