@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D3A30465DED0A54864830928 /* Pods_Tsukuba_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44E7EC0007342735A1D800F /* Pods_Tsukuba_iOS.framework */; };
+		E4054AE31EC48D29006BCEEC /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4054AE21EC48D29006BCEEC /* ResetViewController.swift */; };
 		E4089FA31EBADD170042221D /* CategoriesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FA21EBADD170042221D /* CategoriesCollectionViewController.swift */; };
 		E4089FB51EBAE55C0042221D /* DaoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FB31EBAE55C0042221D /* DaoManager.swift */; };
 		E4089FB61EBAE55C0042221D /* DaoTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FB41EBAE55C0042221D /* DaoTemplate.swift */; };
@@ -71,6 +72,7 @@
 /* Begin PBXFileReference section */
 		251F3A7B6A78E17CB718E63B /* Pods-Tsukuba-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tsukuba-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tsukuba-iOS/Pods-Tsukuba-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		6069AEC1C44BCF1C385A7547 /* Pods-Tsukuba-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tsukuba-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tsukuba-iOS/Pods-Tsukuba-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		E4054AE21EC48D29006BCEEC /* ResetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
 		E4089FA21EBADD170042221D /* CategoriesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewController.swift; sourceTree = "<group>"; };
 		E4089FB31EBAE55C0042221D /* DaoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaoManager.swift; sourceTree = "<group>"; };
 		E4089FB41EBAE55C0042221D /* DaoTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaoTemplate.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				E48972201EBF62280064EA13 /* PictureViewController.swift */,
 				E489721C1EBED40F0064EA13 /* PostViewController.swift */,
 				E41F7D091EC36C2A002E8184 /* RegisterViewController.swift */,
+				E4054AE21EC48D29006BCEEC /* ResetViewController.swift */,
 				E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */,
 				E45519401EC44856006A3B73 /* MessageTableViewController.swift */,
 			);
@@ -475,7 +478,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E4F0B49F5FE9A2B18A41FB3F /* [CP] Copy Pods Resources */ = {
@@ -519,6 +522,7 @@
 				E4089FED1EBB3BF90042221D /* UserManager.swift in Sources */,
 				E41F7D031EC3604C002E8184 /* MessageCollectionViewCell.swift in Sources */,
 				E4089FE21EBAF8F40042221D /* CategoryCollectionViewCell.swift in Sources */,
+				E4054AE31EC48D29006BCEEC /* ResetViewController.swift in Sources */,
 				E41F7D011EC34CB8002E8184 /* MessagesCollectionViewController.swift in Sources */,
 				E4089FB81EBAE5830042221D /* CategoryDao.swift in Sources */,
 				E4089FBC1EBAE59E0042221D /* SelectionDao.swift in Sources */,

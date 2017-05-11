@@ -73,6 +73,16 @@ class UserManager {
         }
     }
     
+    var userRev: Int {
+        set {
+            Defaults[.userRev] = newValue
+        }
+        get {
+            return Defaults[.userRev] ?? 0
+        }
+    }
+    
+    
     var avatarUploadingProgress: Double! = 0
     
     static let sharedInstance: UserManager = {
@@ -85,17 +95,24 @@ class UserManager {
     }
     
     func pullUser(completion: ((Bool) -> Void)?) {
+        let params: Parameters = [
+            "rev": self.userRev
+        ]
         Alamofire.request(createUrl("/api/user"),
                           method: .get,
-                          parameters: nil,
+                          parameters: params,
                           encoding: URLEncoding.default,
                           headers: tokenHeader())
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             if response.statusOK() {
-                let user = response.getResult()["user"]
-                self.name = user["name"].stringValue
-                self.avatar = user["avatar"].stringValue
+                let result = response.getResult()
+                if (result["update"].boolValue) {
+                    let user = result["user"]
+                    self.name = user["name"].stringValue
+                    self.avatar = user["avatar"].stringValue
+                    self.userRev = user["rev"].intValue
+                }
                 completion?(true)
             } else {
                 completion?(false)
@@ -118,30 +135,59 @@ class UserManager {
                           parameters: params,
                           encoding: URLEncoding.default,
                           headers: nil)
-            .responseJSON { (responseObject) in
-                let response = Response(responseObject)
-                if response.statusOK() {
-                    let result = response.getResult()
-                    // Login success, save user information to NSUserDefaults.
-                    Defaults[.token] = result["token"].stringValue
-                    let user = result["user"]
-                    self.type = "email";
-                    self.identifier = email
-                    self.name = user["name"].stringValue
-                    self.avatar = user["avatar"].stringValue
-                    self.login = true
-                    completion?(true, nil);
-                } else {
-                    switch response.errorCode() {
-                    case ErrorCode.emailNotExist.rawValue:
-                        completion?(false, NSLocalizedString("email_not_exist", comment: ""))
-                    case ErrorCode.passwordWrong.rawValue:
-                        completion?(false, NSLocalizedString("password_wrong", comment: ""))
-                    default:
-                        break
-                    }
+        .responseJSON { (responseObject) in
+            let response = Response(responseObject)
+            if response.statusOK() {
+                let result = response.getResult()
+                // Login success, save user information to NSUserDefaults.
+                Defaults[.token] = result["token"].stringValue
+                let user = result["user"]
+                self.type = "email";
+                self.identifier = email
+                self.name = user["name"].stringValue
+                self.avatar = user["avatar"].stringValue
+                self.userRev = user["rev"].intValue
+                self.login = true
+                completion?(true, nil);
+            } else {
+                switch response.errorCode() {
+                case ErrorCode.emailNotExist.rawValue:
+                    completion?(false, NSLocalizedString("email_not_exist", comment: ""))
+                case ErrorCode.passwordWrong.rawValue:
+                    completion?(false, NSLocalizedString("password_wrong", comment: ""))
+                default:
+                    break
                 }
+            }
         }
+    }
+    
+    func reset(email: String, comletion:((Bool, String?) -> Void)?) {
+        let params: Parameters = [
+            "email": email
+        ]
+        
+        Alamofire.request(createUrl("api/user/modify/password"),
+                          method: .get,
+                          parameters: params,
+                          encoding: URLEncoding.default,
+                          headers: tokenHeader())
+        .responseJSON { (responseObject) in
+            let response = Response(responseObject)
+            if response.statusOK() {
+                comletion?(true, nil)
+            } else {
+                switch response.errorCode() {
+                case ErrorCode.emailNotExist.rawValue:
+                    comletion?(false, NSLocalizedString("email_not_exist", comment: ""))
+                case ErrorCode.sendResetPasswordMail.rawValue:
+                    comletion?(false, NSLocalizedString("reset_password_failed", comment: ""))
+                default:
+                    break
+                }
+            }
+        }
+
     }
     
     func register(email: String, name: String, password: String, completion: ((Bool, String?) -> Void)?) {
@@ -156,19 +202,19 @@ class UserManager {
                           parameters: parameters,
                           encoding: URLEncoding.default,
                           headers: nil)
-            .responseJSON { responseObject in
-                let response = Response(responseObject)
-                if response.statusOK() {
-                    completion?(true, nil)
-                } else {
-                    switch response.errorCode() {
-                    case ErrorCode.emailRegistered.rawValue:
-                        completion?(false, NSLocalizedString("email_registered", comment: ""))
-                    default:
-                        completion?(false, nil)
-                        break
-                    }
+        .responseJSON { responseObject in
+            let response = Response(responseObject)
+            if response.statusOK() {
+                completion?(true, nil)
+            } else {
+                switch response.errorCode() {
+                case ErrorCode.emailRegistered.rawValue:
+                    completion?(false, NSLocalizedString("email_registered", comment: ""))
+                default:
+                    completion?(false, nil)
+                    break
                 }
+            }
         }
     }
     
@@ -215,8 +261,6 @@ class UserManager {
                     completion?(false)
             }
         })
-
     }
-
 
 }

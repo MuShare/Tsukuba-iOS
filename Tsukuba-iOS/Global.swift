@@ -44,6 +44,7 @@ extension DefaultsKeys {
     static let categoryRev = DefaultsKey<Int?>("categoryRev")
     static let selectionRev = DefaultsKey<Int?>("selectionRev")
     static let optionRev = DefaultsKey<Int?>("optionRev")
+    static let userRev = DefaultsKey<Int?>("userRev")
     static let version = DefaultsKey<String?>("version")
 }
 
@@ -54,8 +55,11 @@ enum ErrorCode: Int {
     case illegalIDeviceOS = 1021
     case emailNotExist = 1022
     case passwordWrong = 1023
-    
-
+    case facebookAccessTokenInvalid = 1031
+    case sendResetPasswordMail = 1061
+    case modifyMessageMidError = 2022
+    case modifyMessageNoPrivilege = 2023
+    case savePicture = 2041
 }
 
 func token() -> String? {

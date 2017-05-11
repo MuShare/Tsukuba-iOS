@@ -26,6 +26,10 @@ sign_in_sign_up = "Sign in to sync request history";
 sign_out_title = "Sign out";
 sign_out_message = "Are you sure to sign out now?";
 
+reset_password_not_validate = "Please input a correct email!";
+reset_password_failed = "Send email failed, try again later.";
+reset_password_check_email = "Check Your Email";
+
 photo_tip = "Choose a photo from library or take a photo.";
 photo_take = "Take Photo";
 photo_simulator_not_support = "iOS Simulator cannot open camera.";

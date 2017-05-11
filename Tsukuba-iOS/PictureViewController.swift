@@ -103,7 +103,7 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 self.imagePickerController.sourceType = .camera
                 self.imagePickerController.cameraCaptureMode = .photo
-                self.imagePickerController.cameraDevice = .front
+                self.imagePickerController.cameraDevice = .rear
                 self.imagePickerController.allowsEditing = true
             }
             self.present(self.imagePickerController, animated: true, completion: nil)
