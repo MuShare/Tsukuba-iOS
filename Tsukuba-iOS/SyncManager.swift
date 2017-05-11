@@ -99,9 +99,10 @@ class SyncManager {
                         // Save updated selections to persistent object.
                         let categories = self.dao.categoryDao.findAllDictionary()
                         let selections = result["selections"].arrayValue
-                        for selection in selections {
-                            let cid = selection["cid"].stringValue
-                            categories[cid]?.addToSelections(self.dao.selectionDao.saveOrUpdate(selection))
+                        for object in selections {
+                            let cid = object["cid"].stringValue
+                            let selection = self.dao.selectionDao.saveOrUpdate(object)
+                            selection.category = categories[cid]
                         }
                         self.dao.saveContext()
                         // Save global rev
@@ -132,9 +133,10 @@ class SyncManager {
                         // Save updated options to persistent object.
                         let selections = self.dao.selectionDao.findAllDictionary()
                         let options = result["options"].arrayValue
-                        for option in options {
-                            let sid = option["sid"].stringValue
-                            selections[sid]?.addToOptions(self.dao.optionDao.saveOrUpdate(option))
+                        for object in options {
+                            let sid = object["sid"].stringValue
+                            let option = self.dao.optionDao.saveOrUpdate(object)
+                            option.selection = selections[sid]
                         }
                         self.dao.saveContext()
                         // Save global rev
