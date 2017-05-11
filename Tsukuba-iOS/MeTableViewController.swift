@@ -49,10 +49,10 @@ class MeTableViewController: UITableViewController {
             self.performSegue(withIdentifier: user.login ? "profileSegue" : "loginSegue", sender: self)
         case 3:
             messageSell = true
-            self.performSegue(withIdentifier: "messageSegue", sender: self)
+            self.performSegue(withIdentifier: "myMessageSegue", sender: self)
         case 4:
             messageSell = false
-            self.performSegue(withIdentifier: "messageSegue", sender: self)
+            self.performSegue(withIdentifier: "myMessageSegue", sender: self)
         default:
             break
         }

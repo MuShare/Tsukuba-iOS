@@ -12,5 +12,6 @@ target 'Tsukuba-iOS' do
     pod 'Eureka', '~> 3.0'
     pod 'SwiftyJSON', '~> 3.1'
     pod 'SwipeBack', '~> 1.1'
+    pod 'ImageSlideshow', '~> 1.3'
 end
 

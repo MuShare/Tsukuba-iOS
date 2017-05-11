@@ -503,10 +503,53 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </segmentedControl>
                     </navigationItem>
+                    <connections>
+                        <segue destination="j6r-oG-BNb" kind="push" identifier="messageSegue" id="Gd4-Lr-oN9"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N5t-eC-gsX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2368.8000000000002" y="918.89055472263874"/>
+        </scene>
+        <!--Message View Controller-->
+        <scene sceneID="px7-By-o1t">
+            <objects>
+                <viewController id="j6r-oG-BNb" customClass="MessageViewController" customModule="Tsukuba_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aa7-pV-Weg"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ll3-Jb-3Je"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0sC-jZ-vfG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KBQ-7L-eMw">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NfW-Sc-LJ3" customClass="ImageSlideshow" customModule="ImageSlideshow">
+                                        <rect key="frame" x="0.0" y="-64" width="375" height="375"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KBQ-7L-eMw" firstAttribute="top" secondItem="aa7-pV-Weg" secondAttribute="bottom" id="PVp-dm-sMY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KBQ-7L-eMw" secondAttribute="trailing" constant="-16" id="R7c-xI-HJO"/>
+                            <constraint firstItem="KBQ-7L-eMw" firstAttribute="leading" secondItem="0sC-jZ-vfG" secondAttribute="leadingMargin" constant="-16" id="eF8-Bg-jhc"/>
+                            <constraint firstItem="Ll3-Jb-3Je" firstAttribute="top" secondItem="KBQ-7L-eMw" secondAttribute="bottom" id="mDU-EO-eee"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Tb7-Bd-MpU"/>
+                    <connections>
+                        <outlet property="picturesImageSlideshow" destination="NfW-Sc-LJ3" id="Rdj-y0-E6W"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="suW-jc-x4Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3336.8000000000002" y="918.89055472263874"/>
         </scene>
         <!--Me-->
         <scene sceneID="pJy-p0-CXB">
@@ -837,7 +880,7 @@
                         <outlet property="titleLabel" destination="bew-pl-P16" id="Ush-Uy-NuB"/>
                         <segue destination="O0p-N1-VyH" kind="push" identifier="profileSegue" id="x8C-Vc-AKb"/>
                         <segue destination="8z3-op-p7r" kind="modal" identifier="loginSegue" id="3gx-ct-8pJ"/>
-                        <segue destination="Q20-3A-u4T" kind="push" identifier="messageSegue" id="69L-Wd-3cu"/>
+                        <segue destination="Q20-3A-u4T" kind="push" identifier="myMessageSegue" id="69L-Wd-3cu"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Gj-hL-1Ag" userLabel="First Responder" sceneMemberID="firstResponder"/>

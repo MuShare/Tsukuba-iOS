@@ -32,6 +32,7 @@
 		E41F7D0A1EC36C2A002E8184 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D091EC36C2A002E8184 /* RegisterViewController.swift */; };
 		E41F7D0C1EC36C4B002E8184 /* EditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D0B1EC36C4B002E8184 /* EditingViewController.swift */; };
 		E41F7D121EC3EB92002E8184 /* CustomBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D111EC3EB92002E8184 /* CustomBack.swift */; };
+		E41F7D161EC41594002E8184 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D151EC41594002E8184 /* MessageViewController.swift */; };
 		E42331781EC030FE00C3A6B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E42331771EC030FE00C3A6B0 /* Assets.xcassets */; };
 		E489721D1EBED40F0064EA13 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489721C1EBED40F0064EA13 /* PostViewController.swift */; };
 		E489721F1EBEF34E0064EA13 /* SelectCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */; };
@@ -93,6 +94,7 @@
 		E41F7D0B1EC36C4B002E8184 /* EditingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditingViewController.swift; sourceTree = "<group>"; };
 		E41F7D0D1EC3EAA3002E8184 /* Tsukuba-iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tsukuba-iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		E41F7D111EC3EB92002E8184 /* CustomBack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBack.swift; sourceTree = "<group>"; };
+		E41F7D151EC41594002E8184 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		E42331771EC030FE00C3A6B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E489721C1EBED40F0064EA13 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCategoryViewController.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				E489721C1EBED40F0064EA13 /* PostViewController.swift */,
 				E41F7D091EC36C2A002E8184 /* RegisterViewController.swift */,
 				E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */,
+				E41F7D151EC41594002E8184 /* MessageViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				E4089FDC1EBAF2190042221D /* Response.swift in Sources */,
 				E48DE54F1EC2D30700E5CA25 /* MyMessagesTableViewController.swift in Sources */,
 				E4089FBA1EBAE58F0042221D /* OptionDao.swift in Sources */,
+				E41F7D161EC41594002E8184 /* MessageViewController.swift in Sources */,
 				E4089FDA1EBAF0250042221D /* Global.swift in Sources */,
 				E4962BEA1EB4B08000DF8CAE /* Tsukuba.xcdatamodeld in Sources */,
 				E41F7D121EC3EB92002E8184 /* CustomBack.swift in Sources */,

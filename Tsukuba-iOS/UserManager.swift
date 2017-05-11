@@ -14,17 +14,26 @@ class UserManager {
     var dao: DaoManager!
     
     var login: Bool {
-        set(value) {
-            Defaults[.login] = value
+        set {
+            Defaults[.login] = newValue
         }
         get {
             return Defaults[.login] ?? false
         }
     }
+    
+    var token: String {
+        set {
+            Defaults[.token] = newValue
+        }
+        get {
+            return Defaults[.token] ?? ""
+        }
+    }
 
     var type: String {
-        set(value) {
-            Defaults[.type] = value
+        set {
+            Defaults[.type] = newValue
         }
         get {
             return Defaults[.type] ?? ""
@@ -32,8 +41,8 @@ class UserManager {
     }
 
     var identifier: String {
-        set(value) {
-            Defaults[.identifier] = value
+        set {
+            Defaults[.identifier] = newValue
         }
         get {
             return Defaults[.identifier] ?? ""
@@ -41,8 +50,8 @@ class UserManager {
     }
     
     var name: String {
-        set(value) {
-            Defaults[.name] = value
+        set {
+            Defaults[.name] = newValue
         }
         get {
             return Defaults[.name] ?? ""
@@ -50,8 +59,8 @@ class UserManager {
     }
     
     var avatar: String {
-        set(value) {
-            Defaults[.avatar] = value
+        set {
+            Defaults[.avatar] = newValue
         }
         get {
             return Defaults[.avatar] ?? ""
@@ -165,6 +174,7 @@ class UserManager {
     
     func logout() {
         self.login = false
+        self.token = ""
         self.type = ""
         self.name = ""
         self.avatar = ""

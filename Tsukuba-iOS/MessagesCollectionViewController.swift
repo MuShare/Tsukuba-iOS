@@ -16,6 +16,7 @@ class MessagesCollectionViewController: UICollectionViewController, UICollection
     
     var category: Category!
     var messages: [Message] = []
+    var selectedMessage: Message!
     var sell = true
     
     override func viewDidLoad() {
@@ -36,8 +37,9 @@ class MessagesCollectionViewController: UICollectionViewController, UICollection
 
     // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "messageSegue" {
+            segue.destination.setValue(selectedMessage.mid, forKey: "mid")
+        }
     }
 
     // MARK: UICollectionViewDelegateFlowLayout
@@ -58,5 +60,9 @@ class MessagesCollectionViewController: UICollectionViewController, UICollection
     }
 
     // MARK: UICollectionViewDelegate
-
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedMessage = messages[indexPath.row]
+        self.performSegue(withIdentifier: "messageSegue", sender: self)
+    }
+    
 }
