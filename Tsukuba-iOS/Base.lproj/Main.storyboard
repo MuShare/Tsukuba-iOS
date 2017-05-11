@@ -440,7 +440,7 @@
         <scene sceneID="ZM9-Rq-W08">
             <objects>
                 <collectionViewController id="r3c-Tq-VOv" customClass="MessagesCollectionViewController" customModule="Tsukuba_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="qsk-OW-cSF">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="qsk-OW-cSF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.94040411710739136" green="0.94894498586654663" blue="0.94898372888565063" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -543,7 +543,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.95518261194229126" green="0.96907240152359009" blue="0.98458904027938843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="picturesCell" rowHeight="422" id="Jim-UU-qQV" customClass="PicturesTableViewCell" customModule="Tsukuba_iOS" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="picturesCell" rowHeight="422" id="Jim-UU-qQV" customClass="PicturesTableViewCell" customModule="Tsukuba_iOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jim-UU-qQV" id="U0f-iM-oHT">
@@ -612,24 +612,49 @@
                                     <outlet property="updateAtLabel" destination="3pn-Jg-KlO" id="OAW-2i-JbW"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="introductionCell" rowHeight="60" id="ie4-LZ-bZr">
-                                <rect key="frame" x="0.0" y="450" width="375" height="60"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DynamicCell" rowHeight="137" id="VyY-Sq-bQG" customClass="DynamicTableViewCell" customModule="Tsukuba_iOS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="450" width="375" height="137"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ie4-LZ-bZr" id="H3V-JL-s4N">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VyY-Sq-bQG" id="xUA-y9-GnB">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="137"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zrI-zQ-XUd">
-                                            <rect key="frame" x="8" y="8" width="359" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        </textView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8nM-3H-8hE">
+                                            <rect key="frame" x="8" y="8" width="315" height="21"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sca-k4-vqP">
+                                            <rect key="frame" x="331" y="8" width="36" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Body" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZ6-Wm-PXJ">
+                                            <rect key="frame" x="8" y="37" width="359" height="87"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Sca-k4-vqP" secondAttribute="trailing" id="0jL-DH-l9Z"/>
+                                        <constraint firstItem="8nM-3H-8hE" firstAttribute="leading" secondItem="xUA-y9-GnB" secondAttribute="leadingMargin" id="7xS-sS-th8"/>
+                                        <constraint firstItem="rZ6-Wm-PXJ" firstAttribute="top" secondItem="8nM-3H-8hE" secondAttribute="bottom" constant="8" id="IwJ-Zb-gbh"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="rZ6-Wm-PXJ" secondAttribute="bottom" constant="4" id="MIl-xd-SJ4"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="rZ6-Wm-PXJ" secondAttribute="trailing" id="MR4-BN-JxY"/>
+                                        <constraint firstItem="rZ6-Wm-PXJ" firstAttribute="leading" secondItem="xUA-y9-GnB" secondAttribute="leadingMargin" id="RQi-6h-F6e"/>
+                                        <constraint firstItem="8nM-3H-8hE" firstAttribute="top" secondItem="xUA-y9-GnB" secondAttribute="topMargin" id="mNW-XN-yc3"/>
+                                        <constraint firstItem="Sca-k4-vqP" firstAttribute="top" secondItem="xUA-y9-GnB" secondAttribute="topMargin" id="pz3-Qk-C3w"/>
+                                        <constraint firstItem="Sca-k4-vqP" firstAttribute="leading" secondItem="8nM-3H-8hE" secondAttribute="trailing" constant="8" id="xuz-3X-2Es"/>
+                                    </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="bodyLabel" destination="rZ6-Wm-PXJ" id="dFB-OV-fP6"/>
+                                    <outlet property="dateLabel" destination="Sca-k4-vqP" id="t2b-fl-rx4"/>
+                                    <outlet property="titleLabel" destination="8nM-3H-8hE" id="O58-gr-27Z"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

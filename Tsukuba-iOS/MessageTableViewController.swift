@@ -28,10 +28,10 @@ class MessageTableViewController: UITableViewController {
             }
         }
         
-//        tableView.rowHeight = UITableViewAutomaticDimension
-//        tableView.estimatedRowHeight = 400
-//        tableView.setNeedsLayout()
-//        tableView.layoutIfNeeded()
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 400
+        tableView.setNeedsLayout()
+        tableView.layoutIfNeeded()
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,6 +52,8 @@ class MessageTableViewController: UITableViewController {
         switch section {
         case 0:
             return 1
+        case 1:
+            return 1
         default:
             return 0
         }
@@ -65,7 +67,7 @@ class MessageTableViewController: UITableViewController {
         case 0:
             return UIScreen.main.bounds.size.width + 45
         case 1:
-            return 0
+            return UITableViewAutomaticDimension
         default:
             return 0
         }
@@ -77,6 +79,13 @@ class MessageTableViewController: UITableViewController {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "picturesCell", for: indexPath) as! PicturesTableViewCell
             cell.fillWithMessage(message!)
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DynamicCell", for: indexPath) as! DynamicTableViewCell
+            cell.titleLabel.text = "Title"
+            cell.dateLabel.text = "Date"
+            cell.bodyLabel.text = message!.introduction
+            
             return cell
         default:
             return UITableViewCell()
