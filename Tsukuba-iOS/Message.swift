@@ -18,6 +18,11 @@ class Message {
     var updateAt: Date!
     var price: Int!
     
+    var introduction: String?
+    var author: String?
+    var avatar: String?
+    var paths: [String] = []
+    
     init(_ object: JSON) {
         mid = object["mid"].stringValue
         title = object["title"].stringValue
@@ -25,6 +30,16 @@ class Message {
         createAt = Date(timeIntervalSince1970: object["createAt"].doubleValue / 1000)
         updateAt = Date(timeIntervalSince1970: object["updateAt"].doubleValue / 1000)
         price = object["price"].intValue
+        
+        // Detail info
+        introduction = object["introduction"].string
+        author = object["author"].string
+        avatar = object["avatar"].string
+        
+        for picture in object["pictures"].arrayValue {
+            paths.append(picture["path"].stringValue)
+        }
+        
     }
     
 }

@@ -156,4 +156,21 @@ class MessageManager {
         }
     }
     
+    func detail(_ mid: String, completion: ((Bool, Message?) -> Void)?) {
+        Alamofire.request(createUrl("api/message/detail/" + mid),
+                          method: .get,
+                          parameters: nil,
+                          encoding: URLEncoding.default,
+                          headers: nil)
+        .responseJSON { (responseObject) in
+            let response = Response(responseObject)
+            if response.statusOK() {
+                let object = response.getResult()["message"]
+                completion?(true, Message(object))
+            } else {
+                completion?(false, nil)
+            }
+        }
+    }
+    
 }

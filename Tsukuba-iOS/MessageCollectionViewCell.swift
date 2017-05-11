@@ -17,7 +17,7 @@ class MessageCollectionViewCell: UICollectionViewCell {
     func fillWithMessage(_ message: Message) {
         self.titleLabel.text = message.title
         self.coverImageView.kf.setImage(with: imageURL(message.cover))
-        self.priceLabel.text = "￥\(message.price!)"
+        self.priceLabel.text = "\(message.price!)"
     }
     
 }

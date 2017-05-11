@@ -38,7 +38,7 @@ class MessagesCollectionViewController: UICollectionViewController, UICollection
     // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "messageSegue" {
-            segue.destination.setValue(selectedMessage.mid, forKey: "mid")
+            segue.destination.setValue(selectedMessage.mid, forKey: "messageId")
         }
     }
 
