@@ -9,6 +9,7 @@
 //
 
 import UIKit
+import ESPullToRefresh
 
 class MessageTableViewController: UITableViewController {
 
@@ -23,13 +24,17 @@ class MessageTableViewController: UITableViewController {
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 400
-        
-        messageManager.detail(messageId) { (success, message) in
-            if (success) {
-                self.message = message!
-                self.reloadMessage()
+        tableView.es_addPullToRefresh {
+            self.messageManager.detail(self.messageId) { (success, message) in
+                if (success) {
+                    self.message = message!
+                    self.navigationItem.title = message!.title
+                    self.tableView.reloadData()
+                    self.tableView.es_stopPullToRefresh()
+                }
             }
         }
+        tableView.es_startPullToRefresh()
 
     }
 
@@ -39,7 +44,6 @@ class MessageTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         if message == nil {
             return 0
@@ -85,11 +89,6 @@ class MessageTableViewController: UITableViewController {
         default:
             return UITableViewCell()
         }        
-    }
-    
-    func reloadMessage() {
-        navigationItem.title = message!.title
-        tableView.reloadData()
     }
 
 }

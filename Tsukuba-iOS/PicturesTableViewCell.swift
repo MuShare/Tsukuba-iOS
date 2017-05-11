@@ -15,10 +15,11 @@ class PicturesTableViewCell: UITableViewCell {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var updateAtLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
     
     let formatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateStyle = .short
+        formatter.dateStyle = .medium
         formatter.timeStyle = .short
         return formatter
     }()
@@ -35,7 +36,7 @@ class PicturesTableViewCell: UITableViewCell {
         avatarImageView.kf.setImage(with: imageURL(message.avatar!))
         nameLabel.text = message.author
         updateAtLabel.text = formatter.string(from: message.updateAt)
-
+        priceLabel.text = "￥\(message.price!)"
     }
 
 }

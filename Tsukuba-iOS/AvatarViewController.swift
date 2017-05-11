@@ -41,7 +41,7 @@ class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, U
         picker.dismiss(animated: true, completion: nil)
         
         uploadButton.isEnabled = false
-        self.navigationItem.hidesBackButton = true
+        self.navigationItem.leftBarButtonItem?.isEnabled = false
  
         timer = Timer.scheduledTimer(
             timeInterval: 0.1,
@@ -52,7 +52,7 @@ class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         user.uploadAvatar(avatarImageView.image!) { (success) in
             self.uploadButton.isEnabled = true
-            self.navigationItem.hidesBackButton = false
+            self.navigationItem.leftBarButtonItem?.isEnabled = true
             self.timer?.invalidate()
             self.timer = nil
             if success {
