@@ -464,7 +464,7 @@
         <scene sceneID="ZM9-Rq-W08">
             <objects>
                 <collectionViewController id="r3c-Tq-VOv" customClass="MessagesCollectionViewController" customModule="Tsukuba_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="qsk-OW-cSF">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="qsk-OW-cSF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.94040411710739136" green="0.94894498586654663" blue="0.94898372888565063" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -540,15 +540,12 @@
                     </collectionView>
                     <navigationItem key="navigationItem" id="ZIa-p9-NiV">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="IIT-7u-UbS">
-                            <rect key="frame" x="112.5" y="7" width="150" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="Buy"/>
-                                <segment title="Sell"/>
-                            </segments>
+                        <barButtonItem key="rightBarButtonItem" image="write" id="RiP-Lo-5hQ">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </segmentedControl>
+                            <connections>
+                                <segue destination="pmD-CH-fmv" kind="push" identifier="createMessageSegue" id="IMR-lI-lwG"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="Xd0-0a-N5R" kind="push" identifier="messageSegue" id="4W8-pc-Fgq"/>
@@ -1688,4 +1685,7 @@
         <image name="user" width="30" height="30"/>
         <image name="write" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="IMR-lI-lwG"/>
+    </inferredMetricsTieBreakers>
 </document>

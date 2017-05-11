@@ -30,6 +30,10 @@ class PicturesTableViewCell: UITableViewCell {
         for path in message.paths {
             inputs.append(KingfisherSource(urlString: createUrl(path))!)
         }
+        // If message does not contain any picture, set a input using default cover.
+        if inputs.count == 0 {
+            inputs.append(KingfisherSource(urlString: createUrl(message.cover))!)
+        }
         picturesImageSlideshow.setImageInputs(inputs)
         
         // Author info

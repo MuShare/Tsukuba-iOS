@@ -14,5 +14,5 @@ target 'Tsukuba-iOS' do
     pod 'SwipeBack', '~> 1.1'
     pod 'ImageSlideshow', '~> 1.3'
     pod 'ImageSlideshow/Kingfisher', '~> 1.3'
+    pod 'Floaty', '~> 3.0'
 end
-

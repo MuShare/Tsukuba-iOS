@@ -8,7 +8,7 @@
 
 import UIKit
 import ESPullToRefresh
-
+import Floaty
 
 class MessagesCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
@@ -24,6 +24,9 @@ class MessagesCollectionViewController: UICollectionViewController, UICollection
         
         self.setCustomBack()
         
+        navigationItem.title = category.identifier
+        
+        // Set collection view refresh
         collectionView?.es_addPullToRefresh {
             self.messageManager.loadMessage(self.sell, cid: self.category.cid, seq: nil) { (success, messages) in
                 self.messages = messages
@@ -32,6 +35,22 @@ class MessagesCollectionViewController: UICollectionViewController, UICollection
             }
         }
         collectionView?.es_startPullToRefresh()
+        
+        // Set float button and menu.
+        self.view.addSubview({
+            let floaty = Floaty()
+            floaty.buttonColor = Color.main
+            floaty.plusColor = UIColor.white
+            floaty.addItem("Buy Message", icon: UIImage(named: "buy")!) { item in
+                self.sell = true
+                self.collectionView?.es_startPullToRefresh()
+            }
+            floaty.addItem("Sell Message", icon: UIImage(named: "sell")!) { item in
+                self.sell = false
+                self.collectionView?.es_startPullToRefresh()
+            }
+            return floaty
+        }())
     }
 
 
@@ -39,6 +58,8 @@ class MessagesCollectionViewController: UICollectionViewController, UICollection
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "messageSegue" {
             segue.destination.setValue(selectedMessage.mid, forKey: "messageId")
+        } else if segue.identifier == "createMessageSegue" {
+            segue.destination.setValue(category, forKey: "category")
         }
     }
 
