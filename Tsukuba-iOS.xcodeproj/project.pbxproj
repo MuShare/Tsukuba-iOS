@@ -31,6 +31,7 @@
 		E41F7D081EC369CD002E8184 /* login-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E41F7D071EC369CD002E8184 /* login-bg.jpg */; };
 		E41F7D0A1EC36C2A002E8184 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D091EC36C2A002E8184 /* RegisterViewController.swift */; };
 		E41F7D0C1EC36C4B002E8184 /* EditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D0B1EC36C4B002E8184 /* EditingViewController.swift */; };
+		E41F7D121EC3EB92002E8184 /* CustomBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D111EC3EB92002E8184 /* CustomBack.swift */; };
 		E42331781EC030FE00C3A6B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E42331771EC030FE00C3A6B0 /* Assets.xcassets */; };
 		E489721D1EBED40F0064EA13 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489721C1EBED40F0064EA13 /* PostViewController.swift */; };
 		E489721F1EBEF34E0064EA13 /* SelectCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */; };
@@ -90,6 +91,8 @@
 		E41F7D071EC369CD002E8184 /* login-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "login-bg.jpg"; sourceTree = "<group>"; };
 		E41F7D091EC36C2A002E8184 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E41F7D0B1EC36C4B002E8184 /* EditingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditingViewController.swift; sourceTree = "<group>"; };
+		E41F7D0D1EC3EAA3002E8184 /* Tsukuba-iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tsukuba-iOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		E41F7D111EC3EB92002E8184 /* CustomBack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBack.swift; sourceTree = "<group>"; };
 		E42331771EC030FE00C3A6B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E489721C1EBED40F0064EA13 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCategoryViewController.swift; sourceTree = "<group>"; };
@@ -193,6 +196,7 @@
 				E4089FD91EBAF0250042221D /* Global.swift */,
 				E4089FDB1EBAF2190042221D /* Response.swift */,
 				E4089FEA1EBB3B990042221D /* CommonTool.swift */,
+				E41F7D111EC3EB92002E8184 /* CustomBack.swift */,
 			);
 			name = Tool;
 			sourceTree = "<group>";
@@ -232,6 +236,7 @@
 			children = (
 				E41F7D071EC369CD002E8184 /* login-bg.jpg */,
 				E4089FF21EBB50790042221D /* Localizable.strings */,
+				E41F7D0D1EC3EAA3002E8184 /* Tsukuba-iOS-Bridging-Header.h */,
 			);
 			name = "Support Files";
 			sourceTree = "<group>";
@@ -367,6 +372,7 @@
 					E4962BDD1EB4B08000DF8CAE = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 6ANM44X2CJ;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					E4962BF41EB4B08000DF8CAE = {
@@ -513,6 +519,7 @@
 				E4089FBA1EBAE58F0042221D /* OptionDao.swift in Sources */,
 				E4089FDA1EBAF0250042221D /* Global.swift in Sources */,
 				E4962BEA1EB4B08000DF8CAE /* Tsukuba.xcdatamodeld in Sources */,
+				E41F7D121EC3EB92002E8184 /* CustomBack.swift in Sources */,
 				E48972231EBF64320064EA13 /* MessageManager.swift in Sources */,
 				E41F7D0A1EC36C2A002E8184 /* RegisterViewController.swift in Sources */,
 			);
@@ -669,12 +676,15 @@
 			baseConfigurationReference = 251F3A7B6A78E17CB718E63B /* Pods-Tsukuba-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 6ANM44X2CJ;
 				INFOPLIST_FILE = "Tsukuba-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.mushare.Tsukuba-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tsukuba-iOS/Tsukuba-iOS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -684,12 +694,14 @@
 			baseConfigurationReference = 6069AEC1C44BCF1C385A7547 /* Pods-Tsukuba-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 6ANM44X2CJ;
 				INFOPLIST_FILE = "Tsukuba-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.mushare.Tsukuba-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tsukuba-iOS/Tsukuba-iOS-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

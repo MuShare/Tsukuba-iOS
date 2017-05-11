@@ -9,6 +9,7 @@
 import UIKit
 import ESPullToRefresh
 
+
 class MessagesCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let messageManager = MessageManager.sharedInstance
@@ -19,7 +20,9 @@ class MessagesCollectionViewController: UICollectionViewController, UICollection
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.setCustomBack()
+        
         collectionView?.es_addPullToRefresh {
             self.messageManager.loadMessage(self.sell, cid: self.category.cid, seq: nil) { (success, messages) in
                 self.messages = messages
@@ -29,6 +32,7 @@ class MessagesCollectionViewController: UICollectionViewController, UICollection
         }
         collectionView?.es_startPullToRefresh()
     }
+
 
     // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -21,6 +21,7 @@ class MeTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setCustomBack()
     }
     
     override func viewWillAppear(_ animated: Bool) {

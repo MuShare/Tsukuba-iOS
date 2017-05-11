@@ -19,6 +19,7 @@ class MyMessagesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setCustomBack()
         self.navigationItem.title = sell ? "My sell post" : "My buy post"
         
         tableView.es_addPullToRefresh {

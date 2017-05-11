@@ -30,6 +30,8 @@ class PostViewController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setCustomBack()
+        
         selections = dao.selectionDao.findEnableByCategory(category)
         
         self.view.tintColor = Color.main

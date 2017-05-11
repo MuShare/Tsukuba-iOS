@@ -11,5 +11,6 @@ target 'Tsukuba-iOS' do
     pod 'UIImageView+Extension', '~> 0.2'
     pod 'Eureka', '~> 3.0'
     pod 'SwiftyJSON', '~> 3.1'
+    pod 'SwipeBack', '~> 1.1'
 end
 

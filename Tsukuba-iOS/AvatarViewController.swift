@@ -21,6 +21,8 @@ class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setCustomBack()
+        
         if user.login {
             avatarImageView.kf.setImage(with: user.avatarURL)
         }
