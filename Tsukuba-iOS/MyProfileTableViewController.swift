@@ -11,6 +11,9 @@ import UIKit
 class MyProfileTableViewController: UITableViewController {
 
     @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var contactTextField: UITextField!
+    @IBOutlet weak var addressTextField: UITextField!
 
     let user = UserManager.sharedInstance
     
@@ -22,10 +25,12 @@ class MyProfileTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         if user.login {
             avatarImageView.kf.setImage(with: user.avatarURL)
+            nameTextField.text = user.name
+            contactTextField.text = user.contact
         }
     }
 
-    // MARK: - Table view data source
+    // MARK: UITableViewDataSource
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.01
     }
@@ -33,4 +38,24 @@ class MyProfileTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.01
     }
+    
+    // MARK: Navigation
+    @IBAction func saveUser(_ sender: Any) {
+        if nameTextField.text == "" || contactTextField.text == "" || addressTextField.text == "" {
+            showAlert(title: NSLocalizedString("title_name", comment: ""),
+                      content: NSLocalizedString("modify_has_empty", comment: ""),
+                      controller: self)
+            return
+        }
+        
+        user.modify(name: nameTextField.text!,
+                    contact: contactTextField.text!,
+                    address: addressTextField.text!)
+        { (success) in
+            if (success) {
+                
+            }
+        }
+    }
+    
 }

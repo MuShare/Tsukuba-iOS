@@ -38,6 +38,8 @@ extension DefaultsKeys {
     static let identifier = DefaultsKey<String?>("identifier")
     static let name = DefaultsKey<String?>("name")
     static let avatar = DefaultsKey<String?>("avatar")
+    static let contact = DefaultsKey<String?>("contact")
+    static let address = DefaultsKey<String?>("address")
     static let deviceToken = DefaultsKey<String?>("deviceToken")
     static let token = DefaultsKey<String?>("token")
     static let login = DefaultsKey<Bool?>("login")
@@ -77,3 +79,13 @@ func tokenHeader() -> HTTPHeaders? {
     return headers
 }
 
+extension UITextField{
+    @IBInspectable var placeHolderColor: UIColor? {
+        get {
+            return self.placeHolderColor
+        }
+        set {
+            self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "", attributes:[NSForegroundColorAttributeName: newValue!])
+        }
+    }
+}

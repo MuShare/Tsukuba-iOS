@@ -73,6 +73,24 @@ class UserManager {
         }
     }
     
+    var contact: String {
+        set {
+            Defaults[.contact] = newValue
+        }
+        get {
+            return Defaults[.contact] ?? ""
+        }
+    }
+    
+    var address: String  {
+        set {
+            Defaults[.address] = newValue
+        }
+        get {
+            return Defaults[.address] ?? ""
+        }
+    }
+    
     var userRev: Int {
         set {
             Defaults[.userRev] = newValue
@@ -110,6 +128,8 @@ class UserManager {
                     let user = result["user"]
                     self.name = user["name"].stringValue
                     self.avatar = user["avatar"].stringValue
+                    self.contact = user["contact"].stringValue
+                    self.address = user["address"].stringValue
                     self.userRev = user["rev"].intValue
                 }
                 completion?(true)
@@ -300,6 +320,24 @@ class UserManager {
                     completion?(false)
             }
         })
+    }
+    
+    func modify(name: String, contact: String, address: String, completion:((Bool) -> Void)?) {
+        let params: Parameters = [
+            "name": name,
+            "contact": contact,
+            "address": address
+        ]
+        
+        Alamofire.request(createUrl("api/user/modify/info"),
+                          method: .post,
+                          parameters: params,
+                          encoding: URLEncoding.default,
+                          headers: tokenHeader())
+        .responseJSON { (responseObject) in
+            let response = Response(responseObject)
+            completion?(response.statusOK())
+        }
     }
 
 }
