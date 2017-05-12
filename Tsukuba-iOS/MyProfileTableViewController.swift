@@ -27,6 +27,7 @@ class MyProfileTableViewController: UITableViewController {
             avatarImageView.kf.setImage(with: user.avatarURL)
             nameTextField.text = user.name
             contactTextField.text = user.contact
+            addressTextField.text = user.address
         }
     }
 
@@ -48,12 +49,13 @@ class MyProfileTableViewController: UITableViewController {
             return
         }
         
+        replaceBarButtonItemWithActivityIndicator(controller: self)
         user.modify(name: nameTextField.text!,
                     contact: contactTextField.text!,
                     address: addressTextField.text!)
         { (success) in
             if (success) {
-                
+                self.navigationController?.popViewController(animated: true)
             }
         }
     }

@@ -336,7 +336,21 @@ class UserManager {
                           headers: tokenHeader())
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
-            completion?(response.statusOK())
+            if response.statusOK() {
+                let result = response.getResult()
+                if result["success"].boolValue {
+                    self.userRev = result["rev"].intValue
+                    self.name = name
+                    self.contact = contact
+                    self.address = address
+                    completion?(true)
+                } else {
+                    completion?(false)
+                }
+            } else {
+                completion?(false)
+            }
+            
         }
     }
 
