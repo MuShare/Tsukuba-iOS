@@ -16,6 +16,8 @@ class LoginViewController: EditingViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loadingActivityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet weak var facebookLoginButton: UIButton!
+    @IBOutlet weak var facebookLoadingActivityIndicatorView: UIActivityIndicatorView!
     
     let user = UserManager.sharedInstance
     
@@ -75,7 +77,11 @@ class LoginViewController: EditingViewController {
                     print("User cancelled login.");
                 }
             case .success(_, _, let accessToken):
+                self.facebookLoginButton.isEnabled = false
+                self.facebookLoadingActivityIndicatorView.startAnimating()
                 self.user.facebookLogin(accessToken.authenticationToken, completion: { (success, message) in
+                    self.facebookLoginButton.isEnabled = true
+                    self.facebookLoadingActivityIndicatorView.stopAnimating()
                     if success {
                         self.dismiss(animated: true, completion: nil)
                     } else {

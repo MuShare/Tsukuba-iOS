@@ -464,7 +464,7 @@
         <scene sceneID="ZM9-Rq-W08">
             <objects>
                 <collectionViewController id="r3c-Tq-VOv" customClass="MessagesCollectionViewController" customModule="Tsukuba_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="qsk-OW-cSF">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="qsk-OW-cSF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.94040411710739136" green="0.94894498586654663" blue="0.94898372888565063" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1160,6 +1160,10 @@
                                     <action selector="loginWithFacebook:" destination="lGS-O0-lyn" eventType="touchUpInside" id="eyj-Ya-wOl"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="frp-Bg-eVT">
+                                <rect key="frame" x="332" y="437" width="20" height="20"/>
+                                <color key="color" red="0.97668033840000001" green="0.52403438089999999" blue="0.64906048770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ggU-yA-d1r">
                                 <rect key="frame" x="16" y="607" width="166" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
@@ -1211,6 +1215,7 @@
                             <constraint firstItem="oxx-hP-91z" firstAttribute="top" secondItem="Mfa-rE-m8K" secondAttribute="bottom" constant="68.5" id="FMh-Qr-cf3"/>
                             <constraint firstItem="sEK-tD-fc5" firstAttribute="top" secondItem="ggU-yA-d1r" secondAttribute="bottom" constant="20" id="LSt-Pj-3fR"/>
                             <constraint firstItem="Mfa-rE-m8K" firstAttribute="top" secondItem="e0H-s3-FlS" secondAttribute="bottom" constant="2" id="Sua-m7-UEn"/>
+                            <constraint firstItem="frp-Bg-eVT" firstAttribute="leading" secondItem="oxx-hP-91z" secondAttribute="trailing" constant="-27" id="TP7-X6-Lcd"/>
                             <constraint firstItem="ggU-yA-d1r" firstAttribute="width" secondItem="qcb-eB-Con" secondAttribute="width" id="UuG-J5-1tt"/>
                             <constraint firstItem="r9o-Tm-ULi" firstAttribute="top" secondItem="GUg-XP-dhL" secondAttribute="bottom" constant="-30" id="Zzc-fA-mUJ"/>
                             <constraint firstItem="e0H-s3-FlS" firstAttribute="leading" secondItem="7VV-5o-LvS" secondAttribute="leadingMargin" constant="-16" id="aPs-pY-vQo"/>
@@ -1220,6 +1225,7 @@
                             <constraint firstAttribute="leadingMargin" secondItem="ggU-yA-d1r" secondAttribute="leading" id="gXf-Sr-jEG"/>
                             <constraint firstAttribute="leadingMargin" secondItem="oxx-hP-91z" secondAttribute="leading" id="heN-FU-0qK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="e0H-s3-FlS" secondAttribute="trailing" constant="-16" id="iBc-tv-TC5"/>
+                            <constraint firstItem="frp-Bg-eVT" firstAttribute="top" secondItem="oxx-hP-91z" secondAttribute="bottom" constant="-30" id="jeB-eI-N3U"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oxx-hP-91z" secondAttribute="trailing" id="kA8-su-O7d"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Mfa-rE-m8K" secondAttribute="trailing" constant="-16" id="oOa-2H-qRd"/>
                             <constraint firstItem="r9o-Tm-ULi" firstAttribute="leading" secondItem="GUg-XP-dhL" secondAttribute="trailing" constant="-27" id="pKq-2Q-cQR"/>
@@ -1230,6 +1236,8 @@
                     <navigationItem key="navigationItem" id="2aV-Y2-1JY"/>
                     <connections>
                         <outlet property="emailTextField" destination="e0H-s3-FlS" id="2Lr-Fc-jcu"/>
+                        <outlet property="facebookLoadingActivityIndicatorView" destination="frp-Bg-eVT" id="hsf-Rc-BHW"/>
+                        <outlet property="facebookLoginButton" destination="oxx-hP-91z" id="S7X-F0-T1L"/>
                         <outlet property="loadingActivityIndicatorView" destination="r9o-Tm-ULi" id="Bki-kN-8nM"/>
                         <outlet property="loginButton" destination="GUg-XP-dhL" id="Web-fz-W7a"/>
                         <outlet property="passwordTextField" destination="Mfa-rE-m8K" id="lS1-Po-JFg"/>
