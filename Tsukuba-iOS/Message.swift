@@ -17,6 +17,7 @@ class Message {
     var createAt: Date!
     var updateAt: Date!
     var price: Int!
+    var cid: String!
     
     var introduction: String?
     var author: String?
@@ -31,6 +32,7 @@ class Message {
         createAt = Date(timeIntervalSince1970: object["createAt"].doubleValue / 1000)
         updateAt = Date(timeIntervalSince1970: object["updateAt"].doubleValue / 1000)
         price = object["price"].intValue
+        cid = object["cid"].stringValue
         
         // Detail info
         introduction = object["introduction"].string

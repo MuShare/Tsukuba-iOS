@@ -26,6 +26,8 @@ sign_in_facebook = "Sign in with Facebook";
 sign_out_title = "Sign out";
 sign_out_message = "Are you sure to sign out now?";
 
+fill_user_info = "Pleases fill in your contact way and address, then upload your avatar, so that other people can know you and contact you.";
+
 reset_password_not_validate = "Please input a correct email!";
 reset_password_failed = "Send email failed, try again later.";
 reset_password_check_email = "Check Your Email";
@@ -42,3 +44,12 @@ upload_progress = "Upload Progress: ";
 
 upload_message_picture = "Upload Picture";
 remove_picture_failed = "Remove picture failed.";
+
+message_basic_info = "Basic Information";
+message_type_choose = "I want to";
+message_type_buy = "buy";
+message_type_sell = "sell";
+message_title = "Title";
+message_title_placeholder = "Message title";
+message_price = "Price";
+message_introduction_placeholder = "Introduction for this message.";

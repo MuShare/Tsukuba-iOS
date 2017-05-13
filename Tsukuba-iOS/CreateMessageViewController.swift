@@ -9,7 +9,7 @@
 import UIKit
 import Eureka
 
-class PostViewController: FormViewController {
+class CreateMessageViewController: FormViewController {
 
     let dao = DaoManager.sharedInstance
     let messgae = MessageManager.sharedInstance
@@ -29,43 +29,42 @@ class PostViewController: FormViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.setCustomBack()
-        
+
         selections = dao.selectionDao.findEnableByCategory(category)
         
+        self.setCustomBack()
         self.view.tintColor = Color.main
             
         navigationOptions = RowNavigationOptions.Enabled.union(.SkipCanNotBecomeFirstResponderRow)
         navigationOptionsBackup = navigationOptions
         
         form
-            +++ Section("Title & Type")
+            +++ Section(NSLocalizedString("message_basic_info", comment: ""))
             
             <<< SegmentedRow<String>() {
-                $0.title = "I want to"
-                $0.options = ["sell", "buy"]
-                $0.value = "sell"
+                $0.title = NSLocalizedString("message_type_choose", comment: "")
+                $0.options = [NSLocalizedString("message_type_sell", comment: ""), NSLocalizedString("message_type_buy", comment: "")]
+                $0.value = NSLocalizedString("message_type_sell", comment: "")
             }.onChange({ (row) in
-                self.sell = row.value! == "sell"
+                self.sell = (row.value! == NSLocalizedString("message_type_sell", comment: ""))
             })
             
             <<< TextRow() {
-                $0.title = "Title"
-                $0.placeholder = "Post title"
+                $0.title = NSLocalizedString("message_title", comment: "")
+                $0.placeholder = NSLocalizedString("message_title_placeholder", comment: "")
             }.onChange({ (row) in
                 self.messageTitle = row.value
             })
         
             <<< IntRow(){
-                $0.title = "Price"
+                $0.title = NSLocalizedString("message_price", comment: "")
                 $0.placeholder = "0"
             }.onChange({ (row) in
                 self.price = row.value ?? 0
             })
         
             <<< TextAreaRow() {
-                $0.placeholder = "Introduction for this post."
+                $0.placeholder = NSLocalizedString("message_introduction_placeholder", comment: "")
             }.onChange({ (row) in
                 self.introduction = row.value ?? ""
             })

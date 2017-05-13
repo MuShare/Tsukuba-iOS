@@ -20,6 +20,12 @@ class MyProfileTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setCustomBack()
+        
+        if user.contact == "" || user.address == "" || user.avatar == "" {
+            showAlert(title: NSLocalizedString("tip_name", comment: ""),
+                      content: NSLocalizedString("fill_user_info", comment: ""),
+                      controller: self)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,7 +49,7 @@ class MyProfileTableViewController: UITableViewController {
     // MARK: Navigation
     @IBAction func saveUser(_ sender: Any) {
         if nameTextField.text == "" || contactTextField.text == "" || addressTextField.text == "" {
-            showAlert(title: NSLocalizedString("title_name", comment: ""),
+            showAlert(title: NSLocalizedString("tip_name", comment: ""),
                       content: NSLocalizedString("modify_has_empty", comment: ""),
                       controller: self)
             return
@@ -58,6 +64,10 @@ class MyProfileTableViewController: UITableViewController {
                 self.navigationController?.popViewController(animated: true)
             }
         }
+    }
+    
+    @IBAction func finishEdit(_ sender: UITextField) {
+        sender.resignFirstResponder()
     }
     
 }

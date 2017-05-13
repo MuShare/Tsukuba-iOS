@@ -50,12 +50,6 @@ class MeTableViewController: UITableViewController {
         case 1:
             // Sign in or show profile
             self.performSegue(withIdentifier: user.login ? "profileSegue" : "loginSegue", sender: self)
-        case 3:
-            messageSell = true
-            self.performSegue(withIdentifier: "myMessageSegue", sender: self)
-        case 4:
-            messageSell = false
-            self.performSegue(withIdentifier: "myMessageSegue", sender: self)
         default:
             break
         }
@@ -63,10 +57,8 @@ class MeTableViewController: UITableViewController {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "messageSegue" {
-            segue.destination.setValue(messageSell, forKey: "sell")
-        } 
-     }
+
+    }
     
     // MARK: - Action
     @IBAction func logout(_ sender: Any) {

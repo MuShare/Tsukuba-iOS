@@ -37,7 +37,7 @@
 		E45519411EC44856006A3B73 /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45519401EC44856006A3B73 /* MessageTableViewController.swift */; };
 		E45519431EC453F6006A3B73 /* PicturesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45519421EC453F6006A3B73 /* PicturesTableViewCell.swift */; };
 		E455194B1EC4605B006A3B73 /* IntroductionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E455194A1EC4605B006A3B73 /* IntroductionTableViewCell.swift */; };
-		E489721D1EBED40F0064EA13 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489721C1EBED40F0064EA13 /* PostViewController.swift */; };
+		E489721D1EBED40F0064EA13 /* CreateMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489721C1EBED40F0064EA13 /* CreateMessageViewController.swift */; };
 		E489721F1EBEF34E0064EA13 /* SelectCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */; };
 		E48972211EBF62280064EA13 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48972201EBF62280064EA13 /* PictureViewController.swift */; };
 		E48972231EBF64320064EA13 /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48972221EBF64320064EA13 /* MessageManager.swift */; };
@@ -51,6 +51,7 @@
 		E4962BFA1EB4B08000DF8CAE /* Tsukuba_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4962BF91EB4B08000DF8CAE /* Tsukuba_iOSTests.swift */; };
 		E4962C051EB4B08000DF8CAE /* Tsukuba_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4962C041EB4B08000DF8CAE /* Tsukuba_iOSUITests.swift */; };
 		E49D240E1EC69FC900D3D974 /* OptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49D240D1EC69FC900D3D974 /* OptionTableViewCell.swift */; };
+		E49D24101EC6F0EB00D3D974 /* EditMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49D240F1EC6F0EB00D3D974 /* EditMessageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,7 +104,7 @@
 		E45519401EC44856006A3B73 /* MessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
 		E45519421EC453F6006A3B73 /* PicturesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicturesTableViewCell.swift; sourceTree = "<group>"; };
 		E455194A1EC4605B006A3B73 /* IntroductionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroductionTableViewCell.swift; sourceTree = "<group>"; };
-		E489721C1EBED40F0064EA13 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		E489721C1EBED40F0064EA13 /* CreateMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMessageViewController.swift; sourceTree = "<group>"; };
 		E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCategoryViewController.swift; sourceTree = "<group>"; };
 		E48972201EBF62280064EA13 /* PictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
 		E48972221EBF64320064EA13 /* MessageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
@@ -123,6 +124,7 @@
 		E4962C041EB4B08000DF8CAE /* Tsukuba_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tsukuba_iOSUITests.swift; sourceTree = "<group>"; };
 		E4962C061EB4B08000DF8CAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E49D240D1EC69FC900D3D974 /* OptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionTableViewCell.swift; sourceTree = "<group>"; };
+		E49D240F1EC6F0EB00D3D974 /* EditMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMessageViewController.swift; sourceTree = "<group>"; };
 		F44E7EC0007342735A1D800F /* Pods_Tsukuba_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tsukuba_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -223,11 +225,12 @@
 				E48DE54E1EC2D30700E5CA25 /* MyMessagesTableViewController.swift */,
 				E4089FEE1EBB4AD80042221D /* MyProfileTableViewController.swift */,
 				E48972201EBF62280064EA13 /* PictureViewController.swift */,
-				E489721C1EBED40F0064EA13 /* PostViewController.swift */,
+				E489721C1EBED40F0064EA13 /* CreateMessageViewController.swift */,
 				E41F7D091EC36C2A002E8184 /* RegisterViewController.swift */,
 				E4054AE21EC48D29006BCEEC /* ResetViewController.swift */,
 				E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */,
 				E45519401EC44856006A3B73 /* MessageTableViewController.swift */,
+				E49D240F1EC6F0EB00D3D974 /* EditMessageViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -530,7 +533,7 @@
 				E4089FB81EBAE5830042221D /* CategoryDao.swift in Sources */,
 				E4089FBC1EBAE59E0042221D /* SelectionDao.swift in Sources */,
 				E455194B1EC4605B006A3B73 /* IntroductionTableViewCell.swift in Sources */,
-				E489721D1EBED40F0064EA13 /* PostViewController.swift in Sources */,
+				E489721D1EBED40F0064EA13 /* CreateMessageViewController.swift in Sources */,
 				E4962BE21EB4B08000DF8CAE /* AppDelegate.swift in Sources */,
 				E4089FEB1EBB3B990042221D /* CommonTool.swift in Sources */,
 				E4089FDC1EBAF2190042221D /* Response.swift in Sources */,
@@ -541,6 +544,7 @@
 				E49D240E1EC69FC900D3D974 /* OptionTableViewCell.swift in Sources */,
 				E41F7D121EC3EB92002E8184 /* CustomBack.swift in Sources */,
 				E48972231EBF64320064EA13 /* MessageManager.swift in Sources */,
+				E49D24101EC6F0EB00D3D974 /* EditMessageViewController.swift in Sources */,
 				E41F7D0A1EC36C2A002E8184 /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

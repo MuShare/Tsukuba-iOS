@@ -15,6 +15,7 @@ class MyMessagesTableViewController: UITableViewController {
     
     let messageManager = MessageManager.sharedInstance
     var messages: [Message] = []
+    var selectedMessage: Message!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,16 +34,17 @@ class MyMessagesTableViewController: UITableViewController {
         tableView.es_startPullToRefresh()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editMessageSegue" {
+            segue.destination.setValue(selectedMessage.mid, forKey: "messageId")
+        }
     }
 
-    // MARK: UITableViewDataSource
+    // MARK: - UITableViewDataSource
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.01
     }
-    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count
@@ -52,6 +54,25 @@ class MyMessagesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myMessageCell", for: indexPath) as! MyMessageTableViewCell
         cell.fillWithMessage(messages[indexPath.row])
         return cell
+    }
+    
+    // MARK: - UITableViewDelegate
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedMessage = messages[indexPath.row]
+        self.performSegue(withIdentifier: "editMessageSegue", sender: self)
+    }
+
+    // MARK: - Action
+    @IBAction func changeMessageType(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            sell = true
+        case 1:
+            sell = false
+        default:
+            break
+        }
+        tableView.es_startPullToRefresh()
     }
 
 }
