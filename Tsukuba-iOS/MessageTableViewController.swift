@@ -14,6 +14,7 @@ import ESPullToRefresh
 class MessageTableViewController: UITableViewController {
 
     let messageManager = MessageManager.sharedInstance
+
     var messageId: String!
     var message: Message? = nil
     
@@ -43,7 +44,7 @@ class MessageTableViewController: UITableViewController {
         if message == nil {
             return 0
         }
-        return 2
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,6 +52,8 @@ class MessageTableViewController: UITableViewController {
         case 0:
             return 1
         case 1:
+            return (message?.options.count)!
+        case 2:
             return 1
         default:
             return 0
@@ -66,6 +69,8 @@ class MessageTableViewController: UITableViewController {
             return UIScreen.main.bounds.size.width + 45
         case 1:
             return UITableViewAutomaticDimension
+        case 2:
+            return UITableViewAutomaticDimension
         default:
             return 0
         }
@@ -78,6 +83,10 @@ class MessageTableViewController: UITableViewController {
             cell.fillWithMessage(message!)
             return cell
         case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "optionCell", for: indexPath) as! OptionTableViewCell
+            cell.fillWithOption((message?.options[indexPath.row])!)
+            return cell
+        case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "introductionCell", for: indexPath) as! IntroductionTableViewCell
             cell.introductionLabel.text = message!.introduction
             return cell

@@ -39,6 +39,12 @@ class OptionDao: DaoTemplate {
         return try! context.fetch(request)
     }
     
+    func findInOids(_ oids: [String]) -> [Option] {
+        let request = NSFetchRequest<Option>(entityName: NSStringFromClass(Option.self))
+        request.predicate = NSPredicate(format: "oid IN %@", oids)
+        return try! context.fetch(request)
+    }
+    
     func getByOid(_ oid: String) -> Option? {
         let request = NSFetchRequest<Option>(entityName: NSStringFromClass(Option.self))
         request.predicate = NSPredicate(format: "oid=%@", oid)

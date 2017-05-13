@@ -50,6 +50,7 @@
 		E4962BEF1EB4B08000DF8CAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4962BED1EB4B08000DF8CAE /* LaunchScreen.storyboard */; };
 		E4962BFA1EB4B08000DF8CAE /* Tsukuba_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4962BF91EB4B08000DF8CAE /* Tsukuba_iOSTests.swift */; };
 		E4962C051EB4B08000DF8CAE /* Tsukuba_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4962C041EB4B08000DF8CAE /* Tsukuba_iOSUITests.swift */; };
+		E49D240E1EC69FC900D3D974 /* OptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49D240D1EC69FC900D3D974 /* OptionTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,7 @@
 		E4962C001EB4B08000DF8CAE /* Tsukuba-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tsukuba-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4962C041EB4B08000DF8CAE /* Tsukuba_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tsukuba_iOSUITests.swift; sourceTree = "<group>"; };
 		E4962C061EB4B08000DF8CAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E49D240D1EC69FC900D3D974 /* OptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionTableViewCell.swift; sourceTree = "<group>"; };
 		F44E7EC0007342735A1D800F /* Pods_Tsukuba_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tsukuba_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -230,7 +232,7 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
-		E4089FE51EBB36220042221D /* Template */ = {
+		E4089FE51EBB36220042221D /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				E4089FE11EBAF8F40042221D /* CategoryCollectionViewCell.swift */,
@@ -239,8 +241,9 @@
 				E41F7D021EC3604C002E8184 /* MessageCollectionViewCell.swift */,
 				E45519421EC453F6006A3B73 /* PicturesTableViewCell.swift */,
 				E455194A1EC4605B006A3B73 /* IntroductionTableViewCell.swift */,
+				E49D240D1EC69FC900D3D974 /* OptionTableViewCell.swift */,
 			);
-			name = Template;
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		E41F7D041EC368A0002E8184 /* Support Files */ = {
@@ -282,7 +285,7 @@
 				E4089FB21EBAE5180042221D /* Dao */,
 				E4089FD51EBAEF7F0042221D /* Manager */,
 				E4089FE41EBB36150042221D /* Controller */,
-				E4089FE51EBB36220042221D /* Template */,
+				E4089FE51EBB36220042221D /* Cell */,
 				E4089FD81EBAF0020042221D /* Tool */,
 				E41F7D041EC368A0002E8184 /* Support Files */,
 				E4962BE11EB4B08000DF8CAE /* AppDelegate.swift */,
@@ -535,6 +538,7 @@
 				E4089FBA1EBAE58F0042221D /* OptionDao.swift in Sources */,
 				E4089FDA1EBAF0250042221D /* Global.swift in Sources */,
 				E4962BEA1EB4B08000DF8CAE /* Tsukuba.xcdatamodeld in Sources */,
+				E49D240E1EC69FC900D3D974 /* OptionTableViewCell.swift in Sources */,
 				E41F7D121EC3EB92002E8184 /* CustomBack.swift in Sources */,
 				E48972231EBF64320064EA13 /* MessageManager.swift in Sources */,
 				E41F7D0A1EC36C2A002E8184 /* RegisterViewController.swift in Sources */,

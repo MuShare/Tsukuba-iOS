@@ -22,6 +22,7 @@ class Message {
     var author: String?
     var avatar: String?
     var paths: [String] = []
+    var options: [Option] = []
     
     init(_ object: JSON) {
         mid = object["mid"].stringValue
@@ -36,10 +37,25 @@ class Message {
         author = object["author"].string
         avatar = object["avatar"].string
         
-        for picture in object["pictures"].arrayValue {
-            paths.append(picture["path"].stringValue)
+        // Pictures
+        let pictures = object["pictures"].arrayValue;
+        if pictures.count > 0 {
+            for picture in pictures {
+                paths.append(picture["path"].stringValue)
+            }
         }
         
+        // Options
+        let oidsJSONArray = object["options"].arrayValue
+        if oidsJSONArray.count > 0 {
+            var oids: [String] = []
+            for oid in oidsJSONArray {
+                oids.append(oid.stringValue)
+            }
+            for option in DaoManager.sharedInstance.optionDao.findInOids(oids) {
+                options.append(option)
+            }
+        }
     }
     
 }
