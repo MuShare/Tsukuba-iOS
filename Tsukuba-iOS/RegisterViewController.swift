@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import Alamofire
+import NVActivityIndicatorView
 
-class RegisterViewController: EditingViewController {
+class RegisterViewController: EditingViewController, NVActivityIndicatorViewable {
 
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
@@ -65,15 +65,15 @@ class RegisterViewController: EditingViewController {
             return
         }
         
-        registerButton.isEnabled = false
-        loadingActivityIndicatorView.startAnimating()
+        finishEdit()
+        startAnimating()
+        
         user.register(email: emailTextField.text!,
                       name: usernameTextField.text!,
                       password: passwordTextField.text!)
         { (success, message) in
-            self.registerButton.isEnabled = true
-            self.loadingActivityIndicatorView.stopAnimating()
-            self.finishEdit()
+            self.stopAnimating()
+            
             if (success) {
                 self.registered = true
                 self.emailTextField.isHidden = true

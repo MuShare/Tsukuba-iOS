@@ -8,8 +8,9 @@
 
 import UIKit
 import Eureka
+import NVActivityIndicatorView
 
-class EditMessageViewController: FormViewController {
+class EditMessageViewController: FormViewController, NVActivityIndicatorViewable {
 
     let dao = DaoManager.sharedInstance
     let messageManager = MessageManager.sharedInstance
@@ -66,7 +67,7 @@ class EditMessageViewController: FormViewController {
             }
         }
         
-        replaceBarButtonItemWithActivityIndicator(controller: self)
+        startAnimating()
         
         messageManager.modify(messageId,
                               title: messageTitle!,
@@ -74,6 +75,7 @@ class EditMessageViewController: FormViewController {
                               price: price,
                               oids: oids)
         { (success, tip) in
+            self.stopAnimating()
             if (success) {
                 self.navigationController?.popViewController(animated: true)
             } else {
@@ -89,6 +91,12 @@ class EditMessageViewController: FormViewController {
         category = dao.categoryDao.getByCid(message.cid)
         selections = dao.selectionDao.findEnableByCategory(category)
         
+        // Set default value for title, price and introduction.
+        messageTitle = message.title
+        price = message.price
+        introduction = message.introduction!
+        
+        // Init form.
         form
             +++ Section(NSLocalizedString("message_enable", comment: ""))
             
@@ -135,6 +143,7 @@ class EditMessageViewController: FormViewController {
             form +++ selectionSection
             selectionSections.append(selectionSection)
             
+            // Set selected option.
             for option in message.options {
                 if let row: ListCheckRow<String> = selectionSection.rowBy(tag: option.oid!) {
                     row.didSelect()

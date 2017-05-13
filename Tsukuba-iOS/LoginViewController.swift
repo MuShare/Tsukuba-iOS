@@ -9,8 +9,9 @@
 import UIKit
 import FacebookCore
 import FacebookLogin
+import NVActivityIndicatorView
 
-class LoginViewController: EditingViewController {
+class LoginViewController: EditingViewController, NVActivityIndicatorViewable {
 
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
@@ -49,14 +50,11 @@ class LoginViewController: EditingViewController {
             return
         }
         
-        loginButton.isEnabled = false
-        loadingActivityIndicatorView.startAnimating()
+        finishEdit()
+        startAnimating()
         
-        user.login(email: emailTextField.text!,
-                                         password: passwordTextField.text!)
-        { (success, message) in
-            self.loginButton.isEnabled = true
-            self.loadingActivityIndicatorView.stopAnimating()
+        user.login(email: emailTextField.text!, password: passwordTextField.text!) { (success, message) in
+            self.stopAnimating()
             if success {
                 self.dismiss(animated: true, completion: nil)
             } else {
@@ -81,11 +79,9 @@ class LoginViewController: EditingViewController {
                     print("User cancelled login.");
                 }
             case .success(_, _, let accessToken):
-                self.facebookLoginButton.isEnabled = false
-                self.facebookLoadingActivityIndicatorView.startAnimating()
+                self.startAnimating()
                 self.user.facebookLogin(accessToken.authenticationToken, completion: { (success, message) in
-                    self.facebookLoginButton.isEnabled = true
-                    self.facebookLoadingActivityIndicatorView.stopAnimating()
+                    self.stopAnimating()
                     if success {
                         self.dismiss(animated: true, completion: nil)
                     } else {

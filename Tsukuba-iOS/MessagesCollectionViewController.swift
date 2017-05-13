@@ -34,7 +34,6 @@ class MessagesCollectionViewController: UICollectionViewController, UICollection
                 self.collectionView?.es_stopPullToRefresh()
             }
         }
-        collectionView?.es_startPullToRefresh()
         
         // Set float button and menu.
         self.view.addSubview({
@@ -53,6 +52,9 @@ class MessagesCollectionViewController: UICollectionViewController, UICollection
         }())
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        collectionView?.es_startPullToRefresh()
+    }
 
     // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

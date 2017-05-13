@@ -8,8 +8,9 @@
 
 import UIKit
 import Eureka
+import NVActivityIndicatorView
 
-class CreateMessageViewController: FormViewController {
+class CreateMessageViewController: FormViewController, NVActivityIndicatorViewable {
 
     let dao = DaoManager.sharedInstance
     let messgaeManager = MessageManager.sharedInstance
@@ -110,7 +111,7 @@ class CreateMessageViewController: FormViewController {
             }
         }
 
-        replaceBarButtonItemWithActivityIndicator(controller: self)
+        startAnimating()
         
         messgaeManager.create(title: messageTitle!,
                        introudction: introduction,
@@ -119,6 +120,7 @@ class CreateMessageViewController: FormViewController {
                        oids: oids,
                        cid: category.cid!)
         { (success, mid) in
+            self.stopAnimating()
             if success {
                 self.mid = mid!
                 self.performSegue(withIdentifier: "pictureSegue", sender: self)

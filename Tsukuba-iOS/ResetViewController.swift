@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import Alamofire
+import NVActivityIndicatorView
 
-class ResetViewController: EditingViewController {
+class ResetViewController: EditingViewController, NVActivityIndicatorViewable {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var submitButton: UIButton!
@@ -57,15 +57,12 @@ class ResetViewController: EditingViewController {
             return
         }
         
-        self.finishEdit()
-        // Disable submit button, start loading...
-        submitButton.isEnabled = false
-        loadingActivityIndicatorView.startAnimating()
+        finishEdit()
+        startAnimating()
     
         user.reset(email: emailTextField.text!) { (success, message) in
-            // Enable submit button, stop loading.
-            self.submitButton.isEnabled = true
-            self.loadingActivityIndicatorView.stopAnimating()
+            self.stopAnimating()
+
             if (success) {
                 // Set submit flag to true
                 self.submit = true
@@ -83,4 +80,5 @@ class ResetViewController: EditingViewController {
             }
         }
     }
+    
 }

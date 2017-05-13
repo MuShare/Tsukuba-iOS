@@ -31,6 +31,9 @@ class MyMessagesTableViewController: UITableViewController {
                 self.tableView.es_stopPullToRefresh()
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         tableView.es_startPullToRefresh()
     }
 

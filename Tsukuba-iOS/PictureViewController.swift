@@ -91,7 +91,6 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
-    
     @IBAction func uploadPicture(_ sender: Any) {
         let alertController = UIAlertController(title: NSLocalizedString("upload_message_picture", comment: ""),
                                                 message: NSLocalizedString("photo_tip", comment: ""),
@@ -125,7 +124,11 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func finishUpload(_ sender: Any) {
+        // If modal exist, try to exit modal at first.
         self.dismiss(animated: true, completion: nil)
+        // else pop 2 view controllers from nagivation.
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController];
+        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true);
     }
     
 }
