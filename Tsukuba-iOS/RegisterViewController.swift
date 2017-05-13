@@ -38,6 +38,10 @@ class RegisterViewController: EditingViewController {
         self.view.insertSubview(backgroundImageView, at: 0)
     }
     
+    override func viewDidLayoutSubviews() {
+        self.shownHeight = registerButton.frame.minY
+    }
+    
     // MARK: - Action
     @IBAction func back(_ sender: Any) {
         _ = self.navigationController?.popViewController(animated: true)

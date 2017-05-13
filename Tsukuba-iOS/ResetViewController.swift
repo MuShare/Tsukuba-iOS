@@ -23,8 +23,6 @@ class ResetViewController: EditingViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.shownHeight = submitButton.frame.maxY
         
         //Set background image
         self.view.insertSubview({
@@ -35,6 +33,10 @@ class ResetViewController: EditingViewController {
         }(), at: 0)
         
         self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewDidLayoutSubviews() {
+        self.shownHeight = submitButton.frame.minY
     }
 
     // MARK: - Action

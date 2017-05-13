@@ -9,6 +9,9 @@
 import Alamofire
 import SwiftyUserDefaults
 
+let UserTypeEmail = "email"
+let UserTypeFacebook = "facebook"
+
 class UserManager {
     
     var dao: DaoManager!
@@ -159,12 +162,14 @@ class UserManager {
             if response.statusOK() {
                 let result = response.getResult()
                 // Login success, save user information to NSUserDefaults.
-                self.type = "email";
+                self.type = UserTypeEmail;
                 self.token = result["token"].stringValue
                 let user = result["user"]
                 self.identifier = email
                 self.name = user["name"].stringValue
                 self.avatar = user["avatar"].stringValue
+                self.contact = user["contact"].stringValue
+                self.address = user["address"].stringValue
                 self.userRev = user["rev"].intValue
                 self.login = true
                 completion?(true, nil);
@@ -201,12 +206,14 @@ class UserManager {
             if response.statusOK() {
                 let result = response.getResult()
                 // Login success, save user information to NSUserDefaults.
-                self.type = "facebook";
+                self.type = UserTypeFacebook;
                 self.token = result["token"].stringValue
                 let user = result["user"]
                 self.identifier = user["identifier"].stringValue
                 self.name = user["name"].stringValue
                 self.avatar = user["avatar"].stringValue
+                self.contact = user["contact"].stringValue
+                self.address = user["address"].stringValue
                 self.userRev = user["rev"].intValue
                 self.login = true
                 completion?(true, nil);
@@ -279,11 +286,14 @@ class UserManager {
     
     func logout() {
         self.login = false
+        self.userRev = 0
         self.token = ""
         self.type = ""
         self.name = ""
         self.avatar = ""
         self.identifier = ""
+        self.address = ""
+        self.contact = ""
     }
     
     func uploadAvatar(_ image: UIImage, completion: ((Bool) -> Void)?) {

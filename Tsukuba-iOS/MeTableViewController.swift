@@ -29,6 +29,9 @@ class MeTableViewController: UITableViewController {
             updateUserInfo()
             user.pullUser(completion: { (success) in
                 if success {
+                    if (self.user.contact == "" || self.user.address == "") {
+                        self.performSegue(withIdentifier: "profileSegue", sender: self)
+                    }
                     self.updateUserInfo()
                 }
             })
@@ -93,9 +96,12 @@ class MeTableViewController: UITableViewController {
     // MARK: - Service
     func updateUserInfo() {
         titleLabel.text = user.name
-        subtitleLabel.text = user.identifier
         avatarImageView.kf.setImage(with: user.avatarURL)
+        if user.type == UserTypeEmail {
+            subtitleLabel.text = user.identifier
+        } else if user.type == UserTypeFacebook {
+            subtitleLabel.text = NSLocalizedString("sign_in_facebook", comment: "")
+        }
     }
-    
     
 }

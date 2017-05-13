@@ -31,6 +31,10 @@ class LoginViewController: EditingViewController {
         }()
         self.view.insertSubview(backgroundImageView, at: 0)
     }
+    
+    override func viewDidLayoutSubviews() {
+        self.shownHeight = loginButton.frame.minY
+    }
 
     // MARK: - Action
     @IBAction func close(_ sender: Any) {

@@ -22,7 +22,7 @@ password_wrong = "Your password is wrong, check and try again.";
 facebook_oauth_error = "Facebook OAuth login failed, plasese try Again!";
 
 sign_in_sign_up = "Sign in to sync request history";
-
+sign_in_facebook = "Sign in with Facebook";
 sign_out_title = "Sign out";
 sign_out_message = "Are you sure to sign out now?";
 
