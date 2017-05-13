@@ -34,7 +34,10 @@ class CreateMessageViewController: FormViewController {
         
         self.setCustomBack()
         self.view.tintColor = Color.main
-            
+        ListCheckRow<String>.defaultCellSetup = { cell, row in
+            cell.tintColor = Color.main
+        }
+        
         navigationOptions = RowNavigationOptions.Enabled.union(.SkipCanNotBecomeFirstResponderRow)
         navigationOptionsBackup = navigationOptions
         
@@ -73,12 +76,12 @@ class CreateMessageViewController: FormViewController {
             let selectionSection = SelectableSection<ListCheckRow<String>>(selection.identifier!,
                                                                            selectionType: .singleSelection(enableDeselection: true))
             for option in dao.optionDao.findEnableBySelection(selection) {
-                let row = ListCheckRow<String>()
-                row.title = option.identifier
-                row.selectableValue = option.oid
-                selectionSection.append(row)
+                selectionSection <<< ListCheckRow<String>() { row in
+                    row.title = option.identifier
+                    row.selectableValue = option.oid
+                }
             }
-            form.append(selectionSection)
+            form +++ selectionSection
             selectionSections.append(selectionSection)
         }
 

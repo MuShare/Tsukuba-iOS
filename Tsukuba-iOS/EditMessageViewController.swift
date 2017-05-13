@@ -30,6 +30,9 @@ class EditMessageViewController: FormViewController {
         
         self.setCustomBack()
         self.view.tintColor = Color.main
+        ListCheckRow<String>.defaultCellSetup = { cell, row in
+            cell.tintColor = Color.main
+        }
         
         messageManager.detail(messageId) { (success, message) in
             if success {
@@ -52,6 +55,8 @@ class EditMessageViewController: FormViewController {
     func loadForm() {
         category = dao.categoryDao.getByCid(message.cid)
         selections = dao.selectionDao.findEnableByCategory(category)
+        
+        
         
         form
             +++ Section(NSLocalizedString("message_basic_info", comment: ""))
@@ -83,14 +88,24 @@ class EditMessageViewController: FormViewController {
             let selectionSection = SelectableSection<ListCheckRow<String>>(selection.identifier!,
                                                                            selectionType: .singleSelection(enableDeselection: true))
             for option in dao.optionDao.findEnableBySelection(selection) {
-                let row = ListCheckRow<String>()
-                row.title = option.identifier
-                row.selectableValue = option.oid
-                selectionSection.append(row)
+                selectionSection <<< ListCheckRow<String>() { row in
+                        row.tag = option.oid
+                        row.title = option.identifier
+                        row.selectableValue = option.oid
+                }
+                
             }
-            form.append(selectionSection)
+            form +++ selectionSection
             selectionSections.append(selectionSection)
+            
+            for option in message.options {
+                if let row: ListCheckRow<String> = selectionSection.rowBy(tag: option.oid!) {
+                    row.didSelect()
+                }
+            }
         }
+        
+        
     }
 
 }

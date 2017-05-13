@@ -536,19 +536,19 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Npe-cd-uCM">
-                                            <rect key="frame" x="20" y="152" width="95" height="18"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" red="0.9767574667930603" green="0.52440595626831055" blue="0.6513400673866272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="50C-yC-OQG">
-                                            <rect key="frame" x="4" y="151" width="12" height="18"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="12" id="u34-oH-4MD"/>
-                                            </constraints>
+                                            <rect key="frame" x="4" y="151" width="16" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" red="0.97675746679999997" green="0.52440595629999998" blue="0.65134006739999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Npe-cd-uCM">
+                                            <rect key="frame" x="23" y="151" width="95" height="18"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="18" id="eqI-QT-brB"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.9767574667930603" green="0.52440595626831055" blue="0.6513400673866272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -556,16 +556,15 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottomMargin" secondItem="9XP-1C-nbN" secondAttribute="bottom" constant="20" id="1PZ-w2-FsV"/>
+                                    <constraint firstItem="50C-yC-OQG" firstAttribute="leading" secondItem="iWD-Tk-67D" secondAttribute="leadingMargin" constant="-4" id="2le-hw-409"/>
+                                    <constraint firstItem="Npe-cd-uCM" firstAttribute="leading" secondItem="iWD-Tk-67D" secondAttribute="leadingMargin" constant="15" id="2yM-t0-0aw"/>
                                     <constraint firstItem="zdb-pK-h6i" firstAttribute="top" secondItem="iWD-Tk-67D" secondAttribute="topMargin" constant="-8" id="7pH-3H-Umw"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="50C-yC-OQG" secondAttribute="bottom" constant="-2" id="8fF-to-Rjc"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="Npe-cd-uCM" secondAttribute="trailing" constant="2" id="9Iz-Xi-0Ru"/>
-                                    <constraint firstItem="Npe-cd-uCM" firstAttribute="leading" secondItem="zdb-pK-h6i" secondAttribute="trailing" constant="-105" id="HDA-DD-yE0"/>
-                                    <constraint firstItem="Npe-cd-uCM" firstAttribute="leading" secondItem="iWD-Tk-67D" secondAttribute="leadingMargin" constant="12" id="U0G-Kl-BQM"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="Npe-cd-uCM" secondAttribute="bottom" constant="-2" id="VMU-52-4Bb"/>
                                     <constraint firstItem="9XP-1C-nbN" firstAttribute="leading" secondItem="iWD-Tk-67D" secondAttribute="leadingMargin" constant="-2" id="cNU-2K-R6F"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="Npe-cd-uCM" secondAttribute="bottom" constant="-3" id="ddU-o5-Bbw"/>
-                                    <constraint firstItem="50C-yC-OQG" firstAttribute="leading" secondItem="iWD-Tk-67D" secondAttribute="leadingMargin" constant="-4" id="dqB-PR-hUP"/>
                                     <constraint firstItem="zdb-pK-h6i" firstAttribute="leading" secondItem="iWD-Tk-67D" secondAttribute="leadingMargin" constant="-8" id="gOj-nz-vZ1"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="50C-yC-OQG" secondAttribute="bottom" constant="-2" id="i6K-on-0zy"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="9XP-1C-nbN" secondAttribute="trailing" constant="-1" id="ika-M9-DuA"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="Npe-cd-uCM" secondAttribute="trailing" constant="-1" id="ldm-dr-zic"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="zdb-pK-h6i" secondAttribute="trailing" constant="-8" id="okm-gj-LhN"/>
                                 </constraints>
                                 <connections>
@@ -842,7 +841,7 @@
                                         <rect key="frame" x="0.0" y="120" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PGi-1B-49A" id="emb-bc-hnq">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sell" translatesAutoresizingMaskIntoConstraints="NO" id="2JY-K4-6OF">
@@ -867,6 +866,7 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="LBx-Jr-mW2" secondAttribute="trailing" constant="33" id="ChD-vc-PRk"/>
                                         </constraints>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <segue destination="Q20-3A-u4T" kind="push" id="UAl-hH-qVO"/>
                                         </connections>
@@ -1842,6 +1842,6 @@
         <image name="write" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4fN-ix-N1n"/>
+        <segue reference="IMR-lI-lwG"/>
     </inferredMetricsTieBreakers>
 </document>
