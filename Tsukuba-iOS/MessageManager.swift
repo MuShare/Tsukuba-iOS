@@ -25,8 +25,7 @@ class MessageManager {
         dao = DaoManager.sharedInstance
     }
     
-    func create(title: String, introudction: String, sell: Bool, price: Int, oids: [String], cid: String,
-                success: ((String) -> Void)?, fail: (() -> Void)?) {
+    func create(title: String, introudction: String, sell: Bool, price: Int, oids: [String], cid: String, completion: ((Bool, String?) -> Void)?) {
 
         let params: Parameters = [
             "cid": cid,
@@ -46,10 +45,52 @@ class MessageManager {
             .responseJSON { (responseObject) in
                 let response = Response(responseObject)
                 if response.statusOK() {
-                    success?(response.getResult()["mid"].stringValue)
+                    completion?(true, response.getResult()["mid"].stringValue)
                 } else {
-                    fail?()
+                    switch response.errorCode() {
+                    case .objectId:
+                        completion?(false, NSLocalizedString("error_object_id", comment: ""))
+                    case .saveFailed:
+                        completion?(false, NSLocalizedString("error_save_failed", comment: ""))
+                    default:
+                        completion?(false, NSLocalizedString("error_unknown", comment: ""))
+                    }
                 }
+        }
+    }
+    
+    func modify(_ mid: String, title: String, introudction: String, price: Int, oids: [String], completion: ((Bool, String?) -> Void)?) {
+        let params: Parameters = [
+            "mid": mid,
+            "title": title,
+            "introduction": introudction,
+            "oids": JSON(oids).rawString()!,
+            "price": price
+        ]
+        
+        Alamofire.request(createUrl("api/message/modify"),
+                          method: .post,
+                          parameters: params,
+                          encoding: URLEncoding.default,
+                          headers: tokenHeader())
+        .responseJSON { (responseObject) in
+            let response = Response(responseObject)
+            if response.statusOK() {
+                completion?(true, nil)
+            } else {
+                switch response.errorCode() {
+                case .objectId:
+                    completion?(false, NSLocalizedString("error_object_id", comment: ""))
+                case .saveFailed:
+                    completion?(false, NSLocalizedString("error_save_failed", comment: ""))
+                case .invalidParameter:
+                    completion?(false, NSLocalizedString("error_invalid_parameter", comment: ""))
+                case .modifyMessageNoPrivilege:
+                    completion?(false, NSLocalizedString("modify_message_no_privilege", comment: ""))
+                default:
+                    completion?(false, NSLocalizedString("error_unknown", comment: ""))
+                }
+            }
         }
     }
     

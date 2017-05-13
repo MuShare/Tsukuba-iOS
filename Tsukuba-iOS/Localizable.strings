@@ -6,7 +6,11 @@ clear_name = "Clear";
 tab_name = "Tab";
 delete_name = "Delete";
 
-token_error = "User authorization is invalide. Please sign in again!";
+error_token = "User authorization is invalide. Please sign in again!";
+error_object_id = "Object id error.";
+error_save_failed = "Save failed.";
+error_invalid_parameter = "Invalid parameter.";
+error_unknown = "Unknown error.";
 
 me_title = "Sign in / Sign up";
 me_subtitle = "Welcome to Tsukuba, sign in now!";
@@ -53,3 +57,5 @@ message_title = "Title";
 message_title_placeholder = "Message title";
 message_price = "Price";
 message_introduction_placeholder = "Introduction for this message.";
+
+modify_message_no_privilege = "You do not have previlige to edit this message.";

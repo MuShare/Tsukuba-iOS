@@ -175,12 +175,12 @@ class UserManager {
                 completion?(true, nil);
             } else {
                 switch response.errorCode() {
-                case ErrorCode.emailNotExist.rawValue:
+                case .emailNotExist:
                     completion?(false, NSLocalizedString("email_not_exist", comment: ""))
-                case ErrorCode.passwordWrong.rawValue:
+                case .passwordWrong:
                     completion?(false, NSLocalizedString("password_wrong", comment: ""))
                 default:
-                    break
+                    completion?(false, NSLocalizedString("error_unknown", comment: ""))
                 }
             }
         }
@@ -219,10 +219,10 @@ class UserManager {
                 completion?(true, nil);
             } else {
                 switch response.errorCode() {
-                case ErrorCode.facebookAccessTokenInvalid.rawValue:
+                case .facebookAccessTokenInvalid:
                     completion?(false, NSLocalizedString("facebook_oauth_error", comment: ""))
                 default:
-                    break
+                    completion?(false, NSLocalizedString("error_unknown", comment: ""))
                 }
             }
         })
@@ -244,12 +244,12 @@ class UserManager {
                 comletion?(true, nil)
             } else {
                 switch response.errorCode() {
-                case ErrorCode.emailNotExist.rawValue:
+                case .emailNotExist:
                     comletion?(false, NSLocalizedString("email_not_exist", comment: ""))
-                case ErrorCode.sendResetPasswordMail.rawValue:
+                case .sendResetPasswordMail:
                     comletion?(false, NSLocalizedString("reset_password_failed", comment: ""))
                 default:
-                    break
+                    comletion?(false, NSLocalizedString("error_unknown", comment: ""))
                 }
             }
         }
@@ -274,11 +274,10 @@ class UserManager {
                 completion?(true, nil)
             } else {
                 switch response.errorCode() {
-                case ErrorCode.emailRegistered.rawValue:
+                case .emailRegistered:
                     completion?(false, NSLocalizedString("email_registered", comment: ""))
                 default:
-                    completion?(false, nil)
-                    break
+                    completion?(false, NSLocalizedString("error_unknown", comment: ""))
                 }
             }
         }

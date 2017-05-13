@@ -51,14 +51,51 @@ class EditMessageViewController: FormViewController {
         // Pass the selected object to the new view controller.
     }
     
+    @IBAction func modifyMessage(_ sender: Any) {
+        if messageTitle == nil {
+            showAlert(title: NSLocalizedString("tip_name", comment: ""),
+                      content: "Please input a post title.",
+                      controller: self)
+            return
+        }
+        
+        var oids: [String] = []
+        for section in selectionSections {
+            if let oid = section.selectedRow()?.value {
+                oids.append(oid)
+            }
+        }
+        
+        replaceBarButtonItemWithActivityIndicator(controller: self)
+        
+        messageManager.modify(messageId,
+                              title: messageTitle!,
+                              introudction: introduction,
+                              price: price,
+                              oids: oids)
+        { (success, tip) in
+            if (success) {
+                self.navigationController?.popViewController(animated: true)
+            } else {
+                showAlert(title: NSLocalizedString("tip_name", comment: ""),
+                          content: tip!,
+                          controller: self)
+            }
+        }
+    }
+    
     // MARK: - Service
-    func loadForm() {
+    private func loadForm() {
         category = dao.categoryDao.getByCid(message.cid)
         selections = dao.selectionDao.findEnableByCategory(category)
         
-        
-        
         form
+            +++ Section(NSLocalizedString("message_enable", comment: ""))
+            
+            <<< SwitchRow() {
+                $0.title = "Enable"
+            }
+            
             +++ Section(NSLocalizedString("message_basic_info", comment: ""))
             
             <<< TextRow() {

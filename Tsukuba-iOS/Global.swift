@@ -52,15 +52,17 @@ extension DefaultsKeys {
 
 enum ErrorCode: Int {
     case badRequest = -99999
+    case objectId = 802
     case tokenError = 901
+    case saveFailed = 902
+    case invalidParameter = 903
     case emailRegistered = 1011
     case illegalIDeviceOS = 1021
     case emailNotExist = 1022
     case passwordWrong = 1023
     case facebookAccessTokenInvalid = 1031
     case sendResetPasswordMail = 1061
-    case modifyMessageMidError = 2022
-    case modifyMessageNoPrivilege = 2023
+    case modifyMessageNoPrivilege = 2021
     case savePicture = 2041
 }
 

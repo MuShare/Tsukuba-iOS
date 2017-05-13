@@ -12,7 +12,7 @@ import Eureka
 class CreateMessageViewController: FormViewController {
 
     let dao = DaoManager.sharedInstance
-    let messgae = MessageManager.sharedInstance
+    let messgaeManager = MessageManager.sharedInstance
     
     var category: Category!
     var selections: [Selection]!
@@ -112,18 +112,21 @@ class CreateMessageViewController: FormViewController {
 
         replaceBarButtonItemWithActivityIndicator(controller: self)
         
-        messgae.create(title: messageTitle!,
+        messgaeManager.create(title: messageTitle!,
                        introudction: introduction,
                        sell: sell,
                        price: price,
                        oids: oids,
-                       cid: category.cid!,
-                       success:
-        { (mid) in
-            self.mid = mid
-            self.performSegue(withIdentifier: "pictureSegue", sender: self)
-        }) {
-            
+                       cid: category.cid!)
+        { (success, mid) in
+            if success {
+                self.mid = mid!
+                self.performSegue(withIdentifier: "pictureSegue", sender: self)
+            } else {
+                showAlert(title: NSLocalizedString("tip_name", comment: ""),
+                          content: NSLocalizedString("create_message_fail", comment: ""),
+                          controller: self)
+            }
         }
 
     }
