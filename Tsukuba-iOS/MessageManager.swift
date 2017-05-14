@@ -94,6 +94,26 @@ class MessageManager {
         }
     }
     
+    func loadPictures(_ mid: String, completion: ((Bool, [Picture]) -> Void)?) {
+        Alamofire.request(createUrl("api/message/pictures/" + mid),
+                          method: .get,
+                          parameters: nil,
+                          encoding: URLEncoding.default,
+                          headers: nil)
+        .responseJSON { (responseObject) in
+            let response = Response(responseObject)
+            if response.statusOK() {
+                var pictures: [Picture] = []
+                for object in response.getResult()["pictures"].arrayValue {
+                    pictures.append(Picture(object))
+                }
+                completion?(true, pictures)
+            } else {
+                completion?(false, [])
+            }
+        }
+    }
+    
     func uploadPicture(_ image: UIImage, mid: String, completion: ((Bool, JSON?) -> Void)?) {
         let data = UIImageJPEGRepresentation(resizeImage(image: image, newWidth: 480)!, 1.0)
         Alamofire.upload(multipartFormData: { multipartFormData in

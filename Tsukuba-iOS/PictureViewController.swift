@@ -9,14 +9,23 @@
 import UIKit
 import SwiftyJSON
 
+enum PictureViewControllerDoneType: Int {
+    case dismiss = 0
+    case pop = 1
+    case pop2 = 2
+}
+
 class PictureViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var uploadButton: UIButton!
     @IBOutlet weak var picturesCollectionView: UICollectionView!
     
-    let message = MessageManager.sharedInstance
+    let messageManager = MessageManager.sharedInstance
     
     var mid: String!
+    var doneType: PictureViewControllerDoneType = .dismiss
+    var pictures: [Picture] = []
+    
     var images: [UIImage] = []
     var pids: [String] = []
     var uploadingCell: PictureCollectionViewCell!
@@ -26,7 +35,13 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.hidesBackButton = true
+        // If done type is pop, allow user to back.
+        // else do not allow to back, user only can click done button to finish uploading.
+        if doneType == .pop {
+            self.setCustomBack()
+        } else {
+            self.navigationItem.hidesBackButton = true
+        }
         
         imagePickerController.delegate = self
         imagePickerController.navigationBar.barTintColor = Color.main
@@ -34,6 +49,12 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         imagePickerController.navigationBar.titleTextAttributes = [
             NSForegroundColorAttributeName : UIColor.white
         ]
+        
+        messageManager.loadPictures(mid) { (success, pictures) in
+            self.pictures = pictures
+            self.picturesCollectionView.reloadData()
+        }
+
     }
     
     // MARK: UICollectionViewDelegateFlowLayout
@@ -44,13 +65,23 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     // MARK: UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        return pictures.count + images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pictureCell", for: indexPath) as! PictureCollectionViewCell
-        cell.pictureImageView.image = images[indexPath.row]
-        if indexPath.row == images.count - 1 {
+        
+        let pictureCount = pictures.count
+        // If index is less than the number of existed pictures' paths, load existed pictures,
+        // else load pictures from UIImagePickerController.
+        if indexPath.row < pictureCount {
+            cell.pictureImageView.kf.setImage(with: imageURL(pictures[indexPath.row].path))
+            cell.removeButton.isHidden = false
+        } else {
+            cell.pictureImageView.image = images[indexPath.row - pictureCount]
+        }
+        
+        if indexPath.row == pictureCount + images.count - 1 && images.count > 0 {
             cell.startLoading()
             uploadingCell = cell
         }
@@ -64,7 +95,7 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         picker.dismiss(animated: true, completion: nil)
         picturesCollectionView.reloadData()
         
-        message.uploadPicture(image, mid: mid) { (success, picture) in
+        messageManager.uploadPicture(image, mid: mid) { (success, picture) in
             if success {
                 self.pids.append((picture?["pid"].stringValue)!)
                 self.uploadingCell.stopLoading()
@@ -76,11 +107,17 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBAction func removePicture(_ sender: UIButton) {
         let cell = sender.superview?.superview as! PictureCollectionViewCell
         let indexPath = picturesCollectionView.indexPath(for: cell)!
+        let picturesCount = pictures.count
+        let pid = indexPath.row < picturesCount ? pictures[indexPath.row].pid : pids[indexPath.row - picturesCount]
         cell.startLoading()
-        MessageManager.sharedInstance.removePicture(pids[indexPath.row]) { (success) in
+        MessageManager.sharedInstance.removePicture(pid!) { (success) in
             if success {
-                self.images.remove(at: indexPath.row)
-                self.pids.remove(at: indexPath.row)
+                if indexPath.row < picturesCount {
+                    self.pictures.remove(at: indexPath.row)
+                } else {
+                    self.images.remove(at: indexPath.row - picturesCount)
+                    self.pids.remove(at: indexPath.row - picturesCount)
+                }
                 self.picturesCollectionView.deleteItems(at: [indexPath])
             } else {
                 showAlert(title: NSLocalizedString("Tip", comment: ""),
@@ -124,11 +161,18 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func finishUpload(_ sender: Any) {
-        // If modal exist, try to exit modal at first.
-        self.dismiss(animated: true, completion: nil)
-        // else pop 2 view controllers from nagivation.
-        let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController];
-        self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true);
+        switch doneType {
+        case .dismiss:
+            // exit modal
+            self.dismiss(animated: true, completion: nil)
+        case .pop:
+            // Pop 1 view controller.
+            self.navigationController?.popViewController(animated: true)
+        case .pop2:
+            // Pop 2 view controllers.
+            let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+            self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
+        }
     }
     
 }

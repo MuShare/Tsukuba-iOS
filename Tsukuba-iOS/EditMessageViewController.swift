@@ -48,8 +48,11 @@ class EditMessageViewController: FormViewController, NVActivityIndicatorViewable
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "editPictureSegue" {
+            let destination = segue.destination as! PictureViewController
+            destination.doneType = .pop
+            destination.mid = message.mid
+        }
     }
     
     @IBAction func modifyMessage(_ sender: Any) {
@@ -98,34 +101,58 @@ class EditMessageViewController: FormViewController, NVActivityIndicatorViewable
         
         // Init form.
         form
-            +++ Section(NSLocalizedString("message_enable", comment: ""))
+            +++ Section()
             
-            <<< SwitchRow() {
-                $0.title = "Enable"
+            <<< ButtonRow() { row in
+                row.title = NSLocalizedString("message_edit_pictures", comment: "")
+                row.presentationMode = .segueName(segueName: "editPictureSegue", onDismiss: nil)
             }
+            
+            <<< ButtonRow() { row in
+                row.title = NSLocalizedString("message_close_title", comment: "")
+                row.cellStyle = .value1
+                row.cell.accessoryType = .disclosureIndicator
+                row.cell.tintColor = Color.main
+            }.onCellSelection({ (cell, row) in
+                let alertController = UIAlertController(title: NSLocalizedString("message_close_title", comment: ""),
+                                                        message: NSLocalizedString("message_close_content", comment: ""),
+                                                        preferredStyle: .alert)
+                let close = UIAlertAction(title: NSLocalizedString("yes_name", comment: ""),
+                                          style: .destructive,
+                                          handler:
+                { (action) in
+                    
+                })
+                let cancel = UIAlertAction(title: NSLocalizedString("cancel_name", comment: ""),
+                                           style: .cancel,
+                                           handler: nil)
+                alertController.addAction(close)
+                alertController.addAction(cancel)
+                self.present(alertController, animated: true, completion: nil)
+            })
             
             +++ Section(NSLocalizedString("message_basic_info", comment: ""))
             
-            <<< TextRow() {
-                $0.title = NSLocalizedString("message_title", comment: "")
-                $0.value = message.title!
-                $0.placeholder = NSLocalizedString("message_title_placeholder", comment: "")
-                }.onChange({ (row) in
+            <<< TextRow() { row in
+                row.title = NSLocalizedString("message_title", comment: "")
+                row.value = message.title!
+                row.placeholder = NSLocalizedString("message_title_placeholder", comment: "")
+                }.onChange({ row in
                     self.messageTitle = row.value
                 })
             
-            <<< IntRow(){
-                $0.title = NSLocalizedString("message_price", comment: "")
-                $0.value = message.price
-                $0.placeholder = "0"
-                }.onChange({ (row) in
+            <<< IntRow(){ row in
+                row.title = NSLocalizedString("message_price", comment: "")
+                row.value = message.price
+                row.placeholder = "0"
+                }.onChange({ row in
                     self.price = row.value ?? 0
                 })
             
-            <<< TextAreaRow() {
-                $0.value = message.introduction!
-                $0.placeholder = NSLocalizedString("message_introduction_placeholder", comment: "")
-                }.onChange({ (row) in
+            <<< TextAreaRow() { row in
+                row.value = message.introduction!
+                row.placeholder = NSLocalizedString("message_introduction_placeholder", comment: "")
+                }.onChange({ row in
                     self.introduction = row.value ?? ""
                 })
         
@@ -134,9 +161,9 @@ class EditMessageViewController: FormViewController, NVActivityIndicatorViewable
                                                                            selectionType: .singleSelection(enableDeselection: true))
             for option in dao.optionDao.findEnableBySelection(selection) {
                 selectionSection <<< ListCheckRow<String>() { row in
-                        row.tag = option.oid
-                        row.title = option.identifier
-                        row.selectableValue = option.oid
+                    row.tag = option.oid
+                    row.title = option.identifier
+                    row.selectableValue = option.oid
                 }
                 
             }
@@ -150,7 +177,6 @@ class EditMessageViewController: FormViewController, NVActivityIndicatorViewable
                 }
             }
         }
-        
         
     }
 

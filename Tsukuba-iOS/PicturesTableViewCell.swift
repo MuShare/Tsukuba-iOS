@@ -27,8 +27,8 @@ class PicturesTableViewCell: UITableViewCell {
     func fillWithMessage(_ message: Message) {
         // Slide view
         var inputs: [InputSource] = []
-        for path in message.paths {
-            inputs.append(KingfisherSource(urlString: createUrl(path))!)
+        for picture in message.pictures {
+            inputs.append(KingfisherSource(urlString: createUrl(picture.path))!)
         }
         // If message does not contain any picture, set a input using default cover.
         if inputs.count == 0 {

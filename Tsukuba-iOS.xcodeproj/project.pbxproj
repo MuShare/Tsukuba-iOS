@@ -26,6 +26,7 @@
 		E4089FEF1EBB4AD80042221D /* MyProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FEE1EBB4AD80042221D /* MyProfileTableViewController.swift */; };
 		E4089FF11EBB4F160042221D /* AvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FF01EBB4F160042221D /* AvatarViewController.swift */; };
 		E4089FF31EBB50790042221D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4089FF21EBB50790042221D /* Localizable.strings */; };
+		E408EEC41EC7672B00E6E596 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E408EEC31EC7672B00E6E596 /* Picture.swift */; };
 		E41ADBFC1EC151AA006479C5 /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41ADBFB1EC151AA006479C5 /* PictureCollectionViewCell.swift */; };
 		E41F7D011EC34CB8002E8184 /* MessagesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D001EC34CB8002E8184 /* MessagesCollectionViewController.swift */; };
 		E41F7D031EC3604C002E8184 /* MessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D021EC3604C002E8184 /* MessageCollectionViewCell.swift */; };
@@ -92,6 +93,7 @@
 		E4089FEE1EBB4AD80042221D /* MyProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileTableViewController.swift; sourceTree = "<group>"; };
 		E4089FF01EBB4F160042221D /* AvatarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarViewController.swift; sourceTree = "<group>"; };
 		E4089FF21EBB50790042221D /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		E408EEC31EC7672B00E6E596 /* Picture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
 		E41ADBFB1EC151AA006479C5 /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
 		E41F7D001EC34CB8002E8184 /* MessagesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesCollectionViewController.swift; sourceTree = "<group>"; };
 		E41F7D021EC3604C002E8184 /* MessageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			children = (
 				E4962BE81EB4B08000DF8CAE /* Tsukuba.xcdatamodeld */,
 				E48DE5521EC2D52C00E5CA25 /* Message.swift */,
+				E408EEC31EC7672B00E6E596 /* Picture.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				E4089FB61EBAE55C0042221D /* DaoTemplate.swift in Sources */,
 				E45519411EC44856006A3B73 /* MessageTableViewController.swift in Sources */,
 				E41F7D0C1EC36C4B002E8184 /* EditingViewController.swift in Sources */,
+				E408EEC41EC7672B00E6E596 /* Picture.swift in Sources */,
 				E4089FED1EBB3BF90042221D /* UserManager.swift in Sources */,
 				E41F7D031EC3604C002E8184 /* MessageCollectionViewCell.swift in Sources */,
 				E4089FE21EBAF8F40042221D /* CategoryCollectionViewCell.swift in Sources */,

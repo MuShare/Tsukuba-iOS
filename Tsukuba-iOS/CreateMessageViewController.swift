@@ -90,8 +90,17 @@ class CreateMessageViewController: FormViewController, NVActivityIndicatorViewab
 
     // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "pictureSegue" {
-            segue.destination.setValue(mid, forKey: "mid")
+        if segue.identifier == "createPictureSegue" {
+            let destination = segue.destination as! PictureViewController
+            destination.mid = mid
+            // Set done type for PictureViewController.
+            let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+            let lastViewController = viewControllers[viewControllers.count - 2]
+            if lastViewController.isKind(of: MessagesCollectionViewController.self) {
+                destination.doneType = .pop2
+            } else if lastViewController.isKind(of: SelectCategoryViewController.self) {
+                destination.doneType = .dismiss
+            }
         }
     }
     
@@ -123,7 +132,7 @@ class CreateMessageViewController: FormViewController, NVActivityIndicatorViewab
             self.stopAnimating()
             if success {
                 self.mid = mid!
-                self.performSegue(withIdentifier: "pictureSegue", sender: self)
+                self.performSegue(withIdentifier: "createPictureSegue", sender: self)
             } else {
                 showAlert(title: NSLocalizedString("tip_name", comment: ""),
                           content: NSLocalizedString("create_message_fail", comment: ""),

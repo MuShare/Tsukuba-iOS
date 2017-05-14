@@ -6,7 +6,6 @@
 //  Copyright © 2017 MuShare. All rights reserved.
 //
 
-import UIKit
 import SwiftyJSON
 
 class Message {
@@ -22,7 +21,7 @@ class Message {
     var introduction: String?
     var author: String?
     var avatar: String?
-    var paths: [String] = []
+    var pictures: [Picture] = []
     var options: [Option] = []
     
     init(_ object: JSON) {
@@ -40,10 +39,10 @@ class Message {
         avatar = object["avatar"].string
         
         // Pictures
-        let pictures = object["pictures"].arrayValue;
-        if pictures.count > 0 {
-            for picture in pictures {
-                paths.append(picture["path"].stringValue)
+        let picturesJOSONArray = object["pictures"].arrayValue;
+        if picturesJOSONArray.count > 0 {
+            for picture in picturesJOSONArray {
+                pictures.append(Picture(picture))
             }
         }
         
