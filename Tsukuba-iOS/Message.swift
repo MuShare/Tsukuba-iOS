@@ -17,6 +17,7 @@ class Message {
     var updateAt: Date!
     var price: Int!
     var cid: String!
+    var enable: Bool
     
     var introduction: String?
     var author: String?
@@ -32,6 +33,7 @@ class Message {
         updateAt = Date(timeIntervalSince1970: object["updateAt"].doubleValue / 1000)
         price = object["price"].intValue
         cid = object["cid"].stringValue
+        enable = object["enable"].boolValue
         
         // Detail info
         introduction = object["introduction"].string

@@ -234,4 +234,30 @@ class MessageManager {
         }
     }
     
+    func close(_ mid: String, completion: ((Bool, String?) -> Void)?) {
+        let params: Parameters = [
+            "mid": mid
+        ]
+        Alamofire.request(createUrl("api/message/close"),
+                          method: .post,
+                          parameters: params,
+                          encoding: URLEncoding.default,
+                          headers: tokenHeader())
+        .responseJSON { (responseObject) in
+            let response = Response(responseObject)
+            if response.statusOK() {
+                completion?(true, nil)
+            } else {
+                switch response.errorCode() {
+                case .objectId:
+                    completion?(false, NSLocalizedString("error_object_id", comment: ""))
+                case .modifyMessageNoPrivilege:
+                    completion?(false, NSLocalizedString("modify_message_no_privilege", comment: ""))
+                default:
+                    completion?(false, NSLocalizedString("error_unknown", comment: ""))
+                }
+            }
+        }
+    }
+    
 }

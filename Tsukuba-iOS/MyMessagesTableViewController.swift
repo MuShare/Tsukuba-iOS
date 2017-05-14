@@ -62,7 +62,9 @@ class MyMessagesTableViewController: UITableViewController {
     // MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedMessage = messages[indexPath.row]
-        self.performSegue(withIdentifier: "editMessageSegue", sender: self)
+        if selectedMessage.enable {
+            self.performSegue(withIdentifier: "editMessageSegue", sender: self)
+        }
     }
 
     // MARK: - Action

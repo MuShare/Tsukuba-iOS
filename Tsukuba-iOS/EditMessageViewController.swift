@@ -121,7 +121,7 @@ class EditMessageViewController: FormViewController, NVActivityIndicatorViewable
                                           style: .destructive,
                                           handler:
                 { (action) in
-                    
+                    self.closeMessage()
                 })
                 let cancel = UIAlertAction(title: NSLocalizedString("cancel_name", comment: ""),
                                            style: .cancel,
@@ -177,7 +177,20 @@ class EditMessageViewController: FormViewController, NVActivityIndicatorViewable
                 }
             }
         }
-        
+    }
+    
+    func closeMessage() {
+        startAnimating()
+        messageManager.close(messageId) { (success, tip) in
+            self.stopAnimating()
+            if (success) {
+                self.navigationController?.popViewController(animated: true)
+            } else {
+                showAlert(title: NSLocalizedString("tip_name", comment: ""),
+                          content: tip!,
+                          controller: self)
+            }
+        }
     }
 
 }
