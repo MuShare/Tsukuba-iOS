@@ -18,6 +18,7 @@ class Message {
     var price: Int!
     var cid: String!
     var enable: Bool
+    var seq: Int!
     
     var introduction: String?
     var author: User?
@@ -33,6 +34,7 @@ class Message {
         price = object["price"].intValue
         cid = object["cid"].stringValue
         enable = object["enable"].boolValue
+        seq = object["seq"].intValue
         
         // Detail info
         introduction = object["introduction"].string

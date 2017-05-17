@@ -19,6 +19,9 @@ class MessagesCollectionViewController: UICollectionViewController, UICollection
     var selectedMessage: Message!
     var sell = true
     
+    // Refresh flag, if this flag is true, collection view will be refreshed.
+    var refresh = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,6 +36,24 @@ class MessagesCollectionViewController: UICollectionViewController, UICollection
                 self.collectionView?.reloadData()
                 self.collectionView?.es_stopPullToRefresh()
             }
+        }
+        
+        collectionView?.es_addInfiniteScrolling {
+            let seq = self.messages.last?.seq
+            self.messageManager.loadMessage(self.sell, cid: self.category.cid, seq: seq, completion: { (success, messages) in
+                if messages.count == 0 {
+                    self.collectionView?.es_noticeNoMoreData()
+                } else {
+                    let startRow = self.messages.count
+                    self.messages = self.messages + messages
+                    var indexPaths: [IndexPath] = []
+                    for row in startRow...(self.messages.count - 1) {
+                        indexPaths.append(IndexPath(row: row, section: 0))
+                    }
+                    self.collectionView?.insertItems(at: indexPaths)
+                    self.collectionView?.es_stopLoadingMore()
+                }
+            })
         }
         
         // Set float button and menu.
@@ -53,7 +74,10 @@ class MessagesCollectionViewController: UICollectionViewController, UICollection
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        collectionView?.es_startPullToRefresh()
+        if refresh {
+            collectionView?.es_startPullToRefresh()
+            refresh = false
+        }
     }
 
     // MARK: Navigation

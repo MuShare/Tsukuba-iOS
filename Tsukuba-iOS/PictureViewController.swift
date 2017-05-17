@@ -171,7 +171,12 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         case .pop2:
             // Pop 2 view controllers.
             let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
-            self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
+            let destination = viewControllers[viewControllers.count - 3]
+            // If go back to MessagesCollectionViewController, the collection view should be refreshed.
+            if destination.isKind(of: MessagesCollectionViewController.self) {
+                destination.setValue(true, forKey: "refresh")
+            }
+            self.navigationController!.popToViewController(destination, animated: true)
         }
     }
     

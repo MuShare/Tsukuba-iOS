@@ -196,7 +196,7 @@ class MessageManager {
         let params: Parameters = [
             "sell": sell,
             "cid": cid ?? "",
-            "seq": seq ?? -1
+            "seq": seq ?? -1,
         ]
         Alamofire.request(createUrl("api/message/list"),
                           method: .get,
