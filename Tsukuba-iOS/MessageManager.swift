@@ -14,6 +14,7 @@ class MessageManager {
     static let pageSize = 18
 
     var dao: DaoManager!
+    var config: Config!
     var pictureUploadingProgress: Double! = 0
     
     static let sharedInstance: MessageManager = {
@@ -23,6 +24,7 @@ class MessageManager {
     
     init() {
         dao = DaoManager.sharedInstance
+        config = Config.sharedInstance
     }
     
     func create(title: String, introudction: String, sell: Bool, price: Int, oids: [String], cid: String, completion: ((Bool, String?) -> Void)?) {
@@ -41,7 +43,7 @@ class MessageManager {
                           method: .post,
                           parameters: params,
                           encoding: URLEncoding.default,
-                          headers: tokenHeader())
+                          headers: config.tokenHeader)
             .responseJSON { (responseObject) in
                 let response = Response(responseObject)
                 if response.statusOK() {
@@ -72,7 +74,7 @@ class MessageManager {
                           method: .post,
                           parameters: params,
                           encoding: URLEncoding.default,
-                          headers: tokenHeader())
+                          headers: config.tokenHeader)
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             if response.statusOK() {
@@ -122,7 +124,7 @@ class MessageManager {
                          usingThreshold: UInt64.init(),
                          to: createUrl("api/message/picture?mid=" + mid),
                          method: .post,
-                         headers: tokenHeader(),
+                         headers: config.tokenHeader,
                          encodingCompletion:
             { encodingResult in
                 switch encodingResult {
@@ -158,7 +160,7 @@ class MessageManager {
                           method: .delete,
                           parameters: params,
                           encoding: URLEncoding.default,
-                          headers: tokenHeader())
+                          headers: config.tokenHeader)
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             if response.statusOK() {
@@ -177,7 +179,7 @@ class MessageManager {
                           method: .get,
                           parameters: params,
                           encoding: URLEncoding.default,
-                          headers: tokenHeader())
+                          headers: config.tokenHeader)
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             if response.statusOK() {
@@ -202,7 +204,7 @@ class MessageManager {
                           method: .get,
                           parameters: params,
                           encoding: URLEncoding.default,
-                          headers: tokenHeader())
+                          headers: config.tokenHeader)
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             if response.statusOK() {
@@ -242,7 +244,7 @@ class MessageManager {
                           method: .post,
                           parameters: params,
                           encoding: URLEncoding.default,
-                          headers: tokenHeader())
+                          headers: config.tokenHeader)
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             if response.statusOK() {

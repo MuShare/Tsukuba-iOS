@@ -15,6 +15,7 @@ let UserTypeFacebook = "facebook"
 class UserManager {
     
     var dao: DaoManager!
+    var config: Config!
     
     var login: Bool {
         set {
@@ -112,6 +113,7 @@ class UserManager {
     
     init() {
         dao = DaoManager.sharedInstance
+        config = Config.sharedInstance
     }
     
     func pullUser(completion: ((Bool) -> Void)?) {
@@ -122,7 +124,7 @@ class UserManager {
                           method: .get,
                           parameters: params,
                           encoding: URLEncoding.default,
-                          headers: tokenHeader())
+                          headers: config.tokenHeader)
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             if response.statusOK() {
@@ -254,7 +256,7 @@ class UserManager {
                           method: .get,
                           parameters: params,
                           encoding: URLEncoding.default,
-                          headers: tokenHeader())
+                          headers: config.tokenHeader)
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             if response.statusOK() {
@@ -320,7 +322,7 @@ class UserManager {
                          usingThreshold: UInt64.init(),
                          to: createUrl("api/user/avatar"),
                          method: .post,
-                         headers: tokenHeader(),
+                         headers: config.tokenHeader,
                          encodingCompletion:
             { encodingResult in
                 switch encodingResult {
@@ -359,7 +361,7 @@ class UserManager {
                           method: .post,
                           parameters: params,
                           encoding: URLEncoding.default,
-                          headers: tokenHeader())
+                          headers: config.tokenHeader)
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             if response.statusOK() {

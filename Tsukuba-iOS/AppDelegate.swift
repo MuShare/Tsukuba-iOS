@@ -14,11 +14,23 @@ import FacebookCore
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let config = Config.sharedInstance
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // Set suitable columns for iPhone and iPad.
+        if config.columns == 0 {
+            let width = UIScreen.main.bounds.size.width
+            print(width)
+            if width < 768 {
+                config.columns = 3
+            } else {
+                config.columns = 4
+            }
+        }
         
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        
         return true
     }
 

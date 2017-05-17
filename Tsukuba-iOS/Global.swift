@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftyUserDefaults
 import Alamofire
 
 let DEBUG = true
@@ -33,23 +32,6 @@ open class Color: UIColor {
     }
 }
 
-extension DefaultsKeys {
-    static let type = DefaultsKey<String?>("type")
-    static let identifier = DefaultsKey<String?>("identifier")
-    static let name = DefaultsKey<String?>("name")
-    static let avatar = DefaultsKey<String?>("avatar")
-    static let contact = DefaultsKey<String?>("contact")
-    static let address = DefaultsKey<String?>("address")
-    static let deviceToken = DefaultsKey<String?>("deviceToken")
-    static let token = DefaultsKey<String?>("token")
-    static let login = DefaultsKey<Bool?>("login")
-    static let categoryRev = DefaultsKey<Int?>("categoryRev")
-    static let selectionRev = DefaultsKey<Int?>("selectionRev")
-    static let optionRev = DefaultsKey<Int?>("optionRev")
-    static let userRev = DefaultsKey<Int?>("userRev")
-    static let version = DefaultsKey<String?>("version")
-}
-
 enum ErrorCode: Int {
     case badRequest = -99999
     case objectId = 802
@@ -66,20 +48,6 @@ enum ErrorCode: Int {
     case savePicture = 2041
 }
 
-func token() -> String? {
-    return Defaults[.token]
-}
-
-func tokenHeader() -> HTTPHeaders? {
-    let token = Defaults[.token]
-    if token == nil {
-        return nil;
-    }
-    let headers: HTTPHeaders = [
-        "token": token!
-    ]
-    return headers
-}
 
 extension UITextField{
     @IBInspectable var placeHolderColor: UIColor? {

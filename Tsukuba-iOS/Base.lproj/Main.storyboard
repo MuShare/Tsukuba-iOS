@@ -95,10 +95,10 @@
         <scene sceneID="ba6-g1-CM6">
             <objects>
                 <navigationController id="qAX-dP-faC" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MLH-2o-a1R">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="MLH-2o-a1R">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.97274798154830933" green="0.52010244131088257" blue="0.6451297402381897" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.95334403656924949" green="0.51673336319565055" blue="0.64188447424792661" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
@@ -164,8 +164,8 @@
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="e8c-0T-K7t" firstAttribute="top" secondItem="v7F-f6-Df3" secondAttribute="topMargin" constant="97" id="3wn-Se-Skn"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="e8c-0T-K7t" secondAttribute="trailing" constant="-8" id="GtS-5U-dzc"/>
+                                            <constraint firstItem="e8c-0T-K7t" firstAttribute="top" secondItem="tfg-0h-q50" secondAttribute="bottom" constant="10" id="HZv-wU-JwE"/>
                                             <constraint firstItem="e8c-0T-K7t" firstAttribute="leading" secondItem="v7F-f6-Df3" secondAttribute="leadingMargin" constant="-8" id="QuX-US-P3I"/>
                                             <constraint firstItem="tfg-0h-q50" firstAttribute="centerY" secondItem="v7F-f6-Df3" secondAttribute="centerY" id="TnG-Yc-ygD"/>
                                             <constraint firstItem="tfg-0h-q50" firstAttribute="centerX" secondItem="v7F-f6-Df3" secondAttribute="centerX" id="vMb-tb-vG8"/>
@@ -2056,6 +2056,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="FUo-jT-FCs"/>
-        <segue reference="IMR-lI-lwG"/>
+        <segue reference="4fN-ix-N1n"/>
     </inferredMetricsTieBreakers>
 </document>

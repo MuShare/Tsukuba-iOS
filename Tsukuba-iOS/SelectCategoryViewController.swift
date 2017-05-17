@@ -13,6 +13,7 @@ class SelectCategoryViewController: UIViewController, UICollectionViewDataSource
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     
     let dao = DaoManager.sharedInstance
+    let config = Config.sharedInstance
     
     var categories: [Category]!
     var selectedCategory: Category!
@@ -27,7 +28,7 @@ class SelectCategoryViewController: UIViewController, UICollectionViewDataSource
 
     // MARK: UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.size.width / 3
+        let width = collectionView.frame.size.width / CGFloat(config.columns)
         return CGSize(width: width, height: width * 1.17)
     }
     

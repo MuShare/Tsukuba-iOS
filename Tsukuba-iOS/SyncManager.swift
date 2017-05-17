@@ -14,6 +14,7 @@ import SwiftyJSON
 class SyncManager {
     
     var dao: DaoManager!
+    var config: Config!
     
     var categoryRev: Int {
         set(value) {
@@ -49,6 +50,7 @@ class SyncManager {
     
     init() {
         dao = DaoManager.sharedInstance
+        config = Config.sharedInstance
     }
 
     func pullCategory(_ completionHandler: ((Int, Bool) -> Void)?) {
@@ -59,7 +61,7 @@ class SyncManager {
                           method: .get,
                           parameters: params,
                           encoding: URLEncoding.default,
-                          headers: tokenHeader())
+                          headers: config.tokenHeader)
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             if response.statusOK() {
@@ -89,7 +91,7 @@ class SyncManager {
                           method: .get,
                           parameters: params,
                           encoding: URLEncoding.default,
-                          headers: tokenHeader())
+                          headers: config.tokenHeader)
             .responseJSON { (responseObject) in
                 let response = Response(responseObject)
                 if response.statusOK() {
@@ -123,7 +125,7 @@ class SyncManager {
                           method: .get,
                           parameters: params,
                           encoding: URLEncoding.default,
-                          headers: tokenHeader())
+                          headers: config.tokenHeader)
             .responseJSON { (responseObject) in
                 let response = Response(responseObject)
                 if response.statusOK() {

@@ -13,6 +13,7 @@ import Floaty
 class MessagesCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let messageManager = MessageManager.sharedInstance
+    let config = Config.sharedInstance
     
     var category: Category!
     var messages: [Message] = []
@@ -91,7 +92,7 @@ class MessagesCollectionViewController: UICollectionViewController, UICollection
 
     // MARK: UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.size.width / 3 - 2
+        let width = collectionView.frame.size.width / CGFloat(config.columns) - 2
         return CGSize(width: width, height: width + 50)
     }
     
