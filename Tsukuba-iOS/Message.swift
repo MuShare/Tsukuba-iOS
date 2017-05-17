@@ -20,8 +20,7 @@ class Message {
     var enable: Bool
     
     var introduction: String?
-    var author: String?
-    var avatar: String?
+    var author: User?
     var pictures: [Picture] = []
     var options: [Option] = []
     
@@ -37,8 +36,7 @@ class Message {
         
         // Detail info
         introduction = object["introduction"].string
-        author = object["author"].string
-        avatar = object["avatar"].string
+        author = User(simpleUser: object["author"])
         
         // Pictures
         let picturesJOSONArray = object["pictures"].arrayValue;

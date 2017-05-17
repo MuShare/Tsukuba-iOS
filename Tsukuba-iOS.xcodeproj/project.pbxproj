@@ -39,6 +39,8 @@
 		E45519411EC44856006A3B73 /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45519401EC44856006A3B73 /* MessageTableViewController.swift */; };
 		E45519431EC453F6006A3B73 /* PicturesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45519421EC453F6006A3B73 /* PicturesTableViewCell.swift */; };
 		E455194B1EC4605B006A3B73 /* IntroductionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E455194A1EC4605B006A3B73 /* IntroductionTableViewCell.swift */; };
+		E47860741ECC56C30096B39A /* UserProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47860731ECC56C30096B39A /* UserProfileTableViewController.swift */; };
+		E47860761ECC57F00096B39A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47860751ECC57F00096B39A /* User.swift */; };
 		E489721D1EBED40F0064EA13 /* CreateMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489721C1EBED40F0064EA13 /* CreateMessageViewController.swift */; };
 		E489721F1EBEF34E0064EA13 /* SelectCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */; };
 		E48972211EBF62280064EA13 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48972201EBF62280064EA13 /* PictureViewController.swift */; };
@@ -108,6 +110,8 @@
 		E45519401EC44856006A3B73 /* MessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
 		E45519421EC453F6006A3B73 /* PicturesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicturesTableViewCell.swift; sourceTree = "<group>"; };
 		E455194A1EC4605B006A3B73 /* IntroductionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroductionTableViewCell.swift; sourceTree = "<group>"; };
+		E47860731ECC56C30096B39A /* UserProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileTableViewController.swift; sourceTree = "<group>"; };
+		E47860751ECC57F00096B39A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E489721C1EBED40F0064EA13 /* CreateMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMessageViewController.swift; sourceTree = "<group>"; };
 		E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCategoryViewController.swift; sourceTree = "<group>"; };
 		E48972201EBF62280064EA13 /* PictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +185,7 @@
 				E4962BE81EB4B08000DF8CAE /* Tsukuba.xcdatamodeld */,
 				E48DE5521EC2D52C00E5CA25 /* Message.swift */,
 				E408EEC31EC7672B00E6E596 /* Picture.swift */,
+				E47860751ECC57F00096B39A /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -236,6 +241,7 @@
 				E41F7D091EC36C2A002E8184 /* RegisterViewController.swift */,
 				E4054AE21EC48D29006BCEEC /* ResetViewController.swift */,
 				E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */,
+				E47860731ECC56C30096B39A /* UserProfileTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -516,6 +522,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E47860741ECC56C30096B39A /* UserProfileTableViewController.swift in Sources */,
 				E4089FEF1EBB4AD80042221D /* MyProfileTableViewController.swift in Sources */,
 				E4089FE91EBB3A1F0042221D /* LoginViewController.swift in Sources */,
 				E489721F1EBEF34E0064EA13 /* SelectCategoryViewController.swift in Sources */,
@@ -543,6 +550,7 @@
 				E455194B1EC4605B006A3B73 /* IntroductionTableViewCell.swift in Sources */,
 				E489721D1EBED40F0064EA13 /* CreateMessageViewController.swift in Sources */,
 				E4962BE21EB4B08000DF8CAE /* AppDelegate.swift in Sources */,
+				E47860761ECC57F00096B39A /* User.swift in Sources */,
 				E4089FEB1EBB3B990042221D /* CommonTool.swift in Sources */,
 				E4089FDC1EBAF2190042221D /* Response.swift in Sources */,
 				E48DE54F1EC2D30700E5CA25 /* MyMessagesTableViewController.swift in Sources */,

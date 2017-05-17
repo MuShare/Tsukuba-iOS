@@ -13,7 +13,7 @@ class PicturesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var picturesImageSlideshow: ImageSlideshow!
     @IBOutlet weak var avatarImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nameButton: UIButton!
     @IBOutlet weak var updateAtLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
@@ -37,8 +37,8 @@ class PicturesTableViewCell: UITableViewCell {
         picturesImageSlideshow.setImageInputs(inputs)
         
         // Author info
-        avatarImageView.kf.setImage(with: imageURL(message.avatar!))
-        nameLabel.text = message.author
+        avatarImageView.kf.setImage(with: imageURL((message.author?.avatar)!))
+        nameButton.setTitle(message.author?.name, for: .normal)
         updateAtLabel.text = formatter.string(from: message.updateAt)
         priceLabel.text = "￥\(message.price!)"
     }

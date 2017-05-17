@@ -37,16 +37,12 @@ class MyProfileTableViewController: UITableViewController {
         }
     }
 
-    // MARK: UITableViewDataSource
+    // MARK: - UITableViewDataSource
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.01
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0.01
-    }
-    
-    // MARK: Navigation
+    // MARK: - Navigation
     @IBAction func saveUser(_ sender: Any) {
         if nameTextField.text == "" || contactTextField.text == "" || addressTextField.text == "" {
             showAlert(title: NSLocalizedString("tip_name", comment: ""),
