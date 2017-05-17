@@ -17,6 +17,9 @@ class MyMessagesTableViewController: UITableViewController {
     var messages: [Message] = []
     var selectedMessage: Message!
     
+    // Refresh flag
+    var refresh = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,7 +37,10 @@ class MyMessagesTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tableView.es_startPullToRefresh()
+        if refresh {
+            tableView.es_startPullToRefresh()
+            refresh = false
+        }
     }
 
     // MARK: - Navigation
@@ -54,8 +60,10 @@ class MyMessagesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "myMessageCell", for: indexPath) as! MyMessageTableViewCell
-        cell.fillWithMessage(messages[indexPath.row])
+        let message = messages[indexPath.row]
+        let identifier = message.enable ? "myMessageCell" : "closedMessageCell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! MyMessageTableViewCell
+        cell.fillWithMessage(message)
         return cell
     }
     
