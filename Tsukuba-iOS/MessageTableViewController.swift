@@ -38,6 +38,13 @@ class MessageTableViewController: UITableViewController {
         tableView.es_startPullToRefresh()
 
     }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "userProfileSegue" {
+            segue.destination.setValue(message?.author?.uid, forKey: "uid")
+        }
+    }
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -95,4 +102,9 @@ class MessageTableViewController: UITableViewController {
         }        
     }
 
+    // MARK: - Action
+    @IBAction func showProfile(_ sender: Any) {
+        self.performSegue(withIdentifier: "userProfileSegue", sender: self)
+    }
+    
 }

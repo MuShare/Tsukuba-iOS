@@ -142,6 +142,23 @@ class UserManager {
         }
     }
     
+    func get(_ uid: String, completion: ((Bool, User?) -> Void)?) {
+        Alamofire.request(createUrl("api/user/" + uid),
+                          method: .get,
+                          parameters: nil,
+                          encoding: URLEncoding.default,
+                          headers: nil)
+        .responseJSON { (responseObject) in
+            let response = Response(responseObject)
+            if response.statusOK() {
+                let user = User(user: response.getResult()["user"])
+                completion?(true, user)
+            } else {
+                completion?(false, nil)
+            }
+        }
+    }
+    
     func login(email: String, password: String, completion: ((Bool, String?) -> Void)?) {
         let params: Parameters = [
             "email": email,
