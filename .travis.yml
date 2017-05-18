@@ -1,3 +1,10 @@
 language: objective-c
+osx_image: xcode8.3
 xcode_workspace: Tsukuba-iOS.xcworkspace
 xcode_scheme: Tsukuba-iOS
+
+pods: remove_debug_pods
+pods:
+  rm -rf Pods
+  bundle install
+  bundle exec pod install
