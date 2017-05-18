@@ -96,7 +96,7 @@ class CreateMessageViewController: FormViewController, NVActivityIndicatorViewab
             // Set done type for PictureViewController.
             let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
             let lastViewController = viewControllers[viewControllers.count - 2]
-            if lastViewController.isKind(of: MessagesCollectionViewController.self) {
+            if lastViewController.isKind(of: MessagesViewController.self) {
                 destination.doneType = .pop2
             } else if lastViewController.isKind(of: SelectCategoryViewController.self) {
                 destination.doneType = .dismiss

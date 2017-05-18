@@ -16,4 +16,5 @@ target 'Tsukuba-iOS' do
     pod 'ImageSlideshow/Kingfisher', '~> 1.3'
     pod 'Floaty', '~> 3.0'
     pod 'NVActivityIndicatorView', '~> 3.6'
+    pod 'Segmentio', '~> 2.1'
 end

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		D3A30465DED0A54864830928 /* Pods_Tsukuba_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44E7EC0007342735A1D800F /* Pods_Tsukuba_iOS.framework */; };
 		E4054AE31EC48D29006BCEEC /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4054AE21EC48D29006BCEEC /* ResetViewController.swift */; };
-		E4089FA31EBADD170042221D /* CategoriesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FA21EBADD170042221D /* CategoriesCollectionViewController.swift */; };
+		E4089FA31EBADD170042221D /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FA21EBADD170042221D /* CategoriesViewController.swift */; };
 		E4089FB51EBAE55C0042221D /* DaoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FB31EBAE55C0042221D /* DaoManager.swift */; };
 		E4089FB61EBAE55C0042221D /* DaoTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FB41EBAE55C0042221D /* DaoTemplate.swift */; };
 		E4089FB81EBAE5830042221D /* CategoryDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FB71EBAE5830042221D /* CategoryDao.swift */; };
@@ -29,7 +29,7 @@
 		E408EEC41EC7672B00E6E596 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E408EEC31EC7672B00E6E596 /* Picture.swift */; };
 		E408EEC61EC8AF8400E6E596 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E408EEC51EC8AF8400E6E596 /* InfoPlist.strings */; };
 		E41ADBFC1EC151AA006479C5 /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41ADBFB1EC151AA006479C5 /* PictureCollectionViewCell.swift */; };
-		E41F7D011EC34CB8002E8184 /* MessagesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D001EC34CB8002E8184 /* MessagesCollectionViewController.swift */; };
+		E41F7D011EC34CB8002E8184 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D001EC34CB8002E8184 /* MessagesViewController.swift */; };
 		E41F7D031EC3604C002E8184 /* MessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D021EC3604C002E8184 /* MessageCollectionViewCell.swift */; };
 		E41F7D081EC369CD002E8184 /* login-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E41F7D071EC369CD002E8184 /* login-bg.jpg */; };
 		E41F7D0A1EC36C2A002E8184 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D091EC36C2A002E8184 /* RegisterViewController.swift */; };
@@ -57,6 +57,7 @@
 		E4962C051EB4B08000DF8CAE /* Tsukuba_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4962C041EB4B08000DF8CAE /* Tsukuba_iOSUITests.swift */; };
 		E49D240E1EC69FC900D3D974 /* OptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49D240D1EC69FC900D3D974 /* OptionTableViewCell.swift */; };
 		E49D24101EC6F0EB00D3D974 /* EditMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49D240F1EC6F0EB00D3D974 /* EditMessageViewController.swift */; };
+		E4AD15231ECD5049005ADC25 /* SegmentioBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AD15221ECD5049005ADC25 /* SegmentioBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +81,7 @@
 		251F3A7B6A78E17CB718E63B /* Pods-Tsukuba-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tsukuba-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tsukuba-iOS/Pods-Tsukuba-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		6069AEC1C44BCF1C385A7547 /* Pods-Tsukuba-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tsukuba-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tsukuba-iOS/Pods-Tsukuba-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		E4054AE21EC48D29006BCEEC /* ResetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
-		E4089FA21EBADD170042221D /* CategoriesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewController.swift; sourceTree = "<group>"; };
+		E4089FA21EBADD170042221D /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		E4089FB31EBAE55C0042221D /* DaoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaoManager.swift; sourceTree = "<group>"; };
 		E4089FB41EBAE55C0042221D /* DaoTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaoTemplate.swift; sourceTree = "<group>"; };
 		E4089FB71EBAE5830042221D /* CategoryDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryDao.swift; sourceTree = "<group>"; };
@@ -100,7 +101,7 @@
 		E408EEC31EC7672B00E6E596 /* Picture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
 		E408EEC51EC8AF8400E6E596 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		E41ADBFB1EC151AA006479C5 /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
-		E41F7D001EC34CB8002E8184 /* MessagesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesCollectionViewController.swift; sourceTree = "<group>"; };
+		E41F7D001EC34CB8002E8184 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		E41F7D021EC3604C002E8184 /* MessageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewCell.swift; sourceTree = "<group>"; };
 		E41F7D071EC369CD002E8184 /* login-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "login-bg.jpg"; sourceTree = "<group>"; };
 		E41F7D091EC36C2A002E8184 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +136,7 @@
 		E4962C061EB4B08000DF8CAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E49D240D1EC69FC900D3D974 /* OptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionTableViewCell.swift; sourceTree = "<group>"; };
 		E49D240F1EC6F0EB00D3D974 /* EditMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMessageViewController.swift; sourceTree = "<group>"; };
+		E4AD15221ECD5049005ADC25 /* SegmentioBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentioBuilder.swift; sourceTree = "<group>"; };
 		F44E7EC0007342735A1D800F /* Pods_Tsukuba_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tsukuba_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -217,6 +219,7 @@
 		E4089FD81EBAF0020042221D /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				E4AD15221ECD5049005ADC25 /* SegmentioBuilder.swift */,
 				E4089FEA1EBB3B990042221D /* CommonTool.swift */,
 				E41F7D111EC3EB92002E8184 /* CustomBack.swift */,
 				E41F7D0B1EC36C4B002E8184 /* EditingViewController.swift */,
@@ -231,11 +234,11 @@
 			isa = PBXGroup;
 			children = (
 				E4089FF01EBB4F160042221D /* AvatarViewController.swift */,
-				E4089FA21EBADD170042221D /* CategoriesCollectionViewController.swift */,
+				E4089FA21EBADD170042221D /* CategoriesViewController.swift */,
 				E489721C1EBED40F0064EA13 /* CreateMessageViewController.swift */,
 				E49D240F1EC6F0EB00D3D974 /* EditMessageViewController.swift */,
 				E4089FE81EBB3A1F0042221D /* LoginViewController.swift */,
-				E41F7D001EC34CB8002E8184 /* MessagesCollectionViewController.swift */,
+				E41F7D001EC34CB8002E8184 /* MessagesViewController.swift */,
 				E45519401EC44856006A3B73 /* MessageTableViewController.swift */,
 				E4089FE61EBB36440042221D /* MeTableViewController.swift */,
 				E48DE54E1EC2D30700E5CA25 /* MyMessagesTableViewController.swift */,
@@ -538,7 +541,7 @@
 				E4089FE71EBB36440042221D /* MeTableViewController.swift in Sources */,
 				E48DE5531EC2D52C00E5CA25 /* Message.swift in Sources */,
 				E4089FF11EBB4F160042221D /* AvatarViewController.swift in Sources */,
-				E4089FA31EBADD170042221D /* CategoriesCollectionViewController.swift in Sources */,
+				E4089FA31EBADD170042221D /* CategoriesViewController.swift in Sources */,
 				E45519431EC453F6006A3B73 /* PicturesTableViewCell.swift in Sources */,
 				E4089FB61EBAE55C0042221D /* DaoTemplate.swift in Sources */,
 				E45519411EC44856006A3B73 /* MessageTableViewController.swift in Sources */,
@@ -548,7 +551,8 @@
 				E41F7D031EC3604C002E8184 /* MessageCollectionViewCell.swift in Sources */,
 				E4089FE21EBAF8F40042221D /* CategoryCollectionViewCell.swift in Sources */,
 				E4054AE31EC48D29006BCEEC /* ResetViewController.swift in Sources */,
-				E41F7D011EC34CB8002E8184 /* MessagesCollectionViewController.swift in Sources */,
+				E4AD15231ECD5049005ADC25 /* SegmentioBuilder.swift in Sources */,
+				E41F7D011EC34CB8002E8184 /* MessagesViewController.swift in Sources */,
 				E4089FB81EBAE5830042221D /* CategoryDao.swift in Sources */,
 				E4089FBC1EBAE59E0042221D /* SelectionDao.swift in Sources */,
 				E455194B1EC4605B006A3B73 /* IntroductionTableViewCell.swift in Sources */,

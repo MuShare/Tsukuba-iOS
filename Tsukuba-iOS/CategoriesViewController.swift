@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 import ESPullToRefresh
+import Segmentio
 
 class CategoriesCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     

@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set suitable columns for iPhone and iPad.
         if config.columns == 0 {
             let width = UIScreen.main.bounds.size.width
-            print(width)
             if width < 768 {
                 config.columns = 3
             } else {
