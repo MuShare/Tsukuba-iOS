@@ -11,3 +11,6 @@ pods:
   rm -rf Pods
   bundle install
   bundle exec pod install
+
+build:
+  set -o pipefail && xcodebuild -workspace "Tsukuba-iOS.xcworkspace" -scheme "Tsukuba-iOS" -sdk iphonesimulator -destination 'name=iPhone 6' build CODE_SIGNING_REQUIRED=NO | xcpretty -c
