@@ -1,0 +1,3 @@
+language: objective-c
+xcode_workspace: Tsukuba-iOS.xcworkspace
+xcode_scheme: Tsukuba-iOS
