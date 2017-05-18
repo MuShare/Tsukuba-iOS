@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D3A30465DED0A54864830928 /* Pods_Tsukuba_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44E7EC0007342735A1D800F /* Pods_Tsukuba_iOS.framework */; };
 		E4054AE31EC48D29006BCEEC /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4054AE21EC48D29006BCEEC /* ResetViewController.swift */; };
-		E4089FA31EBADD170042221D /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FA21EBADD170042221D /* CategoriesViewController.swift */; };
 		E4089FB51EBAE55C0042221D /* DaoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FB31EBAE55C0042221D /* DaoManager.swift */; };
 		E4089FB61EBAE55C0042221D /* DaoTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FB41EBAE55C0042221D /* DaoTemplate.swift */; };
 		E4089FB81EBAE5830042221D /* CategoryDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FB71EBAE5830042221D /* CategoryDao.swift */; };
@@ -81,7 +80,6 @@
 		251F3A7B6A78E17CB718E63B /* Pods-Tsukuba-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tsukuba-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tsukuba-iOS/Pods-Tsukuba-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		6069AEC1C44BCF1C385A7547 /* Pods-Tsukuba-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tsukuba-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tsukuba-iOS/Pods-Tsukuba-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		E4054AE21EC48D29006BCEEC /* ResetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
-		E4089FA21EBADD170042221D /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		E4089FB31EBAE55C0042221D /* DaoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaoManager.swift; sourceTree = "<group>"; };
 		E4089FB41EBAE55C0042221D /* DaoTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaoTemplate.swift; sourceTree = "<group>"; };
 		E4089FB71EBAE5830042221D /* CategoryDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryDao.swift; sourceTree = "<group>"; };
@@ -234,7 +232,6 @@
 			isa = PBXGroup;
 			children = (
 				E4089FF01EBB4F160042221D /* AvatarViewController.swift */,
-				E4089FA21EBADD170042221D /* CategoriesViewController.swift */,
 				E489721C1EBED40F0064EA13 /* CreateMessageViewController.swift */,
 				E49D240F1EC6F0EB00D3D974 /* EditMessageViewController.swift */,
 				E4089FE81EBB3A1F0042221D /* LoginViewController.swift */,
@@ -541,7 +538,6 @@
 				E4089FE71EBB36440042221D /* MeTableViewController.swift in Sources */,
 				E48DE5531EC2D52C00E5CA25 /* Message.swift in Sources */,
 				E4089FF11EBB4F160042221D /* AvatarViewController.swift in Sources */,
-				E4089FA31EBADD170042221D /* CategoriesViewController.swift in Sources */,
 				E45519431EC453F6006A3B73 /* PicturesTableViewCell.swift in Sources */,
 				E4089FB61EBAE55C0042221D /* DaoTemplate.swift in Sources */,
 				E45519411EC44856006A3B73 /* MessageTableViewController.swift in Sources */,

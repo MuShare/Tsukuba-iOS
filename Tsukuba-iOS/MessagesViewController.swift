@@ -19,11 +19,12 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
     
     let dao = DaoManager.sharedInstance
     let sync = SyncManager.sharedInstance
-    let messageManager = MessageManager.sharedInstance
+    let user = UserManager.sharedInstance
+    let message = MessageManager.sharedInstance
     let config = Config.sharedInstance
     
     var categories: [Category]!
-    var selectedCategory: Category!
+    var cid: String? = nil
     var messages: [Message] = []
     var selectedMessage: Message!
     var sell = true
@@ -54,7 +55,7 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
         
         // Set collection view refresh
         collectionView?.es_addPullToRefresh {
-            self.messageManager.loadMessage(self.sell, cid: nil, seq: nil) { (success, messages) in
+            self.message.loadMessage(self.sell, cid: self.cid, seq: nil) { (success, messages) in
                 self.messages = messages
                 self.collectionView?.reloadData()
                 self.collectionView?.es_stopPullToRefresh()
@@ -63,7 +64,7 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
         
         collectionView?.es_addInfiniteScrolling {
             let seq = self.messages.last?.seq
-            self.messageManager.loadMessage(self.sell, cid: nil, seq: seq, completion: { (success, messages) in
+            self.message.loadMessage(self.sell, cid: self.cid, seq: seq, completion: { (success, messages) in
                 if messages.count == 0 {
                     self.collectionView?.es_noticeNoMoreData()
                 } else {
@@ -107,8 +108,6 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "messageSegue" {
             segue.destination.setValue(selectedMessage.mid, forKey: "messageId")
-        } else if segue.identifier == "createMessageSegue" {
-            segue.destination.setValue(selectedCategory, forKey: "category")
         }
     }
 
@@ -132,9 +131,33 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
     // MARK: - UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedMessage = messages[indexPath.row]
-        self.performSegue(withIdentifier: "messageSegue", sender: self)
+        performSegue(withIdentifier: "messageSegue", sender: self)
     }
     
+    // MARK: - Action
+    @IBAction func createMessage(_ sender: Any) {
+        if user.login {
+            performSegue(withIdentifier: "createMessageSegue", sender: self)
+        } else {
+            let alertController = UIAlertController(title: NSLocalizedString("tip_name", comment: ""),
+                                                    message: NSLocalizedString("sign_in_before_post", comment: ""),
+                                                    preferredStyle: .alert)
+            alertController.view.tintColor = Color.main
+            let signin = UIAlertAction(title: NSLocalizedString("sign_in_now", comment: ""),
+                                       style: .destructive,
+                                       handler:
+            { (action) in
+                self.performSegue(withIdentifier: "loginSegue", sender: self)
+            })
+            let later = UIAlertAction(title: NSLocalizedString("later_name", comment: ""),
+                                      style: .cancel,
+                                      handler: nil)
+            alertController.addAction(signin)
+            alertController.addAction(later)
+            present(alertController, animated: true, completion: nil)
+        }
+    }
+
     // MARK: - Service
     private func loadCategories() {
         var items: [SegmentioItem] = [SegmentioItem(title: "All", image: nil)]
@@ -145,7 +168,8 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
         segmentioView.setup(content: items, style: .onlyLabel, options: segmentioOptions())
         segmentioView.selectedSegmentioIndex = 0
         segmentioView.valueDidChange = { segmentio, segmentIndex in
-            print("Selected item: ", segmentIndex)
+            self.cid = segmentIndex == 0 ? nil : self.categories[segmentIndex - 1].cid
+            self.collectionView.es_startPullToRefresh()
         }
     }
     

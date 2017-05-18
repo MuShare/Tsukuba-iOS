@@ -30,6 +30,9 @@ class UserProfileTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.setCustomBack()
+        
         userManager.get(uid) { (success, user) in
             self.loadUser(user!)
         }

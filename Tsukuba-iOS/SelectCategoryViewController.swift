@@ -29,7 +29,7 @@ class SelectCategoryViewController: UIViewController, UICollectionViewDataSource
     // MARK: UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.size.width / CGFloat(config.columns)
-        return CGSize(width: width, height: width * 1.17)
+        return CGSize(width: width, height: width + 25)
     }
     
     // MARK: UICollectionViewDataSource
