@@ -262,4 +262,43 @@ class MessageManager {
         }
     }
     
+    func like(_ mid: String, completion: ((Bool, String?) -> Void)?) {
+        let params: Parameters = [
+            "mid": mid
+        ]
+        Alamofire.request(createUrl("api/favorite/like"),
+                          method: .post,
+                          parameters: params,
+                          encoding: URLEncoding.default,
+                          headers: config.tokenHeader)
+        .responseJSON { (responseObject) in
+            let response = Response(responseObject)
+            if response.statusOK() {
+                completion?(true, nil)
+            } else {
+                completion?(false, NSLocalizedString("message_like_fail", comment: ""))
+            }
+        }
+    }
+    
+    func unlike(_ mid: String, completion: ((Bool, String?) -> Void)?) {
+        let params: Parameters = [
+            "mid": mid
+        ]
+        Alamofire.request(createUrl("api/favorite/unlike"),
+                          method: .post,
+                          parameters: params,
+                          encoding: URLEncoding.default,
+                          headers: config.tokenHeader)
+        .responseJSON { (responseObject) in
+            let response = Response(responseObject)
+            if response.statusOK() {
+                let success = response.getResult()["success"].boolValue
+                completion?(success, nil)
+            } else {
+                completion?(false, NSLocalizedString("message_unlike_fail", comment: ""))
+            }
+        }
+    }
+    
 }

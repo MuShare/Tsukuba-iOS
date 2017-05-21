@@ -8,6 +8,7 @@
 
 import UIKit
 import ImageSlideshow
+import FaveButton
 
 class PicturesTableViewCell: UITableViewCell {
 
@@ -16,6 +17,10 @@ class PicturesTableViewCell: UITableViewCell {
     @IBOutlet weak var nameButton: UIButton!
     @IBOutlet weak var updateAtLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var favoriteButton: FaveButton!
+    
+    var message: Message!
+    let messageManager = MessageManager.sharedInstance
     
     let formatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -25,6 +30,11 @@ class PicturesTableViewCell: UITableViewCell {
     }()
     
     func fillWithMessage(_ message: Message) {
+        self.message = message
+        load()
+    }
+    
+    private func load() {
         // Slide view
         var inputs: [InputSource] = []
         for picture in message.pictures {
@@ -41,6 +51,22 @@ class PicturesTableViewCell: UITableViewCell {
         nameButton.setTitle(message.author?.name, for: .normal)
         updateAtLabel.text = formatter.string(from: message.updateAt)
         priceLabel.text = "￥\(message.price!)"
+    }
+    
+    @IBAction func favoriteMessagw(_ sender: Any) {
+        if favoriteButton.isSelected {
+            messageManager.like(message.mid, completion: { (success, tip) in
+                if !success {
+                    self.favoriteButton.isSelected = false
+                }
+            })
+        } else {
+            messageManager.unlike(message.mid, completion: { (success, tip) in
+                if !success {
+                    self.favoriteButton.isSelected = true
+                }
+            })
+        }
     }
 
 }

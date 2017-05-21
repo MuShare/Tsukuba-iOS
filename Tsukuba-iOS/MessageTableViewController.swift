@@ -12,7 +12,7 @@ import UIKit
 import ESPullToRefresh
 
 class MessageTableViewController: UITableViewController {
-
+    
     let messageManager = MessageManager.sharedInstance
 
     var messageId: String!

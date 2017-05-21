@@ -65,3 +65,6 @@ message_close_title = "Close Message";
 message_close_content = "Other people cannot see this message if you close this message. You cannot reopen it once you closed it. Are you sure to close this message? ";
 
 modify_message_no_privilege = "You do not have previlige to edit this message.";
+
+message_like_fail = "Cannot set favorite message.";
+message_unlike_fail = "Cannot cancel favorite message.";
