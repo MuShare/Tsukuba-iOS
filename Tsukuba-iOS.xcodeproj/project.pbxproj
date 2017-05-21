@@ -56,7 +56,6 @@
 		E4962C051EB4B08000DF8CAE /* Tsukuba_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4962C041EB4B08000DF8CAE /* Tsukuba_iOSUITests.swift */; };
 		E49D240E1EC69FC900D3D974 /* OptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49D240D1EC69FC900D3D974 /* OptionTableViewCell.swift */; };
 		E49D24101EC6F0EB00D3D974 /* EditMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49D240F1EC6F0EB00D3D974 /* EditMessageViewController.swift */; };
-		E4AD15231ECD5049005ADC25 /* SegmentioBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AD15221ECD5049005ADC25 /* SegmentioBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,7 +133,6 @@
 		E4962C061EB4B08000DF8CAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E49D240D1EC69FC900D3D974 /* OptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionTableViewCell.swift; sourceTree = "<group>"; };
 		E49D240F1EC6F0EB00D3D974 /* EditMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMessageViewController.swift; sourceTree = "<group>"; };
-		E4AD15221ECD5049005ADC25 /* SegmentioBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentioBuilder.swift; sourceTree = "<group>"; };
 		F44E7EC0007342735A1D800F /* Pods_Tsukuba_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tsukuba_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -217,7 +215,6 @@
 		E4089FD81EBAF0020042221D /* Tool */ = {
 			isa = PBXGroup;
 			children = (
-				E4AD15221ECD5049005ADC25 /* SegmentioBuilder.swift */,
 				E4089FEA1EBB3B990042221D /* CommonTool.swift */,
 				E41F7D111EC3EB92002E8184 /* CustomBack.swift */,
 				E41F7D0B1EC36C4B002E8184 /* EditingViewController.swift */,
@@ -500,7 +497,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E4F0B49F5FE9A2B18A41FB3F /* [CP] Copy Pods Resources */ = {
@@ -547,7 +544,6 @@
 				E41F7D031EC3604C002E8184 /* MessageCollectionViewCell.swift in Sources */,
 				E4089FE21EBAF8F40042221D /* CategoryCollectionViewCell.swift in Sources */,
 				E4054AE31EC48D29006BCEEC /* ResetViewController.swift in Sources */,
-				E4AD15231ECD5049005ADC25 /* SegmentioBuilder.swift in Sources */,
 				E41F7D011EC34CB8002E8184 /* MessagesViewController.swift in Sources */,
 				E4089FB81EBAE5830042221D /* CategoryDao.swift in Sources */,
 				E4089FBC1EBAE59E0042221D /* SelectionDao.swift in Sources */,

@@ -17,4 +17,5 @@ target 'Tsukuba-iOS' do
     pod 'Floaty', '~> 3.0'
     pod 'NVActivityIndicatorView', '~> 3.6'
     pod 'Segmentio', '~> 2.1'
+    pod 'FaveButton', '~> 2'
 end
