@@ -24,7 +24,6 @@ class MyMessagesTableViewController: UITableViewController {
         super.viewDidLoad()
         
         self.setCustomBack()
-        self.navigationItem.title = sell ? "My sell post" : "My buy post"
         
         tableView.es_addPullToRefresh {
             // action to be performed (pull data from some source)
@@ -76,6 +75,7 @@ class MyMessagesTableViewController: UITableViewController {
     }
 
     // MARK: - Action
+    /**
     @IBAction func changeMessageType(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
@@ -87,5 +87,6 @@ class MyMessagesTableViewController: UITableViewController {
         }
         tableView.es_startPullToRefresh()
     }
-
+    */
+    
 }

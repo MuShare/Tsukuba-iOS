@@ -27,7 +27,7 @@ func imageURL(_ source: String) -> URL? {
 open class Color: UIColor {
     open class var main: UIColor {
         get {
-            return RGB(0xf46d94)
+            return RGB(0x9f62ab)
         }
     }
 }

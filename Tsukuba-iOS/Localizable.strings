@@ -53,9 +53,6 @@ upload_message_picture = "Upload Picture";
 remove_picture_failed = "Remove picture failed.";
 
 message_basic_info = "Basic Information";
-message_type_choose = "I want to";
-message_type_buy = "buy";
-message_type_sell = "sell";
 message_title = "Title";
 message_title_placeholder = "Message title";
 message_price = "Price";

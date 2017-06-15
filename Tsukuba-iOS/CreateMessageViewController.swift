@@ -45,6 +45,7 @@ class CreateMessageViewController: FormViewController, NVActivityIndicatorViewab
         form
             +++ Section(NSLocalizedString("message_basic_info", comment: ""))
             
+            /**
             <<< SegmentedRow<String>() {
                 $0.title = NSLocalizedString("message_type_choose", comment: "")
                 $0.options = [NSLocalizedString("message_type_sell", comment: ""), NSLocalizedString("message_type_buy", comment: "")]
@@ -52,6 +53,7 @@ class CreateMessageViewController: FormViewController, NVActivityIndicatorViewab
             }.onChange({ (row) in
                 self.sell = (row.value! == NSLocalizedString("message_type_sell", comment: ""))
             })
+            */
             
             <<< TextRow() {
                 $0.title = NSLocalizedString("message_title", comment: "")
@@ -139,6 +141,6 @@ class CreateMessageViewController: FormViewController, NVActivityIndicatorViewab
                           controller: self)
             }
         }
-
     }
+    
 }
