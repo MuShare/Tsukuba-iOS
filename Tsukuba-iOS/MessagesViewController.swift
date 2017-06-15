@@ -8,7 +8,6 @@
 
 import UIKit
 import ESPullToRefresh
-import Floaty
 import Segmentio
 import Kingfisher
 
@@ -80,21 +79,6 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
             })
         }
         
-        // Set float button and menu.
-        self.view.addSubview({
-            let floaty = Floaty()
-            floaty.buttonColor = Color.main
-            floaty.plusColor = UIColor.white
-            floaty.addItem("Buy Message", icon: UIImage(named: "buy")!) { item in
-                self.sell = true
-                self.collectionView?.es_startPullToRefresh()
-            }
-            floaty.addItem("Sell Message", icon: UIImage(named: "sell")!) { item in
-                self.sell = false
-                self.collectionView?.es_startPullToRefresh()
-            }
-            return floaty
-        }())
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -176,7 +160,7 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
     private func segmentioOptions() -> SegmentioOptions {
         return SegmentioOptions(
             backgroundColor: .white,
-            maxVisibleItems: 4,
+            maxVisibleItems: 3,
             scrollEnabled: true,
             indicatorOptions: SegmentioIndicatorOptions(
                 type: .bottom,

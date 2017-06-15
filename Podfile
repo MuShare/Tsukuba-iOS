@@ -14,7 +14,6 @@ target 'Tsukuba-iOS' do
     pod 'SwipeBack', '~> 1.1'
     pod 'ImageSlideshow', '~> 1.3'
     pod 'ImageSlideshow/Kingfisher', '~> 1.3'
-    pod 'Floaty', '~> 3.0'
     pod 'NVActivityIndicatorView', '~> 3.6'
     pod 'Segmentio', '~> 2.1'
     pod 'FaveButton', '~> 2'
