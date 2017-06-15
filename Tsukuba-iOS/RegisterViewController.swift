@@ -54,14 +54,12 @@ class RegisterViewController: EditingViewController, NVActivityIndicatorViewable
         }
         if emailTextField.text == "" || usernameTextField.text == "" || passwordTextField.text == "" {
             showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                      content: NSLocalizedString("register_not_validate", comment: ""),
-                      controller: self)
+                      content: NSLocalizedString("register_not_validate", comment: ""))
             return
         }
         if !isEmailAddress(emailTextField.text!) {
             showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                      content: NSLocalizedString("email_invalidate", comment: ""),
-                      controller: self)
+                      content: NSLocalizedString("email_invalidate", comment: ""))
             return
         }
         
@@ -83,9 +81,8 @@ class RegisterViewController: EditingViewController, NVActivityIndicatorViewable
                 self.registerButton.setTitle(NSLocalizedString("back_to_login", comment: ""), for: .normal)
             } else {
                 if message != nil {
-                    showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                              content: message!,
-                              controller: self)
+                    self.showAlert(title: NSLocalizedString("tip_name", comment: ""),
+                                   content: message!)
                 }
             }
         }

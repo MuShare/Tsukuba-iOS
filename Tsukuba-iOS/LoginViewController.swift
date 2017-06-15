@@ -45,8 +45,7 @@ class LoginViewController: EditingViewController, NVActivityIndicatorViewable {
     @IBAction func login(_ sender: Any) {
         if emailTextField.text == "" || !isEmailAddress(emailTextField.text!) || passwordTextField.text == "" {
             showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                      content: NSLocalizedString("login_not_validate", comment: ""),
-                      controller: self)
+                      content: NSLocalizedString("login_not_validate", comment: ""))
             return
         }
         
@@ -58,9 +57,8 @@ class LoginViewController: EditingViewController, NVActivityIndicatorViewable {
             if success {
                 self.dismiss(animated: true, completion: nil)
             } else {
-                showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                          content: message!,
-                          controller: self)
+                self.showAlert(title: NSLocalizedString("tip_name", comment: ""),
+                               content: message!)
             }
         }
         
@@ -85,9 +83,8 @@ class LoginViewController: EditingViewController, NVActivityIndicatorViewable {
                     if success {
                         self.dismiss(animated: true, completion: nil)
                     } else {
-                        showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                                  content: message!,
-                                  controller: self)
+                        self.showAlert(title: NSLocalizedString("tip_name", comment: ""),
+                                       content: message!)
                     }
                 })
             }

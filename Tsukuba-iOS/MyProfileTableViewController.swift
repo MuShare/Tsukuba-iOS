@@ -23,8 +23,7 @@ class MyProfileTableViewController: UITableViewController {
         
         if user.contact == "" || user.address == "" || user.avatar == "" {
             showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                      content: NSLocalizedString("fill_user_info", comment: ""),
-                      controller: self)
+                      content: NSLocalizedString("fill_user_info", comment: ""))
         }
     }
     
@@ -46,12 +45,11 @@ class MyProfileTableViewController: UITableViewController {
     @IBAction func saveUser(_ sender: Any) {
         if nameTextField.text == "" || contactTextField.text == "" || addressTextField.text == "" {
             showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                      content: NSLocalizedString("modify_has_empty", comment: ""),
-                      controller: self)
+                      content: NSLocalizedString("modify_has_empty", comment: ""))
             return
         }
         
-        replaceBarButtonItemWithActivityIndicator(controller: self)
+        self.replaceBarButtonItemWithActivityIndicator()
         user.modify(name: nameTextField.text!,
                     contact: contactTextField.text!,
                     address: addressTextField.text!)

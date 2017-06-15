@@ -110,8 +110,7 @@ class CreateMessageViewController: FormViewController, NVActivityIndicatorViewab
     @IBAction func createMessage(_ sender: Any) {
         if messageTitle == nil {
             showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                      content: "Please input a post title.",
-                      controller: self)
+                      content: NSLocalizedString("message_title_empty", comment: ""))
             return
         }
         
@@ -136,9 +135,8 @@ class CreateMessageViewController: FormViewController, NVActivityIndicatorViewab
                 self.mid = mid!
                 self.performSegue(withIdentifier: "createPictureSegue", sender: self)
             } else {
-                showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                          content: NSLocalizedString("create_message_fail", comment: ""),
-                          controller: self)
+                self.showAlert(title: NSLocalizedString("tip_name", comment: ""),
+                               content: NSLocalizedString("create_message_fail", comment: ""))
             }
         }
     }

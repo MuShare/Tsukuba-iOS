@@ -52,6 +52,7 @@ upload_progress = "Upload Progress: ";
 upload_message_picture = "Upload Picture";
 remove_picture_failed = "Remove picture failed.";
 
+message_title_empty = "Please input a post title.";
 message_basic_info = "Basic Information";
 message_title = "Title";
 message_title_placeholder = "Message title";
