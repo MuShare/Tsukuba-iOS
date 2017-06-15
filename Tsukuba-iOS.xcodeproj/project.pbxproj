@@ -30,7 +30,6 @@
 		E41ADBFC1EC151AA006479C5 /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41ADBFB1EC151AA006479C5 /* PictureCollectionViewCell.swift */; };
 		E41F7D011EC34CB8002E8184 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D001EC34CB8002E8184 /* MessagesViewController.swift */; };
 		E41F7D031EC3604C002E8184 /* MessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D021EC3604C002E8184 /* MessageCollectionViewCell.swift */; };
-		E41F7D081EC369CD002E8184 /* login-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E41F7D071EC369CD002E8184 /* login-bg.jpg */; };
 		E41F7D0A1EC36C2A002E8184 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D091EC36C2A002E8184 /* RegisterViewController.swift */; };
 		E41F7D0C1EC36C4B002E8184 /* EditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D0B1EC36C4B002E8184 /* EditingViewController.swift */; };
 		E41F7D121EC3EB92002E8184 /* CustomBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D111EC3EB92002E8184 /* CustomBack.swift */; };
@@ -56,7 +55,8 @@
 		E4962C051EB4B08000DF8CAE /* Tsukuba_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4962C041EB4B08000DF8CAE /* Tsukuba_iOSUITests.swift */; };
 		E49D240E1EC69FC900D3D974 /* OptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49D240D1EC69FC900D3D974 /* OptionTableViewCell.swift */; };
 		E49D24101EC6F0EB00D3D974 /* EditMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49D240F1EC6F0EB00D3D974 /* EditMessageViewController.swift */; };
-		E4B52B511EF2A0840030BD2D /* ViewController+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B52B501EF2A0840030BD2D /* ViewController+Extention.swift */; };
+		E4B52B591EF2AA920030BD2D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4B52B581EF2AA920030BD2D /* Login.storyboard */; };
+		E4B52B651EF2B1200030BD2D /* login-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4B52B641EF2B1200030BD2D /* login-bg.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,7 +101,6 @@
 		E41ADBFB1EC151AA006479C5 /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
 		E41F7D001EC34CB8002E8184 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		E41F7D021EC3604C002E8184 /* MessageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewCell.swift; sourceTree = "<group>"; };
-		E41F7D071EC369CD002E8184 /* login-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "login-bg.jpg"; sourceTree = "<group>"; };
 		E41F7D091EC36C2A002E8184 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E41F7D0B1EC36C4B002E8184 /* EditingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditingViewController.swift; sourceTree = "<group>"; };
 		E41F7D0D1EC3EAA3002E8184 /* Tsukuba-iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tsukuba-iOS-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -134,7 +133,8 @@
 		E4962C061EB4B08000DF8CAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E49D240D1EC69FC900D3D974 /* OptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionTableViewCell.swift; sourceTree = "<group>"; };
 		E49D240F1EC6F0EB00D3D974 /* EditMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMessageViewController.swift; sourceTree = "<group>"; };
-		E4B52B501EF2A0840030BD2D /* ViewController+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+Extention.swift"; sourceTree = "<group>"; };
+		E4B52B581EF2AA920030BD2D /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		E4B52B641EF2B1200030BD2D /* login-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "login-bg.jpg"; sourceTree = "<group>"; };
 		F44E7EC0007342735A1D800F /* Pods_Tsukuba_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tsukuba_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -223,7 +223,6 @@
 				E4089FD91EBAF0250042221D /* Global.swift */,
 				E4089FDB1EBAF2190042221D /* Response.swift */,
 				E451974E1ECCA0A6009C9D09 /* Config.swift */,
-				E4B52B501EF2A0840030BD2D /* ViewController+Extention.swift */,
 			);
 			name = Tool;
 			sourceTree = "<group>";
@@ -266,7 +265,7 @@
 		E41F7D041EC368A0002E8184 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				E41F7D071EC369CD002E8184 /* login-bg.jpg */,
+				E4B52B641EF2B1200030BD2D /* login-bg.jpg */,
 				E4089FF21EBB50790042221D /* Localizable.strings */,
 				E41F7D0D1EC3EAA3002E8184 /* Tsukuba-iOS-Bridging-Header.h */,
 				E408EEC51EC8AF8400E6E596 /* InfoPlist.strings */,
@@ -311,6 +310,7 @@
 				E4962BF01EB4B08000DF8CAE /* Info.plist */,
 				E4962BED1EB4B08000DF8CAE /* LaunchScreen.storyboard */,
 				E4962BE51EB4B08000DF8CAE /* Main.storyboard */,
+				E4B52B581EF2AA920030BD2D /* Login.storyboard */,
 			);
 			path = "Tsukuba-iOS";
 			sourceTree = "<group>";
@@ -449,10 +449,11 @@
 			files = (
 				E4962BEF1EB4B08000DF8CAE /* LaunchScreen.storyboard in Resources */,
 				E408EEC61EC8AF8400E6E596 /* InfoPlist.strings in Resources */,
+				E4B52B591EF2AA920030BD2D /* Login.storyboard in Resources */,
 				E4089FF31EBB50790042221D /* Localizable.strings in Resources */,
+				E4B52B651EF2B1200030BD2D /* login-bg.jpg in Resources */,
 				E42331781EC030FE00C3A6B0 /* Assets.xcassets in Resources */,
 				E4962BE71EB4B08000DF8CAE /* Main.storyboard in Resources */,
-				E41F7D081EC369CD002E8184 /* login-bg.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,7 +549,6 @@
 				E4089FE21EBAF8F40042221D /* CategoryCollectionViewCell.swift in Sources */,
 				E4054AE31EC48D29006BCEEC /* ResetViewController.swift in Sources */,
 				E41F7D011EC34CB8002E8184 /* MessagesViewController.swift in Sources */,
-				E4B52B511EF2A0840030BD2D /* ViewController+Extention.swift in Sources */,
 				E4089FB81EBAE5830042221D /* CategoryDao.swift in Sources */,
 				E4089FBC1EBAE59E0042221D /* SelectionDao.swift in Sources */,
 				E455194B1EC4605B006A3B73 /* IntroductionTableViewCell.swift in Sources */,

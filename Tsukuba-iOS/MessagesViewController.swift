@@ -123,22 +123,7 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
         if user.login {
             performSegue(withIdentifier: "createMessageSegue", sender: self)
         } else {
-            let alertController = UIAlertController(title: NSLocalizedString("tip_name", comment: ""),
-                                                    message: NSLocalizedString("sign_in_before_post", comment: ""),
-                                                    preferredStyle: .alert)
-            alertController.view.tintColor = Color.main
-            let signin = UIAlertAction(title: NSLocalizedString("sign_in_now", comment: ""),
-                                       style: .destructive,
-                                       handler:
-            { (action) in
-                self.performSegue(withIdentifier: "loginSegue", sender: self)
-            })
-            let later = UIAlertAction(title: NSLocalizedString("later_name", comment: ""),
-                                      style: .cancel,
-                                      handler: nil)
-            alertController.addAction(signin)
-            alertController.addAction(later)
-            present(alertController, animated: true, completion: nil)
+            showLoginAlert()
         }
     }
 

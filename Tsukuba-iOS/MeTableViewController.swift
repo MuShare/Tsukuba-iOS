@@ -47,9 +47,21 @@ class MeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         switch indexPath.row {
+        // Sign in or show profile
         case 1:
-            // Sign in or show profile
-            self.performSegue(withIdentifier: user.login ? "profileSegue" : "loginSegue", sender: self)
+            if (user.login) {
+                self.performSegue(withIdentifier:"profileSegue", sender: self)
+            } else {
+                present(UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()!,
+                        animated: true, completion: nil)
+            }
+        // My Posts
+        case 3:
+            if user.login {
+                performSegue(withIdentifier: "myPostsSegue", sender: "")
+            } else {
+                showLoginAlert()
+            }
         default:
             break
         }
@@ -83,7 +95,6 @@ class MeTableViewController: UITableViewController {
         alertController.addAction(logout)
         alertController.addAction(cancel)
         self.present(alertController, animated: true, completion: nil)
-        
     }
     
     // MARK: - Service

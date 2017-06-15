@@ -60,6 +60,5 @@ class Config {
         let instance = Config()
         return instance
     }()
-
     
 }

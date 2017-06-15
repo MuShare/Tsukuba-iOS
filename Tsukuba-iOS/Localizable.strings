@@ -30,7 +30,7 @@ sign_in_sign_up = "Sign in to sync request history";
 sign_in_facebook = "Sign in with Facebook";
 sign_out_title = "Sign out";
 sign_out_message = "Are you sure to sign out now?";
-sign_in_before_post = "You need to sign in before posting a message.";
+sign_in_at_first = "You need to sign in at first!";
 sign_in_now = "Sign in now";
 
 fill_user_info = "Pleases fill in your contact way and address, then upload your avatar, so that other people can know you and contact you.";

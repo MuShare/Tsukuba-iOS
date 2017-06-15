@@ -59,3 +59,60 @@ extension UITextField{
         }
     }
 }
+
+extension UIViewController {
+    
+    func showAlert(title: String, content: String) {
+        let alertController = UIAlertController(title: title,
+                                                message: content,
+                                                preferredStyle: .alert)
+        alertController.view.tintColor = Color.main
+        alertController.addAction(UIAlertAction.init(title: NSLocalizedString("ok_name", comment: ""), style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func replaceBarButtonItemWithActivityIndicator() {
+        let activityIndicatorView = UIActivityIndicatorView.init(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        activityIndicatorView.startAnimating()
+        replaceBaeButtonItemWithView(view: activityIndicatorView)
+    }
+    
+    func replaceBaeButtonItemWithView(view: UIView) {
+        let barButton = UIBarButtonItem(customView: view)
+        self.navigationItem.rightBarButtonItem = barButton
+    }
+    
+    func showLoginAlert() {
+        let alertController = UIAlertController(title: NSLocalizedString("tip_name", comment: ""),
+                                                message: NSLocalizedString("sign_in_at_first", comment: ""),
+                                                preferredStyle: .alert)
+        alertController.view.tintColor = Color.main
+        let signin = UIAlertAction(title: NSLocalizedString("sign_in_now", comment: ""),
+                                   style: .destructive,
+                                   handler:
+        { (action) in
+            self.present(UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()!,
+                         animated: true, completion: nil)
+        })
+        let later = UIAlertAction(title: NSLocalizedString("later_name", comment: ""),
+                                  style: .cancel,
+                                  handler: nil)
+        alertController.addAction(signin)
+        alertController.addAction(later)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+}
+
+extension UIView {
+    var parentViewController: UIViewController? {
+        var parentResponder: UIResponder? = self
+        while parentResponder != nil {
+            parentResponder = parentResponder!.next
+            if let viewController = parentResponder as? UIViewController {
+                return viewController
+            }
+        }
+        return nil
+    }
+}

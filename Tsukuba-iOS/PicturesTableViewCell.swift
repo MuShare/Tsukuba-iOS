@@ -54,6 +54,10 @@ class PicturesTableViewCell: UITableViewCell {
     }
     
     @IBAction func favoriteMessagw(_ sender: Any) {
+        if !UserManager.sharedInstance.login {
+            self.parentViewController?.showLoginAlert()
+        }
+        
         if favoriteButton.isSelected {
             messageManager.like(message.mid, completion: { (success, tip) in
                 if !success {
