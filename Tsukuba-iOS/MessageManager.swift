@@ -11,6 +11,8 @@ import SwiftyJSON
 
 class MessageManager {
     
+    typealias FavoriteCompletion = ((_ success: Bool, _ favorites: Int, _ message: String?) -> Void)?
+    
     static let pageSize = 18
 
     var dao: DaoManager!
@@ -262,7 +264,7 @@ class MessageManager {
         }
     }
     
-    func like(_ mid: String, completion: ((Bool, String?) -> Void)?) {
+    func like(_ mid: String, completion: FavoriteCompletion) {
         let params: Parameters = [
             "mid": mid
         ]
@@ -274,14 +276,15 @@ class MessageManager {
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             if response.statusOK() {
-                completion?(true, nil)
+                let favorites = response.getResult()["favorites"].intValue
+                completion?(true, favorites ,nil)
             } else {
-                completion?(false, NSLocalizedString("message_like_fail", comment: ""))
+                completion?(false, 0, NSLocalizedString("message_like_fail", comment: ""))
             }
         }
     }
     
-    func unlike(_ mid: String, completion: ((Bool, String?) -> Void)?) {
+    func unlike(_ mid: String, completion: FavoriteCompletion) {
         let params: Parameters = [
             "mid": mid
         ]
@@ -294,9 +297,10 @@ class MessageManager {
             let response = Response(responseObject)
             if response.statusOK() {
                 let success = response.getResult()["success"].boolValue
-                completion?(success, nil)
+                let favorites = response.getResult()["favorites"].intValue
+                completion?(success, favorites, nil)
             } else {
-                completion?(false, NSLocalizedString("message_unlike_fail", comment: ""))
+                completion?(false, 0, NSLocalizedString("message_unlike_fail", comment: ""))
             }
         }
     }

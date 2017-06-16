@@ -678,7 +678,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Button" image="heart"/>
                                                     <connections>
-                                                        <action selector="favoriteMessagw:" destination="Jim-UU-qQV" eventType="touchUpInside" id="9Tu-O3-PSL"/>
+                                                        <action selector="favoriteMessage:" destination="Jim-UU-qQV" eventType="touchUpInside" id="Sl3-Lv-HfO"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4g-Z1-cgu">
@@ -775,6 +775,7 @@
                                 <connections>
                                     <outlet property="avatarImageView" destination="t8v-ya-Z5e" id="QAg-Sx-8Ti"/>
                                     <outlet property="favoriteButton" destination="ytb-cc-993" id="ILN-6O-xqR"/>
+                                    <outlet property="favoritesLabel" destination="z4g-Z1-cgu" id="eji-ID-6cr"/>
                                     <outlet property="nameButton" destination="Bfr-uM-oX2" id="xX8-xp-JIq"/>
                                     <outlet property="picturesImageSlideshow" destination="sKM-B3-HKe" id="gEk-XB-dXs"/>
                                     <outlet property="priceLabel" destination="G5v-LQ-VOS" id="uRM-DL-465"/>
