@@ -25,7 +25,6 @@
 		E4089FEF1EBB4AD80042221D /* MyProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FEE1EBB4AD80042221D /* MyProfileTableViewController.swift */; };
 		E4089FF11EBB4F160042221D /* AvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FF01EBB4F160042221D /* AvatarViewController.swift */; };
 		E408EEC41EC7672B00E6E596 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E408EEC31EC7672B00E6E596 /* Picture.swift */; };
-		E408EEC61EC8AF8400E6E596 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E408EEC51EC8AF8400E6E596 /* InfoPlist.strings */; };
 		E41ADBFC1EC151AA006479C5 /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41ADBFB1EC151AA006479C5 /* PictureCollectionViewCell.swift */; };
 		E41F7D011EC34CB8002E8184 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D001EC34CB8002E8184 /* MessagesViewController.swift */; };
 		E41F7D031EC3604C002E8184 /* MessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D021EC3604C002E8184 /* MessageCollectionViewCell.swift */; };
@@ -60,6 +59,7 @@
 		E4B52B6D1EF3B7D00030BD2D /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4B52B6C1EF3B7D00030BD2D /* Post.storyboard */; };
 		E4B52B711EF3DB310030BD2D /* AutoGenStrings.py in Resources */ = {isa = PBXBuildFile; fileRef = E4B52B701EF3DB310030BD2D /* AutoGenStrings.py */; };
 		E4B52B731EF3DBC50030BD2D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4B52B751EF3DBC50030BD2D /* Localizable.strings */; };
+		E4B52B771EF3DC8E0030BD2D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4B52B791EF3DC8E0030BD2D /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,7 +99,6 @@
 		E4089FEE1EBB4AD80042221D /* MyProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileTableViewController.swift; sourceTree = "<group>"; };
 		E4089FF01EBB4F160042221D /* AvatarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarViewController.swift; sourceTree = "<group>"; };
 		E408EEC31EC7672B00E6E596 /* Picture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
-		E408EEC51EC8AF8400E6E596 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		E41ADBFB1EC151AA006479C5 /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
 		E41F7D001EC34CB8002E8184 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		E41F7D021EC3604C002E8184 /* MessageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -144,6 +143,8 @@
 		E4B52B701EF3DB310030BD2D /* AutoGenStrings.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = AutoGenStrings.py; sourceTree = "<group>"; };
 		E4B52B741EF3DBC50030BD2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E4B52B761EF3DBC70030BD2D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		E4B52B781EF3DC8E0030BD2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E4B52B7A1EF3DC930030BD2D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		F44E7EC0007342735A1D800F /* Pods_Tsukuba_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tsukuba_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -278,7 +279,7 @@
 				E4B52B641EF2B1200030BD2D /* login-bg.jpg */,
 				E4B52B751EF3DBC50030BD2D /* Localizable.strings */,
 				E41F7D0D1EC3EAA3002E8184 /* Tsukuba-iOS-Bridging-Header.h */,
-				E408EEC51EC8AF8400E6E596 /* InfoPlist.strings */,
+				E4B52B791EF3DC8E0030BD2D /* InfoPlist.strings */,
 				E4B52B701EF3DB310030BD2D /* AutoGenStrings.py */,
 			);
 			name = "Support Files";
@@ -470,7 +471,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4962BEF1EB4B08000DF8CAE /* LaunchScreen.storyboard in Resources */,
-				E408EEC61EC8AF8400E6E596 /* InfoPlist.strings in Resources */,
+				E4B52B771EF3DC8E0030BD2D /* InfoPlist.strings in Resources */,
 				E4B52B591EF2AA920030BD2D /* Login.storyboard in Resources */,
 				E4B52B711EF3DB310030BD2D /* AutoGenStrings.py in Resources */,
 				E4B52B731EF3DBC50030BD2D /* Localizable.strings in Resources */,
@@ -664,6 +665,15 @@
 				E4B52B761EF3DBC70030BD2D /* zh-Hans */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		E4B52B791EF3DC8E0030BD2D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E4B52B781EF3DC8E0030BD2D /* Base */,
+				E4B52B7A1EF3DC930030BD2D /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
