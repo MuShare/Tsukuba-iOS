@@ -25,14 +25,18 @@ class MyProfileTableViewController: UITableViewController {
             showAlert(title: NSLocalizedString("tip_name", comment: ""),
                       content: NSLocalizedString("fill_user_info", comment: ""))
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
+        
         if user.login {
             avatarImageView.kf.setImage(with: user.avatarURL)
             nameTextField.text = user.name
             contactTextField.text = user.contact
             addressTextField.text = user.address
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if user.login {
+            avatarImageView.kf.setImage(with: user.avatarURL)
         }
     }
 
