@@ -140,9 +140,10 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
 
     // MARK: - Service
     private func loadCategories() {
-        var items: [SegmentioItem] = [SegmentioItem(title: "All", image: nil)]
+        var items: [SegmentioItem] = [SegmentioItem(title: NSLocalizedString("message_all", comment: ""),
+                                                    image: nil)]
         for category in categories {
-            items.append(SegmentioItem(title: category.identifier, image: nil))
+            items.append(SegmentioItem(title: category.name, image: nil))
         }
         
         segmentioView.setup(content: items, style: .onlyLabel, options: segmentioOptions())

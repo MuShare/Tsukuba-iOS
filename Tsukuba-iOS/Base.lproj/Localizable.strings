@@ -21,12 +21,12 @@ email_invalidate = "Please input a correct email!";
 back_to_login = "Back";
 email_registered = "This email has been registered.";
 
-login_not_validate = "Input correct emaill and password!";
-email_not_exist = "This email is not existed.";
+login_not_validate = "Input correct email and password!";
+email_not_exist = "This email has not been registered.";
 password_wrong = "Your password is wrong, check and try again.";
 facebook_oauth_error = "Facebook OAuth login failed, plasese try Again!";
 
-sign_in_sign_up = "Sign in to sync request history";
+sign_in_sign_up = "Welcome to Tsukuba, Sign in now!";
 sign_in_facebook = "Sign in with Facebook";
 sign_out_title = "Sign out";
 sign_out_message = "Are you sure to sign out now?";
@@ -52,6 +52,7 @@ upload_progress = "Upload Progress: ";
 upload_message_picture = "Upload Picture";
 remove_picture_failed = "Remove picture failed.";
 
+message_all = "All";
 message_title_empty = "Please input a post title.";
 message_basic_info = "Basic Information";
 message_title = "Title";

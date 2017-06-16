@@ -16,33 +16,6 @@ class SyncManager {
     var dao: DaoManager!
     var config: Config!
     
-    var categoryRev: Int {
-        set(value) {
-            Defaults[.categoryRev] = value
-        }
-        get {
-            return Defaults[.categoryRev] ?? 0
-        }
-    }
-    
-    var selectionRev: Int {
-        set(value) {
-            Defaults[.selectionRev] = value
-        }
-        get {
-            return Defaults[.selectionRev] ?? 0
-        }
-    }
-    
-    var optionRev: Int {
-        set(value) {
-            Defaults[.optionRev] = value
-        }
-        get {
-            return Defaults[.optionRev] ?? 0
-        }
-    }
-    
     static let sharedInstance: SyncManager = {
         let instance = SyncManager()
         return instance
@@ -55,7 +28,7 @@ class SyncManager {
 
     func pullCategory(_ completionHandler: ((Int, Bool) -> Void)?) {
         let params: Parameters = [
-            "rev": self.categoryRev
+            "rev": config.categoryRev
         ]
         Alamofire.request(createUrl("api/category/list"),
                           method: .get,
@@ -71,12 +44,12 @@ class SyncManager {
                     // Save updated categories to persistent object.
                     let categories = result["categories"].arrayValue
                     for category in categories {
-                        _ = self.dao.categoryDao.saveOrUpdate(category)
+                        _ = self.dao.categoryDao.saveOrUpdate(category, lan: self.config.lan)
                     }
                     // Save global rev
-                    self.categoryRev = result["rev"].intValue
+                    self.config.categoryRev = result["rev"].intValue
                 }
-                completionHandler?(self.categoryRev, update)
+                completionHandler?(self.config.categoryRev, update)
             } else {
                 completionHandler?(-1, false)
             }
@@ -85,7 +58,7 @@ class SyncManager {
     
     func pullSelection(_ completionHandler: ((Int, Bool) -> Void)?) {
         let params: Parameters = [
-            "rev": self.selectionRev
+            "rev": self.config.selectionRev
         ]
         Alamofire.request(createUrl("api/selection/list"),
                           method: .get,
@@ -103,14 +76,14 @@ class SyncManager {
                         let selections = result["selections"].arrayValue
                         for object in selections {
                             let cid = object["cid"].stringValue
-                            let selection = self.dao.selectionDao.saveOrUpdate(object)
+                            let selection = self.dao.selectionDao.saveOrUpdate(object, lan: self.config.lan)
                             selection.category = categories[cid]
                         }
                         self.dao.saveContext()
                         // Save global rev
-                        self.selectionRev = result["rev"].intValue
+                        self.config.selectionRev = result["rev"].intValue
                     }
-                    completionHandler?(self.selectionRev, update)
+                    completionHandler?(self.config.selectionRev, update)
                 } else {
                     completionHandler?(-1, false)
                 }
@@ -119,7 +92,7 @@ class SyncManager {
     
     func pullOption(_ completionHandler: ((Int, Bool) -> Void)?) {
         let params: Parameters = [
-            "rev": self.optionRev
+            "rev": self.config.optionRev
         ]
         Alamofire.request(createUrl("api/option/list"),
                           method: .get,
@@ -137,14 +110,14 @@ class SyncManager {
                         let options = result["options"].arrayValue
                         for object in options {
                             let sid = object["sid"].stringValue
-                            let option = self.dao.optionDao.saveOrUpdate(object)
+                            let option = self.dao.optionDao.saveOrUpdate(object, lan: self.config.lan)
                             option.selection = selections[sid]
                         }
                         self.dao.saveContext()
                         // Save global rev
-                        self.optionRev = result["rev"].intValue
+                        self.config.optionRev = result["rev"].intValue
                     }
-                    completionHandler?(self.optionRev, update)
+                    completionHandler?(self.config.optionRev, update)
                 } else {
                     completionHandler?(-1, false)
                 }

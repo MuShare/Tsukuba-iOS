@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class CategoryDao: DaoTemplate {
     
-    func saveOrUpdate(_ object: JSON) -> Category {
+    func saveOrUpdate(_ object: JSON, lan: String) -> Category {
         let cid = object["cid"].stringValue
         var category = getByCid(cid)
         if category == nil {
@@ -23,7 +23,7 @@ class CategoryDao: DaoTemplate {
         category?.enable = object["enable"].boolValue
         category?.icon = object["icon"].stringValue
         category?.identifier = object["identifier"].stringValue
-        category?.name = object["name"].stringValue
+        category?.name = object["name"][lan].stringValue
         category?.priority = object["priority"].int16Value
         self.saveContext()
         return category!

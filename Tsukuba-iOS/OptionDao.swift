@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class OptionDao: DaoTemplate {
     
-    func saveOrUpdate(_ object: JSON) -> Option {
+    func saveOrUpdate(_ object: JSON, lan: String) -> Option {
         let oid = object["oid"].stringValue
         var option = getByOid(oid)
         if option == nil {
@@ -22,7 +22,7 @@ class OptionDao: DaoTemplate {
         option?.createAt = object["createAt"].int16Value
         option?.enable = object["enable"].boolValue
         option?.identifier = object["identifier"].stringValue
-        option?.name = object["name"].stringValue
+        option?.name = object["name"][lan].stringValue
         option?.priority = object["priority"].int16Value
         return option!
     }

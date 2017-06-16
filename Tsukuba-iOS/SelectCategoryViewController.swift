@@ -41,7 +41,7 @@ class SelectCategoryViewController: UIViewController, UICollectionViewDataSource
         let category = categories[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoryIdentifier",
                                                       for: indexPath) as! CategoryCollectionViewCell
-        cell.nameLabel.text = category.identifier
+        cell.nameLabel.text = category.name
         cell.iconImageView.kf.setImage(with: URL(string: createUrl(category.icon!)))
         return cell
     }

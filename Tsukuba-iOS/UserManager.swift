@@ -169,7 +169,7 @@ class UserManager {
             "deviceToken": Defaults[.deviceToken] ?? "",
             "os": UIDevice.current.systemName,
             "version": UIDevice.current.systemVersion,
-            "lan": NSLocale.preferredLanguages[0]
+            "lan": config.lan
         ]
         Alamofire.request(createUrl("api/user/login/email"),
                           method: .post,
@@ -212,7 +212,7 @@ class UserManager {
             "deviceToken": Defaults[.deviceToken] ?? "",
             "os": UIDevice.current.systemName,
             "version": UIDevice.current.systemVersion,
-            "lan": NSLocale.preferredLanguages[0]
+            "lan": config.lan
         ]
         
         Alamofire.request(createUrl("/api/user/login/facebook"),

@@ -28,6 +28,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        
+        // Set up language.
+        let lan = Bundle.main.preferredLocalizations[0].components(separatedBy: "-")[0]
+        if config.lan != lan {
+            config.lan = lan
+            config.categoryRev = 0
+            config.optionRev = 0
+            config.selectionRev = 0
+        }
+        
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         return true

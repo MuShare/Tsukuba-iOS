@@ -25,9 +25,37 @@ extension DefaultsKeys {
     static let userRev = DefaultsKey<Int?>("userRev")
     static let version = DefaultsKey<String?>("version")
     static let columns = DefaultsKey<Int?>("columns")
+    static let lan = DefaultsKey<String?>("lan")
 }
 
 class Config {
+    
+    var categoryRev: Int {
+        set(value) {
+            Defaults[.categoryRev] = value
+        }
+        get {
+            return Defaults[.categoryRev] ?? 0
+        }
+    }
+    
+    var selectionRev: Int {
+        set(value) {
+            Defaults[.selectionRev] = value
+        }
+        get {
+            return Defaults[.selectionRev] ?? 0
+        }
+    }
+    
+    var optionRev: Int {
+        set(value) {
+            Defaults[.optionRev] = value
+        }
+        get {
+            return Defaults[.optionRev] ?? 0
+        }
+    }
     
     var columns: Int {
         set {
@@ -53,6 +81,15 @@ class Config {
                 "token": token
             ]
             return headers
+        }
+    }
+    
+    var lan: String {
+        set {
+            Defaults[.lan] = newValue
+        }
+        get {
+            return Defaults[.lan] ?? ""
         }
     }
 
