@@ -3,16 +3,13 @@
 "9tN-zT-RdM.normalTitle" = "下一步";
 
 /* Class = "UINavigationItem"; title = "Post"; ObjectID = "JgW-b9-zxO"; */
-"JgW-b9-zxO.title" = "发布";
+"JgW-b9-zxO.title" = "选择发布类别";
 
 /* Class = "UINavigationItem"; title = "Post"; ObjectID = "feA-EZ-Rzf"; */
 "feA-EZ-Rzf.title" = "发布";
 
 /* Class = "UILabel"; text = "Name"; ObjectID = "gv7-YO-waH"; */
 "gv7-YO-waH.text" = "姓名";
-
-/* Class = "UILabel"; text = "Select a category you want to post."; ObjectID = "qKp-Id-7CJ"; */
-"qKp-Id-7CJ.text" = "选择发布类别";
 
 /* Class = "UIButton"; normalTitle = "Upload"; ObjectID = "wW3-fK-SG7"; */
 "wW3-fK-SG7.normalTitle" = "上传";

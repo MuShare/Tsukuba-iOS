@@ -30,24 +30,28 @@ class OptionDao: DaoTemplate {
     func findEnable() -> [Option] {
         let request = NSFetchRequest<Option>(entityName: NSStringFromClass(Option.self))
         request.predicate = NSPredicate(format: "enable=true")
+        request.sortDescriptors = [NSSortDescriptor(key: "priority", ascending: true)]
         return try! context.fetch(request)
     }
     
     func findEnableBySelection(_ selection: Selection) -> [Option] {
         let request = NSFetchRequest<Option>(entityName: NSStringFromClass(Option.self))
         request.predicate = NSPredicate(format: "enable=true and selection=%@", selection)
+        request.sortDescriptors = [NSSortDescriptor(key: "priority", ascending: true)]
         return try! context.fetch(request)
     }
     
     func findInOids(_ oids: [String]) -> [Option] {
         let request = NSFetchRequest<Option>(entityName: NSStringFromClass(Option.self))
         request.predicate = NSPredicate(format: "oid IN %@", oids)
+        request.sortDescriptors = [NSSortDescriptor(key: "priority", ascending: true)]
         return try! context.fetch(request)
     }
     
     func getByOid(_ oid: String) -> Option? {
         let request = NSFetchRequest<Option>(entityName: NSStringFromClass(Option.self))
         request.predicate = NSPredicate(format: "oid=%@", oid)
+        request.sortDescriptors = [NSSortDescriptor(key: "priority", ascending: true)]
         let options = try! context.fetch(request)
         if options.count == 0 {
             return nil

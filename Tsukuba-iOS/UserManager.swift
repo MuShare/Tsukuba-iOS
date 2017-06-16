@@ -167,7 +167,7 @@ class UserManager {
             "password": password,
             "identifier": UIDevice.current.identifierForVendor!.uuidString,
             "deviceToken": Defaults[.deviceToken] ?? "",
-            "os": UIDevice.current.systemName,
+            "os": "iOS",
             "version": UIDevice.current.systemVersion,
             "lan": config.lan
         ]
@@ -210,7 +210,7 @@ class UserManager {
             "accessToken": token,
             "identifier": UIDevice.current.identifierForVendor!.uuidString,
             "deviceToken": Defaults[.deviceToken] ?? "",
-            "os": UIDevice.current.systemName,
+            "os": "iOS",
             "version": UIDevice.current.systemVersion,
             "lan": config.lan
         ]

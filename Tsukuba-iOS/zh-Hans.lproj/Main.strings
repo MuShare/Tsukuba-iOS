@@ -23,9 +23,6 @@
 /* Class = "UIButton"; normalTitle = "Upload"; ObjectID = "7o4-vA-O92"; */
 "7o4-vA-O92.normalTitle" = "上传";
 
-/* Class = "UILabel"; text = "Help"; ObjectID = "8PI-9u-0ok"; */
-"8PI-9u-0ok.text" = "帮助";
-
 /* Class = "UIButton"; normalTitle = "Name"; ObjectID = "Bfr-uM-oX2"; */
 "Bfr-uM-oX2.normalTitle" = "姓名";
 
@@ -161,9 +158,6 @@
 /* Class = "UINavigationItem"; title = "Tsukuba Mate"; ObjectID = "wCy-bT-HBv"; */
 "wCy-bT-HBv.title" = "筑波同校";
 
-/* Class = "UILabel"; text = "Feedback"; ObjectID = "yQW-29-Br3"; */
-"yQW-29-Br3.text" = "反馈";
-
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "ytb-cc-993"; */
 "ytb-cc-993.normalTitle" = "按钮";
 
@@ -172,3 +166,22 @@
 
 /* Class = "UILabel"; text = "Option"; ObjectID = "zJw-ft-Rqi"; */
 "zJw-ft-Rqi.text" = "选项";
+
+//2017-06-16 20:29:08
+
+/* Class = "UILabel"; text = "address"; ObjectID = "PeX-9X-26U"; */
+"PeX-9X-26U.text" = "address";
+
+/* Class = "UILabel"; text = "contact"; ObjectID = "2S1-cP-7gH"; */
+"2S1-cP-7gH.text" = "contact";
+
+/* Class = "UILabel"; text = "joined in"; ObjectID = "jhh-uq-ddu"; */
+"jhh-uq-ddu.text" = "joined in";
+
+//2017-06-16 20:33:57
+
+/* Class = "UILabel"; text = "Tsukuba Mate"; ObjectID = "jjv-oM-fGN"; */
+"jjv-oM-fGN.text" = "筑波同校";
+
+/* Class = "UILabel"; text = "MuShare Group © 2015 - 2017. All Rights Reserved."; ObjectID = "4Ta-n1-hHa"; */
+"4Ta-n1-hHa.text" = "MuShare Group © 2015 - 2017. All Rights Reserved.";

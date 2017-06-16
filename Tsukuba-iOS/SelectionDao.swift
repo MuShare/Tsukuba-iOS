@@ -30,23 +30,27 @@ class SelectionDao: DaoTemplate {
     func findEnable() -> [Selection] {
         let request = NSFetchRequest<Selection>(entityName: NSStringFromClass(Selection.self))
         request.predicate = NSPredicate(format: "enable=true")
+        request.sortDescriptors = [NSSortDescriptor(key: "priority", ascending: true)]
         return try! context.fetch(request)
     }
     
     func findEnableByCategory(_ category: Category) -> [Selection] {
         let request = NSFetchRequest<Selection>(entityName: NSStringFromClass(Selection.self))
         request.predicate = NSPredicate(format: "enable=true and category=%@", category)
+        request.sortDescriptors = [NSSortDescriptor(key: "priority", ascending: true)]
         return try! context.fetch(request)
     }
     
     func findAll() -> [Selection] {
         let request = NSFetchRequest<Selection>(entityName: NSStringFromClass(Selection.self))
+        request.sortDescriptors = [NSSortDescriptor(key: "priority", ascending: true)]
         return try! context.fetch(request)
     }
     
     func getBySid(_ sid: String) -> Selection? {
         let request = NSFetchRequest<Selection>(entityName: NSStringFromClass(Selection.self))
         request.predicate = NSPredicate(format: "sid=%@", sid)
+        request.sortDescriptors = [NSSortDescriptor(key: "priority", ascending: true)]
         let selections = try! context.fetch(request)
         if selections.count == 0 {
             return nil
