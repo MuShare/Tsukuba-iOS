@@ -35,7 +35,7 @@
             </objects>
             <point key="canvasLocation" x="1583" y="2078"/>
         </scene>
-        <!--Post Message-->
+        <!--Post-->
         <scene sceneID="bwe-FS-3rx">
             <objects>
                 <viewController id="21H-bC-zYV" customClass="SelectCategoryViewController" customModule="Tsukuba_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -155,7 +155,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="qKp-Id-7CJ" secondAttribute="trailing" constant="-16" id="xUh-u7-daA"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Post Message" id="JgW-b9-zxO">
+                    <navigationItem key="navigationItem" title="Post" id="JgW-b9-zxO">
                         <barButtonItem key="leftBarButtonItem" image="close" id="co9-g5-H2J">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -172,7 +172,7 @@
             </objects>
             <point key="canvasLocation" x="2425" y="2078"/>
         </scene>
-        <!--Post Message-->
+        <!--Post-->
         <scene sceneID="Ylf-vM-Dw4">
             <objects>
                 <viewController id="ByE-Xb-lUv" customClass="CreateMessageViewController" customModule="Tsukuba_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -185,7 +185,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.97252601390000004" green="0.97326189279999997" blue="0.97263997790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Post Message" id="feA-EZ-Rzf">
+                    <navigationItem key="navigationItem" title="Post" id="feA-EZ-Rzf">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="iLz-hB-fgz">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>

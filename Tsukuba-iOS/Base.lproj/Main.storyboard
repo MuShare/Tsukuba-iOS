@@ -102,16 +102,37 @@
                                     <constraint firstAttribute="height" constant="35" id="wNh-Xk-bNK"/>
                                 </constraints>
                             </view>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nodata" translatesAutoresizingMaskIntoConstraints="NO" id="NjL-1r-MCE">
+                                <rect key="frame" x="112" y="258" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="WlL-dL-3AB"/>
+                                    <constraint firstAttribute="height" constant="150" id="xNA-ea-h8l"/>
+                                </constraints>
+                            </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ieT-vj-eNs">
+                                <rect key="frame" x="112" y="435" width="150" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="7Rw-Pd-z6O"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.9724467396736145" green="0.97260957956314087" blue="0.97242385149002075" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="NjL-1r-MCE" firstAttribute="centerX" secondItem="7Qw-Uw-qwx" secondAttribute="centerX" id="1fM-jZ-CBu"/>
+                            <constraint firstItem="ieT-vj-eNs" firstAttribute="top" secondItem="NjL-1r-MCE" secondAttribute="bottom" constant="27" id="B36-t0-LWO"/>
                             <constraint firstItem="swi-Dd-7Hc" firstAttribute="top" secondItem="Byf-WP-xIc" secondAttribute="bottom" id="MMZ-bS-ckm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Byf-WP-xIc" secondAttribute="trailing" constant="-16" id="Vgm-E7-6Yc"/>
                             <constraint firstItem="Byf-WP-xIc" firstAttribute="top" secondItem="nKy-6v-QYf" secondAttribute="bottom" constant="-29" id="Y4U-qQ-Q20"/>
                             <constraint firstItem="ZCD-RK-S6t" firstAttribute="leading" secondItem="7Qw-Uw-qwx" secondAttribute="leadingMargin" constant="-16" id="g9F-hi-1g8"/>
+                            <constraint firstItem="ieT-vj-eNs" firstAttribute="trailing" secondItem="NjL-1r-MCE" secondAttribute="trailing" id="kc2-Q0-aNr"/>
                             <constraint firstItem="ZCD-RK-S6t" firstAttribute="top" secondItem="nKy-6v-QYf" secondAttribute="bottom" id="qmj-DI-GcX"/>
+                            <constraint firstItem="ieT-vj-eNs" firstAttribute="leading" secondItem="NjL-1r-MCE" secondAttribute="leading" id="s8L-wI-JtZ"/>
                             <constraint firstItem="Byf-WP-xIc" firstAttribute="leading" secondItem="7Qw-Uw-qwx" secondAttribute="leadingMargin" constant="-16" id="usa-6G-k7c"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ZCD-RK-S6t" secondAttribute="trailing" constant="-16" id="y06-YV-oEb"/>
+                            <constraint firstItem="NjL-1r-MCE" firstAttribute="centerY" secondItem="7Qw-Uw-qwx" secondAttribute="centerY" id="yKL-xR-LF3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Tsukuba Mate" id="wCy-bT-HBv">
@@ -130,6 +151,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="Byf-WP-xIc" id="UAe-FC-jab"/>
+                        <outlet property="nodataImageView" destination="NjL-1r-MCE" id="joH-s3-Y2J"/>
+                        <outlet property="nodataLabel" destination="ieT-vj-eNs" id="4M2-ky-aLq"/>
                         <outlet property="segmentioView" destination="ZCD-RK-S6t" id="YBX-CJ-Ukf"/>
                         <segue destination="Xd0-0a-N5R" kind="push" identifier="messageSegue" id="kLV-Sf-9gb"/>
                     </connections>
@@ -1607,10 +1630,11 @@
         <image name="me_help" width="30" height="30"/>
         <image name="me_user" width="60" height="60"/>
         <image name="message" width="30" height="30"/>
+        <image name="nodata" width="150" height="150"/>
         <image name="user" width="30" height="30"/>
         <image name="write" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4oe-Tm-ohe"/>
+        <segue reference="kLV-Sf-9gb"/>
     </inferredMetricsTieBreakers>
 </document>

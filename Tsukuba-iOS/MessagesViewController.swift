@@ -14,6 +14,8 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
     
     @IBOutlet weak var segmentioView: Segmentio!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var nodataImageView: UIImageView!
+    @IBOutlet weak var nodataLabel: UILabel!
     
     let dao = DaoManager.sharedInstance
     let sync = SyncManager.sharedInstance
@@ -54,6 +56,15 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
         // Set collection view refresh
         collectionView?.es_addPullToRefresh {
             self.message.loadMessage(self.sell, cid: self.cid, seq: nil) { (success, messages) in
+                // Show no data tip if there is no message.
+                if (messages.count == 0) {
+                    self.nodataLabel.isHidden = false
+                    self.nodataImageView.isHidden = false
+                } else {
+                    self.nodataLabel.isHidden = true
+                    self.nodataImageView.isHidden = true
+                }
+                // Update messages.
                 self.messages = messages
                 self.collectionView?.reloadData()
                 self.collectionView?.es_stopPullToRefresh()
