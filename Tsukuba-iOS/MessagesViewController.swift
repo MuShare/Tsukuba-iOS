@@ -20,7 +20,7 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
     let dao = DaoManager.sharedInstance
     let sync = SyncManager.sharedInstance
     let user = UserManager.sharedInstance
-    let message = MessageManager.sharedInstance
+    let messageManager = MessageManager.sharedInstance
     let config = Config.sharedInstance
     
     var categories: [Category]!
@@ -28,9 +28,6 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
     var messages: [Message] = []
     var selectedMessage: Message!
     var sell = true
-    
-    // Refresh flag, if this flag is true, collection view will be refreshed.
-    var refresh = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +52,7 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
         
         // Set collection view refresh
         collectionView?.es_addPullToRefresh {
-            self.message.loadMessage(self.sell, cid: self.cid, seq: nil) { (success, messages) in
+            self.messageManager.loadMessage(self.sell, cid: self.cid, seq: nil) { (success, messages) in
                 // Show no data tip if there is no message.
                 if (messages.count == 0) {
                     self.nodataLabel.isHidden = false
@@ -70,10 +67,11 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
                 self.collectionView?.es_stopPullToRefresh()
             }
         }
+        collectionView?.es_startPullToRefresh()
         
         collectionView?.es_addInfiniteScrolling {
             let seq = self.messages.last?.seq
-            self.message.loadMessage(self.sell, cid: self.cid, seq: seq, completion: { (success, messages) in
+            self.messageManager.loadMessage(self.sell, cid: self.cid, seq: seq, completion: { (success, messages) in
                 if messages.count == 0 {
                     self.collectionView?.es_noticeNoMoreData()
                 } else {
@@ -92,9 +90,9 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        if refresh {
+        if messageManager.updated {
             collectionView?.es_startPullToRefresh()
-            refresh = false
+            messageManager.updated = false
         }
     }
 

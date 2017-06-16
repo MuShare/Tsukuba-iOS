@@ -14,12 +14,14 @@ class MessageManager {
     typealias FavoriteCompletion = ((_ success: Bool, _ favorites: Int, _ message: String?) -> Void)?
     typealias MessagesCompletion = ((Bool, [Message]) -> Void)?
     
-    
     static let pageSize = 18
 
     var dao: DaoManager!
     var config: Config!
     var pictureUploadingProgress: Double! = 0
+    
+    // Updated flag, message need to refresh in user interface or not.
+    var updated = false
     
     static let sharedInstance: MessageManager = {
         let instance = MessageManager()
@@ -51,6 +53,7 @@ class MessageManager {
             .responseJSON { (responseObject) in
                 let response = Response(responseObject)
                 if response.statusOK() {
+                    self.updated = true
                     completion?(true, response.getResult()["mid"].stringValue)
                 } else {
                     switch response.errorCode() {
@@ -82,6 +85,7 @@ class MessageManager {
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             if response.statusOK() {
+                self.updated = true
                 completion?(true, nil)
             } else {
                 switch response.errorCode() {

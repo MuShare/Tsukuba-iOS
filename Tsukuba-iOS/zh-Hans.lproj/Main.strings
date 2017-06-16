@@ -39,7 +39,7 @@
 "GBd-1R-ZTy.placeholder" = "地址";
 
 /* Class = "UINavigationItem"; title = "Edit Message"; ObjectID = "JMd-zl-kHo"; */
-"JMd-zl-kHo.title" = "编辑发布";
+"JMd-zl-kHo.title" = "编辑帖子";
 
 /* Class = "UILabel"; text = "Email"; ObjectID = "Jw2-7U-3tS"; */
 "Jw2-7U-3tS.text" = "邮箱";
@@ -48,7 +48,7 @@
 "JzQ-dh-gVW.placeholder" = "用户名";
 
 /* Class = "UILabel"; text = "My Posts"; ObjectID = "LBx-Jr-mW2"; */
-"LBx-Jr-mW2.text" = "我的发布";
+"LBx-Jr-mW2.text" = "我发布的帖子";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "OWj-SS-8BC"; */
 "OWj-SS-8BC.text" = "标题";
@@ -99,7 +99,7 @@
 "fTY-Ii-ot1.normalTitle" = "注销";
 
 /* Class = "UILabel"; text = "Closed Message"; ObjectID = "fuf-Hz-pP7"; */
-"fuf-Hz-pP7.text" = "已关闭的发布";
+"fuf-Hz-pP7.text" = "已关闭的帖子";
 
 /* Class = "UILabel"; text = "About"; ObjectID = "hkH-JJ-5yJ"; */
 "hkH-JJ-5yJ.text" = "关于";
@@ -135,7 +135,7 @@
 "r3d-0q-6hh.title" = "头像";
 
 /* Class = "UINavigationItem"; title = "My Posts"; ObjectID = "rDP-Fk-I1Z"; */
-"rDP-Fk-I1Z.title" = "我的发布";
+"rDP-Fk-I1Z.title" = "我的帖子";
 
 /* Class = "UILabel"; text = "Introduction"; ObjectID = "rZ6-Wm-PXJ"; */
 "rZ6-Wm-PXJ.text" = "介绍";
