@@ -1,68 +1,69 @@
 tip_name = "提示";
-cancel_name = "Cancel";
-yes_name = "Yes";
-ok_name = "OK";
-clear_name = "Clear";
-tab_name = "Tab";
-delete_name = "Delete";
-later_name = "Later";
+cancel_name = "取消";
+yes_name = "是";
+ok_name = "好";
+clear_name = "清除";
+tab_name = "标签";
+delete_name = "删除";
+later_name = "稍后";
 
-error_token = "User authorization is invalide. Please sign in again!";
-error_object_id = "Object id error.";
-error_save_failed = "Save failed.";
-error_invalid_parameter = "Invalid parameter.";
-error_unknown = "Unknown error.";
+error_token = "用户验证信息无效，请重新登录！";
+error_object_id = "对象ID错误。";
+error_save_failed = "保存失败。";
+error_invalid_parameter = "无效的参数";
+error_unknown = "未知错误。";
 
-me_title = "Sign in / Sign up";
-me_subtitle = "Welcome to Tsukuba, sign in now!";
+me_title = "登陆 / 注册";
+me_subtitle = "欢迎使用，立即登陆！";
 
-register_not_validate = "Email, username and password cannot be empty!";
-email_invalidate = "Please input a correct email!";
-back_to_login = "Back";
-email_registered = "This email has been registered.";
+register_not_validate = "邮箱，用户名和密码不能为空！";
+email_invalidate = "请输入正确的邮箱！";
+back_to_login = "返回";
+email_registered = "此邮箱已被注册！";
 
-login_not_validate = "Input correct emaill and password!";
-email_not_exist = "This email is not existed.";
-password_wrong = "Your password is wrong, check and try again.";
-facebook_oauth_error = "Facebook OAuth login failed, plasese try Again!";
+login_not_validate = "输入正确的邮箱和密码！";
+email_not_exist = "此邮箱未注册！";
+password_wrong = "密码错误，请检查并重试！";
+facebook_oauth_error = "Facebook验证登录失败，请重试！";
 
-sign_in_sign_up = "Sign in to sync request history";
-sign_in_facebook = "Sign in with Facebook";
-sign_out_title = "Sign out";
-sign_out_message = "Are you sure to sign out now?";
-sign_in_at_first = "You need to sign in at first!";
-sign_in_now = "Sign in now";
+sign_in_sign_up = "欢迎使用，立即登陆！";
+sign_in_facebook = "用Facebook登陆";
+sign_out_title = "注销";
+sign_out_message = "你确定要注销吗？";
+sign_in_at_first = "你需要先登录！";
+sign_in_now = "立即登陆";
 
-fill_user_info = "Pleases fill in your contact way and address, then upload your avatar, so that other people can know you and contact you.";
+fill_user_info = "请填写你的联系方式和地址，然后上传头像，以方便别人认出并联系上你。";
 
-reset_password_not_validate = "Please input a correct email!";
-reset_password_failed = "Send email failed, try again later.";
-reset_password_check_email = "Check Your Email";
+reset_password_not_validate = "请填入正确的邮箱！";
+reset_password_failed = "发邮件失败，请重试！";
+reset_password_check_email = "请检查你的邮箱";
 
-modify_has_empty = "Name, contact way and address cannot be empty!";
+modify_has_empty = "姓名，联系方式和地址不能为空";
 
-photo_tip = "Choose a photo from library or take a photo.";
-photo_take = "Take Photo";
+photo_tip = "从库里选择照片或拍照";
+photo_take = "拍照";
 photo_simulator_not_support = "iOS Simulator cannot open camera.";
-photo_choose = "Choose from Photos";
+photo_choose = "从照片中选择";
 
-upload_profile_photo = "Upload Profie Photo";
-upload_progress = "Upload Progress: ";
+upload_profile_photo = "上传头像";
+upload_progress = "上传进度：";
 
-upload_message_picture = "Upload Picture";
-remove_picture_failed = "Remove picture failed.";
+upload_message_picture = "上传照片";
+remove_picture_failed = "移除照片失败。";
 
-message_title_empty = "Please input a post title.";
-message_basic_info = "Basic Information";
-message_title = "Title";
-message_title_placeholder = "Message title";
-message_price = "Price";
-message_introduction_placeholder = "Introduction for this message.";
-message_edit_pictures = "Edit Pictures";
-message_close_title = "Close Message";
-message_close_content = "Other people cannot see this message if you close this message. You cannot reopen it once you closed it. Are you sure to close this message? ";
+message_all = "所有分类";
+message_title_empty = "请输入发布标题";
+message_basic_info = "基本信息";
+message_title = "标题";
+message_title_placeholder = "发布标题";
+message_price = "价格";
+message_introduction_placeholder = "介绍此次发布。";
+message_edit_pictures = "编辑照片";
+message_close_title = "关闭发布";
+message_close_content = "关闭发布后别人将看不到此发布内容。一旦关闭将不能重开。确定关闭吗？";
 
-modify_message_no_privilege = "You do not have previlige to edit this message.";
+modify_message_no_privilege = "你没有权限编辑这个消息";
 
-message_like_fail = "Cannot set favorite message.";
-message_unlike_fail = "Cannot cancel favorite message.";
+message_like_fail = "无法收藏";
+message_unlike_fail = "无法取消收藏";
