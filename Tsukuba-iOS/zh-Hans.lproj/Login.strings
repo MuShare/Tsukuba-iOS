@@ -1,48 +1,48 @@
 
 /* Class = "UIButton"; normalTitle = "Forget password"; ObjectID = "0hY-8P-7N6"; */
-"0hY-8P-7N6.normalTitle" = "Forget password";
+"0hY-8P-7N6.normalTitle" = "忘记密码";
 
 /* Class = "UIButton"; normalTitle = "Sign up"; ObjectID = "0pk-vP-wgE"; */
-"0pk-vP-wgE.normalTitle" = "Sign up";
+"0pk-vP-wgE.normalTitle" = "注册";
 
 /* Class = "UIButton"; normalTitle = " Sign in with Facebook"; ObjectID = "18x-za-O3E"; */
-"18x-za-O3E.normalTitle" = " Sign in with Facebook";
+"18x-za-O3E.normalTitle" = "用Facebook登陆";
 
 /* Class = "UITextField"; placeholder = "Email"; ObjectID = "3tI-Cx-i25"; */
-"3tI-Cx-i25.placeholder" = "Email";
+"3tI-Cx-i25.placeholder" = "邮箱";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "8sX-DV-RyF"; */
-"8sX-DV-RyF.placeholder" = "Password";
+"8sX-DV-RyF.placeholder" = "密码";
 
 /* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "AlI-zH-atA"; */
-"AlI-zH-atA.normalTitle" = "Submit";
+"AlI-zH-atA.normalTitle" = "提交";
 
 /* Class = "UITextField"; placeholder = "Username"; ObjectID = "DUW-8k-ihR"; */
-"DUW-8k-ihR.placeholder" = "Username";
+"DUW-8k-ihR.placeholder" = "用户名";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "MQ0-he-Awb"; */
-"MQ0-he-Awb.placeholder" = "Password";
+"MQ0-he-Awb.placeholder" = "密码";
 
 /* Class = "UILabel"; text = "Sign Up"; ObjectID = "MZC-Hu-Rt0"; */
-"MZC-Hu-Rt0.text" = "Sign Up";
+"MZC-Hu-Rt0.text" = "注册";
 
 /* Class = "UITextField"; placeholder = "Email"; ObjectID = "NIY-dt-OSo"; */
-"NIY-dt-OSo.placeholder" = "Email";
+"NIY-dt-OSo.placeholder" = "邮箱";
 
 /* Class = "UITextField"; placeholder = "Email"; ObjectID = "RkU-gx-Q41"; */
-"RkU-gx-Q41.placeholder" = "Email";
+"RkU-gx-Q41.placeholder" = "邮箱";
 
 /* Class = "UILabel"; text = "Tsukuba eBuy"; ObjectID = "Yvt-KP-EWt"; */
-"Yvt-KP-EWt.text" = "Tsukuba eBuy";
+"Yvt-KP-EWt.text" = "筑波同校";
 
 /* Class = "UILabel"; text = "Reset Password"; ObjectID = "dDe-Mp-mSW"; */
-"dDe-Mp-mSW.text" = "Reset Password";
+"dDe-Mp-mSW.text" = "重设密码";
 
 /* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "ihL-ng-Drw"; */
-"ihL-ng-Drw.normalTitle" = "Submit";
+"ihL-ng-Drw.normalTitle" = "提交";
 
 /* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "mq0-GG-mww"; */
-"mq0-GG-mww.normalTitle" = "Sign in";
+"mq0-GG-mww.normalTitle" = "登陆";
 
 /* Class = "UITextView"; text = "Input your email address when you sign up your account. We will send a email to you which contains a link for resetting your password."; ObjectID = "s4U-Rz-ffr"; */
-"s4U-Rz-ffr.text" = "Input your email address when you sign up your account. We will send a email to you which contains a link for resetting your password.";
+"s4U-Rz-ffr.text" = "注册账号时请输入你的邮箱。我们会给你发送一封包含重设密码链接的邮件。";
