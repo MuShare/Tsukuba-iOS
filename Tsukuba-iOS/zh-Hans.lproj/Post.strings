@@ -1,0 +1,21 @@
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "9tN-zT-RdM"; */
+"9tN-zT-RdM.normalTitle" = "Next";
+
+/* Class = "UINavigationItem"; title = "Post"; ObjectID = "JgW-b9-zxO"; */
+"JgW-b9-zxO.title" = "Post";
+
+/* Class = "UINavigationItem"; title = "Post"; ObjectID = "feA-EZ-Rzf"; */
+"feA-EZ-Rzf.title" = "Post";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "gv7-YO-waH"; */
+"gv7-YO-waH.text" = "Name";
+
+/* Class = "UILabel"; text = "Select a category you want to post."; ObjectID = "qKp-Id-7CJ"; */
+"qKp-Id-7CJ.text" = "Select a category you want to post.";
+
+/* Class = "UIButton"; normalTitle = "Upload"; ObjectID = "wW3-fK-SG7"; */
+"wW3-fK-SG7.normalTitle" = "Upload";
+
+/* Class = "UINavigationItem"; title = "Upload Pictures"; ObjectID = "xtH-9w-j9I"; */
+"xtH-9w-j9I.title" = "Upload Pictures";

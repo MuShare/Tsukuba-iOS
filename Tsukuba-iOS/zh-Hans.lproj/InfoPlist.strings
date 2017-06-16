@@ -9,3 +9,4 @@
 CFBundleDisplayName = "筑波同校";
 NSPhotoLibraryUsageDescription = "Tsukuba eBuy will use your photo library when you want to upload your avatar or pictures in your message.";
 NSCameraUsageDescription = "Tsukuba eBuy will use your camera when you want to upload your avatar or pictures in your message.";
+FacebookDisplayName = "筑波同校";
