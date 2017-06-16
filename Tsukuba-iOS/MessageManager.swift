@@ -12,6 +12,8 @@ import SwiftyJSON
 class MessageManager {
     
     typealias FavoriteCompletion = ((_ success: Bool, _ favorites: Int, _ message: String?) -> Void)?
+    typealias MessagesCompletion = ((Bool, [Message]) -> Void)?
+    
     
     static let pageSize = 18
 
@@ -173,7 +175,7 @@ class MessageManager {
         }
     }
     
-    func loadMyMessage(_ sell: Bool, completion: ((Bool, [Message]) -> Void)?) {
+    func loadMyMessage(_ sell: Bool, completion: MessagesCompletion) {
         let params: Parameters = [
             "sell": sell
         ]
@@ -196,7 +198,30 @@ class MessageManager {
         }
     }
     
-    func loadMessage(_ sell: Bool, cid: String?, seq: Int?, completion: ((Bool, [Message]) -> Void)?) {
+    func loadMyFavorites(_ sell: Bool, completion: MessagesCompletion) {
+        let params: Parameters = [
+            "sell": sell
+        ]
+        Alamofire.request(createUrl("api/message/list/favorites"),
+                          method: .get,
+                          parameters: params,
+                          encoding: URLEncoding.default,
+                          headers: config.tokenHeader)
+        .responseJSON { (responseObject) in
+            let response = Response(responseObject)
+            if response.statusOK() {
+                var messages: [Message] = []
+                for object in response.getResult()["messages"].arrayValue {
+                    messages.append(Message(object))
+                }
+                completion?(true, messages)
+            } else {
+                completion?(false, [])
+            }
+        }
+    }
+    
+    func loadMessage(_ sell: Bool, cid: String?, seq: Int?, completion: MessagesCompletion) {
         let params: Parameters = [
             "sell": sell,
             "cid": cid ?? "",

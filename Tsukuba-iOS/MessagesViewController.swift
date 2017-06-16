@@ -9,7 +9,6 @@
 import UIKit
 import ESPullToRefresh
 import Segmentio
-import Kingfisher
 
 class MessagesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate,  UICollectionViewDelegateFlowLayout {
     
@@ -185,4 +184,5 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
             animationDuration: 0.1
         )
     }
+    
 }

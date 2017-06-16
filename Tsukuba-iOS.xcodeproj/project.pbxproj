@@ -57,6 +57,7 @@
 		E49D24101EC6F0EB00D3D974 /* EditMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49D240F1EC6F0EB00D3D974 /* EditMessageViewController.swift */; };
 		E4B52B591EF2AA920030BD2D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4B52B581EF2AA920030BD2D /* Login.storyboard */; };
 		E4B52B651EF2B1200030BD2D /* login-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4B52B641EF2B1200030BD2D /* login-bg.jpg */; };
+		E4B52B6A1EF3A77E0030BD2D /* MyFavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B52B691EF3A77E0030BD2D /* MyFavoritesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +136,7 @@
 		E49D240F1EC6F0EB00D3D974 /* EditMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMessageViewController.swift; sourceTree = "<group>"; };
 		E4B52B581EF2AA920030BD2D /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		E4B52B641EF2B1200030BD2D /* login-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "login-bg.jpg"; sourceTree = "<group>"; };
+		E4B52B691EF3A77E0030BD2D /* MyFavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFavoritesViewController.swift; sourceTree = "<group>"; };
 		F44E7EC0007342735A1D800F /* Pods_Tsukuba_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tsukuba_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -244,6 +246,7 @@
 				E4054AE21EC48D29006BCEEC /* ResetViewController.swift */,
 				E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */,
 				E47860731ECC56C30096B39A /* UserProfileTableViewController.swift */,
+				E4B52B691EF3A77E0030BD2D /* MyFavoritesViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 				E408EEC41EC7672B00E6E596 /* Picture.swift in Sources */,
 				E4089FED1EBB3BF90042221D /* UserManager.swift in Sources */,
 				E41F7D031EC3604C002E8184 /* MessageCollectionViewCell.swift in Sources */,
+				E4B52B6A1EF3A77E0030BD2D /* MyFavoritesViewController.swift in Sources */,
 				E4089FE21EBAF8F40042221D /* CategoryCollectionViewCell.swift in Sources */,
 				E4054AE31EC48D29006BCEEC /* ResetViewController.swift in Sources */,
 				E41F7D011EC34CB8002E8184 /* MessagesViewController.swift in Sources */,

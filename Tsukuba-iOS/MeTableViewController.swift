@@ -45,23 +45,32 @@ class MeTableViewController: UITableViewController {
     
     // MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        switch indexPath.row {
-        // Sign in or show profile
-        case 1:
+        let cell = tableView.cellForRow(at: indexPath)!
+        if cell.reuseIdentifier == nil {
+            return
+        }
+        switch cell.reuseIdentifier! {
+        case "sign":
             if (user.login) {
                 self.performSegue(withIdentifier:"profileSegue", sender: self)
             } else {
                 present(UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()!,
                         animated: true, completion: nil)
             }
-        // My Posts
-        case 3:
+        case "myMessages":
             if user.login {
-                performSegue(withIdentifier: "myPostsSegue", sender: "")
+                performSegue(withIdentifier: "myMessagesSegue", sender: "")
             } else {
                 showLoginAlert()
             }
+        case "myFavorites":
+            if user.login {
+                performSegue(withIdentifier: "myFavoritesSegue", sender: "")
+            } else {
+                showLoginAlert()
+            }
+        case "github":
+            UIApplication.shared.openURL(URL.init(string: "https://github.com/MuShare/Tsukuba-iOS")!)
         default:
             break
         }
