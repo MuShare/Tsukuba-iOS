@@ -120,7 +120,8 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
     // MARK: - Action
     @IBAction func createMessage(_ sender: Any) {
         if user.login {
-            performSegue(withIdentifier: "createMessageSegue", sender: self)
+            present(UIStoryboard(name: "Post", bundle: nil).instantiateInitialViewController()!,
+                    animated: true, completion: nil)
         } else {
             showLoginAlert()
         }
@@ -149,13 +150,13 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
             indicatorOptions: SegmentioIndicatorOptions(
                 type: .bottom,
                 ratio: 1,
-                height: 3,
+                height: 4,
                 color: Color.main
             ),
             horizontalSeparatorOptions: SegmentioHorizontalSeparatorOptions(
-                type: SegmentioHorizontalSeparatorType.topAndBottom, // Top, Bottom, TopAndBottom
+                type: SegmentioHorizontalSeparatorType.bottom, // Top, Bottom, TopAndBottom
                 height: 1,
-                color: .clear
+                color: Color.main
             ),
             verticalSeparatorOptions: SegmentioVerticalSeparatorOptions(
                 ratio: 0.6, // from 0.1 to 1

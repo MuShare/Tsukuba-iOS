@@ -13,6 +13,7 @@ class MyMessagesTableViewController: UITableViewController {
     
     var sell = true
     
+    let user = UserManager.sharedInstance
     let messageManager = MessageManager.sharedInstance
     var messages: [Message] = []
     var selectedMessage: Message!
@@ -75,6 +76,15 @@ class MyMessagesTableViewController: UITableViewController {
     }
 
     // MARK: - Action
+    @IBAction func createMessage(_ sender: Any) {
+        if user.login {
+            present(UIStoryboard(name: "Post", bundle: nil).instantiateInitialViewController()!,
+                    animated: true, completion: nil)
+        } else {
+            showLoginAlert()
+        }
+    }
+    
     /**
     @IBAction func changeMessageType(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {

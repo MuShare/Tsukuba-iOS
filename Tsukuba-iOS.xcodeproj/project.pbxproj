@@ -58,6 +58,7 @@
 		E4B52B591EF2AA920030BD2D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4B52B581EF2AA920030BD2D /* Login.storyboard */; };
 		E4B52B651EF2B1200030BD2D /* login-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4B52B641EF2B1200030BD2D /* login-bg.jpg */; };
 		E4B52B6A1EF3A77E0030BD2D /* MyFavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B52B691EF3A77E0030BD2D /* MyFavoritesViewController.swift */; };
+		E4B52B6D1EF3B7D00030BD2D /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4B52B6C1EF3B7D00030BD2D /* Post.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +138,7 @@
 		E4B52B581EF2AA920030BD2D /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		E4B52B641EF2B1200030BD2D /* login-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "login-bg.jpg"; sourceTree = "<group>"; };
 		E4B52B691EF3A77E0030BD2D /* MyFavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFavoritesViewController.swift; sourceTree = "<group>"; };
+		E4B52B6C1EF3B7D00030BD2D /* Post.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
 		F44E7EC0007342735A1D800F /* Pods_Tsukuba_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tsukuba_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -239,6 +241,7 @@
 				E41F7D001EC34CB8002E8184 /* MessagesViewController.swift */,
 				E45519401EC44856006A3B73 /* MessageTableViewController.swift */,
 				E4089FE61EBB36440042221D /* MeTableViewController.swift */,
+				E4B52B691EF3A77E0030BD2D /* MyFavoritesViewController.swift */,
 				E48DE54E1EC2D30700E5CA25 /* MyMessagesTableViewController.swift */,
 				E4089FEE1EBB4AD80042221D /* MyProfileTableViewController.swift */,
 				E48972201EBF62280064EA13 /* PictureViewController.swift */,
@@ -246,7 +249,6 @@
 				E4054AE21EC48D29006BCEEC /* ResetViewController.swift */,
 				E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */,
 				E47860731ECC56C30096B39A /* UserProfileTableViewController.swift */,
-				E4B52B691EF3A77E0030BD2D /* MyFavoritesViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -307,13 +309,11 @@
 				E4089FE41EBB36150042221D /* Controller */,
 				E4089FE51EBB36220042221D /* Cell */,
 				E4089FD81EBAF0020042221D /* Tool */,
+				E4B52B6B1EF3B7A50030BD2D /* Storyboard */,
 				E41F7D041EC368A0002E8184 /* Support Files */,
 				E4962BE11EB4B08000DF8CAE /* AppDelegate.swift */,
 				E42331771EC030FE00C3A6B0 /* Assets.xcassets */,
 				E4962BF01EB4B08000DF8CAE /* Info.plist */,
-				E4962BED1EB4B08000DF8CAE /* LaunchScreen.storyboard */,
-				E4962BE51EB4B08000DF8CAE /* Main.storyboard */,
-				E4B52B581EF2AA920030BD2D /* Login.storyboard */,
 			);
 			path = "Tsukuba-iOS";
 			sourceTree = "<group>";
@@ -334,6 +334,17 @@
 				E4962C061EB4B08000DF8CAE /* Info.plist */,
 			);
 			path = "Tsukuba-iOSUITests";
+			sourceTree = "<group>";
+		};
+		E4B52B6B1EF3B7A50030BD2D /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				E4962BED1EB4B08000DF8CAE /* LaunchScreen.storyboard */,
+				E4962BE51EB4B08000DF8CAE /* Main.storyboard */,
+				E4B52B581EF2AA920030BD2D /* Login.storyboard */,
+				E4B52B6C1EF3B7D00030BD2D /* Post.storyboard */,
+			);
+			name = Storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -454,6 +465,7 @@
 				E408EEC61EC8AF8400E6E596 /* InfoPlist.strings in Resources */,
 				E4B52B591EF2AA920030BD2D /* Login.storyboard in Resources */,
 				E4089FF31EBB50790042221D /* Localizable.strings in Resources */,
+				E4B52B6D1EF3B7D00030BD2D /* Post.storyboard in Resources */,
 				E4B52B651EF2B1200030BD2D /* login-bg.jpg in Resources */,
 				E42331781EC030FE00C3A6B0 /* Assets.xcassets in Resources */,
 				E4962BE71EB4B08000DF8CAE /* Main.storyboard in Resources */,
