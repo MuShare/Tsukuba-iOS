@@ -1,0 +1,68 @@
+tip_name = "提示";
+cancel_name = "Cancel";
+yes_name = "Yes";
+ok_name = "OK";
+clear_name = "Clear";
+tab_name = "Tab";
+delete_name = "Delete";
+later_name = "Later";
+
+error_token = "User authorization is invalide. Please sign in again!";
+error_object_id = "Object id error.";
+error_save_failed = "Save failed.";
+error_invalid_parameter = "Invalid parameter.";
+error_unknown = "Unknown error.";
+
+me_title = "Sign in / Sign up";
+me_subtitle = "Welcome to Tsukuba, sign in now!";
+
+register_not_validate = "Email, username and password cannot be empty!";
+email_invalidate = "Please input a correct email!";
+back_to_login = "Back";
+email_registered = "This email has been registered.";
+
+login_not_validate = "Input correct emaill and password!";
+email_not_exist = "This email is not existed.";
+password_wrong = "Your password is wrong, check and try again.";
+facebook_oauth_error = "Facebook OAuth login failed, plasese try Again!";
+
+sign_in_sign_up = "Sign in to sync request history";
+sign_in_facebook = "Sign in with Facebook";
+sign_out_title = "Sign out";
+sign_out_message = "Are you sure to sign out now?";
+sign_in_at_first = "You need to sign in at first!";
+sign_in_now = "Sign in now";
+
+fill_user_info = "Pleases fill in your contact way and address, then upload your avatar, so that other people can know you and contact you.";
+
+reset_password_not_validate = "Please input a correct email!";
+reset_password_failed = "Send email failed, try again later.";
+reset_password_check_email = "Check Your Email";
+
+modify_has_empty = "Name, contact way and address cannot be empty!";
+
+photo_tip = "Choose a photo from library or take a photo.";
+photo_take = "Take Photo";
+photo_simulator_not_support = "iOS Simulator cannot open camera.";
+photo_choose = "Choose from Photos";
+
+upload_profile_photo = "Upload Profie Photo";
+upload_progress = "Upload Progress: ";
+
+upload_message_picture = "Upload Picture";
+remove_picture_failed = "Remove picture failed.";
+
+message_title_empty = "Please input a post title.";
+message_basic_info = "Basic Information";
+message_title = "Title";
+message_title_placeholder = "Message title";
+message_price = "Price";
+message_introduction_placeholder = "Introduction for this message.";
+message_edit_pictures = "Edit Pictures";
+message_close_title = "Close Message";
+message_close_content = "Other people cannot see this message if you close this message. You cannot reopen it once you closed it. Are you sure to close this message? ";
+
+modify_message_no_privilege = "You do not have previlige to edit this message.";
+
+message_like_fail = "Cannot set favorite message.";
+message_unlike_fail = "Cannot cancel favorite message.";
