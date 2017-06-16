@@ -14,8 +14,8 @@ class OptionTableViewCell: UITableViewCell {
     @IBOutlet weak var optionLabel: UILabel!
     
     func fillWithOption(_ option: Option) {
-        selectionLaebl.text = option.selection?.identifier
-        optionLabel.text = option.identifier
+        selectionLaebl.text = option.selection?.name
+        optionLabel.text = option.name
     }
 
 }

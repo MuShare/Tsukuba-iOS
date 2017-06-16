@@ -56,14 +56,14 @@ message_all = "All";
 message_title_empty = "Please input a post title.";
 message_basic_info = "Basic Information";
 message_title = "Title";
-message_title_placeholder = "Message title";
+message_title_placeholder = "Post title";
 message_price = "Price";
-message_introduction_placeholder = "Introduction for this message.";
+message_introduction_placeholder = "Introduction for this post.";
 message_edit_pictures = "Edit Pictures";
-message_close_title = "Close Message";
-message_close_content = "Other people cannot see this message if you close this message. You cannot reopen it once you closed it. Are you sure to close this message? ";
+message_close_title = "Close Post";
+message_close_content = "Other people cannot see this post if you close it. You cannot reopen it once you closed it. Are you sure to close this post? ";
 
-modify_message_no_privilege = "You do not have previlige to edit this message.";
+modify_message_no_privilege = "You do not have previlige to edit this post.";
 
-message_like_fail = "Cannot set favorite message.";
-message_unlike_fail = "Cannot cancel favorite message.";
+message_like_fail = "Cannot set favorite post.";
+message_unlike_fail = "Cannot cancel favorite post.";

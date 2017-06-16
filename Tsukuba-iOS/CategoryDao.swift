@@ -32,17 +32,20 @@ class CategoryDao: DaoTemplate {
     func findEnable() -> [Category] {
         let request = NSFetchRequest<Category>(entityName: NSStringFromClass(Category.self))
         request.predicate = NSPredicate(format: "enable=true")
+        request.sortDescriptors = [NSSortDescriptor(key: "priority", ascending: true)]
         return try! context.fetch(request)
     }
     
     func findAll() -> [Category] {
         let request = NSFetchRequest<Category>(entityName: NSStringFromClass(Category.self))
+        request.sortDescriptors = [NSSortDescriptor(key: "priority", ascending: true)]
         return try! context.fetch(request)
     }
     
     func getByCid(_ cid: String) -> Category? {
         let request = NSFetchRequest<Category>(entityName: NSStringFromClass(Category.self))
         request.predicate = NSPredicate(format: "cid=%@", cid)
+        request.sortDescriptors = [NSSortDescriptor(key: "priority", ascending: true)]
         let categories = try! context.fetch(request)
         if categories.count == 0 {
             return nil

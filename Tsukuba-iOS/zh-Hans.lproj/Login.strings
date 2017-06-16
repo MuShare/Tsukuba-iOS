@@ -44,5 +44,5 @@
 /* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "mq0-GG-mww"; */
 "mq0-GG-mww.normalTitle" = "登陆";
 
-/* Class = "UITextView"; text = "Input your email address when you sign up your account. We will send a email to you which contains a link for resetting your password."; ObjectID = "s4U-Rz-ffr"; */
-"s4U-Rz-ffr.text" = "注册账号时请输入你的邮箱。我们会给你发送一封包含重设密码链接的邮件。";
+/* Class = "UILabel"; text = "Input the email address that you used when you sign up your account. We will send a email to you which contains a link for resetting your password."; ObjectID = "ZQU-Et-VVS"; */
+"ZQU-Et-VVS.text" = "请输入你注册时使用的邮箱。我们会给你发送一封包含重设密码链接的邮件。";

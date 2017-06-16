@@ -155,12 +155,12 @@ class EditMessageViewController: FormViewController, NVActivityIndicatorViewable
                 })
         
         for selection in selections {
-            let selectionSection = SelectableSection<ListCheckRow<String>>(selection.identifier!,
+            let selectionSection = SelectableSection<ListCheckRow<String>>(selection.name!,
                                                                            selectionType: .singleSelection(enableDeselection: true))
             for option in dao.optionDao.findEnableBySelection(selection) {
                 selectionSection <<< ListCheckRow<String>() { row in
                     row.tag = option.oid
-                    row.title = option.identifier
+                    row.title = option.name
                     row.selectableValue = option.oid
                 }
                 
