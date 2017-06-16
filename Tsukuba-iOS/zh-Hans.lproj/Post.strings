@@ -3,10 +3,10 @@
 "9tN-zT-RdM.normalTitle" = "下一步";
 
 /* Class = "UINavigationItem"; title = "Post"; ObjectID = "JgW-b9-zxO"; */
-"JgW-b9-zxO.title" = "选择发布类别";
+"JgW-b9-zxO.title" = "选择类别发帖";
 
 /* Class = "UINavigationItem"; title = "Post"; ObjectID = "feA-EZ-Rzf"; */
-"feA-EZ-Rzf.title" = "发布";
+"feA-EZ-Rzf.title" = "发布帖子";
 
 /* Class = "UILabel"; text = "Name"; ObjectID = "gv7-YO-waH"; */
 "gv7-YO-waH.text" = "姓名";

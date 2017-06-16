@@ -53,15 +53,15 @@ upload_message_picture = "上传照片";
 remove_picture_failed = "移除照片失败。";
 
 message_all = "所有分类";
-message_title_empty = "请输入发布标题";
+message_title_empty = "请输入帖子标题";
 message_basic_info = "基本信息";
 message_title = "标题";
-message_title_placeholder = "发布标题";
+message_title_placeholder = "帖子标题";
 message_price = "价格";
-message_introduction_placeholder = "介绍此次发布。";
+message_introduction_placeholder = "简单介绍一下这个二手商品";
 message_edit_pictures = "编辑照片";
-message_close_title = "关闭发布";
-message_close_content = "关闭发布后别人将看不到此发布内容。一旦关闭将不能重开。确定关闭吗？";
+message_close_title = "关闭帖子";
+message_close_content = "关闭后别人将看不到此帖子的内容。一旦关闭将不能重开。确定关闭吗？";
 
 modify_message_no_privilege = "你没有权限编辑这个消息";
 

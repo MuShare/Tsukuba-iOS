@@ -17,10 +17,7 @@ class MyMessagesTableViewController: UITableViewController {
     let messageManager = MessageManager.sharedInstance
     var messages: [Message] = []
     var selectedMessage: Message!
-    
-    // Refresh flag
-    var refresh = true
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,12 +31,13 @@ class MyMessagesTableViewController: UITableViewController {
                 self.tableView.es_stopPullToRefresh()
             }
         }
+        tableView.es_startPullToRefresh()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if refresh {
+        if messageManager.updated {
             tableView.es_startPullToRefresh()
-            refresh = false
+            messageManager.updated = false
         }
     }
 
