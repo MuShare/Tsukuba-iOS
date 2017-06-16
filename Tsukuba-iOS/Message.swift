@@ -20,6 +20,9 @@ class Message {
     var enable: Bool
     var seq: Int!
     
+    var favorite: Bool
+    var favorites: Int!
+    
     var introduction: String?
     var author: User?
     var pictures: [Picture] = []
@@ -39,6 +42,8 @@ class Message {
         // Detail info
         introduction = object["introduction"].string
         author = User(simpleUser: object["author"])
+        favorite = object["favorite"].boolValue
+        favorites = object["favorites"].intValue
         
         // Pictures
         let picturesJOSONArray = object["pictures"].arrayValue;

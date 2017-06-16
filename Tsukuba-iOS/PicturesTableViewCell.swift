@@ -52,6 +52,10 @@ class PicturesTableViewCell: UITableViewCell {
         nameButton.setTitle(message.author?.name, for: .normal)
         updateAtLabel.text = formatter.string(from: message.updateAt)
         priceLabel.text = "￥\(message.price!)"
+        
+        favoritesLabel.text = "\(message.favorites!)"
+        print(message.favorite)
+        favoriteButton.isSelected = message.favorite
     }
     
     @IBAction func favoriteMessage(_ sender: Any) {

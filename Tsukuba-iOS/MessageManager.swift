@@ -226,7 +226,7 @@ class MessageManager {
                           method: .get,
                           parameters: nil,
                           encoding: URLEncoding.default,
-                          headers: nil)
+                          headers: config.tokenHeader)
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             if response.statusOK() {

@@ -48,9 +48,9 @@
 		<false/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Tsukuba eBuy will use your camera when you want to upload your avatar or pictures in your message.</string>
+	<string>Tsukuba Mate will use your camera when you want to upload your avatar or pictures in your message.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Tsukuba eBuy will use your photo library when you want to upload your avatar or pictures in your message.</string>
+	<string>Tsukuba Mate will use your photo library when you want to upload your avatar or pictures in your message.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
