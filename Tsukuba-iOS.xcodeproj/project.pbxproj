@@ -51,12 +51,12 @@
 		E4962BEF1EB4B08000DF8CAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4962BED1EB4B08000DF8CAE /* LaunchScreen.storyboard */; };
 		E4962BFA1EB4B08000DF8CAE /* Tsukuba_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4962BF91EB4B08000DF8CAE /* Tsukuba_iOSTests.swift */; };
 		E4962C051EB4B08000DF8CAE /* Tsukuba_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4962C041EB4B08000DF8CAE /* Tsukuba_iOSUITests.swift */; };
+		E49BFE201EF3EAA7001B1BBA /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E49BFE221EF3EAA7001B1BBA /* Login.storyboard */; };
+		E49BFE251EF3EAB5001B1BBA /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E49BFE271EF3EAB5001B1BBA /* Post.storyboard */; };
 		E49D240E1EC69FC900D3D974 /* OptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49D240D1EC69FC900D3D974 /* OptionTableViewCell.swift */; };
 		E49D24101EC6F0EB00D3D974 /* EditMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49D240F1EC6F0EB00D3D974 /* EditMessageViewController.swift */; };
-		E4B52B591EF2AA920030BD2D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4B52B581EF2AA920030BD2D /* Login.storyboard */; };
 		E4B52B651EF2B1200030BD2D /* login-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4B52B641EF2B1200030BD2D /* login-bg.jpg */; };
 		E4B52B6A1EF3A77E0030BD2D /* MyFavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B52B691EF3A77E0030BD2D /* MyFavoritesViewController.swift */; };
-		E4B52B6D1EF3B7D00030BD2D /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4B52B6C1EF3B7D00030BD2D /* Post.storyboard */; };
 		E4B52B711EF3DB310030BD2D /* AutoGenStrings.py in Resources */ = {isa = PBXBuildFile; fileRef = E4B52B701EF3DB310030BD2D /* AutoGenStrings.py */; };
 		E4B52B731EF3DBC50030BD2D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4B52B751EF3DBC50030BD2D /* Localizable.strings */; };
 		E4B52B771EF3DC8E0030BD2D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4B52B791EF3DC8E0030BD2D /* InfoPlist.strings */; };
@@ -132,12 +132,14 @@
 		E4962C001EB4B08000DF8CAE /* Tsukuba-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tsukuba-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4962C041EB4B08000DF8CAE /* Tsukuba_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tsukuba_iOSUITests.swift; sourceTree = "<group>"; };
 		E4962C061EB4B08000DF8CAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E49BFE211EF3EAA7001B1BBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
+		E49BFE241EF3EAAD001B1BBA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Login.strings"; sourceTree = "<group>"; };
+		E49BFE261EF3EAB5001B1BBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Post.storyboard; sourceTree = "<group>"; };
+		E49BFE291EF3EAB9001B1BBA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Post.strings"; sourceTree = "<group>"; };
 		E49D240D1EC69FC900D3D974 /* OptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionTableViewCell.swift; sourceTree = "<group>"; };
 		E49D240F1EC6F0EB00D3D974 /* EditMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMessageViewController.swift; sourceTree = "<group>"; };
-		E4B52B581EF2AA920030BD2D /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		E4B52B641EF2B1200030BD2D /* login-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "login-bg.jpg"; sourceTree = "<group>"; };
 		E4B52B691EF3A77E0030BD2D /* MyFavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFavoritesViewController.swift; sourceTree = "<group>"; };
-		E4B52B6C1EF3B7D00030BD2D /* Post.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
 		E4B52B6E1EF3DAF30030BD2D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		E4B52B6F1EF3DAF30030BD2D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		E4B52B701EF3DB310030BD2D /* AutoGenStrings.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = AutoGenStrings.py; sourceTree = "<group>"; };
@@ -348,8 +350,8 @@
 			children = (
 				E4962BED1EB4B08000DF8CAE /* LaunchScreen.storyboard */,
 				E4962BE51EB4B08000DF8CAE /* Main.storyboard */,
-				E4B52B581EF2AA920030BD2D /* Login.storyboard */,
-				E4B52B6C1EF3B7D00030BD2D /* Post.storyboard */,
+				E49BFE221EF3EAA7001B1BBA /* Login.storyboard */,
+				E49BFE271EF3EAB5001B1BBA /* Post.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -472,10 +474,10 @@
 			files = (
 				E4962BEF1EB4B08000DF8CAE /* LaunchScreen.storyboard in Resources */,
 				E4B52B771EF3DC8E0030BD2D /* InfoPlist.strings in Resources */,
-				E4B52B591EF2AA920030BD2D /* Login.storyboard in Resources */,
+				E49BFE201EF3EAA7001B1BBA /* Login.storyboard in Resources */,
 				E4B52B711EF3DB310030BD2D /* AutoGenStrings.py in Resources */,
 				E4B52B731EF3DBC50030BD2D /* Localizable.strings in Resources */,
-				E4B52B6D1EF3B7D00030BD2D /* Post.storyboard in Resources */,
+				E49BFE251EF3EAB5001B1BBA /* Post.storyboard in Resources */,
 				E4B52B651EF2B1200030BD2D /* login-bg.jpg in Resources */,
 				E42331781EC030FE00C3A6B0 /* Assets.xcassets in Resources */,
 				E4962BE71EB4B08000DF8CAE /* Main.storyboard in Resources */,
@@ -656,6 +658,24 @@
 				E4B52B6E1EF3DAF30030BD2D /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		E49BFE221EF3EAA7001B1BBA /* Login.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E49BFE211EF3EAA7001B1BBA /* Base */,
+				E49BFE241EF3EAAD001B1BBA /* zh-Hans */,
+			);
+			name = Login.storyboard;
+			sourceTree = "<group>";
+		};
+		E49BFE271EF3EAB5001B1BBA /* Post.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E49BFE261EF3EAB5001B1BBA /* Base */,
+				E49BFE291EF3EAB9001B1BBA /* zh-Hans */,
+			);
+			name = Post.storyboard;
 			sourceTree = "<group>";
 		};
 		E4B52B751EF3DBC50030BD2D /* Localizable.strings */ = {

@@ -41,10 +41,10 @@ reset_password_check_email = "请检查你的邮箱";
 
 modify_has_empty = "姓名，联系方式和地址不能为空";
 
-photo_tip = "从库里选择照片或拍照";
+photo_tip = "从图片库里选择或拍照";
 photo_take = "拍照";
 photo_simulator_not_support = "iOS Simulator cannot open camera.";
-photo_choose = "从照片中选择";
+photo_choose = "从图片库中选择";
 
 upload_profile_photo = "上传头像";
 upload_progress = "上传进度：";
