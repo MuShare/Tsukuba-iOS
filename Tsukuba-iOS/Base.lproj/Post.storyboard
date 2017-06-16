@@ -35,7 +35,7 @@
             </objects>
             <point key="canvasLocation" x="1583" y="2078"/>
         </scene>
-        <!--Post-->
+        <!--Select a Category to Post-->
         <scene sceneID="bwe-FS-3rx">
             <objects>
                 <viewController id="21H-bC-zYV" customClass="SelectCategoryViewController" customModule="Tsukuba_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -47,17 +47,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a category you want to post." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qKp-Id-7CJ">
-                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="KCf-hw-pxq"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="AHd-Fb-LPp">
-                                <rect key="frame" x="0.0" y="108" width="375" height="491"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="599"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="vSY-Pj-nwc">
                                     <size key="itemSize" width="125" height="150"/>
@@ -143,19 +134,16 @@
                         </subviews>
                         <color key="backgroundColor" red="0.97252601390000004" green="0.97326189279999997" blue="0.97263997790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="AHd-Fb-LPp" firstAttribute="top" secondItem="mGt-NZ-ptD" secondAttribute="bottom" constant="44" id="2cG-18-WiA"/>
                             <constraint firstItem="NQD-oh-0IB" firstAttribute="top" secondItem="AHd-Fb-LPp" secondAttribute="bottom" constant="68" id="78d-82-rsB"/>
                             <constraint firstAttribute="leadingMargin" secondItem="9tN-zT-RdM" secondAttribute="leading" id="B9q-Yk-Paz"/>
-                            <constraint firstItem="qKp-Id-7CJ" firstAttribute="leading" secondItem="dWo-qp-W9l" secondAttribute="leadingMargin" constant="-16" id="UYp-Z1-VTh"/>
-                            <constraint firstItem="qKp-Id-7CJ" firstAttribute="top" secondItem="mGt-NZ-ptD" secondAttribute="bottom" id="UtT-AM-BWS"/>
+                            <constraint firstItem="AHd-Fb-LPp" firstAttribute="top" secondItem="mGt-NZ-ptD" secondAttribute="bottom" constant="-64" id="OpP-aU-aph"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9tN-zT-RdM" secondAttribute="trailing" id="h5m-7m-Zza"/>
                             <constraint firstAttribute="trailingMargin" secondItem="AHd-Fb-LPp" secondAttribute="trailing" constant="-16" id="jaT-zg-5hO"/>
                             <constraint firstItem="AHd-Fb-LPp" firstAttribute="leading" secondItem="dWo-qp-W9l" secondAttribute="leadingMargin" constant="-16" id="nlG-i8-3gJ"/>
                             <constraint firstItem="NQD-oh-0IB" firstAttribute="top" secondItem="9tN-zT-RdM" secondAttribute="bottom" constant="20" id="xBJ-25-gfR"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="qKp-Id-7CJ" secondAttribute="trailing" constant="-16" id="xUh-u7-daA"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Post" id="JgW-b9-zxO">
+                    <navigationItem key="navigationItem" title="Select a Category to Post" id="JgW-b9-zxO">
                         <barButtonItem key="leftBarButtonItem" image="close" id="co9-g5-H2J">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -170,7 +158,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fgX-C7-f53" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2425" y="2078"/>
+            <point key="canvasLocation" x="2424.8000000000002" y="2077.5112443778112"/>
         </scene>
         <!--Post-->
         <scene sceneID="Ylf-vM-Dw4">
