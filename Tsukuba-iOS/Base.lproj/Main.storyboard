@@ -411,9 +411,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="187" height="187"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rvl-pC-a1s">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rvl-pC-a1s">
                                                     <rect key="frame" x="0.0" y="0.0" width="187" height="187"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MWt-MA-1Ut">
                                                     <rect key="frame" x="10" y="9" width="30" height="30"/>
@@ -423,19 +422,31 @@
                                                         <action selector="removePicture:" destination="nTJ-ET-PgQ" eventType="touchUpInside" id="Ssg-Pj-xgg"/>
                                                     </connections>
                                                 </button>
-                                                <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xgp-IB-Wvw">
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xgp-IB-Wvw">
                                                     <rect key="frame" x="0.0" y="0.0" width="187" height="187"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
-                                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="xi5-WR-KaK">
+                                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="xi5-WR-KaK">
                                                             <rect key="frame" x="75" y="75" width="37" height="37"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </activityIndicatorView>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="xi5-WR-KaK" firstAttribute="centerX" secondItem="Xgp-IB-Wvw" secondAttribute="centerX" id="C6M-no-3xM"/>
+                                                        <constraint firstItem="xi5-WR-KaK" firstAttribute="centerY" secondItem="Xgp-IB-Wvw" secondAttribute="centerY" id="XcL-Xz-4xr"/>
+                                                    </constraints>
                                                 </view>
                                             </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="Xgp-IB-Wvw" firstAttribute="top" secondItem="9Pm-KG-1Hd" secondAttribute="topMargin" constant="-8" id="3hs-pT-8iC"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="Xgp-IB-Wvw" secondAttribute="bottom" constant="-8" id="FJY-BC-ao7"/>
+                                            <constraint firstItem="Xgp-IB-Wvw" firstAttribute="leading" secondItem="9Pm-KG-1Hd" secondAttribute="leadingMargin" constant="-8" id="L1f-a4-npQ"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="Rvl-pC-a1s" secondAttribute="trailing" constant="-8" id="cAC-QR-VdY"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="Rvl-pC-a1s" secondAttribute="bottom" constant="-8" id="lNE-Du-AKs"/>
+                                            <constraint firstItem="Rvl-pC-a1s" firstAttribute="leading" secondItem="9Pm-KG-1Hd" secondAttribute="leadingMargin" constant="-8" id="mce-12-HCb"/>
+                                            <constraint firstItem="Rvl-pC-a1s" firstAttribute="top" secondItem="9Pm-KG-1Hd" secondAttribute="topMargin" constant="-8" id="nvL-AU-Hqb"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="Xgp-IB-Wvw" secondAttribute="trailing" constant="-8" id="twp-f8-tDm"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="loadingActivityIndicatorView" destination="xi5-WR-KaK" id="XJD-gy-TFr"/>
                                             <outlet property="loadingView" destination="Xgp-IB-Wvw" id="G3P-lj-A8E"/>
@@ -959,6 +970,7 @@
                     <navigationItem key="navigationItem" title="Me" id="Ssb-t2-Cvz"/>
                     <connections>
                         <outlet property="avatarImageView" destination="jdn-hr-y8a" id="7zF-DU-nJj"/>
+                        <outlet property="signOutTableViewCell" destination="KZa-i1-Q3s" id="A10-6e-Whs"/>
                         <outlet property="subtitleLabel" destination="pL0-ku-jbh" id="PhU-NW-YMo"/>
                         <outlet property="titleLabel" destination="bew-pl-P16" id="Ush-Uy-NuB"/>
                         <segue destination="O0p-N1-VyH" kind="push" identifier="profileSegue" id="x8C-Vc-AKb"/>
@@ -1077,7 +1089,7 @@
         <scene sceneID="VAQ-bd-qyv">
             <objects>
                 <navigationController id="QcP-mw-X8D" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="sBb-jh-Yze">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sBb-jh-Yze">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.62352941176470589" green="0.38431372549019605" blue="0.6705882352941176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if config.columns == 0 {
             let width = UIScreen.main.bounds.size.width
             if width < 768 {
-                config.columns = 3
+                config.columns = 2
             } else {
                 config.columns = 4
             }

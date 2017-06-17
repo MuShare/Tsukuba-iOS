@@ -24,8 +24,8 @@ extension DefaultsKeys {
     static let optionRev = DefaultsKey<Int?>("optionRev")
     static let userRev = DefaultsKey<Int?>("userRev")
     static let version = DefaultsKey<String?>("version")
-    static let columns = DefaultsKey<Int?>("columns")
     static let lan = DefaultsKey<String?>("lan")
+    static let columns = DefaultsKey<Int?>("columns")
 }
 
 class Config {
@@ -65,7 +65,7 @@ class Config {
             return Defaults[.columns] ?? 0
         }
     }
-    
+
     var token: String {
         set {
             Defaults[.token] = newValue

@@ -155,7 +155,7 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
     private func segmentioOptions() -> SegmentioOptions {
         return SegmentioOptions(
             backgroundColor: .white,
-            maxVisibleItems: 3,
+            maxVisibleItems: config.columns,
             scrollEnabled: true,
             indicatorOptions: SegmentioIndicatorOptions(
                 type: .bottom,
