@@ -62,6 +62,11 @@ extension UITextField{
 
 extension UIViewController {
     
+    func showTip(_ tip: String) {
+        showAlert(title: NSLocalizedString("tip_name", comment: ""),
+                  content: tip)
+    }
+    
     func showAlert(title: String, content: String) {
         let alertController = UIAlertController(title: title,
                                                 message: content,

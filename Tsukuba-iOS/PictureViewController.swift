@@ -120,8 +120,7 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
                 }
                 self.picturesCollectionView.deleteItems(at: [indexPath])
             } else {
-                self.showAlert(title: NSLocalizedString("Tip", comment: ""),
-                               content: NSLocalizedString("remove_picture_failed", comment: ""))
+                self.showTip(NSLocalizedString("remove_picture_failed", comment: ""))
             }
             cell.stopLoading()
         }
