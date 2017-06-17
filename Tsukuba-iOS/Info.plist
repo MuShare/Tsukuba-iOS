@@ -42,11 +42,6 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<false/>
-	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Tsukuba Mate will use your camera when you want to upload your avatar or pictures in your message.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
