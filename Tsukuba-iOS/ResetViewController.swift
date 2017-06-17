@@ -14,9 +14,9 @@ class ResetViewController: EditingViewController, NVActivityIndicatorViewable {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var loadingActivityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var sendEmailSuccessImageView: UIImageView!
-    @IBOutlet weak var tipTextView: UITextView!
+    @IBOutlet weak var tipLabel: UILabel!
+
     
     let user = UserManager.sharedInstance
     var submit = false
@@ -65,7 +65,7 @@ class ResetViewController: EditingViewController, NVActivityIndicatorViewable {
                 // Set submit flag to true
                 self.submit = true
                 // Hide tip and email text field
-                self.tipTextView.isHidden = true
+                self.tipLabel.isHidden = true
                 self.emailTextField.isHidden = true
                 // Show success image.
                 self.sendEmailSuccessImageView.isHidden = false

@@ -484,6 +484,7 @@
                         <outlet property="emailTextField" destination="RkU-gx-Q41" id="7Xe-Hs-hLw"/>
                         <outlet property="sendEmailSuccessImageView" destination="9ZL-V9-0VV" id="OXO-Xw-dLI"/>
                         <outlet property="submitButton" destination="AlI-zH-atA" id="36g-4j-vVH"/>
+                        <outlet property="tipLabel" destination="ZQU-Et-VVS" id="yuw-H9-GQa"/>
                         <outlet property="titleLabel" destination="dDe-Mp-mSW" id="GKb-GS-jfp"/>
                     </connections>
                 </viewController>
