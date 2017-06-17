@@ -14,6 +14,7 @@ class MeTableViewController: UITableViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var signOutTableViewCell: UITableViewCell!
     
     let user = UserManager.sharedInstance
     var messageSell = true
@@ -103,6 +104,8 @@ class MeTableViewController: UITableViewController {
                                    handler: nil)
         alertController.addAction(logout)
         alertController.addAction(cancel)
+        alertController.popoverPresentationController?.sourceView = signOutTableViewCell;
+        alertController.popoverPresentationController?.sourceRect = signOutTableViewCell.bounds;
         self.present(alertController, animated: true, completion: nil)
     }
     
