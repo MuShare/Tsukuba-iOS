@@ -8,7 +8,7 @@
 
 import CoreData
 
-class DaoTemplate: NSObject {
+class DaoTemplate {
 
     var context: NSManagedObjectContext!
     

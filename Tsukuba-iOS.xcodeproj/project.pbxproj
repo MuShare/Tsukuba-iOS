@@ -104,7 +104,6 @@
 		E41F7D021EC3604C002E8184 /* MessageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewCell.swift; sourceTree = "<group>"; };
 		E41F7D091EC36C2A002E8184 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E41F7D0B1EC36C4B002E8184 /* EditingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditingViewController.swift; sourceTree = "<group>"; };
-		E41F7D0D1EC3EAA3002E8184 /* Tsukuba-iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tsukuba-iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		E41F7D111EC3EB92002E8184 /* CustomBack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBack.swift; sourceTree = "<group>"; };
 		E42331771EC030FE00C3A6B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E451974E1ECCA0A6009C9D09 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -133,20 +132,21 @@
 		E4962C041EB4B08000DF8CAE /* Tsukuba_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tsukuba_iOSUITests.swift; sourceTree = "<group>"; };
 		E4962C061EB4B08000DF8CAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E49BFE211EF3EAA7001B1BBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
-		E49BFE241EF3EAAD001B1BBA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Login.strings"; sourceTree = "<group>"; };
+		E49BFE241EF3EAAD001B1BBA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Login.storyboard"; sourceTree = "<group>"; };
 		E49BFE261EF3EAB5001B1BBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Post.storyboard; sourceTree = "<group>"; };
-		E49BFE291EF3EAB9001B1BBA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Post.strings"; sourceTree = "<group>"; };
+		E49BFE291EF3EAB9001B1BBA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Post.storyboard"; sourceTree = "<group>"; };
 		E49D240D1EC69FC900D3D974 /* OptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionTableViewCell.swift; sourceTree = "<group>"; };
 		E49D240F1EC6F0EB00D3D974 /* EditMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMessageViewController.swift; sourceTree = "<group>"; };
 		E4B52B641EF2B1200030BD2D /* login-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "login-bg.jpg"; sourceTree = "<group>"; };
 		E4B52B691EF3A77E0030BD2D /* MyFavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFavoritesViewController.swift; sourceTree = "<group>"; };
-		E4B52B6E1EF3DAF30030BD2D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		E4B52B6F1EF3DAF30030BD2D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		E4B52B6E1EF3DAF30030BD2D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.storyboard"; sourceTree = "<group>"; };
+		E4B52B6F1EF3DAF30030BD2D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		E4B52B701EF3DB310030BD2D /* AutoGenStrings.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = AutoGenStrings.py; sourceTree = "<group>"; };
 		E4B52B741EF3DBC50030BD2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E4B52B761EF3DBC70030BD2D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E4B52B781EF3DC8E0030BD2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E4B52B7A1EF3DC930030BD2D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		E4CA14B91EFBD4CF00289699 /* Tsukuba-iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tsukuba-iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		F44E7EC0007342735A1D800F /* Pods_Tsukuba_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tsukuba_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -196,47 +196,47 @@
 		E4089FA41EBADD4B0042221D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E4962BE81EB4B08000DF8CAE /* Tsukuba.xcdatamodeld */,
 				E48DE5521EC2D52C00E5CA25 /* Message.swift */,
 				E408EEC31EC7672B00E6E596 /* Picture.swift */,
+				E4962BE81EB4B08000DF8CAE /* Tsukuba.xcdatamodeld */,
 				E47860751ECC57F00096B39A /* User.swift */,
 			);
-			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		E4089FB21EBAE5180042221D /* Dao */ = {
 			isa = PBXGroup;
 			children = (
+				E4089FB71EBAE5830042221D /* CategoryDao.swift */,
 				E4089FB31EBAE55C0042221D /* DaoManager.swift */,
 				E4089FB41EBAE55C0042221D /* DaoTemplate.swift */,
-				E4089FB71EBAE5830042221D /* CategoryDao.swift */,
 				E4089FB91EBAE58F0042221D /* OptionDao.swift */,
 				E4089FBB1EBAE59E0042221D /* SelectionDao.swift */,
 			);
-			name = Dao;
+			path = Dao;
 			sourceTree = "<group>";
 		};
 		E4089FD51EBAEF7F0042221D /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				E48972221EBF64320064EA13 /* MessageManager.swift */,
 				E4089FD61EBAEFA00042221D /* SyncManager.swift */,
 				E4089FEC1EBB3BF90042221D /* UserManager.swift */,
-				E48972221EBF64320064EA13 /* MessageManager.swift */,
 			);
-			name = Manager;
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		E4089FD81EBAF0020042221D /* Tool */ = {
 			isa = PBXGroup;
 			children = (
 				E4089FEA1EBB3B990042221D /* CommonTool.swift */,
+				E451974E1ECCA0A6009C9D09 /* Config.swift */,
 				E41F7D111EC3EB92002E8184 /* CustomBack.swift */,
 				E41F7D0B1EC36C4B002E8184 /* EditingViewController.swift */,
 				E4089FD91EBAF0250042221D /* Global.swift */,
 				E4089FDB1EBAF2190042221D /* Response.swift */,
-				E451974E1ECCA0A6009C9D09 /* Config.swift */,
 			);
-			name = Tool;
+			path = Tool;
 			sourceTree = "<group>";
 		};
 		E4089FE41EBB36150042221D /* Controller */ = {
@@ -246,9 +246,9 @@
 				E489721C1EBED40F0064EA13 /* CreateMessageViewController.swift */,
 				E49D240F1EC6F0EB00D3D974 /* EditMessageViewController.swift */,
 				E4089FE81EBB3A1F0042221D /* LoginViewController.swift */,
-				E41F7D001EC34CB8002E8184 /* MessagesViewController.swift */,
-				E45519401EC44856006A3B73 /* MessageTableViewController.swift */,
 				E4089FE61EBB36440042221D /* MeTableViewController.swift */,
+				E45519401EC44856006A3B73 /* MessageTableViewController.swift */,
+				E41F7D001EC34CB8002E8184 /* MessagesViewController.swift */,
 				E4B52B691EF3A77E0030BD2D /* MyFavoritesViewController.swift */,
 				E48DE54E1EC2D30700E5CA25 /* MyMessagesTableViewController.swift */,
 				E4089FEE1EBB4AD80042221D /* MyProfileTableViewController.swift */,
@@ -258,44 +258,43 @@
 				E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */,
 				E47860731ECC56C30096B39A /* UserProfileTableViewController.swift */,
 			);
-			name = Controller;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		E4089FE51EBB36220042221D /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				E4089FE11EBAF8F40042221D /* CategoryCollectionViewCell.swift */,
-				E41ADBFB1EC151AA006479C5 /* PictureCollectionViewCell.swift */,
-				E48DE5501EC2D33000E5CA25 /* MyMessageTableViewCell.swift */,
-				E41F7D021EC3604C002E8184 /* MessageCollectionViewCell.swift */,
-				E45519421EC453F6006A3B73 /* PicturesTableViewCell.swift */,
 				E455194A1EC4605B006A3B73 /* IntroductionTableViewCell.swift */,
+				E41F7D021EC3604C002E8184 /* MessageCollectionViewCell.swift */,
+				E48DE5501EC2D33000E5CA25 /* MyMessageTableViewCell.swift */,
 				E49D240D1EC69FC900D3D974 /* OptionTableViewCell.swift */,
+				E41ADBFB1EC151AA006479C5 /* PictureCollectionViewCell.swift */,
+				E45519421EC453F6006A3B73 /* PicturesTableViewCell.swift */,
 			);
-			name = Cell;
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		E41F7D041EC368A0002E8184 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				E4B52B641EF2B1200030BD2D /* login-bg.jpg */,
-				E4B52B751EF3DBC50030BD2D /* Localizable.strings */,
-				E41F7D0D1EC3EAA3002E8184 /* Tsukuba-iOS-Bridging-Header.h */,
-				E4B52B791EF3DC8E0030BD2D /* InfoPlist.strings */,
 				E4B52B701EF3DB310030BD2D /* AutoGenStrings.py */,
+				E4B52B791EF3DC8E0030BD2D /* InfoPlist.strings */,
+				E4B52B751EF3DBC50030BD2D /* Localizable.strings */,
+				E4B52B641EF2B1200030BD2D /* login-bg.jpg */,
 			);
-			name = "Support Files";
+			path = "Support Files";
 			sourceTree = "<group>";
 		};
 		E4962BD51EB4B08000DF8CAE = {
 			isa = PBXGroup;
 			children = (
+				A0941B9AB6A83BA8AAE365F0 /* Frameworks */,
+				A80F46868D81B8F88D072248 /* Pods */,
+				E4962BDF1EB4B08000DF8CAE /* Products */,
 				E4962BE01EB4B08000DF8CAE /* Tsukuba-iOS */,
 				E4962BF81EB4B08000DF8CAE /* Tsukuba-iOSTests */,
 				E4962C031EB4B08000DF8CAE /* Tsukuba-iOSUITests */,
-				E4962BDF1EB4B08000DF8CAE /* Products */,
-				A80F46868D81B8F88D072248 /* Pods */,
-				A0941B9AB6A83BA8AAE365F0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -312,15 +311,16 @@
 		E4962BE01EB4B08000DF8CAE /* Tsukuba-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				E4089FA41EBADD4B0042221D /* Model */,
+				E4089FE51EBB36220042221D /* Cell */,
+				E4089FE41EBB36150042221D /* Controller */,
 				E4089FB21EBAE5180042221D /* Dao */,
 				E4089FD51EBAEF7F0042221D /* Manager */,
-				E4089FE41EBB36150042221D /* Controller */,
-				E4089FE51EBB36220042221D /* Cell */,
-				E4089FD81EBAF0020042221D /* Tool */,
+				E4089FA41EBADD4B0042221D /* Model */,
 				E4B52B6B1EF3B7A50030BD2D /* Storyboard */,
 				E41F7D041EC368A0002E8184 /* Support Files */,
+				E4089FD81EBAF0020042221D /* Tool */,
 				E4962BE11EB4B08000DF8CAE /* AppDelegate.swift */,
+				E4CA14B91EFBD4CF00289699 /* Tsukuba-iOS-Bridging-Header.h */,
 				E42331771EC030FE00C3A6B0 /* Assets.xcassets */,
 				E4962BF01EB4B08000DF8CAE /* Info.plist */,
 			);
@@ -330,8 +330,8 @@
 		E4962BF81EB4B08000DF8CAE /* Tsukuba-iOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				E4962BF91EB4B08000DF8CAE /* Tsukuba_iOSTests.swift */,
 				E4962BFB1EB4B08000DF8CAE /* Info.plist */,
+				E4962BF91EB4B08000DF8CAE /* Tsukuba_iOSTests.swift */,
 			);
 			path = "Tsukuba-iOSTests";
 			sourceTree = "<group>";
@@ -339,8 +339,8 @@
 		E4962C031EB4B08000DF8CAE /* Tsukuba-iOSUITests */ = {
 			isa = PBXGroup;
 			children = (
-				E4962C041EB4B08000DF8CAE /* Tsukuba_iOSUITests.swift */,
 				E4962C061EB4B08000DF8CAE /* Info.plist */,
+				E4962C041EB4B08000DF8CAE /* Tsukuba_iOSUITests.swift */,
 			);
 			path = "Tsukuba-iOSUITests";
 			sourceTree = "<group>";
@@ -349,11 +349,11 @@
 			isa = PBXGroup;
 			children = (
 				E4962BED1EB4B08000DF8CAE /* LaunchScreen.storyboard */,
-				E4962BE51EB4B08000DF8CAE /* Main.storyboard */,
 				E49BFE221EF3EAA7001B1BBA /* Login.storyboard */,
+				E4962BE51EB4B08000DF8CAE /* Main.storyboard */,
 				E49BFE271EF3EAB5001B1BBA /* Post.storyboard */,
 			);
-			name = Storyboard;
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -542,7 +542,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "python ${SRCROOT}/${TARGET_NAME}/AutoGenStrings.py ${SRCROOT}/${TARGET_NAME}";
+			shellScript = "python ${SRCROOT}/${TARGET_NAME}/Support\\ Files/AutoGenStrings.py ${SRCROOT}/${TARGET_NAME}";
 		};
 		E4F0B49F5FE9A2B18A41FB3F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -649,6 +649,7 @@
 				E4B52B6F1EF3DAF30030BD2D /* zh-Hans */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		E4962BED1EB4B08000DF8CAE /* LaunchScreen.storyboard */ = {
@@ -658,6 +659,7 @@
 				E4B52B6E1EF3DAF30030BD2D /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		E49BFE221EF3EAA7001B1BBA /* Login.storyboard */ = {
@@ -667,6 +669,7 @@
 				E49BFE241EF3EAAD001B1BBA /* zh-Hans */,
 			);
 			name = Login.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		E49BFE271EF3EAB5001B1BBA /* Post.storyboard */ = {
@@ -676,6 +679,7 @@
 				E49BFE291EF3EAB9001B1BBA /* zh-Hans */,
 			);
 			name = Post.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		E4B52B751EF3DBC50030BD2D /* Localizable.strings */ = {
@@ -685,6 +689,7 @@
 				E4B52B761EF3DBC70030BD2D /* zh-Hans */,
 			);
 			name = Localizable.strings;
+			path = .;
 			sourceTree = "<group>";
 		};
 		E4B52B791EF3DC8E0030BD2D /* InfoPlist.strings */ = {
@@ -694,6 +699,7 @@
 				E4B52B7A1EF3DC930030BD2D /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

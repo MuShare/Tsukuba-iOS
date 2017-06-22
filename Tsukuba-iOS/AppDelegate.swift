@@ -19,16 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         // Set suitable columns for iPhone and iPad.
-        if config.columns == 0 {
-            let width = UIScreen.main.bounds.size.width
-            if width < 768 {
-                config.columns = 2
-            } else {
-                config.columns = 4
-            }
+        let width = UIScreen.main.bounds.size.width
+        if width < 768 {
+            config.columns = 3
+        } else {
+            config.columns = 4
         }
-        
-        
+
         // Set up language.
         let lan = Bundle.main.preferredLocalizations[0].components(separatedBy: "-")[0]
         if config.lan != lan {
