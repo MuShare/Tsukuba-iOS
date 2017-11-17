@@ -57,8 +57,7 @@ class EditMessageViewController: FormViewController, NVActivityIndicatorViewable
     
     @IBAction func modifyMessage(_ sender: Any) {
         if messageTitle == nil {
-            showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                      content: "Please input a post title.")
+            showTip("Please input a post title.")
             return
         }
         
@@ -81,8 +80,7 @@ class EditMessageViewController: FormViewController, NVActivityIndicatorViewable
             if (success) {
                 self.navigationController?.popViewController(animated: true)
             } else {
-                self.showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                               content: tip!)
+                self.showTip(tip!)
             }
         }
     }
@@ -184,8 +182,7 @@ class EditMessageViewController: FormViewController, NVActivityIndicatorViewable
             if (success) {
                 self.navigationController?.popViewController(animated: true)
             } else {
-                self.showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                               content: tip!)
+                self.showTip(tip!)
             }
         }
     }

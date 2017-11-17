@@ -22,8 +22,7 @@ class MyProfileTableViewController: UITableViewController {
         self.setCustomBack()
         
         if user.contact == "" || user.address == "" || user.avatar == "" {
-            showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                      content: NSLocalizedString("fill_user_info", comment: ""))
+            showTip(NSLocalizedString("fill_user_info", comment: ""))
         }
         
         if user.login {
@@ -48,8 +47,7 @@ class MyProfileTableViewController: UITableViewController {
     // MARK: - Navigation
     @IBAction func saveUser(_ sender: Any) {
         if nameTextField.text == "" || contactTextField.text == "" || addressTextField.text == "" {
-            showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                      content: NSLocalizedString("modify_has_empty", comment: ""))
+            showTip(NSLocalizedString("modify_has_empty", comment: ""))
             return
         }
         

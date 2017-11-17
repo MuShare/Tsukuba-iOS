@@ -249,7 +249,8 @@ class UserManager {
     
     func reset(email: String, comletion:((Bool, String?) -> Void)?) {
         let params: Parameters = [
-            "email": email
+            "email": email,
+            "lan": config.lan
         ]
         
         Alamofire.request(createUrl("api/user/modify/password"),

@@ -50,8 +50,7 @@ class ResetViewController: EditingViewController, NVActivityIndicatorViewable {
             return
         }
         if !isEmailAddress(emailTextField.text!) {
-            showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                      content: NSLocalizedString("reset_password_not_validate", comment: ""))
+            showTip(NSLocalizedString("reset_password_not_validate", comment: ""))
             return
         }
         
@@ -72,8 +71,7 @@ class ResetViewController: EditingViewController, NVActivityIndicatorViewable {
                 self.submitButton.setTitle(NSLocalizedString("back_to_login", comment: ""), for: .normal)
                 self.titleLabel.text = NSLocalizedString("reset_password_check_email", comment: "")
             } else {
-                self.showAlert(title: NSLocalizedString("tip_name", comment: ""),
-                               content: message!)
+                self.showTip(message!)
             }
         }
     }
