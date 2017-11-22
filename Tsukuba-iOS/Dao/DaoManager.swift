@@ -9,7 +9,7 @@
 import CoreData
 import UIKit
 
-class DaoManager: NSObject {
+class DaoManager {
     
     let context: NSManagedObjectContext!
     let categoryDao: CategoryDao!
@@ -21,7 +21,7 @@ class DaoManager: NSObject {
         return instance
     }()
     
-    override init() {
+    init() {
         let delegate = UIApplication.shared.delegate as! AppDelegate
         context = delegate.managedObjectContext
         categoryDao = CategoryDao(context)
