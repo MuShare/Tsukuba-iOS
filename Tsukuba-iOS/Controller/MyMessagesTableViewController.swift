@@ -23,20 +23,20 @@ class MyMessagesTableViewController: UITableViewController {
         
         self.setCustomBack()
         
-        tableView.es_addPullToRefresh {
+        tableView.es.addPullToRefresh {
             // action to be performed (pull data from some source)
             self.messageManager.loadMyMessage(self.sell) { (success, messages) in
                 self.messages = messages
                 self.tableView.reloadData()
-                self.tableView.es_stopPullToRefresh()
+                self.tableView.es.stopPullToRefresh()
             }
         }
-        tableView.es_startPullToRefresh()
+        tableView.es.startPullToRefresh()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         if messageManager.updated {
-            tableView.es_startPullToRefresh()
+            tableView.es.startPullToRefresh()
             messageManager.updated = false
         }
     }

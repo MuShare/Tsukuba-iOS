@@ -51,7 +51,7 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
         }
         
         // Set collection view refresh
-        collectionView?.es_addPullToRefresh {
+        collectionView?.es.addPullToRefresh {
             self.messageManager.loadMessage(self.sell, cid: self.cid, seq: nil) { (success, messages) in
                 // Show no data tip if there is no message.
                 if (messages.count == 0) {
@@ -64,16 +64,16 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
                 // Update messages.
                 self.messages = messages
                 self.collectionView?.reloadData()
-                self.collectionView?.es_stopPullToRefresh()
+                self.collectionView?.es.stopPullToRefresh()
             }
         }
-        collectionView?.es_startPullToRefresh()
+        collectionView?.es.startPullToRefresh()
         
-        collectionView?.es_addInfiniteScrolling {
+        collectionView?.es.addInfiniteScrolling {
             let seq = self.messages.last?.seq
             self.messageManager.loadMessage(self.sell, cid: self.cid, seq: seq, completion: { (success, messages) in
                 if messages.count == 0 {
-                    self.collectionView?.es_noticeNoMoreData()
+                    self.collectionView?.es.noticeNoMoreData()
                 } else {
                     let startRow = self.messages.count
                     self.messages = self.messages + messages
@@ -82,7 +82,7 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
                         indexPaths.append(IndexPath(row: row, section: 0))
                     }
                     self.collectionView?.insertItems(at: indexPaths)
-                    self.collectionView?.es_stopLoadingMore()
+                    self.collectionView?.es.stopLoadingMore()
                 }
             })
         }
@@ -91,7 +91,7 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
 
     override func viewWillAppear(_ animated: Bool) {
         if messageManager.updated {
-            collectionView?.es_startPullToRefresh()
+            collectionView?.es.startPullToRefresh()
             messageManager.updated = false
         }
     }
@@ -148,7 +148,7 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
         segmentioView.selectedSegmentioIndex = 0
         segmentioView.valueDidChange = { segmentio, segmentIndex in
             self.cid = segmentIndex == 0 ? nil : self.categories[segmentIndex - 1].cid
-            self.collectionView.es_startPullToRefresh()
+            self.collectionView.es.startPullToRefresh()
         }
     }
     
