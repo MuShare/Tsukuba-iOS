@@ -25,17 +25,17 @@ class MessageTableViewController: UITableViewController {
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 400
-        tableView.es_addPullToRefresh {
+        tableView.es.addPullToRefresh {
             self.messageManager.detail(self.messageId) { (success, message) in
                 if (success) {
                     self.message = message!
                     self.navigationItem.title = message!.title
                     self.tableView.reloadData()
-                    self.tableView.es_stopPullToRefresh()
+                    self.tableView.es.stopPullToRefresh()
                 }
             }
         }
-        tableView.es_startPullToRefresh()
+        tableView.es.startPullToRefresh()
 
     }
     

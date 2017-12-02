@@ -26,18 +26,18 @@ class MyFavoritesViewController: UIViewController, UICollectionViewDataSource, U
         super.viewDidLoad()
         
         // Set collection view refresh
-        collectionView?.es_addPullToRefresh {
+        collectionView?.es.addPullToRefresh {
             self.messageManager.loadMyFavorites(self.sell) { (success, messages) in
                 self.messages = messages
                 self.collectionView?.reloadData()
-                self.collectionView?.es_stopPullToRefresh()
+                self.collectionView?.es.stopPullToRefresh()
             }
         }
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        collectionView?.es_startPullToRefresh()
+        collectionView?.es.startPullToRefresh()
     }
 
     // MARK: - Navigation
