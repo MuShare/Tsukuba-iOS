@@ -29,6 +29,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZCD-RK-S6t" customClass="Segmentio" customModule="Segmentio">
+                                <rect key="frame" x="0.0" y="64" width="375" height="35"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="wNh-Xk-bNK"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ah8-Hc-j35">
+                                <rect key="frame" x="0.0" y="98" width="375" height="1"/>
+                                <color key="backgroundColor" red="0.67336440086364746" green="0.4724125862121582" blue="0.71547085046768188" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="euv-cd-RzO"/>
+                                </constraints>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Byf-WP-xIc">
                                 <rect key="frame" x="0.0" y="99" width="375" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -101,13 +115,6 @@
                                     <outlet property="delegate" destination="bu9-QG-baU" id="rEv-ES-1hN"/>
                                 </connections>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZCD-RK-S6t" customClass="Segmentio" customModule="Segmentio">
-                                <rect key="frame" x="0.0" y="64" width="375" height="35"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="wNh-Xk-bNK"/>
-                                </constraints>
-                            </view>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nodata" translatesAutoresizingMaskIntoConstraints="NO" id="NjL-1r-MCE">
                                 <rect key="frame" x="112" y="258" width="150" height="150"/>
                                 <constraints>
@@ -129,11 +136,14 @@
                         <constraints>
                             <constraint firstItem="NjL-1r-MCE" firstAttribute="centerX" secondItem="7Qw-Uw-qwx" secondAttribute="centerX" id="1fM-jZ-CBu"/>
                             <constraint firstItem="ieT-vj-eNs" firstAttribute="top" secondItem="NjL-1r-MCE" secondAttribute="bottom" constant="27" id="B36-t0-LWO"/>
+                            <constraint firstAttribute="trailing" secondItem="Ah8-Hc-j35" secondAttribute="trailing" id="EsX-Ir-4id"/>
                             <constraint firstItem="swi-Dd-7Hc" firstAttribute="top" secondItem="Byf-WP-xIc" secondAttribute="bottom" id="MMZ-bS-ckm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Byf-WP-xIc" secondAttribute="trailing" constant="-16" id="Vgm-E7-6Yc"/>
                             <constraint firstItem="Byf-WP-xIc" firstAttribute="top" secondItem="nKy-6v-QYf" secondAttribute="bottom" constant="35" id="WbO-AG-UCr"/>
+                            <constraint firstItem="Ah8-Hc-j35" firstAttribute="leading" secondItem="7Qw-Uw-qwx" secondAttribute="leading" id="dCg-e0-3Yp"/>
                             <constraint firstItem="ZCD-RK-S6t" firstAttribute="leading" secondItem="7Qw-Uw-qwx" secondAttribute="leadingMargin" constant="-16" id="g9F-hi-1g8"/>
                             <constraint firstItem="ieT-vj-eNs" firstAttribute="trailing" secondItem="NjL-1r-MCE" secondAttribute="trailing" id="kc2-Q0-aNr"/>
+                            <constraint firstItem="Ah8-Hc-j35" firstAttribute="top" secondItem="nKy-6v-QYf" secondAttribute="bottom" constant="34" id="o2E-i8-RbQ"/>
                             <constraint firstItem="ZCD-RK-S6t" firstAttribute="top" secondItem="nKy-6v-QYf" secondAttribute="bottom" id="qmj-DI-GcX"/>
                             <constraint firstItem="ieT-vj-eNs" firstAttribute="leading" secondItem="NjL-1r-MCE" secondAttribute="leading" id="s8L-wI-JtZ"/>
                             <constraint firstItem="Byf-WP-xIc" firstAttribute="leading" secondItem="7Qw-Uw-qwx" secondAttribute="leadingMargin" constant="-16" id="usa-6G-k7c"/>

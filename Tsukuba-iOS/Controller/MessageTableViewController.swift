@@ -25,7 +25,7 @@ class MessageTableViewController: UITableViewController {
         
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
-            tableView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0)
+            tableView.contentInset = UIEdgeInsetsMake(UIApplication.shared.statusBarFrame.size.height + 44, 0, 49, 0)
             tableView.scrollIndicatorInsets = tableView.contentInset
         }
         
