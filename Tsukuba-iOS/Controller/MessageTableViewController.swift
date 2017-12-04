@@ -23,6 +23,12 @@ class MessageTableViewController: UITableViewController {
 
         self.setCustomBack()
         
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+            tableView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0)
+            tableView.scrollIndicatorInsets = tableView.contentInset
+        }
+        
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 400
         tableView.es.addPullToRefresh {
@@ -31,7 +37,7 @@ class MessageTableViewController: UITableViewController {
                     self.message = message!
                     self.navigationItem.title = message!.title
                     self.tableView.reloadData()
-                    self.tableView.es.stopPullToRefresh()
+                    self.tableView.es.stopPullToRefresh(ignoreDate: true, ignoreFooter: true)
                 }
             }
         }
