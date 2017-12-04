@@ -23,6 +23,12 @@ class MyMessagesTableViewController: UITableViewController {
         
         self.setCustomBack()
         
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+            tableView.contentInset = UIEdgeInsetsMake(64, 0, 49, 0)
+            tableView.scrollIndicatorInsets = tableView.contentInset
+        }
+        
         tableView.es.addPullToRefresh {
             // action to be performed (pull data from some source)
             self.messageManager.loadMyMessage(self.sell) { (success, messages) in
