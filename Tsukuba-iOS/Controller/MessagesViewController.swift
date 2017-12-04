@@ -32,10 +32,6 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        if #available(iOS 11.0, *) {
-//            navigationController?.navigationBar.prefersLargeTitles = true
-//        }
-        
         categories = dao.categoryDao.findEnable()
         loadCategories()
         
@@ -169,7 +165,7 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
             ),
             horizontalSeparatorOptions: SegmentioHorizontalSeparatorOptions(
                 type: SegmentioHorizontalSeparatorType.bottom, // Top, Bottom, TopAndBottom
-                height: 1,
+                height: 0,
                 color: Color.main
             ),
             verticalSeparatorOptions: SegmentioVerticalSeparatorOptions(

@@ -25,6 +25,12 @@ class MyFavoritesViewController: UIViewController, UICollectionViewDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if #available(iOS 11.0, *) {
+            collectionView.contentInsetAdjustmentBehavior = .never
+            collectionView.contentInset = UIEdgeInsetsMake(44, 0, 49, 0)
+            collectionView.scrollIndicatorInsets = collectionView.contentInset
+        }
+        
         // Set collection view refresh
         collectionView?.es.addPullToRefresh {
             self.messageManager.loadMyFavorites(self.sell) { (success, messages) in
