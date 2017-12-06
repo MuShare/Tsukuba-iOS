@@ -1,0 +1,12 @@
+/* 
+  InfoPlist.strings
+  Tsukuba-iOS
+
+  Created by 李大爷的电脑 on 15/05/2017.
+  Copyright © 2017 MuShare. All rights reserved.
+*/
+
+CFBundleDisplayName = "つくば同窓";
+NSPhotoLibraryUsageDescription = "Tsukuba eBuy will use your photo library when you want to upload your avatar or pictures in your message.";
+NSCameraUsageDescription = "Tsukuba eBuy will use your camera when you want to upload your avatar or pictures in your message.";
+FacebookDisplayName = "つくば同窓";

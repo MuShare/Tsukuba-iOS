@@ -1,0 +1,183 @@
+
+/* Class = "UILabel"; text = "￥"; ObjectID = "1yj-xX-pGP"; */
+"1yj-xX-pGP.text" = "￥";
+
+/* Class = "UILabel"; text = "contact"; ObjectID = "2S1-cP-7gH"; */
+"2S1-cP-7gH.text" = "contact";
+
+/* Class = "UITextField"; placeholder = "The way to contact you"; ObjectID = "2uS-7t-zwB"; */
+"2uS-7t-zwB.placeholder" = "The way to contact you";
+
+/* Class = "UILabel"; text = "Date"; ObjectID = "3pn-Jg-KlO"; */
+"3pn-Jg-KlO.text" = "Date";
+
+/* Class = "UILabel"; text = "MuShare Group © 2015 - 2017. All Rights Reserved."; ObjectID = "4Ta-n1-hHa"; */
+"4Ta-n1-hHa.text" = "MuShare Group © 2015 - 2017. All Rights Reserved.";
+
+/* Class = "UILabel"; text = "Profile Photo"; ObjectID = "6Wu-pB-1EP"; */
+"6Wu-pB-1EP.text" = "Profile Photo";
+
+/* Class = "UILabel"; text = "price"; ObjectID = "6iG-oD-Foe"; */
+"6iG-oD-Foe.text" = "price";
+
+/* Class = "UINavigationItem"; title = "My Profile"; ObjectID = "6jE-cn-w1p"; */
+"6jE-cn-w1p.title" = "My Profile";
+
+/* Class = "UILabel"; text = "Price"; ObjectID = "7Jj-OZ-bsq"; */
+"7Jj-OZ-bsq.text" = "Price";
+
+/* Class = "UIButton"; normalTitle = "Upload"; ObjectID = "7o4-vA-O92"; */
+"7o4-vA-O92.normalTitle" = "Upload";
+
+/* Class = "UIButton"; normalTitle = "Name"; ObjectID = "Bfr-uM-oX2"; */
+"Bfr-uM-oX2.normalTitle" = "Name";
+
+/* Class = "UILabel"; text = "Update at"; ObjectID = "F5z-R3-5Eo"; */
+"F5z-R3-5Eo.text" = "Update at";
+
+/* Class = "UILabel"; text = "Give me a star on Github"; ObjectID = "Fyp-pA-Cg1"; */
+"Fyp-pA-Cg1.text" = "Give me a star on Github";
+
+/* Class = "UILabel"; text = "Price"; ObjectID = "G5v-LQ-VOS"; */
+"G5v-LQ-VOS.text" = "Price";
+
+/* Class = "UITextField"; placeholder = "Your address"; ObjectID = "GBd-1R-ZTy"; */
+"GBd-1R-ZTy.placeholder" = "Your address";
+
+/* Class = "UINavigationItem"; title = "Edit Post"; ObjectID = "JMd-zl-kHo"; */
+"JMd-zl-kHo.title" = "Edit Post";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "Jw2-7U-3tS"; */
+"Jw2-7U-3tS.text" = "Email";
+
+/* Class = "UITextField"; placeholder = "Your user name"; ObjectID = "JzQ-dh-gVW"; */
+"JzQ-dh-gVW.placeholder" = "Your user name";
+
+/* Class = "UILabel"; text = "My Posts"; ObjectID = "LBx-Jr-mW2"; */
+"LBx-Jr-mW2.text" = "My Posts";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "OWj-SS-8BC"; */
+"OWj-SS-8BC.text" = "Title";
+
+/* Class = "UILabel"; text = "address"; ObjectID = "PeX-9X-26U"; */
+"PeX-9X-26U.text" = "address";
+
+/* Class = "UILabel"; text = "￥"; ObjectID = "Q4Q-tE-b9G"; */
+"Q4Q-tE-b9G.text" = "￥";
+
+/* Class = "UINavigationItem"; title = "Upload Pictures"; ObjectID = "QcU-ki-0SI"; */
+"QcU-ki-0SI.title" = "Upload Pictures";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "Qkc-zq-rbh"; */
+"Qkc-zq-rbh.text" = "Name";
+
+/* Class = "UILabel"; text = "Joined in"; ObjectID = "Rzp-rE-IA1"; */
+"Rzp-rE-IA1.text" = "Joined in";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "SJv-rf-c8d"; */
+"SJv-rf-c8d.text" = "Title";
+
+/* Class = "UINavigationItem"; title = "Me"; ObjectID = "Ssb-t2-Cvz"; */
+"Ssb-t2-Cvz.title" = "Me";
+
+/* Class = "UILabel"; text = "Selection"; ObjectID = "Uej-GD-XFj"; */
+"Uej-GD-XFj.text" = "Selection";
+
+/* Class = "UILabel"; text = "Contact"; ObjectID = "WMm-fs-Ukz"; */
+"WMm-fs-Ukz.text" = "Contact";
+
+/* Class = "UILabel"; text = "Price"; ObjectID = "Y3a-Wm-uRa"; */
+"Y3a-Wm-uRa.text" = "Price";
+
+/* Class = "UILabel"; text = "date"; ObjectID = "Yli-f5-X3s"; */
+"Yli-f5-X3s.text" = "date";
+
+/* Class = "UILabel"; text = "My Favorites"; ObjectID = "Zlg-We-Mtz"; */
+"Zlg-We-Mtz.text" = "My Favorites";
+
+/* Class = "UILabel"; text = "date"; ObjectID = "aVd-nr-Sbp"; */
+"aVd-nr-Sbp.text" = "date";
+
+/* Class = "UIButton"; normalTitle = "Upload Profie Photo"; ObjectID = "aam-7l-8Aq"; */
+"aam-7l-8Aq.normalTitle" = "Upload Profie Photo";
+
+/* Class = "UILabel"; text = "Sign in / Sign up"; ObjectID = "bew-pl-P16"; */
+"bew-pl-P16.text" = "Sign in / Sign up";
+
+/* Class = "UIButton"; normalTitle = "Sign out"; ObjectID = "fTY-Ii-ot1"; */
+"fTY-Ii-ot1.normalTitle" = "Sign out";
+
+/* Class = "UILabel"; text = "Closed Message"; ObjectID = "fuf-Hz-pP7"; */
+"fuf-Hz-pP7.text" = "Closed Message";
+
+/* Class = "UILabel"; text = "About"; ObjectID = "hkH-JJ-5yJ"; */
+"hkH-JJ-5yJ.text" = "About";
+
+/* Class = "UILabel"; text = "No Data"; ObjectID = "ieT-vj-eNs"; */
+"ieT-vj-eNs.text" = "No Data";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "igv-XA-Uc6"; */
+"igv-XA-Uc6.text" = "Name";
+
+/* Class = "UILabel"; text = "joined in"; ObjectID = "jhh-uq-ddu"; */
+"jhh-uq-ddu.text" = "joined in";
+
+/* Class = "UILabel"; text = "Tsukuba Mate"; ObjectID = "jjv-oM-fGN"; */
+"jjv-oM-fGN.text" = "Tsukuba Mate";
+
+/* Class = "UINavigationItem"; title = "About"; ObjectID = "jkG-KF-BeH"; */
+"jkG-KF-BeH.title" = "About";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "k5q-R0-WG3"; */
+"k5q-R0-WG3.text" = "Title";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "kcf-DB-tVG"; */
+"kcf-DB-tVG.text" = "Address";
+
+/* Class = "UILabel"; text = "Contact"; ObjectID = "mD1-mP-bSv"; */
+"mD1-mP-bSv.text" = "Contact";
+
+/* Class = "UILabel"; text = "Price"; ObjectID = "pF5-jm-o9i"; */
+"pF5-jm-o9i.text" = "Price";
+
+/* Class = "UILabel"; text = "Welcome to Tsukuba, sign in now!"; ObjectID = "pL0-ku-jbh"; */
+"pL0-ku-jbh.text" = "Welcome to Tsukuba, sign in now!";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "q8Q-YG-j4F"; */
+"q8Q-YG-j4F.text" = "Title";
+
+/* Class = "UINavigationItem"; title = "Profile Photo"; ObjectID = "r3d-0q-6hh"; */
+"r3d-0q-6hh.title" = "Profile Photo";
+
+/* Class = "UINavigationItem"; title = "My Posts"; ObjectID = "rDP-Fk-I1Z"; */
+"rDP-Fk-I1Z.title" = "My Posts";
+
+/* Class = "UILabel"; text = "Introduction"; ObjectID = "rZ6-Wm-PXJ"; */
+"rZ6-Wm-PXJ.text" = "Introduction";
+
+/* Class = "UILabel"; text = "Price"; ObjectID = "rdz-KE-mm9"; */
+"rdz-KE-mm9.text" = "Price";
+
+/* Class = "UILabel"; text = "Update at"; ObjectID = "uJS-Om-6MI"; */
+"uJS-Om-6MI.text" = "Update at";
+
+/* Class = "UILabel"; text = "price"; ObjectID = "uYk-HV-5sS"; */
+"uYk-HV-5sS.text" = "price";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "ud1-kO-6N8"; */
+"ud1-kO-6N8.text" = "Address";
+
+/* Class = "UINavigationItem"; title = "My Favorites"; ObjectID = "umD-e3-Vua"; */
+"umD-e3-Vua.title" = "My Favorites";
+
+/* Class = "UINavigationItem"; title = "Tsukuba Mate"; ObjectID = "wCy-bT-HBv"; */
+"wCy-bT-HBv.title" = "Tsukuba Mate";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "ytb-cc-993"; */
+"ytb-cc-993.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "z4g-Z1-cgu"; */
+"z4g-Z1-cgu.text" = "0";
+
+/* Class = "UILabel"; text = "Option"; ObjectID = "zJw-ft-Rqi"; */
+"zJw-ft-Rqi.text" = "Option";

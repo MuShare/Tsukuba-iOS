@@ -1,11 +1,3 @@
-//
-//  MessagesCollectionViewController.swift
-//  Tsukuba-iOS
-//
-//  Created by 李大爷的电脑 on 10/05/2017.
-//  Copyright © 2017 MuShare. All rights reserved.
-//
-
 import UIKit
 import ESPullToRefresh
 import Segmentio

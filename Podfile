@@ -5,7 +5,6 @@ target 'Tsukuba-iOS' do
     pod 'Alamofire', '~> 4.2'
     pod 'SwiftyUserDefaults', '~> 3'
     pod 'ESPullToRefresh', '~> 2.6'
-    pod 'PullToRefresher', '~> 3.0'
     pod 'FacebookCore', '~> 0.2'
     pod 'FacebookLogin', '~> 0.2'
     pod 'Kingfisher', '~> 4'
