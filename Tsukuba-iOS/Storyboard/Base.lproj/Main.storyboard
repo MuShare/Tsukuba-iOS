@@ -1129,7 +1129,7 @@
         <!--About-->
         <scene sceneID="cME-Dg-Hq9">
             <objects>
-                <viewController id="5rK-pi-gnD" sceneMemberID="viewController">
+                <viewController id="5rK-pi-gnD" customClass="AboutViewController" customModule="Tsukuba_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="M87-12-tby"/>
                         <viewControllerLayoutGuide type="bottom" id="vIs-Du-9uo"/>
