@@ -1,0 +1,48 @@
+
+/* Class = "UIButton"; normalTitle = "Forget password"; ObjectID = "0hY-8P-7N6"; */
+"0hY-8P-7N6.normalTitle" = "Forget password";
+
+/* Class = "UIButton"; normalTitle = "Sign up"; ObjectID = "0pk-vP-wgE"; */
+"0pk-vP-wgE.normalTitle" = "Sign up";
+
+/* Class = "UIButton"; normalTitle = " Sign in with Facebook"; ObjectID = "18x-za-O3E"; */
+"18x-za-O3E.normalTitle" = " Sign in with Facebook";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "3tI-Cx-i25"; */
+"3tI-Cx-i25.placeholder" = "Email";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "8sX-DV-RyF"; */
+"8sX-DV-RyF.placeholder" = "Password";
+
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "AlI-zH-atA"; */
+"AlI-zH-atA.normalTitle" = "Submit";
+
+/* Class = "UITextField"; placeholder = "Username"; ObjectID = "DUW-8k-ihR"; */
+"DUW-8k-ihR.placeholder" = "Username";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "MQ0-he-Awb"; */
+"MQ0-he-Awb.placeholder" = "Password";
+
+/* Class = "UILabel"; text = "Sign Up"; ObjectID = "MZC-Hu-Rt0"; */
+"MZC-Hu-Rt0.text" = "Sign Up";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "NIY-dt-OSo"; */
+"NIY-dt-OSo.placeholder" = "Email";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "RkU-gx-Q41"; */
+"RkU-gx-Q41.placeholder" = "Email";
+
+/* Class = "UILabel"; text = "Tsukuba Mate"; ObjectID = "Yvt-KP-EWt"; */
+"Yvt-KP-EWt.text" = "Tsukuba Mate";
+
+/* Class = "UILabel"; text = "Input the email address that you used when you sign up your account. We will send a email to you which contains a link for resetting your password."; ObjectID = "ZQU-Et-VVS"; */
+"ZQU-Et-VVS.text" = "Input the email address that you used when you sign up your account. We will send a email to you which contains a link for resetting your password.";
+
+/* Class = "UILabel"; text = "Reset Password"; ObjectID = "dDe-Mp-mSW"; */
+"dDe-Mp-mSW.text" = "Reset Password";
+
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "ihL-ng-Drw"; */
+"ihL-ng-Drw.normalTitle" = "Submit";
+
+/* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "mq0-GG-mww"; */
+"mq0-GG-mww.normalTitle" = "Sign in";

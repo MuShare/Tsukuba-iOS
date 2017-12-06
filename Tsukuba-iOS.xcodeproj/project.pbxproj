@@ -106,6 +106,12 @@
 		E41F7D0B1EC36C4B002E8184 /* EditingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditingViewController.swift; sourceTree = "<group>"; };
 		E41F7D111EC3EB92002E8184 /* CustomBack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBack.swift; sourceTree = "<group>"; };
 		E42331771EC030FE00C3A6B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E4387D4A1FD7B1EE006A342D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		E4387D4B1FD7B1EF006A342D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Login.strings; sourceTree = "<group>"; };
+		E4387D4C1FD7B1EF006A342D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		E4387D4D1FD7B1EF006A342D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Post.strings; sourceTree = "<group>"; };
+		E4387D4E1FD7B1EF006A342D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E4387D4F1FD7B1EF006A342D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E451974E1ECCA0A6009C9D09 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		E45519401EC44856006A3B73 /* MessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
 		E45519421EC453F6006A3B73 /* PicturesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicturesTableViewCell.swift; sourceTree = "<group>"; };
@@ -454,6 +460,7 @@
 				en,
 				Base,
 				"zh-Hans",
+				ja,
 			);
 			mainGroup = E4962BD51EB4B08000DF8CAE;
 			productRefGroup = E4962BDF1EB4B08000DF8CAE /* Products */;
@@ -568,7 +575,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E4B52B721EF3DB520030BD2D /* ShellScript */ = {
@@ -687,6 +694,7 @@
 			children = (
 				E4962BE61EB4B08000DF8CAE /* Base */,
 				E4B52B6F1EF3DAF30030BD2D /* zh-Hans */,
+				E4387D4C1FD7B1EF006A342D /* ja */,
 			);
 			name = Main.storyboard;
 			path = .;
@@ -697,6 +705,7 @@
 			children = (
 				E4962BEE1EB4B08000DF8CAE /* Base */,
 				E4B52B6E1EF3DAF30030BD2D /* zh-Hans */,
+				E4387D4A1FD7B1EE006A342D /* ja */,
 			);
 			name = LaunchScreen.storyboard;
 			path = .;
@@ -707,6 +716,7 @@
 			children = (
 				E49BFE211EF3EAA7001B1BBA /* Base */,
 				E49BFE241EF3EAAD001B1BBA /* zh-Hans */,
+				E4387D4B1FD7B1EF006A342D /* ja */,
 			);
 			name = Login.storyboard;
 			path = .;
@@ -717,6 +727,7 @@
 			children = (
 				E49BFE261EF3EAB5001B1BBA /* Base */,
 				E49BFE291EF3EAB9001B1BBA /* zh-Hans */,
+				E4387D4D1FD7B1EF006A342D /* ja */,
 			);
 			name = Post.storyboard;
 			path = .;
@@ -727,6 +738,7 @@
 			children = (
 				E4B52B741EF3DBC50030BD2D /* Base */,
 				E4B52B761EF3DBC70030BD2D /* zh-Hans */,
+				E4387D4F1FD7B1EF006A342D /* ja */,
 			);
 			name = Localizable.strings;
 			path = .;
@@ -737,6 +749,7 @@
 			children = (
 				E4B52B781EF3DC8E0030BD2D /* Base */,
 				E4B52B7A1EF3DC930030BD2D /* zh-Hans */,
+				E4387D4E1FD7B1EF006A342D /* ja */,
 			);
 			name = InfoPlist.strings;
 			path = .;

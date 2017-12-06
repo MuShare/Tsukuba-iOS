@@ -1,11 +1,3 @@
-//
-//  DaoManager.swift
-//  Httper
-//
-//  Created by 李大爷的电脑 on 22/01/2017.
-//  Copyright © 2017 limeng. All rights reserved.
-//
-
 import CoreData
 import UIKit
 
