@@ -32,6 +32,7 @@
 		E41F7D0C1EC36C4B002E8184 /* EditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D0B1EC36C4B002E8184 /* EditingViewController.swift */; };
 		E41F7D121EC3EB92002E8184 /* CustomBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D111EC3EB92002E8184 /* CustomBack.swift */; };
 		E42331781EC030FE00C3A6B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E42331771EC030FE00C3A6B0 /* Assets.xcassets */; };
+		E4387D5B1FD7B58F006A342D /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4387D5A1FD7B58F006A342D /* AboutViewController.swift */; };
 		E451974F1ECCA0A6009C9D09 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = E451974E1ECCA0A6009C9D09 /* Config.swift */; };
 		E45519411EC44856006A3B73 /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45519401EC44856006A3B73 /* MessageTableViewController.swift */; };
 		E45519431EC453F6006A3B73 /* PicturesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45519421EC453F6006A3B73 /* PicturesTableViewCell.swift */; };
@@ -112,6 +113,13 @@
 		E4387D4D1FD7B1EF006A342D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Post.strings; sourceTree = "<group>"; };
 		E4387D4E1FD7B1EF006A342D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E4387D4F1FD7B1EF006A342D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E4387D541FD7B4B2006A342D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		E4387D551FD7B4B2006A342D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Login.strings"; sourceTree = "<group>"; };
+		E4387D561FD7B4B2006A342D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		E4387D571FD7B4B2006A342D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Post.strings"; sourceTree = "<group>"; };
+		E4387D581FD7B4B2006A342D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		E4387D591FD7B4B3006A342D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		E4387D5A1FD7B58F006A342D /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		E451974E1ECCA0A6009C9D09 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		E45519401EC44856006A3B73 /* MessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
 		E45519421EC453F6006A3B73 /* PicturesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicturesTableViewCell.swift; sourceTree = "<group>"; };
@@ -138,20 +146,14 @@
 		E4962C041EB4B08000DF8CAE /* Tsukuba_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tsukuba_iOSUITests.swift; sourceTree = "<group>"; };
 		E4962C061EB4B08000DF8CAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E49BFE211EF3EAA7001B1BBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
-		E49BFE241EF3EAAD001B1BBA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Login.storyboard"; sourceTree = "<group>"; };
 		E49BFE261EF3EAB5001B1BBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Post.storyboard; sourceTree = "<group>"; };
-		E49BFE291EF3EAB9001B1BBA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Post.storyboard"; sourceTree = "<group>"; };
 		E49D240D1EC69FC900D3D974 /* OptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionTableViewCell.swift; sourceTree = "<group>"; };
 		E49D240F1EC6F0EB00D3D974 /* EditMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMessageViewController.swift; sourceTree = "<group>"; };
 		E4B52B641EF2B1200030BD2D /* login-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "login-bg.jpg"; sourceTree = "<group>"; };
 		E4B52B691EF3A77E0030BD2D /* MyFavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFavoritesViewController.swift; sourceTree = "<group>"; };
-		E4B52B6E1EF3DAF30030BD2D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.storyboard"; sourceTree = "<group>"; };
-		E4B52B6F1EF3DAF30030BD2D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		E4B52B701EF3DB310030BD2D /* AutoGenStrings.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = AutoGenStrings.py; sourceTree = "<group>"; };
 		E4B52B741EF3DBC50030BD2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		E4B52B761EF3DBC70030BD2D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E4B52B781EF3DC8E0030BD2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E4B52B7A1EF3DC930030BD2D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		E4CA14B91EFBD4CF00289699 /* Tsukuba-iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tsukuba-iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		F44E7EC0007342735A1D800F /* Pods_Tsukuba_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tsukuba_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -263,6 +265,7 @@
 				E4054AE21EC48D29006BCEEC /* ResetViewController.swift */,
 				E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */,
 				E47860731ECC56C30096B39A /* UserProfileTableViewController.swift */,
+				E4387D5A1FD7B58F006A342D /* AboutViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -459,8 +462,8 @@
 			knownRegions = (
 				en,
 				Base,
-				"zh-Hans",
 				ja,
+				"zh-Hans",
 			);
 			mainGroup = E4962BD51EB4B08000DF8CAE;
 			productRefGroup = E4962BDF1EB4B08000DF8CAE /* Products */;
@@ -637,6 +640,7 @@
 				E4089FE21EBAF8F40042221D /* CategoryCollectionViewCell.swift in Sources */,
 				E4054AE31EC48D29006BCEEC /* ResetViewController.swift in Sources */,
 				E41F7D011EC34CB8002E8184 /* MessagesViewController.swift in Sources */,
+				E4387D5B1FD7B58F006A342D /* AboutViewController.swift in Sources */,
 				E4089FB81EBAE5830042221D /* CategoryDao.swift in Sources */,
 				E4089FBC1EBAE59E0042221D /* SelectionDao.swift in Sources */,
 				E455194B1EC4605B006A3B73 /* IntroductionTableViewCell.swift in Sources */,
@@ -693,8 +697,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				E4962BE61EB4B08000DF8CAE /* Base */,
-				E4B52B6F1EF3DAF30030BD2D /* zh-Hans */,
 				E4387D4C1FD7B1EF006A342D /* ja */,
+				E4387D561FD7B4B2006A342D /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			path = .;
@@ -704,8 +708,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				E4962BEE1EB4B08000DF8CAE /* Base */,
-				E4B52B6E1EF3DAF30030BD2D /* zh-Hans */,
 				E4387D4A1FD7B1EE006A342D /* ja */,
+				E4387D541FD7B4B2006A342D /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			path = .;
@@ -715,8 +719,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				E49BFE211EF3EAA7001B1BBA /* Base */,
-				E49BFE241EF3EAAD001B1BBA /* zh-Hans */,
 				E4387D4B1FD7B1EF006A342D /* ja */,
+				E4387D551FD7B4B2006A342D /* zh-Hans */,
 			);
 			name = Login.storyboard;
 			path = .;
@@ -726,8 +730,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				E49BFE261EF3EAB5001B1BBA /* Base */,
-				E49BFE291EF3EAB9001B1BBA /* zh-Hans */,
 				E4387D4D1FD7B1EF006A342D /* ja */,
+				E4387D571FD7B4B2006A342D /* zh-Hans */,
 			);
 			name = Post.storyboard;
 			path = .;
@@ -737,8 +741,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				E4B52B741EF3DBC50030BD2D /* Base */,
-				E4B52B761EF3DBC70030BD2D /* zh-Hans */,
 				E4387D4F1FD7B1EF006A342D /* ja */,
+				E4387D591FD7B4B3006A342D /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			path = .;
@@ -748,8 +752,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				E4B52B781EF3DC8E0030BD2D /* Base */,
-				E4B52B7A1EF3DC930030BD2D /* zh-Hans */,
 				E4387D4E1FD7B1EF006A342D /* ja */,
+				E4387D581FD7B4B2006A342D /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			path = .;
