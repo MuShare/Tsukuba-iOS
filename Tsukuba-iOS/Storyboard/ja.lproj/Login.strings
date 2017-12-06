@@ -1,36 +1,36 @@
 
 /* Class = "UIButton"; normalTitle = "Forget password"; ObjectID = "0hY-8P-7N6"; */
-"0hY-8P-7N6.normalTitle" = "Forget password";
+"0hY-8P-7N6.normalTitle" = "パスワードを忘れた";
 
 /* Class = "UIButton"; normalTitle = "Sign up"; ObjectID = "0pk-vP-wgE"; */
-"0pk-vP-wgE.normalTitle" = "Sign up";
+"0pk-vP-wgE.normalTitle" = "新規登録";
 
 /* Class = "UIButton"; normalTitle = " Sign in with Facebook"; ObjectID = "18x-za-O3E"; */
-"18x-za-O3E.normalTitle" = " Sign in with Facebook";
+"18x-za-O3E.normalTitle" = " Facebookからサインイン";
 
 /* Class = "UITextField"; placeholder = "Email"; ObjectID = "3tI-Cx-i25"; */
-"3tI-Cx-i25.placeholder" = "Email";
+"3tI-Cx-i25.placeholder" = "メールアドレス";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "8sX-DV-RyF"; */
-"8sX-DV-RyF.placeholder" = "Password";
+"8sX-DV-RyF.placeholder" = "パスワード";
 
 /* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "AlI-zH-atA"; */
-"AlI-zH-atA.normalTitle" = "Submit";
+"AlI-zH-atA.normalTitle" = "提出";
 
 /* Class = "UITextField"; placeholder = "Username"; ObjectID = "DUW-8k-ihR"; */
-"DUW-8k-ihR.placeholder" = "Username";
+"DUW-8k-ihR.placeholder" = "ユーザー名";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "MQ0-he-Awb"; */
-"MQ0-he-Awb.placeholder" = "Password";
+"MQ0-he-Awb.placeholder" = "パスワード";
 
 /* Class = "UILabel"; text = "Sign Up"; ObjectID = "MZC-Hu-Rt0"; */
-"MZC-Hu-Rt0.text" = "Sign Up";
+"MZC-Hu-Rt0.text" = "新規登録";
 
 /* Class = "UITextField"; placeholder = "Email"; ObjectID = "NIY-dt-OSo"; */
-"NIY-dt-OSo.placeholder" = "Email";
+"NIY-dt-OSo.placeholder" = "メールアドレス";
 
 /* Class = "UITextField"; placeholder = "Email"; ObjectID = "RkU-gx-Q41"; */
-"RkU-gx-Q41.placeholder" = "Email";
+"RkU-gx-Q41.placeholder" = "メールアドレス";
 
 /* Class = "UILabel"; text = "Tsukuba Mate"; ObjectID = "Yvt-KP-EWt"; */
 "Yvt-KP-EWt.text" = "Tsukuba Mate";
