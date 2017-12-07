@@ -36,13 +36,13 @@
 "Yvt-KP-EWt.text" = "つくば同窓";
 
 /* Class = "UILabel"; text = "Input the email address that you used when you sign up your account. We will send a email to you which contains a link for resetting your password."; ObjectID = "ZQU-Et-VVS"; */
-"ZQU-Et-VVS.text" = "Input the email address that you used when you sign up your account. We will send a email to you which contains a link for resetting your password.";
+"ZQU-Et-VVS.text" = "アカウントを登録するメールアドレスを入力し、パスワードのリセットのメールを送ります。";
 
 /* Class = "UILabel"; text = "Reset Password"; ObjectID = "dDe-Mp-mSW"; */
-"dDe-Mp-mSW.text" = "Reset Password";
+"dDe-Mp-mSW.text" = "パスワードをリセット";
 
 /* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "ihL-ng-Drw"; */
-"ihL-ng-Drw.normalTitle" = "Submit";
+"ihL-ng-Drw.normalTitle" = "提出";
 
 /* Class = "UIButton"; normalTitle = "Sign in"; ObjectID = "mq0-GG-mww"; */
-"mq0-GG-mww.normalTitle" = "Sign in";
+"mq0-GG-mww.normalTitle" = "サインイン";
