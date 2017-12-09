@@ -60,8 +60,8 @@ message_title_placeholder = "ポストのタイトル";
 message_price = "価格";
 message_introduction_placeholder = "ポストの紹介";
 message_edit_pictures = "写真を編集";
-message_close_title = "Close post";
-message_close_content = "Other people cannot see this post if you close it. You cannot reopen it once you closed it. Are you sure to close this post? ";
+message_close_title = "ポストを終了";
+message_close_content = "ポストを終了した次第、もう一度表示できまん。このポストを終了しますか？";
 
 modify_message_no_privilege = "このポストを編集できません。";
 

@@ -36,7 +36,7 @@
 "F5z-R3-5Eo.text" = "アップロード時間";
 
 /* Class = "UILabel"; text = "Give me a star on Github"; ObjectID = "Fyp-pA-Cg1"; */
-"Fyp-pA-Cg1.text" = "Give me a star on Github";
+"Fyp-pA-Cg1.text" = "Githubでスターしよう";
 
 /* Class = "UILabel"; text = "Price"; ObjectID = "G5v-LQ-VOS"; */
 "G5v-LQ-VOS.text" = "価格";
@@ -81,16 +81,16 @@
 "Ssb-t2-Cvz.title" = "設定";
 
 /* Class = "UILabel"; text = "Selection"; ObjectID = "Uej-GD-XFj"; */
-"Uej-GD-XFj.text" = "Selection";
+"Uej-GD-XFj.text" = "種類";
 
 /* Class = "UILabel"; text = "Contact"; ObjectID = "WMm-fs-Ukz"; */
-"WMm-fs-Ukz.text" = "Contact";
+"WMm-fs-Ukz.text" = "連絡先";
 
 /* Class = "UILabel"; text = "Price"; ObjectID = "Y3a-Wm-uRa"; */
 "Y3a-Wm-uRa.text" = "価格";
 
 /* Class = "UILabel"; text = "date"; ObjectID = "Yli-f5-X3s"; */
-"Yli-f5-X3s.text" = "date";
+"Yli-f5-X3s.text" = "日付";
 
 /* Class = "UILabel"; text = "My Favorites"; ObjectID = "Zlg-We-Mtz"; */
 "Zlg-We-Mtz.text" = "お気に入り";
@@ -108,7 +108,7 @@
 "fTY-Ii-ot1.normalTitle" = "サインアウト";
 
 /* Class = "UILabel"; text = "Closed Message"; ObjectID = "fuf-Hz-pP7"; */
-"fuf-Hz-pP7.text" = "Closed Message";
+"fuf-Hz-pP7.text" = "ポストを終了";
 
 /* Class = "UILabel"; text = "About"; ObjectID = "hkH-JJ-5yJ"; */
 "hkH-JJ-5yJ.text" = "つくば同窓について";
@@ -120,7 +120,7 @@
 "igv-XA-Uc6.text" = "名前";
 
 /* Class = "UILabel"; text = "joined in"; ObjectID = "jhh-uq-ddu"; */
-"jhh-uq-ddu.text" = "joined in";
+"jhh-uq-ddu.text" = "アカウント登録時間";
 
 /* Class = "UILabel"; text = "Tsukuba Mate"; ObjectID = "jjv-oM-fGN"; */
 "jjv-oM-fGN.text" = "つくば同窓";
@@ -135,7 +135,7 @@
 "kcf-DB-tVG.text" = "住所";
 
 /* Class = "UILabel"; text = "Contact"; ObjectID = "mD1-mP-bSv"; */
-"mD1-mP-bSv.text" = "Contact";
+"mD1-mP-bSv.text" = "連絡先";
 
 /* Class = "UILabel"; text = "Price"; ObjectID = "pF5-jm-o9i"; */
 "pF5-jm-o9i.text" = "価格";
@@ -174,10 +174,10 @@
 "wCy-bT-HBv.title" = "つくば同窓";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "ytb-cc-993"; */
-"ytb-cc-993.normalTitle" = "Button";
+"ytb-cc-993.normalTitle" = "ボタン";
 
 /* Class = "UILabel"; text = "0"; ObjectID = "z4g-Z1-cgu"; */
 "z4g-Z1-cgu.text" = "0";
 
 /* Class = "UILabel"; text = "Option"; ObjectID = "zJw-ft-Rqi"; */
-"zJw-ft-Rqi.text" = "Option";
+"zJw-ft-Rqi.text" = "選択肢";
