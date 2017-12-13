@@ -33,7 +33,7 @@
 "Bfr-uM-oX2.normalTitle" = "名前";
 
 /* Class = "UILabel"; text = "Update at"; ObjectID = "F5z-R3-5Eo"; */
-"F5z-R3-5Eo.text" = "アップロード時間";
+"F5z-R3-5Eo.text" = "更新時間";
 
 /* Class = "UILabel"; text = "Give me a star on Github"; ObjectID = "Fyp-pA-Cg1"; */
 "Fyp-pA-Cg1.text" = "Githubでスターしよう";
@@ -54,7 +54,7 @@
 "JzQ-dh-gVW.placeholder" = "ユーザー名";
 
 /* Class = "UILabel"; text = "My Posts"; ObjectID = "LBx-Jr-mW2"; */
-"LBx-Jr-mW2.text" = "ポスト";
+"LBx-Jr-mW2.text" = "マイポスト";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "OWj-SS-8BC"; */
 "OWj-SS-8BC.text" = "タイトル";
@@ -72,7 +72,7 @@
 "Qkc-zq-rbh.text" = "名前";
 
 /* Class = "UILabel"; text = "Joined in"; ObjectID = "Rzp-rE-IA1"; */
-"Rzp-rE-IA1.text" = "アカウント登録時間";
+"Rzp-rE-IA1.text" = "登録時間";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "SJv-rf-c8d"; */
 "SJv-rf-c8d.text" = "タイトル";

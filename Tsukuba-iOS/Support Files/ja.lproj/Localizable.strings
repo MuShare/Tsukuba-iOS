@@ -17,12 +17,12 @@ me_title = "サインイン / 新規登録";
 me_subtitle = "つくば同窓にようこそ、すぐサインイン！";
 
 register_not_validate = "メールアドレスとユーザー名、パスワードを確認してください！";
-email_invalidate = "正しいメールアドを入力してください！";
+email_invalidate = "正しいメールアドレスを入力してください！";
 back_to_login = "戻す";
-email_registered = "このメールアドはすでに登録しました。";
+email_registered = "このメールアドレスはすでに登録しました。";
 
 login_not_validate = "メールアドレスとパスワードを確認してください！";
-email_not_exist = "このメールアドは登録しません。";
+email_not_exist = "このメールアドレスは登録しません。";
 password_wrong = "パスワードは間違いました。";
 facebook_oauth_error = "Facebookの認証エラー";
 
@@ -35,7 +35,7 @@ sign_in_now = "すぐサインイン";
 
 fill_user_info = "他のユーザーの連絡のため、ご住所と連絡先の入力し、プロファイル写真をアップロードしてください。";
 
-reset_password_not_validate = "正しいメールアドを入力してください！";
+reset_password_not_validate = "正しいメールアドレスを入力してください！";
 reset_password_failed = "メール送信エラー";
 reset_password_check_email = "メールでリセットのリンクを確認してください。";
 
