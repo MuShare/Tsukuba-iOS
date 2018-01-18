@@ -181,3 +181,8 @@
 
 /* Class = "UILabel"; text = "Option"; ObjectID = "zJw-ft-Rqi"; */
 "zJw-ft-Rqi.text" = "選択肢";
+
+//2018-01-18 15:04:03
+
+/* Class = "UIButton"; normalTitle = "Report this post"; ObjectID = "Mba-0T-77X"; */
+"Mba-0T-77X.normalTitle" = "ポストを告発";

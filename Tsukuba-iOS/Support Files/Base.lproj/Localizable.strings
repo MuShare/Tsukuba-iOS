@@ -67,3 +67,8 @@ modify_message_no_privilege = "You do not have previlige to edit this post.";
 
 message_like_fail = "Cannot set favorite post.";
 message_unlike_fail = "Cannot cancel favorite post.";
+
+report_title = "Report this post";
+report_message = "If this post contains sex, violence or fraud information, you can report it here.";
+report_yes = "Yes, I'll report!";
+report_success = "We have received your report.";

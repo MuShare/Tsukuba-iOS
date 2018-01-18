@@ -47,7 +47,7 @@ class MessageTableViewController: UITableViewController {
         if message == nil {
             return 0
         }
-        return 3
+        return 4
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -57,6 +57,8 @@ class MessageTableViewController: UITableViewController {
         case 1:
             return (message?.options.count)!
         case 2:
+            return 1
+        case 3:
             return 1
         default:
             return 0
@@ -73,6 +75,8 @@ class MessageTableViewController: UITableViewController {
         case 1:
             return UITableViewAutomaticDimension
         case 2:
+            return UITableViewAutomaticDimension
+        case 3:
             return UITableViewAutomaticDimension
         default:
             return 0
@@ -93,6 +97,8 @@ class MessageTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "introductionCell", for: indexPath) as! IntroductionTableViewCell
             cell.introductionLabel.text = message!.introduction
             return cell
+        case 3:
+            return tableView.dequeueReusableCell(withIdentifier: "reportCell", for: indexPath)
         default:
             return UITableViewCell()
         }        
@@ -101,6 +107,23 @@ class MessageTableViewController: UITableViewController {
     // MARK: - Action
     @IBAction func showProfile(_ sender: Any) {
         self.performSegue(withIdentifier: "userProfileSegue", sender: self)
+    }
+    
+    @IBAction func reportPost(_ sender: Any) {
+        let alertController = UIAlertController(title: NSLocalizedString("report_title", comment: ""),
+                                              message: NSLocalizedString("report_message", comment: ""),
+                                       preferredStyle: .alert)
+        let report = UIAlertAction(title: NSLocalizedString("report_yes", comment: ""),
+                                   style: .destructive)
+        { (action) in
+            self.showTip(NSLocalizedString("report_success", comment: ""))
+        }
+        let cancel = UIAlertAction(title: NSLocalizedString("cancel_name", comment: ""),
+                                   style: .cancel,
+                                   handler: nil)
+        alertController.addAction(report)
+        alertController.addAction(cancel)
+        self.present(alertController, animated: true, completion: nil)
     }
     
 }

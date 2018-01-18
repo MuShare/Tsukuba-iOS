@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MCu-Wf-VYP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MCu-Wf-VYP">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -178,19 +178,31 @@
                                     <segue destination="W88-3j-Gv5" kind="push" id="hR6-Yj-MLk"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Pk-Cp-FFk">
+                                <rect key="frame" x="16" y="474" width="343" height="30"/>
+                                <state key="normal" title="Software License Agreement">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="9uC-nN-5T2" kind="push" id="Lef-3m-L0h"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.62352941179999999" green="0.38431372549999998" blue="0.6705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="18x-za-O3E" firstAttribute="top" secondItem="MQ0-he-Awb" secondAttribute="bottom" constant="68" id="3DR-RD-5KB"/>
                             <constraint firstAttribute="leadingMargin" secondItem="mq0-GG-mww" secondAttribute="leading" id="49Z-Ie-k9y"/>
                             <constraint firstAttribute="leadingMargin" secondItem="NIY-dt-OSo" secondAttribute="leading" id="8qZ-Qx-bLT"/>
+                            <constraint firstItem="5Pk-Cp-FFk" firstAttribute="top" secondItem="MQ0-he-Awb" secondAttribute="bottom" constant="115.5" id="9gw-38-Bh7"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Yvt-KP-EWt" secondAttribute="leading" id="FYx-Je-hJT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mq0-GG-mww" secondAttribute="trailing" id="GIS-vD-Hju"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0pk-vP-wgE" secondAttribute="trailing" id="LjY-uY-F0i"/>
+                            <constraint firstItem="5Pk-Cp-FFk" firstAttribute="leading" secondItem="Qaq-Ne-xf7" secondAttribute="leading" constant="16" id="Nfg-oJ-IYy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="18x-za-O3E" secondAttribute="trailing" id="OVU-4g-Mvz"/>
                             <constraint firstItem="GzW-YC-032" firstAttribute="top" secondItem="0hY-8P-7N6" secondAttribute="bottom" constant="20" id="Py4-DD-Qdu"/>
                             <constraint firstAttribute="leadingMargin" secondItem="0hY-8P-7N6" secondAttribute="leading" id="QmN-Pg-hJy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Yvt-KP-EWt" secondAttribute="trailing" id="RSC-Bo-sM8"/>
+                            <constraint firstAttribute="trailing" secondItem="5Pk-Cp-FFk" secondAttribute="trailing" constant="16" id="cYK-oe-J3b"/>
                             <constraint firstItem="0hY-8P-7N6" firstAttribute="width" secondItem="0pk-vP-wgE" secondAttribute="width" id="eO6-Ow-H27"/>
                             <constraint firstItem="MQ0-he-Awb" firstAttribute="top" secondItem="NIY-dt-OSo" secondAttribute="bottom" constant="2" id="euv-Hr-2lN"/>
                             <constraint firstItem="MQ0-he-Awb" firstAttribute="top" secondItem="Yvt-KP-EWt" secondAttribute="bottom" constant="101" id="fX7-Wa-ta1"/>
@@ -215,6 +227,85 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IWh-Pe-3T0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="413.60000000000002" y="5030.7346326836587"/>
+        </scene>
+        <!--License View Controller-->
+        <scene sceneID="pot-j2-h3r">
+            <objects>
+                <viewController id="9uC-nN-5T2" customClass="LicenseViewController" customModule="Tsukuba_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Kln-8x-rKR"/>
+                        <viewControllerLayoutGuide type="bottom" id="FMW-Mh-zAu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dIG-iG-Duv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p09-ER-6ML">
+                                <rect key="frame" x="16" y="28" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="back"/>
+                                <connections>
+                                    <action selector="back:" destination="9uC-nN-5T2" eventType="touchUpInside" id="0E1-mb-KGT"/>
+                                    <action selector="back:" destination="2CB-nj-bow" eventType="touchUpInside" id="9W4-KG-KgU"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Software License Agreement" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iaJ-gb-DHP">
+                                <rect key="frame" x="54" y="33" width="268" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="268" id="gW4-W0-j2u"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Or0-vT-Ich">
+                                <rect key="frame" x="16" y="66" width="343" height="593"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <mutableString key="text">You should agree this License Agreement before using the Tsukuba Mate app.
+
+1. This is an agreement between Licensor and Licensee, who is being licensed to use the Tsukuba Mate app.
+
+2. Licensee acknowledges that this is only a limited nonexclusive license. Licensor is and remains the owner of all titles, rights, and interests in the Software.
+
+3. This License permits Licensee to install the Software on more than one computer system, as long as the Software will not be used on more than one computer system simultaneously. Licensee will not make copies of the Software or allow copies of the Software to be made by others, unless authorized by this License Agreement. Licensee may make copies of the Software for backup purposes only.
+
+4. This Software is subject to a limited warranty. Licensor warrants to Licensee that the physical medium on which this Software is distributed is free from defects in materials and workmanship under normal use, the Software will perform according to its printed documentation, and to the best of Licensor's knowledge Licensee's use of this Software according to the printed documentation is not an infringement of any third party's intellectual property rights. This limited warranty lasts for a period of 30 days after delivery. To the extent permitted by law, THE ABOVE-STATED LIMITED WARRANTY REPLACES ALL OTHER WARRANTIES, EXPRESS OR IMPLIED, AND LICENSOR DISCLAIMS ALL IMPLIED WARRANTIES INCLUDING ANY IMPLIED WARRANTY OF TITLE, MERCHANTABILITY, NONINFRINGEMENT, OR OF FITNESS FOR A PARTICULAR PURPOSE. No agent of Licensor is authorized to make any other warranties or to modify this limited warranty. Any action for breach of this limited warranty must be commenced within one year of the expiration of the warranty. Because some jurisdictions do not allow any limit on the length of an implied warranty, the above limitation may not apply to this Licensee. If the law does not allow disclaimer of implied warranties, then any implied warranty is limited to 30 days after delivery of the Software to Licensee. Licensee has specific legal rights pursuant to this warranty and, depending on Licensee's jurisdiction, may have additional rights.
+
+5. In case of a breach of the Limited Warranty, Licensee's exclusive remedy is as follows: Licensee will return all copies of the Software to Licensor, at Licensee's cost, along with proof of purchase. (Licensee can obtain a step-by-step explanation of this procedure, including a return authorization code, by contacting Licensor at [address and toll free telephone number].) At Licensor's option, Licensor will either send Licensee a replacement copy of the Software, at Licensor's expense, or issue a full refund.
+
+6. Notwithstanding the foregoing, LICENSOR IS NOT LIABLE TO LICENSEE FOR ANY DAMAGES, INCLUDING COMPENSATORY, SPECIAL, INCIDENTAL, EXEMPLARY, PUNITIVE, OR CONSEQUENTIAL DAMAGES, CONNECTED WITH OR RESULTING FROM THIS LICENSE AGREEMENT OR LICENSEE'S USE OF THIS SOFTWARE. Licensee's jurisdiction may not allow such a limitation of damages, so this limitation may not apply.
+
+7. Licensee agrees to defend and indemnify Licensor and hold Licensor harmless from all claims, losses, damages, complaints, or expenses connected with or resulting from Licensee's business operations.
+
+8. Licensor has the right to terminate this License Agreement and Licensee's right to use this Software upon any material breach by Licensee.
+
+9. Licensee agrees to return to Licensor or to destroy all copies of the Software upon termination of the License.
+
+10. This License Agreement is the entire and exclusive agreement between Licensor and Licensee regarding this Software. This License Agreement replaces and supersedes all prior negotiations, dealings, and agreements between Licensor and Licensee regarding this Software.
+
+11. This License Agreement is governed by the law of [State] applicable to [State] contracts.
+
+12. This License Agreement is valid without Licensor's signature. It becomes effective upon the earlier of Licensee's signature or Licensee's use of the Software.</mutableString>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.62353450059890747" green="0.38348489999771118" blue="0.66907775402069092" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="iaJ-gb-DHP" firstAttribute="centerX" secondItem="dIG-iG-Duv" secondAttribute="centerX" id="02U-PG-50Q"/>
+                            <constraint firstAttribute="trailing" secondItem="Or0-vT-Ich" secondAttribute="trailing" constant="16" id="8Op-yW-deR"/>
+                            <constraint firstItem="Or0-vT-Ich" firstAttribute="top" secondItem="Kln-8x-rKR" secondAttribute="bottom" constant="46" id="9Td-rl-mch"/>
+                            <constraint firstItem="iaJ-gb-DHP" firstAttribute="top" secondItem="Kln-8x-rKR" secondAttribute="bottom" constant="13" id="Hh9-xc-S6W"/>
+                            <constraint firstItem="FMW-Mh-zAu" firstAttribute="top" secondItem="Or0-vT-Ich" secondAttribute="bottom" constant="8" id="LAC-SD-J1J"/>
+                            <constraint firstItem="Or0-vT-Ich" firstAttribute="leading" secondItem="dIG-iG-Duv" secondAttribute="leading" constant="16" id="WnF-Dx-FNp"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="HRZ-Pi-ctg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="njH-SO-059" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="413.60000000000002" y="5816.9415292353824"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="vi9-5Z-FRY">
