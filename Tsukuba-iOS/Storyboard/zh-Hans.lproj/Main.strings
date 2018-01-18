@@ -185,3 +185,8 @@
 
 /* Class = "UILabel"; text = "MuShare Group © 2015 - 2017. All Rights Reserved."; ObjectID = "4Ta-n1-hHa"; */
 "4Ta-n1-hHa.text" = "MuShare Group © 2015 - 2017. All Rights Reserved.";
+
+//2018-01-18 15:04:03
+
+/* Class = "UIButton"; normalTitle = "Report this post"; ObjectID = "Mba-0T-77X"; */
+"Mba-0T-77X.normalTitle" = "举报该贴子";

@@ -52,6 +52,7 @@
 		E4962BEF1EB4B08000DF8CAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4962BED1EB4B08000DF8CAE /* LaunchScreen.storyboard */; };
 		E4962BFA1EB4B08000DF8CAE /* Tsukuba_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4962BF91EB4B08000DF8CAE /* Tsukuba_iOSTests.swift */; };
 		E4962C051EB4B08000DF8CAE /* Tsukuba_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4962C041EB4B08000DF8CAE /* Tsukuba_iOSUITests.swift */; };
+		E496A7EE201065B70015DE8D /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E496A7ED201065B70015DE8D /* LicenseViewController.swift */; };
 		E49BFE201EF3EAA7001B1BBA /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E49BFE221EF3EAA7001B1BBA /* Login.storyboard */; };
 		E49BFE251EF3EAB5001B1BBA /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E49BFE271EF3EAB5001B1BBA /* Post.storyboard */; };
 		E49D240E1EC69FC900D3D974 /* OptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49D240D1EC69FC900D3D974 /* OptionTableViewCell.swift */; };
@@ -145,6 +146,7 @@
 		E4962C001EB4B08000DF8CAE /* Tsukuba-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tsukuba-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4962C041EB4B08000DF8CAE /* Tsukuba_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tsukuba_iOSUITests.swift; sourceTree = "<group>"; };
 		E4962C061EB4B08000DF8CAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E496A7ED201065B70015DE8D /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
 		E49BFE211EF3EAA7001B1BBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		E49BFE261EF3EAB5001B1BBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Post.storyboard; sourceTree = "<group>"; };
 		E49D240D1EC69FC900D3D974 /* OptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionTableViewCell.swift; sourceTree = "<group>"; };
@@ -258,14 +260,15 @@
 				E45519401EC44856006A3B73 /* MessageTableViewController.swift */,
 				E41F7D001EC34CB8002E8184 /* MessagesViewController.swift */,
 				E4B52B691EF3A77E0030BD2D /* MyFavoritesViewController.swift */,
+				E41F7D091EC36C2A002E8184 /* RegisterViewController.swift */,
 				E48DE54E1EC2D30700E5CA25 /* MyMessagesTableViewController.swift */,
 				E4089FEE1EBB4AD80042221D /* MyProfileTableViewController.swift */,
 				E48972201EBF62280064EA13 /* PictureViewController.swift */,
-				E41F7D091EC36C2A002E8184 /* RegisterViewController.swift */,
 				E4054AE21EC48D29006BCEEC /* ResetViewController.swift */,
 				E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */,
 				E47860731ECC56C30096B39A /* UserProfileTableViewController.swift */,
 				E4387D5A1FD7B58F006A342D /* AboutViewController.swift */,
+				E496A7ED201065B70015DE8D /* LicenseViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -590,7 +593,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "python ${SRCROOT}/${TARGET_NAME}/Support\\ Files/AutoGenStrings.py ${SRCROOT}/${TARGET_NAME}";
+			shellScript = "python ${SRCROOT}/${TARGET_NAME}/Support\\ Files/AutoGenStrings.py ${SRCROOT}/${TARGET_NAME}/Storyboard";
 		};
 		E4F0B49F5FE9A2B18A41FB3F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -654,6 +657,7 @@
 				E49D240E1EC69FC900D3D974 /* OptionTableViewCell.swift in Sources */,
 				E41F7D121EC3EB92002E8184 /* CustomBack.swift in Sources */,
 				E48972231EBF64320064EA13 /* MessageManager.swift in Sources */,
+				E496A7EE201065B70015DE8D /* LicenseViewController.swift in Sources */,
 				E49D24101EC6F0EB00D3D974 /* EditMessageViewController.swift in Sources */,
 				E41F7D0A1EC36C2A002E8184 /* RegisterViewController.swift in Sources */,
 			);

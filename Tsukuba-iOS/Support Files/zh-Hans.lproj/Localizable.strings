@@ -67,3 +67,8 @@ modify_message_no_privilege = "你没有权限编辑这个消息";
 
 message_like_fail = "无法收藏";
 message_unlike_fail = "无法取消收藏";
+
+report_title = "举报该贴子";
+report_message = "如果该帖子还有色情，暴力或虚假信息，你可以举报它。";
+report_yes = "我要举报";
+report_success = "举报已成功受理！";
