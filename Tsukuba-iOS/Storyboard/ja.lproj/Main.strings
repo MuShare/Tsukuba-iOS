@@ -186,3 +186,8 @@
 
 /* Class = "UIButton"; normalTitle = "Report this post"; ObjectID = "Mba-0T-77X"; */
 "Mba-0T-77X.normalTitle" = "ポストを告発";
+
+//2018-01-21 10:41:44
+
+/* Class = "UIButton"; normalTitle = "Report this user"; ObjectID = "065-FC-o79"; */
+"065-FC-o79.normalTitle" = "ユーザーを告発";

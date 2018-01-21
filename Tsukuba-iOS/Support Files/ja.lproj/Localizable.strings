@@ -68,7 +68,11 @@ modify_message_no_privilege = "このポストを編集できません。";
 message_like_fail = "お気に入りなポストを設定できません。";
 message_unlike_fail = "お気に入りなポストをキャンセルできません。";
 
-report_title = "告発";
-report_message = "このポストを告発しますか。";
+report_post_title = "ポスト告発";
+report_post_message = "このポストを告発しますか。";
 report_yes = "はい";
 report_success = "受理しました。";
+
+report_user_title = "ユーザー告発";
+report_user_message = "このユーザーを告発しますか。";
+
