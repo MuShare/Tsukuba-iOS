@@ -110,8 +110,8 @@ class MessageTableViewController: UITableViewController {
     }
     
     @IBAction func reportPost(_ sender: Any) {
-        let alertController = UIAlertController(title: NSLocalizedString("report_title", comment: ""),
-                                              message: NSLocalizedString("report_message", comment: ""),
+        let alertController = UIAlertController(title: NSLocalizedString("report_post_title", comment: ""),
+                                              message: NSLocalizedString("report_post_message", comment: ""),
                                        preferredStyle: .alert)
         let report = UIAlertAction(title: NSLocalizedString("report_yes", comment: ""),
                                    style: .destructive)

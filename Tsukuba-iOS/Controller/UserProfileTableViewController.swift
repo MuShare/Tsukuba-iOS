@@ -50,4 +50,21 @@ class UserProfileTableViewController: UITableViewController {
         addressLabel.text = user.address
     }
 
+    @IBAction func reportUser(_ sender: Any) {
+        let alertController = UIAlertController(title: NSLocalizedString("report_user_title", comment: ""),
+                                                message: NSLocalizedString("report_user_message", comment: ""),
+                                                preferredStyle: .alert)
+        let report = UIAlertAction(title: NSLocalizedString("report_yes", comment: ""),
+                                   style: .destructive)
+        { (action) in
+            self.showTip(NSLocalizedString("report_success", comment: ""))
+        }
+        let cancel = UIAlertAction(title: NSLocalizedString("cancel_name", comment: ""),
+                                   style: .cancel,
+                                   handler: nil)
+        alertController.addAction(report)
+        alertController.addAction(cancel)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
 }
