@@ -191,3 +191,8 @@
 
 /* Class = "UIButton"; normalTitle = "Report this user"; ObjectID = "065-FC-o79"; */
 "065-FC-o79.normalTitle" = "ユーザーを告発";
+
+//2018-01-24 11:40:28
+
+/* Class = "UIButton"; normalTitle = "Messages"; ObjectID = "mz6-sf-ViA"; */
+"mz6-sf-ViA.normalTitle" = "Messages";

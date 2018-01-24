@@ -1623,37 +1623,65 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="PeX-9X-26U" secondAttribute="trailing" id="Jrz-WZ-QD1"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="20" id="ybB-lE-n81">
-                                        <rect key="frame" x="0.0" y="252" width="375" height="20"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ybB-lE-n81" id="QgC-cT-SkV">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="19.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" id="179-Mo-Ruk">
-                                        <rect key="frame" x="0.0" y="272" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="131" id="179-Mo-Ruk">
+                                        <rect key="frame" x="0.0" y="252" width="375" height="131"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="179-Mo-Ruk" id="Ch7-Yb-H3F">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="130.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="065-FC-o79">
-                                                    <rect key="frame" x="16" y="5" width="116" height="32"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mz6-sf-ViA">
+                                                    <rect key="frame" x="16" y="17" width="343" height="40"/>
+                                                    <color key="backgroundColor" red="0.35837915539741516" green="0.86566483974456787" blue="0.40577974915504456" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="Fhb-en-Pb5"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <state key="normal" title="Messages">
+                                                        <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="reportUser:" destination="3p3-GW-Cgl" eventType="touchUpInside" id="mCl-3d-ZrL"/>
+                                                        <action selector="sendMessages:" destination="3p3-GW-Cgl" eventType="touchUpInside" id="vlv-kU-00R"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="065-FC-o79">
+                                                    <rect key="frame" x="16" y="73" width="343" height="40"/>
+                                                    <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="3a9-nL-QCV"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <state key="normal" title="Report this user">
                                                         <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="reportUser:" destination="3p3-GW-Cgl" eventType="touchUpInside" id="wIw-we-3gd"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="065-FC-o79" firstAttribute="top" secondItem="Ch7-Yb-H3F" secondAttribute="top" constant="73" id="FRD-Bm-FO0"/>
+                                                <constraint firstItem="mz6-sf-ViA" firstAttribute="leading" secondItem="Ch7-Yb-H3F" secondAttribute="leading" constant="16" id="IQS-aM-ObB"/>
+                                                <constraint firstAttribute="trailing" secondItem="065-FC-o79" secondAttribute="trailing" constant="16" id="JV7-k2-deE"/>
+                                                <constraint firstItem="065-FC-o79" firstAttribute="leading" secondItem="Ch7-Yb-H3F" secondAttribute="leading" constant="16" id="KWL-b9-S2N"/>
+                                                <constraint firstAttribute="trailing" secondItem="mz6-sf-ViA" secondAttribute="trailing" constant="16" id="Pxv-Qt-uef"/>
+                                                <constraint firstItem="mz6-sf-ViA" firstAttribute="top" secondItem="Ch7-Yb-H3F" secondAttribute="top" constant="17" id="zMi-HN-VPu"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.94891661405563354" green="0.94907897710800171" blue="0.94890636205673218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1696,6 +1724,6 @@
         <image name="write" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kLV-Sf-9gb"/>
+        <segue reference="4oe-Tm-ohe"/>
     </inferredMetricsTieBreakers>
 </document>

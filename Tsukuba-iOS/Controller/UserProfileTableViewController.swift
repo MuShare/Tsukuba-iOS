@@ -49,7 +49,16 @@ class UserProfileTableViewController: UITableViewController {
         contactLabel.text = user.contact
         addressLabel.text = user.address
     }
-
+    
+    @IBAction func sendMessages(_ sender: Any) {
+        if userManager.login {
+            present(UIStoryboard(name: "Message", bundle: nil).instantiateInitialViewController()!,
+                    animated: true, completion: nil)
+        } else {
+            showLoginAlert()
+        }
+    }
+    
     @IBAction func reportUser(_ sender: Any) {
         let alertController = UIAlertController(title: NSLocalizedString("report_user_title", comment: ""),
                                                 message: NSLocalizedString("report_user_message", comment: ""),
