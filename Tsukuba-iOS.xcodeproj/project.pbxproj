@@ -39,6 +39,8 @@
 		E455194B1EC4605B006A3B73 /* IntroductionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E455194A1EC4605B006A3B73 /* IntroductionTableViewCell.swift */; };
 		E47860741ECC56C30096B39A /* UserProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47860731ECC56C30096B39A /* UserProfileTableViewController.swift */; };
 		E47860761ECC57F00096B39A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47860751ECC57F00096B39A /* User.swift */; };
+		E48931FD201EFBD100727A6B /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48931FC201EFBD100727A6B /* ChatViewController.swift */; };
+		E48931FF201F014400727A6B /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48931FE201F014400727A6B /* ChatTableViewCell.swift */; };
 		E489721D1EBED40F0064EA13 /* CreateMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489721C1EBED40F0064EA13 /* CreateMessageViewController.swift */; };
 		E489721F1EBEF34E0064EA13 /* SelectCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */; };
 		E48972211EBF62280064EA13 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48972201EBF62280064EA13 /* PictureViewController.swift */; };
@@ -127,6 +129,8 @@
 		E455194A1EC4605B006A3B73 /* IntroductionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroductionTableViewCell.swift; sourceTree = "<group>"; };
 		E47860731ECC56C30096B39A /* UserProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileTableViewController.swift; sourceTree = "<group>"; };
 		E47860751ECC57F00096B39A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E48931FC201EFBD100727A6B /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		E48931FE201F014400727A6B /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		E489721C1EBED40F0064EA13 /* CreateMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMessageViewController.swift; sourceTree = "<group>"; };
 		E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCategoryViewController.swift; sourceTree = "<group>"; };
 		E48972201EBF62280064EA13 /* PictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
@@ -269,6 +273,7 @@
 				E47860731ECC56C30096B39A /* UserProfileTableViewController.swift */,
 				E4387D5A1FD7B58F006A342D /* AboutViewController.swift */,
 				E496A7ED201065B70015DE8D /* LicenseViewController.swift */,
+				E48931FC201EFBD100727A6B /* ChatViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -283,6 +288,7 @@
 				E49D240D1EC69FC900D3D974 /* OptionTableViewCell.swift */,
 				E41ADBFB1EC151AA006479C5 /* PictureCollectionViewCell.swift */,
 				E45519421EC453F6006A3B73 /* PicturesTableViewCell.swift */,
+				E48931FE201F014400727A6B /* ChatTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -619,6 +625,7 @@
 			files = (
 				E47860741ECC56C30096B39A /* UserProfileTableViewController.swift in Sources */,
 				E4089FEF1EBB4AD80042221D /* MyProfileTableViewController.swift in Sources */,
+				E48931FD201EFBD100727A6B /* ChatViewController.swift in Sources */,
 				E4089FE91EBB3A1F0042221D /* LoginViewController.swift in Sources */,
 				E489721F1EBEF34E0064EA13 /* SelectCategoryViewController.swift in Sources */,
 				E41ADBFC1EC151AA006479C5 /* PictureCollectionViewCell.swift in Sources */,
@@ -628,6 +635,7 @@
 				E48972211EBF62280064EA13 /* PictureViewController.swift in Sources */,
 				E4089FB51EBAE55C0042221D /* DaoManager.swift in Sources */,
 				E4089FE71EBB36440042221D /* MeTableViewController.swift in Sources */,
+				E48931FF201F014400727A6B /* ChatTableViewCell.swift in Sources */,
 				E48DE5531EC2D52C00E5CA25 /* Message.swift in Sources */,
 				E4089FF11EBB4F160042221D /* AvatarViewController.swift in Sources */,
 				E45519431EC453F6006A3B73 /* PicturesTableViewCell.swift in Sources */,

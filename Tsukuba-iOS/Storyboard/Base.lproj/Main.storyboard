@@ -1648,7 +1648,6 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="reportUser:" destination="3p3-GW-Cgl" eventType="touchUpInside" id="mCl-3d-ZrL"/>
                                                         <action selector="sendMessages:" destination="3p3-GW-Cgl" eventType="touchUpInside" id="vlv-kU-00R"/>
                                                     </connections>
                                                 </button>
@@ -1704,11 +1703,116 @@
                         <outlet property="createAtLabel" destination="jhh-uq-ddu" id="4KH-Yl-v5j"/>
                         <outlet property="emailLabel" destination="Jw2-7U-3tS" id="LY8-zJ-X6e"/>
                         <outlet property="nameLabel" destination="Qkc-zq-rbh" id="Iuo-mf-gfM"/>
+                        <segue destination="q8n-zZ-qMO" kind="push" identifier="chatSegue" id="EM0-1q-ejt"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xbs-m7-0ef" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="544.79999999999995" y="5103.5982008995506"/>
+        </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="dSE-Zs-hx3">
+            <objects>
+                <viewController id="q8n-zZ-qMO" customClass="ChatViewController" customModule="Tsukuba_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2Kc-NO-E0E"/>
+                        <viewControllerLayoutGuide type="bottom" id="9MK-Lj-hpJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LAG-rP-pHe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FVc-Mb-ZEj">
+                                <rect key="frame" x="0.0" y="64" width="375" height="555"/>
+                                <color key="backgroundColor" red="0.91707563400268555" green="0.92170411348342896" blue="0.92548316717147827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="receiverIdentifier" rowHeight="63" id="OMP-RX-UNt" customClass="ChatTableViewCell" customModule="Tsukuba_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="63"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OMP-RX-UNt" id="T3X-Ti-MGy">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xl9-gE-q6W">
+                                                    <rect key="frame" x="63" y="12" width="297" height="40"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QGY-xA-54L">
+                                                    <rect key="frame" x="15" y="12" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="B9l-uB-Rrs"/>
+                                                        <constraint firstAttribute="height" constant="40" id="s9h-Vn-gn9"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="xl9-gE-q6W" secondAttribute="trailing" constant="15" id="0rf-Mg-Rcw"/>
+                                                <constraint firstItem="QGY-xA-54L" firstAttribute="leading" secondItem="T3X-Ti-MGy" secondAttribute="leading" constant="15" id="1Xj-Pi-MB7"/>
+                                                <constraint firstItem="xl9-gE-q6W" firstAttribute="top" secondItem="T3X-Ti-MGy" secondAttribute="top" constant="12" id="5Py-BF-hZE"/>
+                                                <constraint firstAttribute="bottom" secondItem="xl9-gE-q6W" secondAttribute="bottom" constant="11" id="KjW-Yu-JgC"/>
+                                                <constraint firstItem="xl9-gE-q6W" firstAttribute="leading" secondItem="T3X-Ti-MGy" secondAttribute="leading" constant="63" id="kvJ-nv-5Gq"/>
+                                                <constraint firstItem="QGY-xA-54L" firstAttribute="top" secondItem="T3X-Ti-MGy" secondAttribute="top" constant="12" id="y5E-q9-new"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                        <connections>
+                                            <outlet property="avatarImageView" destination="QGY-xA-54L" id="LDc-Ft-rdg"/>
+                                            <outlet property="messageLabel" destination="xl9-gE-q6W" id="8z7-yz-9pb"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="q8n-zZ-qMO" id="9md-Qz-w8K"/>
+                                    <outlet property="delegate" destination="q8n-zZ-qMO" id="LV4-3a-CPF"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cto-Xu-67M">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UaK-6C-18m">
+                                        <rect key="frame" x="8" y="8" width="359" height="34"/>
+                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.95614796876907349" green="0.96106797456741333" blue="0.96868413686752319" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="UaK-6C-18m" firstAttribute="top" secondItem="cto-Xu-67M" secondAttribute="top" constant="8" id="9cn-BZ-1OM"/>
+                                    <constraint firstAttribute="height" constant="50" id="FS6-hc-8am"/>
+                                    <constraint firstAttribute="bottom" secondItem="UaK-6C-18m" secondAttribute="bottom" constant="8" id="SWT-zi-QZ6"/>
+                                    <constraint firstItem="UaK-6C-18m" firstAttribute="leading" secondItem="cto-Xu-67M" secondAttribute="leading" constant="8" id="edn-SW-cFz"/>
+                                    <constraint firstAttribute="trailing" secondItem="UaK-6C-18m" secondAttribute="trailing" constant="8" id="xu9-1a-pDp"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="cto-Xu-67M" secondAttribute="trailing" id="8mT-VY-vZo"/>
+                            <constraint firstAttribute="trailing" secondItem="FVc-Mb-ZEj" secondAttribute="trailing" id="WJF-7Q-iwB"/>
+                            <constraint firstItem="9MK-Lj-hpJ" firstAttribute="top" secondItem="cto-Xu-67M" secondAttribute="bottom" id="cbn-mz-eF0"/>
+                            <constraint firstItem="FVc-Mb-ZEj" firstAttribute="top" secondItem="2Kc-NO-E0E" secondAttribute="bottom" id="jud-wG-Y47"/>
+                            <constraint firstItem="cto-Xu-67M" firstAttribute="leading" secondItem="LAG-rP-pHe" secondAttribute="leading" id="mM2-ha-prP"/>
+                            <constraint firstItem="FVc-Mb-ZEj" firstAttribute="leading" secondItem="LAG-rP-pHe" secondAttribute="leading" id="slJ-Nu-BvZ"/>
+                            <constraint firstItem="9MK-Lj-hpJ" firstAttribute="top" secondItem="FVc-Mb-ZEj" secondAttribute="bottom" constant="48" id="yf6-DO-8S8"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="pYh-Jp-TZm"/>
+                    <connections>
+                        <outlet property="tableView" destination="FVc-Mb-ZEj" id="PVg-Ge-8ji"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tCW-uG-2Jz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="544.79999999999995" y="5838.5307346326845"/>
         </scene>
     </scenes>
     <resources>
@@ -1724,6 +1828,6 @@
         <image name="write" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4oe-Tm-ohe"/>
+        <segue reference="kLV-Sf-9gb"/>
     </inferredMetricsTieBreakers>
 </document>

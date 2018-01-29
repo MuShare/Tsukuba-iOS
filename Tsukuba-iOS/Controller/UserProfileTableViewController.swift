@@ -12,6 +12,7 @@ class UserProfileTableViewController: UITableViewController {
     let userManager = UserManager.sharedInstance
     
     var uid: String!
+    var user: User!
     
     let formatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -26,7 +27,16 @@ class UserProfileTableViewController: UITableViewController {
         self.setCustomBack()
         
         userManager.get(uid) { (success, user) in
-            self.loadUser(user!)
+            self.user = user!
+            self.loadUser()
+        }
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "chatSegue" {
+            let destination = segue.destination as! ChatViewController
+            destination.receiver = user
         }
     }
 
@@ -36,7 +46,7 @@ class UserProfileTableViewController: UITableViewController {
     }
     
     // MARK: - Service
-    func loadUser(_ user: User) {
+    func loadUser() {
         navigationItem.title = user.name
         nameLabel.text = user.name
         if user.type == UserTypeEmail {
@@ -52,8 +62,7 @@ class UserProfileTableViewController: UITableViewController {
     
     @IBAction func sendMessages(_ sender: Any) {
         if userManager.login {
-            present(UIStoryboard(name: "Message", bundle: nil).instantiateInitialViewController()!,
-                    animated: true, completion: nil)
+            performSegue(withIdentifier: "chatSegue", sender: self)
         } else {
             showLoginAlert()
         }
