@@ -12,9 +12,19 @@ class ChatTableViewCell: UITableViewCell {
 
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var messageLabel: UILabel!
-    
-    func fill(user: User, message: String) {
-        avatarImageView.kf.setImage(with: imageURL(user.avatar))
+    @IBOutlet weak var messageBackgroundImageView: UIImageView!
+
+    func fill(avatar: String, message: String) {
+        var type = ""
+        if self.reuseIdentifier == "senderIdentifier" {
+            type = "sender"
+        } else if self.reuseIdentifier == "receiverIdentifier" {
+            type = "receiver"
+        }
+        messageBackgroundImageView.image = UIImage(named: "\(type)_background")?.resizableImage(withCapInsets: UIEdgeInsetsMake(28, 20, 15, 20), resizingMode: .stretch)
+        messageBackgroundImageView.highlightedImage = UIImage(named: "\(type)_background_highlight")?.resizableImage(withCapInsets: UIEdgeInsetsMake(28, 20, 15, 20), resizingMode: .stretch)
+        
+        avatarImageView.kf.setImage(with: imageURL(avatar))
         messageLabel.text = message
     }
 
