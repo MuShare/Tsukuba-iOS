@@ -27,7 +27,11 @@ class ResetViewController: EditingViewController, NVActivityIndicatorViewable {
     }
     
     override func viewDidLayoutSubviews() {
-        self.shownHeight = submitButton.frame.minY
+        var minY = submitButton.frame.minY
+        if UIDevice.current.isX() {
+            minY += 100
+        }
+        self.shownHeight = minY
     }
 
     // MARK: - Action

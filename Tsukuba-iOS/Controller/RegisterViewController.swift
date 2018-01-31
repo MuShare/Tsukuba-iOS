@@ -30,7 +30,11 @@ class RegisterViewController: EditingViewController, NVActivityIndicatorViewable
     }
     
     override func viewDidLayoutSubviews() {
-        self.shownHeight = registerButton.frame.minY
+        var minY = registerButton.frame.minY
+        if UIDevice.current.isX() {
+            minY += 100
+        }
+        self.shownHeight = minY
     }
     
     // MARK: - Action

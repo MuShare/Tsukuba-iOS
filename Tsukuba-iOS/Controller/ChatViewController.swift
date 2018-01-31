@@ -38,7 +38,12 @@ class ChatViewController: EditingViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        self.shownHeight = UIScreen.main.bounds.height - 45
+        var height = UIScreen.main.bounds.height
+        // Adapt the height for iPhone X.
+        if UIDevice.current.isX() {
+            height += 50
+        }
+        self.shownHeight = height - 45
     }
 
 }

@@ -25,7 +25,11 @@ class LoginViewController: EditingViewController, NVActivityIndicatorViewable {
     }
     
     override func viewDidLayoutSubviews() {
-        self.shownHeight = loginButton.frame.minY
+        var minY = loginButton.frame.minY
+        if UIDevice.current.isX() {
+            minY += 100
+        }
+        self.shownHeight = minY
     }
 
     // MARK: - Action
