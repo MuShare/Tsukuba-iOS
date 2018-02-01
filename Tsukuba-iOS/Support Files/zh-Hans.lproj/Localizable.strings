@@ -12,6 +12,7 @@ error_object_id = "对象ID错误。";
 error_save_failed = "保存失败。";
 error_invalid_parameter = "无效的参数";
 error_unknown = "未知错误。";
+error_send_plain_text = "Plain text cannot be sent, try again later.";
 
 me_title = "登陆 / 注册";
 me_subtitle = "欢迎使用，立即登陆！";

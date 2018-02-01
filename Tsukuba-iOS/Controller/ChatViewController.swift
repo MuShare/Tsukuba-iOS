@@ -11,13 +11,14 @@ import UIKit
 class ChatViewController: EditingViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var plainTextField: UITextField!
     
     var receiver: User!
     let userManager = UserManager.sharedInstance
+    let chatManager = ChatManager.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         self.setCustomBack()
         
@@ -46,6 +47,16 @@ class ChatViewController: EditingViewController {
         self.shownHeight = height - 45
     }
 
+    @IBAction func send(_ sender: Any) {
+        let content = plainTextField.text!
+        if content == "" {
+            return
+        }
+        chatManager.sendPlainText(receiver: receiver.uid, content: content) { (success, message) in
+            
+        }
+    }
+    
 }
 
 extension ChatViewController: UITableViewDataSource {

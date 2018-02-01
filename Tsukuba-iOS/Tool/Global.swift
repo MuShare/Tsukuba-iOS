@@ -46,6 +46,7 @@ enum ErrorCode: Int {
     case sendResetPasswordMail = 1061
     case modifyMessageNoPrivilege = 2021
     case savePicture = 2041
+    case sendPlainText = 3011
 }
 
 

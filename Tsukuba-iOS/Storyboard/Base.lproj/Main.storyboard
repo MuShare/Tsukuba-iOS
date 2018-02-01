@@ -1969,6 +1969,9 @@
                                                 <integer key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="send:" destination="q8n-zZ-qMO" eventType="touchUpInside" id="jRB-f1-gam"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.95614796876907349" green="0.96106797456741333" blue="0.96868413686752319" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1994,6 +1997,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="pYh-Jp-TZm"/>
                     <connections>
+                        <outlet property="plainTextField" destination="UaK-6C-18m" id="tjc-Rj-7oj"/>
                         <outlet property="tableView" destination="FVc-Mb-ZEj" id="PVg-Ge-8ji"/>
                     </connections>
                 </viewController>

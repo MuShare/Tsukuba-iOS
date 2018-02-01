@@ -35,10 +35,13 @@
 		E438442F20204AC5006E0369 /* ReceiverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E438442E20204AC5006E0369 /* ReceiverTableViewCell.swift */; };
 		E438443120204ADC006E0369 /* ChatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E438443020204ADC006E0369 /* ChatsTableViewController.swift */; };
 		E4387D5B1FD7B58F006A342D /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4387D5A1FD7B58F006A342D /* AboutViewController.swift */; };
+		E4464AFD2022B9F8001968B5 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4464AFC2022B9F8001968B5 /* Room.swift */; };
+		E4464AFF2022BA44001968B5 /* RoomDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4464AFE2022BA44001968B5 /* RoomDao.swift */; };
 		E451974F1ECCA0A6009C9D09 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = E451974E1ECCA0A6009C9D09 /* Config.swift */; };
 		E45519411EC44856006A3B73 /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45519401EC44856006A3B73 /* MessageTableViewController.swift */; };
 		E45519431EC453F6006A3B73 /* PicturesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45519421EC453F6006A3B73 /* PicturesTableViewCell.swift */; };
 		E455194B1EC4605B006A3B73 /* IntroductionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E455194A1EC4605B006A3B73 /* IntroductionTableViewCell.swift */; };
+		E46A91642022AFEA00244606 /* ChatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46A91632022AFEA00244606 /* ChatManager.swift */; };
 		E47860741ECC56C30096B39A /* UserProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47860731ECC56C30096B39A /* UserProfileTableViewController.swift */; };
 		E47860761ECC57F00096B39A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47860751ECC57F00096B39A /* User.swift */; };
 		E48931FD201EFBD100727A6B /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48931FC201EFBD100727A6B /* ChatViewController.swift */; };
@@ -127,10 +130,13 @@
 		E4387D581FD7B4B2006A342D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		E4387D591FD7B4B3006A342D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E4387D5A1FD7B58F006A342D /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		E4464AFC2022B9F8001968B5 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		E4464AFE2022BA44001968B5 /* RoomDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDao.swift; sourceTree = "<group>"; };
 		E451974E1ECCA0A6009C9D09 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		E45519401EC44856006A3B73 /* MessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
 		E45519421EC453F6006A3B73 /* PicturesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicturesTableViewCell.swift; sourceTree = "<group>"; };
 		E455194A1EC4605B006A3B73 /* IntroductionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroductionTableViewCell.swift; sourceTree = "<group>"; };
+		E46A91632022AFEA00244606 /* ChatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatManager.swift; sourceTree = "<group>"; };
 		E47860731ECC56C30096B39A /* UserProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileTableViewController.swift; sourceTree = "<group>"; };
 		E47860751ECC57F00096B39A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E48931FC201EFBD100727A6B /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -218,6 +224,7 @@
 				E408EEC31EC7672B00E6E596 /* Picture.swift */,
 				E4962BE81EB4B08000DF8CAE /* Tsukuba.xcdatamodeld */,
 				E47860751ECC57F00096B39A /* User.swift */,
+				E4464AFC2022B9F8001968B5 /* Room.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -230,6 +237,7 @@
 				E4089FB41EBAE55C0042221D /* DaoTemplate.swift */,
 				E4089FB91EBAE58F0042221D /* OptionDao.swift */,
 				E4089FBB1EBAE59E0042221D /* SelectionDao.swift */,
+				E4464AFE2022BA44001968B5 /* RoomDao.swift */,
 			);
 			path = Dao;
 			sourceTree = "<group>";
@@ -240,6 +248,7 @@
 				E48972221EBF64320064EA13 /* MessageManager.swift */,
 				E4089FD61EBAEFA00042221D /* SyncManager.swift */,
 				E4089FEC1EBB3BF90042221D /* UserManager.swift */,
+				E46A91632022AFEA00244606 /* ChatManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -666,12 +675,15 @@
 				E47860761ECC57F00096B39A /* User.swift in Sources */,
 				E4089FEB1EBB3B990042221D /* CommonTool.swift in Sources */,
 				E4089FDC1EBAF2190042221D /* Response.swift in Sources */,
+				E4464AFF2022BA44001968B5 /* RoomDao.swift in Sources */,
 				E48DE54F1EC2D30700E5CA25 /* MyMessagesTableViewController.swift in Sources */,
 				E4089FBA1EBAE58F0042221D /* OptionDao.swift in Sources */,
+				E46A91642022AFEA00244606 /* ChatManager.swift in Sources */,
 				E4089FDA1EBAF0250042221D /* Global.swift in Sources */,
 				E4962BEA1EB4B08000DF8CAE /* Tsukuba.xcdatamodeld in Sources */,
 				E49D240E1EC69FC900D3D974 /* OptionTableViewCell.swift in Sources */,
 				E41F7D121EC3EB92002E8184 /* CustomBack.swift in Sources */,
+				E4464AFD2022B9F8001968B5 /* Room.swift in Sources */,
 				E48972231EBF64320064EA13 /* MessageManager.swift in Sources */,
 				E496A7EE201065B70015DE8D /* LicenseViewController.swift in Sources */,
 				E49D24101EC6F0EB00D3D974 /* EditMessageViewController.swift in Sources */,

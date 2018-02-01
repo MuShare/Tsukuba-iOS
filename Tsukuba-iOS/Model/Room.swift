@@ -1,0 +1,5 @@
+import SwiftyJSON
+
+extension Room {
+    
+}

@@ -12,6 +12,7 @@ error_object_id = "オブジェクトIDエラー";
 error_save_failed = "保存が失敗した";
 error_invalid_parameter = "不正な引数";
 error_unknown = "エラー";
+error_send_plain_text = "Plain text cannot be sent, try again later.";
 
 me_title = "サインイン / 新規登録";
 me_subtitle = "つくば同窓にようこそ、すぐサインイン！";
