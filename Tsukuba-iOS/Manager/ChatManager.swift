@@ -3,6 +3,8 @@ import SwiftyUserDefaults
 
 class ChatManager {
     
+    typealias ChatCompletion = ((_ success: Bool, _ chat: Chat?, _ message: String?) -> Void)?
+    
     var dao: DaoManager!
     var config: Config!
     
@@ -16,7 +18,7 @@ class ChatManager {
         config = Config.sharedInstance
     }
     
-    func sendPlainText(receiver: String, content: String, completion: ((Bool, String?) -> Void)?) {
+    func sendPlainText(receiver: String, content: String, completion: ChatCompletion) {
         let params: Parameters = [
             "receiver": receiver,
             "content": content
@@ -29,16 +31,18 @@ class ChatManager {
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             if response.statusOK() {
-                let chat = response.getResult()["chat"];
-                let room = self.dao.roomDao.saveOrUpdate(chat["room"])
-                
-                completion?(true, "")
+                let result = response.getResult()
+                let chat = self.dao.chatDao.save(result["chat"]);
+                chat.room = self.dao.roomDao.saveOrUpdate(result["chat"]["room"])
+                chat.content = content
+                self.dao.saveContext()
+                completion?(true, chat, nil)
             } else {
                 switch response.errorCode() {
                 case .sendPlainText:
-                    completion?(false, NSLocalizedString("error_object_id", comment: ""))
+                    completion?(false, nil, NSLocalizedString("error_object_id", comment: ""))
                 default:
-                    completion?(false, NSLocalizedString("error_unknown", comment: ""))
+                    completion?(false, nil, NSLocalizedString("error_unknown", comment: ""))
                 }
             }
         }

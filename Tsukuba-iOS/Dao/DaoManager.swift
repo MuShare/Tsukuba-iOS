@@ -8,6 +8,7 @@ class DaoManager {
     let selectionDao: SelectionDao!
     let optionDao: OptionDao!
     let roomDao: RoomDao!
+    let chatDao: ChatDao!
     
     static let sharedInstance : DaoManager = {
         let instance = DaoManager()
@@ -21,6 +22,7 @@ class DaoManager {
         selectionDao = SelectionDao(context)
         optionDao = OptionDao(context)
         roomDao = RoomDao(context)
+        chatDao = ChatDao(context)
     }
     
     func saveContext() {

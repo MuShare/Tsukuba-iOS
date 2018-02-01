@@ -37,6 +37,7 @@
 		E4387D5B1FD7B58F006A342D /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4387D5A1FD7B58F006A342D /* AboutViewController.swift */; };
 		E4464AFD2022B9F8001968B5 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4464AFC2022B9F8001968B5 /* Room.swift */; };
 		E4464AFF2022BA44001968B5 /* RoomDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4464AFE2022BA44001968B5 /* RoomDao.swift */; };
+		E4464B012022C0F9001968B5 /* ChatDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4464B002022C0F9001968B5 /* ChatDao.swift */; };
 		E451974F1ECCA0A6009C9D09 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = E451974E1ECCA0A6009C9D09 /* Config.swift */; };
 		E45519411EC44856006A3B73 /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45519401EC44856006A3B73 /* MessageTableViewController.swift */; };
 		E45519431EC453F6006A3B73 /* PicturesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45519421EC453F6006A3B73 /* PicturesTableViewCell.swift */; };
@@ -132,6 +133,7 @@
 		E4387D5A1FD7B58F006A342D /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		E4464AFC2022B9F8001968B5 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		E4464AFE2022BA44001968B5 /* RoomDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDao.swift; sourceTree = "<group>"; };
+		E4464B002022C0F9001968B5 /* ChatDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDao.swift; sourceTree = "<group>"; };
 		E451974E1ECCA0A6009C9D09 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		E45519401EC44856006A3B73 /* MessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
 		E45519421EC453F6006A3B73 /* PicturesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicturesTableViewCell.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				E4089FB91EBAE58F0042221D /* OptionDao.swift */,
 				E4089FBB1EBAE59E0042221D /* SelectionDao.swift */,
 				E4464AFE2022BA44001968B5 /* RoomDao.swift */,
+				E4464B002022C0F9001968B5 /* ChatDao.swift */,
 			);
 			path = Dao;
 			sourceTree = "<group>";
@@ -650,6 +653,7 @@
 				E48DE5511EC2D33000E5CA25 /* MyMessageTableViewCell.swift in Sources */,
 				E48972211EBF62280064EA13 /* PictureViewController.swift in Sources */,
 				E4089FB51EBAE55C0042221D /* DaoManager.swift in Sources */,
+				E4464B012022C0F9001968B5 /* ChatDao.swift in Sources */,
 				E4089FE71EBB36440042221D /* MeTableViewController.swift in Sources */,
 				E48931FF201F014400727A6B /* ChatTableViewCell.swift in Sources */,
 				E48DE5531EC2D52C00E5CA25 /* Message.swift in Sources */,

@@ -52,7 +52,9 @@ class ChatViewController: EditingViewController {
         if content == "" {
             return
         }
-        chatManager.sendPlainText(receiver: receiver.uid, content: content) { (success, message) in
+        plainTextField.text = ""
+        plainTextField.resignFirstResponder()
+        chatManager.sendPlainText(receiver: receiver.uid, content: content) { (success, chat, message) in
             
         }
     }
