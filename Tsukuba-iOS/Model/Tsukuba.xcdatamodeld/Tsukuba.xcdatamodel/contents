@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D102" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
         <attribute name="cid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createAt" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -10,6 +10,15 @@
         <attribute name="priority" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="selections" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Selection" inverseName="category" inverseEntity="Selection" syncable="YES"/>
     </entity>
+    <entity name="Chat" representedClassName="Chat" syncable="YES" codeGenerationType="class">
+        <attribute name="cid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createAt" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="direction" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="seq" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="room" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Room" inverseName="chats" inverseEntity="Room" syncable="YES"/>
+    </entity>
     <entity name="Option" representedClassName="Option" syncable="YES" codeGenerationType="class">
         <attribute name="createAt" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="enable" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -18,6 +27,18 @@
         <attribute name="oid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="priority" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="selection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Selection" inverseName="options" inverseEntity="Selection" syncable="YES"/>
+    </entity>
+    <entity name="Room" representedClassName="Room" syncable="YES" codeGenerationType="class">
+        <attribute name="createAt" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="receiverAvatar" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="receiverId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="receiverName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="senderAvatar" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="senderId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="senderName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updateAt" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="chats" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Chat" inverseName="room" inverseEntity="Chat" syncable="YES"/>
     </entity>
     <entity name="Selection" representedClassName="Selection" syncable="YES" codeGenerationType="class">
         <attribute name="createAt" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -33,5 +54,7 @@
         <element name="Category" positionX="-504" positionY="177" width="128" height="165"/>
         <element name="Option" positionX="-153" positionY="212" width="128" height="150"/>
         <element name="Selection" positionX="-324" positionY="192" width="128" height="165"/>
+        <element name="Room" positionX="-324" positionY="252" width="128" height="195"/>
+        <element name="Chat" positionX="-315" positionY="261" width="128" height="150"/>
     </elements>
 </model>

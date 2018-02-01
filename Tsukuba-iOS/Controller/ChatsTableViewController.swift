@@ -14,7 +14,9 @@ class ChatsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if !user.login {
+            showLoginAlert()
+        }
     }
 
     // MARK: Navigation
