@@ -29,12 +29,12 @@
         <relationship name="selection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Selection" inverseName="options" inverseEntity="Selection" syncable="YES"/>
     </entity>
     <entity name="Room" representedClassName="Room" syncable="YES" codeGenerationType="class">
-        <attribute name="createAt" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="receiverAvatar" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="receiverId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="receiverName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="rid" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="updateAt" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="createAt" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="receiverAvatar" attributeType="String" syncable="YES"/>
+        <attribute name="receiverId" attributeType="String" syncable="YES"/>
+        <attribute name="receiverName" attributeType="String" syncable="YES"/>
+        <attribute name="rid" attributeType="String" syncable="YES"/>
+        <attribute name="updateAt" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="chats" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Chat" inverseName="room" inverseEntity="Chat" syncable="YES"/>
     </entity>
     <entity name="Selection" representedClassName="Selection" syncable="YES" codeGenerationType="class">

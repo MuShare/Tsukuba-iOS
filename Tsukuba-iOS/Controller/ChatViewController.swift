@@ -13,9 +13,12 @@ class ChatViewController: EditingViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var plainTextField: UITextField!
     
-    var receiver: User!
     let userManager = UserManager.sharedInstance
     let chatManager = ChatManager.sharedInstance
+    let dao = DaoManager.sharedInstance
+    
+    var receiver: User!
+    var chats: [Chat] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +29,12 @@ class ChatViewController: EditingViewController {
         tableView.estimatedRowHeight = 400
         
         navigationItem.title = receiver.name
+        
+        let room = dao.roomDao.getByReceiverId(receiver.uid)
+        if room != nil {
+            chats = dao.chatDao.findByRoom(room!)
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,7 +64,14 @@ class ChatViewController: EditingViewController {
         plainTextField.text = ""
         plainTextField.resignFirstResponder()
         chatManager.sendPlainText(receiver: receiver.uid, content: content) { (success, chat, message) in
-            
+            if (chat == nil) {
+                return
+            }
+            self.chats.append(chat!)
+            self.tableView.beginUpdates()
+            self.tableView.insertRows(at: [IndexPath(row: self.chats.count - 1, section: 0)],
+                                      with: .automatic)
+            self.tableView.endUpdates()
         }
     }
     
@@ -63,7 +79,7 @@ class ChatViewController: EditingViewController {
 
 extension ChatViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return chats.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -71,9 +87,11 @@ extension ChatViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let identifier = indexPath.row % 2 == 0 ?  "senderIdentifier" : "receiverIdentifier"
+        let chat = chats[indexPath.row]
+        let identifier = chat.direction ?  "senderIdentifier" : "receiverIdentifier"
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ChatTableViewCell
-        cell.fill(avatar: indexPath.row % 2 == 0 ? userManager.avatar : receiver.avatar, message: "新しいデザインになったMagic Mouse 2は完全な充電式なので、従来の電池はもう必要ありません。ボディが一段と軽くなり、内蔵バッテリーと継ぎ目のないボトムシェルによって可動部品が一段と少なくなり、底面のデザインも最適化されています。")
+        cell.fill(avatar: chat.direction ? userManager.avatar : (chat.room?.receiverAvatar)!,
+                  message: chat.content!)
         return cell
     }
 }

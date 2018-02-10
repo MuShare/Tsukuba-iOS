@@ -14,4 +14,11 @@ class ChatDao: DaoTemplate {
         return chat!
     }
     
+    func findByRoom(_ room: Room) -> [Chat] {
+        let request = NSFetchRequest<Chat>(entityName: NSStringFromClass(Chat.self))
+        request.predicate = NSPredicate(format: "room=%@", room)
+        request.sortDescriptors = [NSSortDescriptor(key: "seq", ascending: true)]
+        return try! context.fetch(request)
+    }
+    
 }

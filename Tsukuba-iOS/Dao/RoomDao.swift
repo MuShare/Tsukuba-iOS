@@ -30,4 +30,14 @@ class RoomDao: DaoTemplate {
         return rooms[0]
     }
     
+    func getByReceiverId(_ receiverId: String) -> Room? {
+        let request = NSFetchRequest<Room>(entityName: NSStringFromClass(Room.self))
+        request.predicate = NSPredicate(format: "receiverId=%@", receiverId)
+        let rooms = try! context.fetch(request)
+        if rooms.count == 0 {
+            return nil
+        }
+        return rooms[0]
+    }
+    
 }
