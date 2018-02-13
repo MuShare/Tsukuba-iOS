@@ -15,6 +15,22 @@ class ReceiverTableViewCell: UITableViewCell {
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        return formatter
+    }()
+    
+    let timeFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .none
+        formatter.timeStyle = .short
+        return formatter
+    }()
+    
+    let calendar = Calendar.current
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,6 +40,20 @@ class ReceiverTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func fill(_ room: Room) {
+        avatarImageView.kf.setImage(with: imageURL(room.receiverAvatar!))
+        nameLabel.text = room.receiverName!
+        messageLabel.text = "message"
+        let updateAt = room.updateAt as! Date
+        if calendar.isDateInToday(updateAt) {
+            timeLabel.text = timeFormatter.string(for: updateAt)
+        } else if calendar.isDateInYesterday(updateAt) {
+            timeLabel.text = "Yesterday"
+        } else {
+            timeLabel.text = dateFormatter.string(for: updateAt)
+        }
     }
 
 }

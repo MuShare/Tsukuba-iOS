@@ -33,7 +33,7 @@
 		E41F7D121EC3EB92002E8184 /* CustomBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D111EC3EB92002E8184 /* CustomBack.swift */; };
 		E42331781EC030FE00C3A6B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E42331771EC030FE00C3A6B0 /* Assets.xcassets */; };
 		E438442F20204AC5006E0369 /* ReceiverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E438442E20204AC5006E0369 /* ReceiverTableViewCell.swift */; };
-		E438443120204ADC006E0369 /* ChatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E438443020204ADC006E0369 /* ChatsTableViewController.swift */; };
+		E438443120204ADC006E0369 /* RoomsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E438443020204ADC006E0369 /* RoomsTableViewController.swift */; };
 		E4387D5B1FD7B58F006A342D /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4387D5A1FD7B58F006A342D /* AboutViewController.swift */; };
 		E4464AFD2022B9F8001968B5 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4464AFC2022B9F8001968B5 /* Room.swift */; };
 		E4464AFF2022BA44001968B5 /* RoomDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4464AFE2022BA44001968B5 /* RoomDao.swift */; };
@@ -117,7 +117,7 @@
 		E41F7D111EC3EB92002E8184 /* CustomBack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBack.swift; sourceTree = "<group>"; };
 		E42331771EC030FE00C3A6B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E438442E20204AC5006E0369 /* ReceiverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiverTableViewCell.swift; sourceTree = "<group>"; };
-		E438443020204ADC006E0369 /* ChatsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsTableViewController.swift; sourceTree = "<group>"; };
+		E438443020204ADC006E0369 /* RoomsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsTableViewController.swift; sourceTree = "<group>"; };
 		E4387D4A1FD7B1EE006A342D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		E4387D4B1FD7B1EF006A342D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Login.strings; sourceTree = "<group>"; };
 		E4387D4C1FD7B1EF006A342D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
@@ -290,7 +290,7 @@
 				E4387D5A1FD7B58F006A342D /* AboutViewController.swift */,
 				E496A7ED201065B70015DE8D /* LicenseViewController.swift */,
 				E48931FC201EFBD100727A6B /* ChatViewController.swift */,
-				E438443020204ADC006E0369 /* ChatsTableViewController.swift */,
+				E438443020204ADC006E0369 /* RoomsTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -673,7 +673,7 @@
 				E4089FB81EBAE5830042221D /* CategoryDao.swift in Sources */,
 				E4089FBC1EBAE59E0042221D /* SelectionDao.swift in Sources */,
 				E455194B1EC4605B006A3B73 /* IntroductionTableViewCell.swift in Sources */,
-				E438443120204ADC006E0369 /* ChatsTableViewController.swift in Sources */,
+				E438443120204ADC006E0369 /* RoomsTableViewController.swift in Sources */,
 				E489721D1EBED40F0064EA13 /* CreateMessageViewController.swift in Sources */,
 				E4962BE21EB4B08000DF8CAE /* AppDelegate.swift in Sources */,
 				E47860761ECC57F00096B39A /* User.swift in Sources */,

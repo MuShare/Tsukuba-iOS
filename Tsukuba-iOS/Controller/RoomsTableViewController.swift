@@ -8,15 +8,25 @@
 
 import UIKit
 
-class ChatsTableViewController: UITableViewController {
+class RoomsTableViewController: UITableViewController {
     
     let user = UserManager.sharedInstance
+    let dao = DaoManager.sharedInstance
+    
+    var rooms: [Room] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         if !user.login {
             showLoginAlert()
         }
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        rooms = dao.roomDao.findAll()
+        tableView.reloadData()
     }
 
     // MARK: Navigation
@@ -28,10 +38,10 @@ class ChatsTableViewController: UITableViewController {
 
 }
 
-extension ChatsTableViewController {
+extension RoomsTableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return rooms.count
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -40,9 +50,7 @@ extension ChatsTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "receiverIdentifier", for: indexPath) as! ReceiverTableViewCell
-        cell.avatarImageView.kf.setImage(with: imageURL(user.avatar))
-        cell.nameLabel.text = "Meng Li"
-        cell.messageLabel.text = "How are you, I am fine!"
+        cell.fill(rooms[indexPath.row])
         return cell
     }
     

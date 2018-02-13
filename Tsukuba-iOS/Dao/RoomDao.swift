@@ -11,8 +11,8 @@ class RoomDao: DaoTemplate {
                                                             into: context) as? Room
         }
         room?.rid = rid
-        room?.createAt = object["createAt"].int16Value
-        room?.updateAt = object["updateAt"].int16Value
+        room?.createAt = NSDate(timeIntervalSince1970: object["createAt"].doubleValue / 1000)
+        room?.updateAt = NSDate(timeIntervalSince1970: object["updateAt"].doubleValue / 1000)
         let receiver = object["receiver"]
         room?.receiverId = receiver["uid"].stringValue
         room?.receiverName = receiver["name"].stringValue
@@ -38,6 +38,12 @@ class RoomDao: DaoTemplate {
             return nil
         }
         return rooms[0]
+    }
+    
+    func findAll() -> [Room] {
+        let request = NSFetchRequest<Room>(entityName: NSStringFromClass(Room.self))
+        request.sortDescriptors = [NSSortDescriptor(key: "updateAt", ascending: false)]
+        return try! context.fetch(request)
     }
     
 }

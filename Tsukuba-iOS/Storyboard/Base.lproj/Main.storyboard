@@ -502,7 +502,7 @@
         <!--Chat-->
         <scene sceneID="8ba-lb-FCz">
             <objects>
-                <tableViewController id="J1b-jU-27O" customClass="ChatsTableViewController" customModule="Tsukuba_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="J1b-jU-27O" customClass="RoomsTableViewController" customModule="Tsukuba_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pmQ-45-D9e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -528,7 +528,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aq1-tY-8ZB">
-                                            <rect key="frame" x="74" y="10" width="208" height="23"/>
+                                            <rect key="frame" x="74" y="10" width="177" height="23"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="23" id="J37-SC-tla"/>
                                             </constraints>
@@ -536,11 +536,11 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018/01/01" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ne0-h5-cTz">
-                                            <rect key="frame" x="290" y="10" width="69" height="23"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan 01, 2018" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ne0-h5-cTz">
+                                            <rect key="frame" x="259" y="10" width="100" height="23"/>
                                             <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="2KY-l2-ZTL"/>
                                                 <constraint firstAttribute="height" constant="23" id="9I0-aM-Lcr"/>
-                                                <constraint firstAttribute="width" constant="69" id="vGa-o8-jCj"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -562,10 +562,10 @@
                                         <constraint firstItem="NJZ-es-lgb" firstAttribute="leading" secondItem="ymE-ru-9pS" secondAttribute="leading" constant="16" id="MVF-Fe-R7K"/>
                                         <constraint firstItem="ne0-h5-cTz" firstAttribute="top" secondItem="ymE-ru-9pS" secondAttribute="top" constant="10" id="Yim-8s-wUC"/>
                                         <constraint firstItem="krs-n0-R8U" firstAttribute="top" secondItem="ymE-ru-9pS" secondAttribute="top" constant="37" id="aIQ-3h-taQ"/>
+                                        <constraint firstAttribute="trailing" secondItem="aq1-tY-8ZB" secondAttribute="trailing" constant="124" id="d7O-6G-2nD"/>
                                         <constraint firstItem="aq1-tY-8ZB" firstAttribute="leading" secondItem="ymE-ru-9pS" secondAttribute="leading" constant="74" id="kI0-GS-fvn"/>
                                         <constraint firstItem="krs-n0-R8U" firstAttribute="leading" secondItem="ymE-ru-9pS" secondAttribute="leading" constant="74" id="lNF-vC-li7"/>
                                         <constraint firstItem="aq1-tY-8ZB" firstAttribute="top" secondItem="ymE-ru-9pS" secondAttribute="top" constant="10" id="lVh-PY-j49"/>
-                                        <constraint firstAttribute="trailing" secondItem="aq1-tY-8ZB" secondAttribute="trailing" constant="93" id="uWJ-Oh-dBZ"/>
                                         <constraint firstAttribute="trailing" secondItem="ne0-h5-cTz" secondAttribute="trailing" constant="16" id="ym8-zK-2dJ"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -1831,7 +1831,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FVc-Mb-ZEj">
                                 <rect key="frame" x="0.0" y="64" width="375" height="506"/>
-                                <color key="backgroundColor" red="0.87788490915019446" green="0.8809706253052616" blue="0.89022777377046303" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.99194461107254028" green="0.99615627527236938" blue="0.99600595235824585" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="receiverIdentifier" rowHeight="63" id="OMP-RX-UNt" customClass="ChatTableViewCell" customModule="Tsukuba_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="63"/>
@@ -1863,6 +1863,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="QGY-xA-54L" firstAttribute="leading" secondItem="T3X-Ti-MGy" secondAttribute="leading" constant="15" id="1Xj-Pi-MB7"/>
                                                 <constraint firstItem="xl9-gE-q6W" firstAttribute="top" secondItem="T3X-Ti-MGy" secondAttribute="top" constant="24" id="5Ze-jb-5gQ"/>
@@ -1926,7 +1927,7 @@
                                                 <constraint firstItem="UQ7-bk-ioA" firstAttribute="top" secondItem="038-lv-Ser" secondAttribute="top" constant="12" id="usw-QQ-pgQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="avatarImageView" destination="UQ7-bk-ioA" id="4cb-fR-rbV"/>
                                             <outlet property="messageBackgroundImageView" destination="dY2-UK-AQR" id="N0o-D8-YNB"/>
