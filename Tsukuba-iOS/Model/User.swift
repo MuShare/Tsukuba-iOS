@@ -30,9 +30,16 @@ class User {
         level = user["level"].intValue
     }
     
+    init(uid: String, name: String, avatar: String) {
+        self.uid = uid
+        self.name = name
+        self.avatar = avatar
+    }
+    
     init(uid: String, name: String, avatar: String, createAt: Date, type: String, identifier: String, contact: String, address: String, level: Int) {
         self.uid = uid
         self.name = name
+        self.avatar = avatar
         self.createAt = createAt
         self.type = type
         self.identifier = identifier

@@ -17,7 +17,7 @@
         <attribute name="direction" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="seq" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="room" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Room" inverseName="chats" inverseEntity="Room" syncable="YES"/>
+        <relationship name="room" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Room" syncable="YES"/>
     </entity>
     <entity name="Option" representedClassName="Option" syncable="YES" codeGenerationType="class">
         <attribute name="createAt" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -29,6 +29,7 @@
         <relationship name="selection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Selection" inverseName="options" inverseEntity="Selection" syncable="YES"/>
     </entity>
     <entity name="Room" representedClassName="Room" syncable="YES" codeGenerationType="class">
+        <attribute name="chats" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="createAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="lastMessage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="receiverAvatar" attributeType="String" syncable="YES"/>
@@ -36,7 +37,6 @@
         <attribute name="receiverName" attributeType="String" syncable="YES"/>
         <attribute name="rid" attributeType="String" syncable="YES"/>
         <attribute name="updateAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="chats" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Chat" inverseName="room" inverseEntity="Chat" syncable="YES"/>
     </entity>
     <entity name="Selection" representedClassName="Selection" syncable="YES" codeGenerationType="class">
         <attribute name="createAt" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>

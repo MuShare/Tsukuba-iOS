@@ -13,6 +13,7 @@ class RoomDao: DaoTemplate {
         room?.rid = rid
         room?.createAt = NSDate(timeIntervalSince1970: object["createAt"].doubleValue / 1000)
         room?.updateAt = NSDate(timeIntervalSince1970: object["updateAt"].doubleValue / 1000)
+        room?.chats = object["chats"].int16Value
         let receiver = object["receiver"]
         room?.receiverId = receiver["uid"].stringValue
         room?.receiverName = receiver["name"].stringValue

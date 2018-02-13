@@ -14,6 +14,7 @@ class RoomsTableViewController: UITableViewController {
     let dao = DaoManager.sharedInstance
     
     var rooms: [Room] = []
+    var selectedRoom: Room!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,10 @@ class RoomsTableViewController: UITableViewController {
     // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "chatSegue" {
-            
+            let destination = segue.destination as! ChatViewController
+            destination.receiver = User(uid: selectedRoom.receiverId!,
+                                        name: selectedRoom.receiverName!,
+                                        avatar: selectedRoom.receiverAvatar!)
         }
     }
 
@@ -55,8 +59,8 @@ extension RoomsTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-//        performSegue(withIdentifier: "chatSegue", sender: self)
+        selectedRoom = rooms[indexPath.row]
+        performSegue(withIdentifier: "chatSegue", sender: self)
     }
     
 }
