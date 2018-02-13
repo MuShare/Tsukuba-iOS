@@ -34,6 +34,7 @@ class ChatManager {
                 let result = response.getResult()
                 let chat = self.dao.chatDao.save(result["chat"]);
                 chat.room = self.dao.roomDao.saveOrUpdate(result["chat"]["room"])
+                chat.room?.lastMessage = content
                 chat.content = content
                 self.dao.saveContext()
                 completion?(true, chat, nil)

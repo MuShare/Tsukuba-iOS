@@ -54,6 +54,7 @@ class ReceiverTableViewCell: UITableViewCell {
         } else {
             timeLabel.text = dateFormatter.string(for: updateAt)
         }
+        messageLabel.text = room.lastMessage
     }
 
 }

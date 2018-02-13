@@ -30,6 +30,7 @@
     </entity>
     <entity name="Room" representedClassName="Room" syncable="YES" codeGenerationType="class">
         <attribute name="createAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="lastMessage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="receiverAvatar" attributeType="String" syncable="YES"/>
         <attribute name="receiverId" attributeType="String" syncable="YES"/>
         <attribute name="receiverName" attributeType="String" syncable="YES"/>
@@ -51,7 +52,7 @@
         <element name="Category" positionX="-504" positionY="177" width="128" height="165"/>
         <element name="Chat" positionX="-315" positionY="261" width="128" height="150"/>
         <element name="Option" positionX="-153" positionY="212" width="128" height="150"/>
-        <element name="Room" positionX="-324" positionY="252" width="128" height="150"/>
+        <element name="Room" positionX="-324" positionY="252" width="128" height="165"/>
         <element name="Selection" positionX="-324" positionY="192" width="128" height="165"/>
     </elements>
 </model>
