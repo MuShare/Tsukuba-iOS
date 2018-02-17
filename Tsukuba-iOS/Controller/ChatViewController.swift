@@ -33,6 +33,9 @@ class ChatViewController: EditingViewController {
         let room = dao.roomDao.getByReceiverId(receiver.uid)
         if room != nil {
             chats = dao.chatDao.findByRoom(room!)
+            chatManager.syncChat(room!, completion: { (success, chats, message) in
+                
+            })
         }
         
     }
@@ -63,11 +66,11 @@ class ChatViewController: EditingViewController {
         }
         plainTextField.text = ""
         plainTextField.resignFirstResponder()
-        chatManager.sendPlainText(receiver: receiver.uid, content: content) { (success, chat, message) in
-            if (chat == nil) {
+        chatManager.sendPlainText(receiver: receiver.uid, content: content) { (success, chats, message) in
+            if (chats.count == 0) {
                 return
             }
-            self.chats.append(chat!)
+            self.chats.append(chats[0])
             self.tableView.beginUpdates()
             self.tableView.insertRows(at: [IndexPath(row: self.chats.count - 1, section: 0)],
                                       with: .automatic)
@@ -88,7 +91,8 @@ extension ChatViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let chat = chats[indexPath.row]
-        let identifier = chat.direction ?  "senderIdentifier" : "receiverIdentifier"
+        let isSender = (chat.room?.creator)! ? chat.direction : !chat.direction
+        let identifier = isSender ?  "senderIdentifier" : "receiverIdentifier"
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ChatTableViewCell
         cell.fill(avatar: chat.direction ? userManager.avatar : (chat.room?.receiverAvatar)!,
                   message: chat.content!)
