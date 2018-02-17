@@ -34,7 +34,8 @@ class ChatViewController: EditingViewController {
         if room != nil {
             chats = dao.chatDao.findByRoom(room!)
             chatManager.syncChat(room!, completion: { (success, chats, message) in
-                
+                self.chats.append(contentsOf: chats)
+                self.tableView.reloadData()
             })
         }
         

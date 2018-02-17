@@ -62,8 +62,21 @@ class ChatManager {
             let response = Response(responseObject)
             if response.statusOK() {
                 let result = response.getResult()
-      
-                completion?(true, [], nil)
+                var chats:[Chat] = []
+                for object in result["chats"].arrayValue {
+                    let chat = self.dao.chatDao.save(object)
+                    chat.content = object["content"].stringValue
+                    chat.room = room
+                    chats.append(chat)
+                }
+                if (chats.count > 0) {
+                    let lastChat = chats[chats.count - 1]
+                    room.chats = lastChat.seq
+                    room.updateAt = lastChat.createAt
+                    room.lastMessage = lastChat.content
+                    self.dao.saveContext()
+                }
+                completion?(true, chats, nil)
             } else {
                 switch response.errorCode() {
                 default:
