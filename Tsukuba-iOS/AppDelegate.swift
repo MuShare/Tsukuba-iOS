@@ -18,6 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings.init(types: [.alert, .badge, .sound], categories: nil))
+        UIApplication.shared.registerForRemoteNotifications()
+        
         // Set suitable columns for iPhone and iPad.
         let width = UIScreen.main.bounds.size.width
         if width < 768 {
@@ -79,6 +82,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         return .portrait;
+    }
+    
+    // MARK: - APNs
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let token = NSData(data: deviceToken).description
+            .replacingOccurrences(of:"<", with:"")
+            .replacingOccurrences(of:">", with:"")
+            .replacingOccurrences(of:" ", with:"")
+
+        NSLog("Device token from APNs server is %@", token);
+        if DEBUG {
+            
+        }
     }
 
     // MARK: - Core Data stack

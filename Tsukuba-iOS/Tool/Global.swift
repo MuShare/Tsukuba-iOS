@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-let DEBUG = true
+let DEBUG = false
 
 // Server base url
 //let baseUrl = "https://tsukuba.mushare.cn/"

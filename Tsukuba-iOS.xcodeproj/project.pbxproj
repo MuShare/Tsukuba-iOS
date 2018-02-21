@@ -131,6 +131,7 @@
 		E4387D581FD7B4B2006A342D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		E4387D591FD7B4B3006A342D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E4387D5A1FD7B58F006A342D /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		E43B6F8820479F8B000A9662 /* Tsukuba-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Tsukuba-iOS.entitlements"; sourceTree = "<group>"; };
 		E4464AFC2022B9F8001968B5 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		E4464AFE2022BA44001968B5 /* RoomDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDao.swift; sourceTree = "<group>"; };
 		E4464B002022C0F9001968B5 /* ChatDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDao.swift; sourceTree = "<group>"; };
@@ -347,6 +348,7 @@
 		E4962BE01EB4B08000DF8CAE /* Tsukuba-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				E43B6F8820479F8B000A9662 /* Tsukuba-iOS.entitlements */,
 				E4089FE51EBB36220042221D /* Cell */,
 				E4089FE41EBB36150042221D /* Controller */,
 				E4089FB21EBAE5180042221D /* Dao */,
@@ -467,6 +469,14 @@
 						DevelopmentTeam = 6ANM44X2CJ;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					E4962BF41EB4B08000DF8CAE = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -899,6 +909,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Tsukuba-iOS/Tsukuba-iOS.entitlements";
 				DEVELOPMENT_TEAM = 6ANM44X2CJ;
 				INFOPLIST_FILE = "Tsukuba-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -917,6 +928,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Tsukuba-iOS/Tsukuba-iOS.entitlements";
 				DEVELOPMENT_TEAM = 6ANM44X2CJ;
 				INFOPLIST_FILE = "Tsukuba-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
