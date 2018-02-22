@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import FacebookCore
+import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -90,10 +91,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .replacingOccurrences(of:"<", with:"")
             .replacingOccurrences(of:">", with:"")
             .replacingOccurrences(of:" ", with:"")
-
-        NSLog("Device token from APNs server is %@", token);
         if DEBUG {
-            
+            NSLog("Device token from APNs server is %@.", token);
+        }
+        let params: Parameters = [
+            "deviceToken": token
+        ]
+        Alamofire.request(createUrl("api/user/deviceToken"),
+                          method: .post,
+                          parameters: params,
+                          encoding: URLEncoding.default,
+                          headers: config.tokenHeader)
+        .responseJSON { (responseObject) in
+            let response = Response(responseObject)
+            let success = response.statusOK() ? response.getResult()["success"].boolValue : false
+            if DEBUG {
+                print("Device upload success = %@", success)
+            }
         }
     }
 
