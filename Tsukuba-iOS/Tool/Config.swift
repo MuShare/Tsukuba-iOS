@@ -92,6 +92,15 @@ class Config {
             return Defaults[.lan] ?? ""
         }
     }
+    
+    var deviceToken: String {
+        set {
+            Defaults[.deviceToken] = newValue
+        }
+        get {
+            return Defaults[.deviceToken] ?? ""
+        }
+    }
 
     static let sharedInstance: Config = {
         let instance = Config()

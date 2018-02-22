@@ -12,8 +12,8 @@ import Alamofire
 let DEBUG = true
 
 // Server base url
-//let baseUrl = "https://tsukuba.mushare.cn/"
-let baseUrl = "http://192.168.31.126:8080/"
+let baseUrl = "https://tsukuba.mushare.cn/"
+//let baseUrl = "http://192.168.42.11:8080/"
 
 func createUrl(_ relative: String) -> String {
     let requestUrl = baseUrl + relative
@@ -47,6 +47,10 @@ enum ErrorCode: Int {
     case modifyMessageNoPrivilege = 2021
     case savePicture = 2041
     case sendPlainText = 3011
+}
+
+enum NotificationType: String{
+    case didReceivedChat = "didReceiveChat"
 }
 
 

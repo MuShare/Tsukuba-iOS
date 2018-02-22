@@ -35,6 +35,7 @@
 		E438442F20204AC5006E0369 /* ReceiverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E438442E20204AC5006E0369 /* ReceiverTableViewCell.swift */; };
 		E438443120204ADC006E0369 /* RoomsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E438443020204ADC006E0369 /* RoomsTableViewController.swift */; };
 		E4387D5B1FD7B58F006A342D /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4387D5A1FD7B58F006A342D /* AboutViewController.swift */; };
+		E43B6F8A2063AE5A000A9662 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43B6F892063AE5A000A9662 /* DeviceManager.swift */; };
 		E4464AFD2022B9F8001968B5 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4464AFC2022B9F8001968B5 /* Room.swift */; };
 		E4464AFF2022BA44001968B5 /* RoomDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4464AFE2022BA44001968B5 /* RoomDao.swift */; };
 		E4464B012022C0F9001968B5 /* ChatDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4464B002022C0F9001968B5 /* ChatDao.swift */; };
@@ -132,6 +133,7 @@
 		E4387D591FD7B4B3006A342D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E4387D5A1FD7B58F006A342D /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		E43B6F8820479F8B000A9662 /* Tsukuba-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Tsukuba-iOS.entitlements"; sourceTree = "<group>"; };
+		E43B6F892063AE5A000A9662 /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		E4464AFC2022B9F8001968B5 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		E4464AFE2022BA44001968B5 /* RoomDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDao.swift; sourceTree = "<group>"; };
 		E4464B002022C0F9001968B5 /* ChatDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDao.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				E4089FD61EBAEFA00042221D /* SyncManager.swift */,
 				E4089FEC1EBB3BF90042221D /* UserManager.swift */,
 				E46A91632022AFEA00244606 /* ChatManager.swift */,
+				E43B6F892063AE5A000A9662 /* DeviceManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -273,25 +276,25 @@
 		E4089FE41EBB36150042221D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E4387D5A1FD7B58F006A342D /* AboutViewController.swift */,
 				E4089FF01EBB4F160042221D /* AvatarViewController.swift */,
+				E48931FC201EFBD100727A6B /* ChatViewController.swift */,
 				E489721C1EBED40F0064EA13 /* CreateMessageViewController.swift */,
 				E49D240F1EC6F0EB00D3D974 /* EditMessageViewController.swift */,
+				E496A7ED201065B70015DE8D /* LicenseViewController.swift */,
 				E4089FE81EBB3A1F0042221D /* LoginViewController.swift */,
-				E4089FE61EBB36440042221D /* MeTableViewController.swift */,
-				E45519401EC44856006A3B73 /* MessageTableViewController.swift */,
 				E41F7D001EC34CB8002E8184 /* MessagesViewController.swift */,
+				E45519401EC44856006A3B73 /* MessageTableViewController.swift */,
+				E4089FE61EBB36440042221D /* MeTableViewController.swift */,
 				E4B52B691EF3A77E0030BD2D /* MyFavoritesViewController.swift */,
-				E41F7D091EC36C2A002E8184 /* RegisterViewController.swift */,
 				E48DE54E1EC2D30700E5CA25 /* MyMessagesTableViewController.swift */,
 				E4089FEE1EBB4AD80042221D /* MyProfileTableViewController.swift */,
 				E48972201EBF62280064EA13 /* PictureViewController.swift */,
+				E41F7D091EC36C2A002E8184 /* RegisterViewController.swift */,
 				E4054AE21EC48D29006BCEEC /* ResetViewController.swift */,
+				E438443020204ADC006E0369 /* RoomsTableViewController.swift */,
 				E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */,
 				E47860731ECC56C30096B39A /* UserProfileTableViewController.swift */,
-				E4387D5A1FD7B58F006A342D /* AboutViewController.swift */,
-				E496A7ED201065B70015DE8D /* LicenseViewController.swift */,
-				E48931FC201EFBD100727A6B /* ChatViewController.swift */,
-				E438443020204ADC006E0369 /* RoomsTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -656,6 +659,7 @@
 				E48931FD201EFBD100727A6B /* ChatViewController.swift in Sources */,
 				E4089FE91EBB3A1F0042221D /* LoginViewController.swift in Sources */,
 				E489721F1EBEF34E0064EA13 /* SelectCategoryViewController.swift in Sources */,
+				E43B6F8A2063AE5A000A9662 /* DeviceManager.swift in Sources */,
 				E41ADBFC1EC151AA006479C5 /* PictureCollectionViewCell.swift in Sources */,
 				E438442F20204AC5006E0369 /* ReceiverTableViewCell.swift in Sources */,
 				E451974F1ECCA0A6009C9D09 /* Config.swift in Sources */,
@@ -848,7 +852,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -894,7 +898,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

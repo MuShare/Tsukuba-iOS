@@ -39,6 +39,8 @@ class ChatViewController: EditingViewController {
             })
         }
         
+        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveNotification), name: NSNotification.Name(rawValue: NotificationType.didReceivedChat.rawValue), object: nil)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,7 +61,13 @@ class ChatViewController: EditingViewController {
         }
         self.shownHeight = height - 45
     }
+    
+    // MARK: Notification
+    func didReceiveNotification(_ userInfo: Notification) {
+        print(userInfo)
+    }
 
+    // MARK: Action
     @IBAction func send(_ sender: Any) {
         let content = plainTextField.text!
         if content == "" {

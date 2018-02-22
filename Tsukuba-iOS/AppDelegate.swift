@@ -10,12 +10,14 @@ import UIKit
 import CoreData
 import FacebookCore
 import Alamofire
+import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let config = Config.sharedInstance
+    let deviceManager = DeviceManager.sharedInstance
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -94,21 +96,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if DEBUG {
             NSLog("Device token from APNs server is %@.", token);
         }
-        let params: Parameters = [
-            "deviceToken": token
-        ]
-        Alamofire.request(createUrl("api/user/deviceToken"),
-                          method: .post,
-                          parameters: params,
-                          encoding: URLEncoding.default,
-                          headers: config.tokenHeader)
-        .responseJSON { (responseObject) in
-            let response = Response(responseObject)
-            let success = response.statusOK() ? response.getResult()["success"].boolValue : false
+        config.deviceToken = token
+        deviceManager.uploadDeviceToken(token) { (success) in
             if DEBUG {
                 print("Device upload success = %@", success)
             }
         }
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        
+        if DEBUG {
+            NSLog("Received remote notification, userInfo = %@", userInfo);
+        }
+        let info = JSON(userInfo)
+        if let category = info["category"].string?.split(separator: ":") {
+            if category.count < 2 {
+                return
+            }
+            let command = category[0]
+            let content = category[1]
+            switch command {
+            case "chat":
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationType.didReceivedChat.rawValue),
+                                                object: nil,
+                                                userInfo: ["uid": content])
+            default:
+                break
+            }
+        }
+        
+        
     }
 
     // MARK: - Core Data stack

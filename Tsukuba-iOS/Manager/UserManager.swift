@@ -8,6 +8,18 @@ class UserManager {
     
     var dao: DaoManager!
     var config: Config!
+    var deviceManager: DeviceManager!
+    
+    static let sharedInstance: UserManager = {
+        let instance = UserManager()
+        return instance
+    }()
+    
+    init() {
+        dao = DaoManager.sharedInstance
+        config = Config.sharedInstance
+        deviceManager = DeviceManager.sharedInstance
+    }
     
     var login: Bool {
         set {
@@ -98,15 +110,7 @@ class UserManager {
     
     var avatarUploadingProgress: Double! = 0
     
-    static let sharedInstance: UserManager = {
-        let instance = UserManager()
-        return instance
-    }()
-    
-    init() {
-        dao = DaoManager.sharedInstance
-        config = Config.sharedInstance
-    }
+
     
     func pullUser(completion: ((Bool) -> Void)?) {
         let params: Parameters = [
@@ -183,6 +187,10 @@ class UserManager {
                 self.address = user["address"].stringValue
                 self.userRev = user["rev"].intValue
                 self.login = true
+                // Upload device token.
+                if self.config.deviceToken != "" {
+                    self.deviceManager.uploadDeviceToken(self.config.deviceToken, completion: nil)
+                }
                 completion?(true, nil);
             } else {
                 switch response.errorCode() {
@@ -206,7 +214,7 @@ class UserManager {
             "version": UIDevice.current.systemVersion,
             "lan": config.lan
         ]
-        
+
         Alamofire.request(createUrl("/api/user/login/facebook"),
                           method: .post,
                           parameters: params,
@@ -227,6 +235,10 @@ class UserManager {
                 self.address = user["address"].stringValue
                 self.userRev = user["rev"].intValue
                 self.login = true
+                // Upload device token.
+                if self.config.deviceToken != "" {
+                    self.deviceManager.uploadDeviceToken(self.config.deviceToken, completion: nil)
+                }
                 completion?(true, nil);
             } else {
                 switch response.errorCode() {
