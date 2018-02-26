@@ -110,20 +110,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSLog("Received remote notification, userInfo = %@", userInfo);
         }
         let info = JSON(userInfo)
-        if let category = info["category"].string?.split(separator: ":") {
+        if let category = info["aps"]["category"].string?.split(separator: ":") {
             if category.count < 2 {
                 return
             }
             let command = category[0]
             let content = category[1]
-            switch command {
-            case "chat":
+            if command == "chat" {
+                let userInfo: [String : String] = [
+                    "uid": String(content)
+                ]
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationType.didReceivedChat.rawValue),
                                                 object: nil,
-                                                userInfo: ["uid": content])
-            default:
-                break
+                                                userInfo: userInfo)
             }
+            
         }
         
         

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class ChatViewController: EditingViewController {
 
@@ -19,6 +20,7 @@ class ChatViewController: EditingViewController {
     
     var receiver: User!
     var chats: [Chat] = []
+    var room: Room?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +32,7 @@ class ChatViewController: EditingViewController {
         
         navigationItem.title = receiver.name
         
-        let room = dao.roomDao.getByReceiverId(receiver.uid)
+        room = dao.roomDao.getByReceiverId(receiver.uid)
         if room != nil {
             chats = dao.chatDao.findByRoom(room!)
             chatManager.syncChat(room!, completion: { (success, chats, message) in
@@ -39,7 +41,7 @@ class ChatViewController: EditingViewController {
             })
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveNotification), name: NSNotification.Name(rawValue: NotificationType.didReceivedChat.rawValue), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveChatNotification), name: NSNotification.Name(rawValue: NotificationType.didReceivedChat.rawValue), object: nil)
         
     }
     
@@ -63,8 +65,14 @@ class ChatViewController: EditingViewController {
     }
     
     // MARK: Notification
-    func didReceiveNotification(_ userInfo: Notification) {
-        print(userInfo)
+    func didReceiveChatNotification(_ notification: Notification) {
+        let receiverId = JSON(notification.userInfo!)["uid"].stringValue
+        if receiverId == receiver.uid {
+            chatManager.syncChat(room!, completion: { (success, chats, message) in
+                self.chats.append(contentsOf: chats)
+                self.tableView.reloadData()
+            })
+        }
     }
 
     // MARK: Action
