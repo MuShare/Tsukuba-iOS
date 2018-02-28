@@ -38,6 +38,7 @@ class ChatViewController: EditingViewController {
             chatManager.syncChat(room!, completion: { (success, chats, message) in
                 self.chats.append(contentsOf: chats)
                 self.tableView.reloadData()
+                self.gotoBottom(false)
             })
         }
         
@@ -63,14 +64,32 @@ class ChatViewController: EditingViewController {
         }
         self.shownHeight = height - 45
     }
+
+    func insertChats(_ chats: [Chat]) {
+        if (chats.count == 0) {
+            return
+        }
+        self.chats.append(contentsOf: chats)
+        self.tableView.beginUpdates()
+        var indexPaths: [IndexPath] = []
+        for row in (self.chats.count - chats.count)...(self.chats.count - 1) {
+            indexPaths.append(IndexPath(row: row, section: 0))
+        }
+        self.tableView.insertRows(at: indexPaths, with: .automatic)
+        self.tableView.endUpdates()
+        self.gotoBottom(true)
+    }
+    
+    func gotoBottom(_ animated: Bool) {
+        self.tableView.scrollToRow(at: IndexPath(row: chats.count - 1, section: 0), at: .bottom, animated: animated)
+    }
     
     // MARK: Notification
     func didReceiveChatNotification(_ notification: Notification) {
         let receiverId = JSON(notification.userInfo!)["uid"].stringValue
         if receiverId == receiver.uid {
             chatManager.syncChat(room!, completion: { (success, chats, message) in
-                self.chats.append(contentsOf: chats)
-                self.tableView.reloadData()
+                self.insertChats(chats)
             })
         }
     }
@@ -84,14 +103,7 @@ class ChatViewController: EditingViewController {
         plainTextField.text = ""
         plainTextField.resignFirstResponder()
         chatManager.sendPlainText(receiver: receiver.uid, content: content) { (success, chats, message) in
-            if (chats.count == 0) {
-                return
-            }
-            self.chats.append(chats[0])
-            self.tableView.beginUpdates()
-            self.tableView.insertRows(at: [IndexPath(row: self.chats.count - 1, section: 0)],
-                                      with: .automatic)
-            self.tableView.endUpdates()
+            self.insertChats(chats)
         }
     }
     
