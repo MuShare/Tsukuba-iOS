@@ -88,6 +88,7 @@ class ChatViewController: EditingViewController {
     func didReceiveChatNotification(_ notification: Notification) {
         let receiverId = JSON(notification.userInfo!)["uid"].stringValue
         if receiverId == receiver.uid {
+            
             chatManager.syncChat(room!, completion: { (success, chats, message) in
                 self.insertChats(chats)
             })

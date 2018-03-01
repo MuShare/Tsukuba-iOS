@@ -25,6 +25,8 @@
 		E4089FEF1EBB4AD80042221D /* MyProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FEE1EBB4AD80042221D /* MyProfileTableViewController.swift */; };
 		E4089FF11EBB4F160042221D /* AvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FF01EBB4F160042221D /* AvatarViewController.swift */; };
 		E408EEC41EC7672B00E6E596 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E408EEC31EC7672B00E6E596 /* Picture.swift */; };
+		E40F8A0A2046A31300CCDCFE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40F8A092046A31300CCDCFE /* AudioToolbox.framework */; };
+		E40F8A0C2046A36D00CCDCFE /* didReceivedMessage.wav in Resources */ = {isa = PBXBuildFile; fileRef = E40F8A0B2046A36D00CCDCFE /* didReceivedMessage.wav */; };
 		E41ADBFC1EC151AA006479C5 /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41ADBFB1EC151AA006479C5 /* PictureCollectionViewCell.swift */; };
 		E41F7D011EC34CB8002E8184 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D001EC34CB8002E8184 /* MessagesViewController.swift */; };
 		E41F7D031EC3604C002E8184 /* MessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D021EC3604C002E8184 /* MessageCollectionViewCell.swift */; };
@@ -110,6 +112,8 @@
 		E4089FEE1EBB4AD80042221D /* MyProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileTableViewController.swift; sourceTree = "<group>"; };
 		E4089FF01EBB4F160042221D /* AvatarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarViewController.swift; sourceTree = "<group>"; };
 		E408EEC31EC7672B00E6E596 /* Picture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
+		E40F8A092046A31300CCDCFE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		E40F8A0B2046A36D00CCDCFE /* didReceivedMessage.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = didReceivedMessage.wav; sourceTree = "<group>"; };
 		E41ADBFB1EC151AA006479C5 /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
 		E41F7D001EC34CB8002E8184 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		E41F7D021EC3604C002E8184 /* MessageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -184,6 +188,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E40F8A0A2046A31300CCDCFE /* AudioToolbox.framework in Frameworks */,
 				D3A30465DED0A54864830928 /* Pods_Tsukuba_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -208,6 +213,7 @@
 		A0941B9AB6A83BA8AAE365F0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E40F8A092046A31300CCDCFE /* AudioToolbox.framework */,
 				F44E7EC0007342735A1D800F /* Pods_Tsukuba_iOS.framework */,
 			);
 			name = Frameworks;
@@ -322,6 +328,7 @@
 				E4B52B791EF3DC8E0030BD2D /* InfoPlist.strings */,
 				E4B52B751EF3DBC50030BD2D /* Localizable.strings */,
 				E4B52B641EF2B1200030BD2D /* login-bg.jpg */,
+				E40F8A0B2046A36D00CCDCFE /* didReceivedMessage.wav */,
 			);
 			path = "Support Files";
 			sourceTree = "<group>";
@@ -523,6 +530,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4962BEF1EB4B08000DF8CAE /* LaunchScreen.storyboard in Resources */,
+				E40F8A0C2046A36D00CCDCFE /* didReceivedMessage.wav in Resources */,
 				E4B52B771EF3DC8E0030BD2D /* InfoPlist.strings in Resources */,
 				E49BFE201EF3EAA7001B1BBA /* Login.storyboard in Resources */,
 				E4B52B711EF3DB310030BD2D /* AutoGenStrings.py in Resources */,

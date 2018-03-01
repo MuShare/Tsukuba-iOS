@@ -11,6 +11,7 @@ import CoreData
 import FacebookCore
 import Alamofire
 import SwiftyJSON
+import AudioToolbox
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings.init(types: [.alert, .badge, .sound], categories: nil))
         UIApplication.shared.registerForRemoteNotifications()
+        if let userInfo = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] {
+            print(userInfo)
+        }
         
         // Set suitable columns for iPhone and iPad.
         let width = UIScreen.main.bounds.size.width
@@ -125,6 +129,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let command = category[0]
             let content = category[1]
             if command == "chat" {
+                // Play a short sound and vibrate after receiving a chat message.
+                if let soundUrl = Bundle.main.url(forResource: "didReceivedMessage", withExtension: "wav") {
+                    var soundId: SystemSoundID = 0
+                    
+                    AudioServicesCreateSystemSoundID(soundUrl as CFURL, &soundId)
+                    
+                    AudioServicesAddSystemSoundCompletion(soundId, nil, nil, { (soundId, clientData) -> Void in
+                        AudioServicesDisposeSystemSoundID(soundId)
+                    }, nil)
+                    
+                    AudioServicesPlaySystemSound(soundId)
+                }
+                AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+                
                 let userInfo: [String : String] = [
                     "uid": String(content)
                 ]
