@@ -24,7 +24,7 @@ class RoomsTableViewController: UITableViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveChatNotification), name: NSNotification.Name(rawValue: NotificationType.didReceivedChat.rawValue), object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(didSyncRoomStatus), name: NSNotification.Name(rawValue: NotificationType.didReceivedChat.rawValue), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didSyncRoomStatus), name: NSNotification.Name(rawValue: NotificationType.didSyncRoomStatus.rawValue), object: nil)
 
     }
     
