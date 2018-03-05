@@ -3,7 +3,7 @@ import SwiftyJSON
 
 class RoomDao: DaoTemplate {
     
-    func saveOrUpdate(_ object: JSON, creator: Bool) -> Room {
+    func saveOrUpdate(_ object: JSON) -> Room {
         let rid = object["rid"].stringValue
         var room = getByRid(rid)
         if room == nil {
@@ -14,8 +14,9 @@ class RoomDao: DaoTemplate {
         room?.createAt = NSDate(timeIntervalSince1970: object["createAt"].doubleValue / 1000)
         room?.updateAt = NSDate(timeIntervalSince1970: object["updateAt"].doubleValue / 1000)
         room?.chats = object["chats"].int16Value
-        room?.creator = creator
-        let receiver = object[creator ? "receiver" : "sender"]
+        room?.lastMessage = object["lastMessage"].stringValue
+        room?.creator = object["creator"].boolValue
+        let receiver = object[(room?.creator)! ? "receiver" : "sender"]
         room?.receiverId = receiver["uid"].stringValue
         room?.receiverName = receiver["name"].stringValue
         room?.receiverAvatar = receiver["avatar"].stringValue

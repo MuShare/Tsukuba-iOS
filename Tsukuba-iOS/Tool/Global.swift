@@ -51,6 +51,7 @@ enum ErrorCode: Int {
 
 enum NotificationType: String{
     case didReceivedChat = "didReceiveChat"
+    case didSyncRoomStatus = "didSyncRoomStatus"
 }
 
 

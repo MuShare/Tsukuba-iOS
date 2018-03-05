@@ -1240,10 +1240,10 @@
             </objects>
             <point key="canvasLocation" x="-1410" y="3318"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main View Controller-->
         <scene sceneID="MaW-cJ-xPB">
             <objects>
-                <tabBarController id="tU3-0I-PUu" sceneMemberID="viewController">
+                <tabBarController id="tU3-0I-PUu" customClass="MainViewController" customModule="Tsukuba_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ds4-0V-W9N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

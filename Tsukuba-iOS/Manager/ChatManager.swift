@@ -33,7 +33,7 @@ class ChatManager {
             if response.statusOK() {
                 let result = response.getResult()
                 let chat = self.dao.chatDao.save(result["chat"]);
-                chat.room = self.dao.roomDao.saveOrUpdate(result["chat"]["room"], creator: chat.direction)
+                chat.room = self.dao.roomDao.saveOrUpdate(result["chat"]["room"])
                 chat.room?.lastMessage = content
                 chat.content = content
                 self.dao.saveContext()
@@ -81,6 +81,44 @@ class ChatManager {
                 switch response.errorCode() {
                 default:
                     completion?(false, [], NSLocalizedString("error_unknown", comment: ""))
+                }
+            }
+        }
+    }
+    
+    func roomStatus(completion: ((_ success: Bool) -> Void)?) {
+        var url = "api/chat/room/status?"
+        for room in self.dao.roomDao.findAll() {
+            url.append("rids=" + room.rid! + "&")
+        }
+    
+        Alamofire.request(createUrl(url),
+                          method: .get,
+                          parameters: nil,
+                          encoding: URLEncoding.default,
+                          headers: config.tokenHeader)
+        .responseJSON { (responseObject) in
+            let response = Response(responseObject)
+            if response.statusOK() {
+                let result = response.getResult()
+                for object in result["new"].arrayValue {
+                    let room = self.dao.roomDao.saveOrUpdate(object)
+                    // Set chat - 1 to sync data.
+                    room.chats = room.chats - 1
+                }
+                for object in result["exist"].arrayValue {
+                    let room = self.dao.roomDao.getByRid(object["rid"].stringValue)
+                    if room != nil {
+                        room?.lastMessage = object["lastMessage"].stringValue
+                        room?.updateAt = NSDate(timeIntervalSince1970: object["updateAt"].doubleValue / 1000)
+                    }
+                }
+                self.dao.saveContext()
+                completion?(true)
+            } else {
+                switch response.errorCode() {
+                default:
+                    completion?(false)
                 }
             }
         }

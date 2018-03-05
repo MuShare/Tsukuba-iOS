@@ -21,6 +21,10 @@ class RoomsTableViewController: UITableViewController {
         if !user.login {
             showLoginAlert()
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveChatNotification), name: NSNotification.Name(rawValue: NotificationType.didReceivedChat.rawValue), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didSyncRoomStatus), name: NSNotification.Name(rawValue: NotificationType.didReceivedChat.rawValue), object: nil)
 
     }
     
@@ -38,6 +42,17 @@ class RoomsTableViewController: UITableViewController {
                                         name: selectedRoom.receiverName!,
                                         avatar: selectedRoom.receiverAvatar!)
         }
+    }
+    
+    // MARK: Notification
+    func didReceiveChatNotification(_ notification: Notification) {
+        navigationItem.title = "Loading..."
+    }
+    
+    func didSyncRoomStatus(_ notification: Notification) {
+        navigationItem.title = "Chats"
+        rooms = dao.roomDao.findAll()
+        tableView.reloadData()
     }
 
 }

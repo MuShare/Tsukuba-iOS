@@ -73,6 +73,7 @@
 		E4B52B711EF3DB310030BD2D /* AutoGenStrings.py in Resources */ = {isa = PBXBuildFile; fileRef = E4B52B701EF3DB310030BD2D /* AutoGenStrings.py */; };
 		E4B52B731EF3DBC50030BD2D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4B52B751EF3DBC50030BD2D /* Localizable.strings */; };
 		E4B52B771EF3DC8E0030BD2D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4B52B791EF3DC8E0030BD2D /* InfoPlist.strings */; };
+		E4C0CF13204D2DBB0030C94A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C0CF12204D2DBB0030C94A /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -179,6 +180,7 @@
 		E4B52B701EF3DB310030BD2D /* AutoGenStrings.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = AutoGenStrings.py; sourceTree = "<group>"; };
 		E4B52B741EF3DBC50030BD2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E4B52B781EF3DC8E0030BD2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E4C0CF12204D2DBB0030C94A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E4CA14B91EFBD4CF00289699 /* Tsukuba-iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tsukuba-iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		F44E7EC0007342735A1D800F /* Pods_Tsukuba_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tsukuba_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -301,6 +303,7 @@
 				E438443020204ADC006E0369 /* RoomsTableViewController.swift */,
 				E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */,
 				E47860731ECC56C30096B39A /* UserProfileTableViewController.swift */,
+				E4C0CF12204D2DBB0030C94A /* MainViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -708,6 +711,7 @@
 				E4089FDA1EBAF0250042221D /* Global.swift in Sources */,
 				E4962BEA1EB4B08000DF8CAE /* Tsukuba.xcdatamodeld in Sources */,
 				E49D240E1EC69FC900D3D974 /* OptionTableViewCell.swift in Sources */,
+				E4C0CF13204D2DBB0030C94A /* MainViewController.swift in Sources */,
 				E41F7D121EC3EB92002E8184 /* CustomBack.swift in Sources */,
 				E4464AFD2022B9F8001968B5 /* Room.swift in Sources */,
 				E48972231EBF64320064EA13 /* MessageManager.swift in Sources */,
