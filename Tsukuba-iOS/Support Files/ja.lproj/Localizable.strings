@@ -6,6 +6,7 @@ clear_name = "Clear";
 tab_name = "Tab";
 delete_name = "削除";
 later_name = "後で";
+yesterday_name = "昨日";
 
 error_token = "ユーザー認証は一時的に利用できません。もう一度サインインしてください！";
 error_object_id = "オブジェクトIDエラー";

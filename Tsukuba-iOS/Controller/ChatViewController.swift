@@ -39,6 +39,7 @@ class ChatViewController: EditingViewController {
                 self.chats.append(contentsOf: chats)
                 self.tableView.reloadData()
                 self.gotoBottom(false)
+                self.chatManager.clearUnread(self.room!)
             })
         }
         
@@ -88,9 +89,9 @@ class ChatViewController: EditingViewController {
     func didReceiveChatNotification(_ notification: Notification) {
         let receiverId = JSON(notification.userInfo!)["uid"].stringValue
         if receiverId == receiver.uid {
-            
             chatManager.syncChat(room!, completion: { (success, chats, message) in
                 self.insertChats(chats)
+                self.chatManager.clearUnread(self.room!)
             })
         }
     }

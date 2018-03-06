@@ -18,6 +18,8 @@ class MainViewController: UITabBarController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveChatNotification), name: NSNotification.Name(rawValue: NotificationType.didReceivedChat.rawValue), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(didUnreadChanged), name: NSNotification.Name(rawValue: NotificationType.didUnreadChanged.rawValue), object: nil)
+        
         checkRoomStatus()
     }
 
@@ -32,13 +34,25 @@ class MainViewController: UITabBarController {
         checkRoomStatus()
     }
     
+    func didUnreadChanged(_ notification: Notification) {
+        self.updateGlobalUnread()
+    }
+    
+    // MARK: Service
     func checkRoomStatus() {
         chatManager.roomStatus { (success) in
-            self.viewControllers?[1].tabBarItem.badgeValue = "\(self.config.globalUnread)"
-            
+            self.updateGlobalUnread()
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationType.didSyncRoomStatus.rawValue),
                                             object: nil,
                                             userInfo: nil)
+        }
+    }
+    
+    func updateGlobalUnread() {
+        if config.globalUnread > 0 {
+            self.viewControllers?[1].tabBarItem.badgeValue = "\(config.globalUnread)"
+        } else {
+            self.viewControllers?[1].tabBarItem.badgeValue = nil
         }
     }
 

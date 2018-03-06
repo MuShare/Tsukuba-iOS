@@ -46,12 +46,11 @@ class ReceiverTableViewCell: UITableViewCell {
     func fill(_ room: Room) {
         avatarImageView.kf.setImage(with: imageURL(room.receiverAvatar!))
         nameLabel.text = room.receiverName!
-        messageLabel.text = "message"
         let updateAt = room.updateAt as! Date
         if calendar.isDateInToday(updateAt) {
             timeLabel.text = timeFormatter.string(for: updateAt)
         } else if calendar.isDateInYesterday(updateAt) {
-            timeLabel.text = "Yesterday"
+            timeLabel.text = NSLocalizedString("yesterday_name", comment: "")
         } else {
             timeLabel.text = dateFormatter.string(for: updateAt)
         }
@@ -59,6 +58,8 @@ class ReceiverTableViewCell: UITableViewCell {
         if room.unread > 0 {
             unreadLabel.text = "\(room.unread)"
             unreadLabel.isHidden = false
+        } else {
+            unreadLabel.isHidden = true
         }
     }
 

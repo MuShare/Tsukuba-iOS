@@ -6,6 +6,7 @@ clear_name = "清除";
 tab_name = "标签";
 delete_name = "删除";
 later_name = "稍后";
+yesterday_name = "昨天";
 
 error_token = "用户验证信息无效，请重新登录！";
 error_object_id = "对象ID错误。";

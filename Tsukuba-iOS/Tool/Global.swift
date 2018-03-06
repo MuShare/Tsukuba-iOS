@@ -52,8 +52,8 @@ enum ErrorCode: Int {
 enum NotificationType: String{
     case didReceivedChat = "didReceiveChat"
     case didSyncRoomStatus = "didSyncRoomStatus"
+    case didUnreadChanged = "didUnreadChanged"
 }
-
 
 extension UITextField{
     @IBInspectable var placeHolderColor: UIColor? {

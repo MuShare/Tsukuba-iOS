@@ -6,6 +6,7 @@ clear_name = "Clear";
 tab_name = "Tab";
 delete_name = "Delete";
 later_name = "Later";
+yesterday_name = "Yesterday";
 
 error_token = "User authorization is invalide. Please sign in again!";
 error_object_id = "Object id error.";

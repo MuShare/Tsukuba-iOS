@@ -86,6 +86,21 @@ class ChatManager {
         }
     }
     
+    func clearUnread(_ room: Room) {
+        // Update global unread.
+        config.globalUnread -= Int(room.unread)
+        
+        // Update room unread.
+        room.unread = 0
+        self.dao.saveContext()
+        
+        // Send didUnreadChanged notification.
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationType.didUnreadChanged.rawValue),
+                                        object: nil,
+                                        userInfo: nil)
+
+    }
+    
     func roomStatus(completion: ((_ success: Bool) -> Void)?) {
         var url = "api/chat/room/status?"
         for room in self.dao.roomDao.findAll() {
