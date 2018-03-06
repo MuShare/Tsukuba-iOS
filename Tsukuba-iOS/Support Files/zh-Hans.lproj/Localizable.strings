@@ -76,3 +76,6 @@ report_success = "举报已成功受理！";
 
 report_user_title = "举报该用户";
 report_user_message = "如果该用户有粗鲁，色情或者暴力行为，你可以举报他。";
+
+chats_chats = "Chats";
+chats_loading = "Loading...";

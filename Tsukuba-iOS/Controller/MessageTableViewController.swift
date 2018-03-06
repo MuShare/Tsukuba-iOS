@@ -39,6 +39,9 @@ class MessageTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "userProfileSegue" {
             segue.destination.setValue(message?.author?.uid, forKey: "uid")
+        } else if segue.identifier == "chatSegue" {
+            let destination = segue.destination as! ChatViewController
+            destination.receiver = message?.author
         }
     }
 

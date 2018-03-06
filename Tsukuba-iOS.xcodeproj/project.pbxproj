@@ -291,6 +291,7 @@
 				E49D240F1EC6F0EB00D3D974 /* EditMessageViewController.swift */,
 				E496A7ED201065B70015DE8D /* LicenseViewController.swift */,
 				E4089FE81EBB3A1F0042221D /* LoginViewController.swift */,
+				E4C0CF12204D2DBB0030C94A /* MainViewController.swift */,
 				E41F7D001EC34CB8002E8184 /* MessagesViewController.swift */,
 				E45519401EC44856006A3B73 /* MessageTableViewController.swift */,
 				E4089FE61EBB36440042221D /* MeTableViewController.swift */,
@@ -303,7 +304,6 @@
 				E438443020204ADC006E0369 /* RoomsTableViewController.swift */,
 				E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */,
 				E47860731ECC56C30096B39A /* UserProfileTableViewController.swift */,
-				E4C0CF12204D2DBB0030C94A /* MainViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

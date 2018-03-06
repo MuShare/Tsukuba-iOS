@@ -46,11 +46,11 @@ class RoomsTableViewController: UITableViewController {
     
     // MARK: Notification
     func didReceiveChatNotification(_ notification: Notification) {
-        navigationItem.title = "Loading..."
+        navigationItem.title = NSLocalizedString("chats_loading", comment: "")
     }
     
     func didSyncRoomStatus(_ notification: Notification) {
-        navigationItem.title = "Chats"
+        navigationItem.title = NSLocalizedString("chats_chats", comment: "")
         rooms = dao.roomDao.findAll()
         tableView.reloadData()
     }

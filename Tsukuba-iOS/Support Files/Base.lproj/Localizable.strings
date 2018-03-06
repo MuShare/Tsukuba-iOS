@@ -76,3 +76,6 @@ report_success = "We have received your report.";
 
 report_user_title = "Report this user";
 report_user_message = "You can report this user if he/she has abusive, sexy or violent behavior.";
+
+chats_chats = "Chats";
+chats_loading = "Loading...";

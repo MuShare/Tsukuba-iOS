@@ -77,3 +77,5 @@ report_success = "受理しました。";
 report_user_title = "ユーザー告発";
 report_user_message = "このユーザーを告発しますか。";
 
+chats_chats = "Chats";
+chats_loading = "Loading...";
