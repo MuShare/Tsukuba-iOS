@@ -111,6 +111,7 @@ class ChatManager {
                     if room != nil {
                         room?.lastMessage = object["lastMessage"].stringValue
                         room?.updateAt = NSDate(timeIntervalSince1970: object["updateAt"].doubleValue / 1000)
+                        room?.unread = object["chats"].int16Value - room!.chats
                     }
                 }
                 self.dao.saveContext()

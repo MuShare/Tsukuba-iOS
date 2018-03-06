@@ -14,6 +14,7 @@ class ReceiverTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var unreadLabel: UILabel!
     
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -55,6 +56,10 @@ class ReceiverTableViewCell: UITableViewCell {
             timeLabel.text = dateFormatter.string(for: updateAt)
         }
         messageLabel.text = room.lastMessage
+        if room.unread > 0 {
+            unreadLabel.text = "\(room.unread)"
+            unreadLabel.isHidden = false
+        }
     }
 
 }
