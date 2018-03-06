@@ -101,20 +101,27 @@ class ChatManager {
             let response = Response(responseObject)
             if response.statusOK() {
                 let result = response.getResult()
+                var globalUnread = 0
+                
                 for object in result["new"].arrayValue {
                     let room = self.dao.roomDao.saveOrUpdate(object)
                     // Set chat - 1 to sync data.
                     room.chats = room.chats - 1
+                    room.unread = 1
+                    globalUnread += Int(room.unread)
                 }
+                
                 for object in result["exist"].arrayValue {
                     let room = self.dao.roomDao.getByRid(object["rid"].stringValue)
                     if room != nil {
                         room?.lastMessage = object["lastMessage"].stringValue
                         room?.updateAt = NSDate(timeIntervalSince1970: object["updateAt"].doubleValue / 1000)
                         room?.unread = object["chats"].int16Value - room!.chats
+                        globalUnread += Int(room!.unread)
                     }
                 }
                 self.dao.saveContext()
+                self.config.globalUnread = globalUnread
                 completion?(true)
             } else {
                 switch response.errorCode() {

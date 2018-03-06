@@ -499,7 +499,7 @@
             </objects>
             <point key="canvasLocation" x="3382" y="3318"/>
         </scene>
-        <!--Chat-->
+        <!--Chats-->
         <scene sceneID="8ba-lb-FCz">
             <objects>
                 <tableViewController id="J1b-jU-27O" customClass="RoomsTableViewController" customModule="Tsukuba_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -601,7 +601,7 @@
                             <outlet property="delegate" destination="J1b-jU-27O" id="yEA-Ey-qR2"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Chat" id="zEZ-vJ-oZl"/>
+                    <navigationItem key="navigationItem" title="Chats" id="zEZ-vJ-oZl"/>
                     <connections>
                         <segue destination="q8n-zZ-qMO" kind="push" identifier="chatSegue" id="lwa-RZ-DBT"/>
                     </connections>
@@ -2109,6 +2109,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="lwa-RZ-DBT"/>
-        <segue reference="4oe-Tm-ohe"/>
+        <segue reference="kLV-Sf-9gb"/>
     </inferredMetricsTieBreakers>
 </document>

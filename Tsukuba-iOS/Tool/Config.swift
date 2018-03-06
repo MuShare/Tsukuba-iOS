@@ -27,6 +27,7 @@ extension DefaultsKeys {
     static let version = DefaultsKey<String?>("version")
     static let lan = DefaultsKey<String?>("lan")
     static let columns = DefaultsKey<Int?>("columns")
+    static let globalUnread = DefaultsKey<Int?>("globalUnread")
 }
 
 class Config {
@@ -64,6 +65,15 @@ class Config {
         }
         get {
             return Defaults[.columns] ?? 0
+        }
+    }
+    
+    var globalUnread: Int {
+        set {
+            Defaults[.globalUnread] = newValue
+        }
+        get {
+            return Defaults[.globalUnread] ?? 0
         }
     }
 

@@ -11,10 +11,11 @@ import UIKit
 class MainViewController: UITabBarController {
     
     let chatManager = ChatManager.sharedInstance
+    let config = Config.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveChatNotification), name: NSNotification.Name(rawValue: NotificationType.didReceivedChat.rawValue), object: nil)
         
         checkRoomStatus()
@@ -33,6 +34,8 @@ class MainViewController: UITabBarController {
     
     func checkRoomStatus() {
         chatManager.roomStatus { (success) in
+            self.viewControllers?[1].tabBarItem.badgeValue = "\(self.config.globalUnread)"
+            
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationType.didSyncRoomStatus.rawValue),
                                             object: nil,
                                             userInfo: nil)
