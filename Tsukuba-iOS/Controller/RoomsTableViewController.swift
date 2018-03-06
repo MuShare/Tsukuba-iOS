@@ -7,24 +7,35 @@
 //
 
 import UIKit
+import ESPullToRefresh
 
 class RoomsTableViewController: UITableViewController {
     
-    let user = UserManager.sharedInstance
     let dao = DaoManager.sharedInstance
+    let userManager = UserManager.sharedInstance
+    let chatManager = ChatManager.sharedInstance
     
     var rooms: [Room] = []
     var selectedRoom: Room!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if !user.login {
+        if !userManager.login {
             showLoginAlert()
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveChatNotification), name: NSNotification.Name(rawValue: NotificationType.didReceivedChat.rawValue), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(roomStatusUpdating), name: NSNotification.Name(rawValue: NotificationType.didReceivedChat.rawValue), object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(didSyncRoomStatus), name: NSNotification.Name(rawValue: NotificationType.didSyncRoomStatus.rawValue), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(roomStatusUpdated), name: NSNotification.Name(rawValue: NotificationType.didSyncRoomStatus.rawValue), object: nil)
+        
+//        tableView.es.addPullToRefresh {
+//            self.roomStatusUpdating()
+//            self.chatManager.roomStatus { (success) in
+//                if success {
+//                    self.roomStatusUpdated()
+//                }
+//            }
+//        }
 
     }
     
@@ -44,12 +55,12 @@ class RoomsTableViewController: UITableViewController {
         }
     }
     
-    // MARK: Notification
-    func didReceiveChatNotification(_ notification: Notification) {
+    // MARK: Service
+    func roomStatusUpdating() {
         navigationItem.title = NSLocalizedString("chats_loading", comment: "")
     }
     
-    func didSyncRoomStatus(_ notification: Notification) {
+    func roomStatusUpdated() {
         navigationItem.title = NSLocalizedString("chats_chats", comment: "")
         rooms = dao.roomDao.findAll()
         tableView.reloadData()

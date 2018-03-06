@@ -2030,7 +2030,9 @@
                     <navigationItem key="navigationItem" id="pYh-Jp-TZm"/>
                     <connections>
                         <outlet property="plainTextField" destination="UaK-6C-18m" id="tjc-Rj-7oj"/>
+                        <outlet property="sendButton" destination="kkw-c3-znN" id="aAq-y0-WFo"/>
                         <outlet property="tableView" destination="FVc-Mb-ZEj" id="PVg-Ge-8ji"/>
+                        <outlet property="toolBarView" destination="FVc-Mb-ZEj" id="bXf-J4-Fc4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tCW-uG-2Jz" userLabel="First Responder" sceneMemberID="firstResponder"/>

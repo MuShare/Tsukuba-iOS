@@ -17,6 +17,7 @@ target 'Tsukuba-iOS' do
     pod 'NVActivityIndicatorView', '~> 3.6'
     pod 'Segmentio', '~> 2.1'
     pod 'FaveButton', '~> 2'
+    pod 'RxKeyboard', '~> 0.8'
 end
 
 post_install do |installer|

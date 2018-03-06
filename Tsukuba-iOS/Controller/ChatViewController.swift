@@ -8,11 +8,15 @@
 
 import UIKit
 import SwiftyJSON
+import RxKeyboard
+import RxSwift
 
 class ChatViewController: EditingViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var plainTextField: UITextField!
+    @IBOutlet weak var toolBarView: UIView!
+    @IBOutlet weak var sendButton: UIButton!
     
     let userManager = UserManager.sharedInstance
     let chatManager = ChatManager.sharedInstance
@@ -21,6 +25,8 @@ class ChatViewController: EditingViewController {
     var receiver: User!
     var chats: [Chat] = []
     var room: Room?
+    
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +51,20 @@ class ChatViewController: EditingViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveChatNotification), name: NSNotification.Name(rawValue: NotificationType.didReceivedChat.rawValue), object: nil)
         
+        RxKeyboard.instance.frame
+            .drive(onNext: { frame in
+                print(frame)
+            })
+            .disposed(by: disposeBag)
+        
+        RxKeyboard.instance.visibleHeight
+            .drive(onNext: { keyboardVisibleHeight in
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.view.frame = CGRect(x: 0, y: -keyboardVisibleHeight, width: self.view.frame.size.width, height: self.view.frame.size.height)
+                })
+            })
+            .disposed(by: disposeBag)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,7 +83,7 @@ class ChatViewController: EditingViewController {
         if UIDevice.current.isX() {
             height += 50
         }
-        self.shownHeight = height - 45
+        //self.shownHeight = height - 45
     }
 
     func insertChats(_ chats: [Chat]) {
@@ -132,5 +152,12 @@ extension ChatViewController: UITableViewDataSource {
 }
 
 extension ChatViewController: UITableViewDelegate {
-    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y < -20 {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+                self.plainTextField.resignFirstResponder()
+            })
+        }
+    }
 }
