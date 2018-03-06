@@ -8,6 +8,7 @@ class UserProfileTableViewController: UITableViewController {
     @IBOutlet weak var createAtLabel: UILabel!
     @IBOutlet weak var contactLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var messagesButton: UIButton!
     
     let userManager = UserManager.sharedInstance
     
@@ -62,7 +63,11 @@ class UserProfileTableViewController: UITableViewController {
     
     @IBAction func sendMessages(_ sender: Any) {
         if userManager.login {
-            performSegue(withIdentifier: "chatSegue", sender: self)
+            if userManager.isCurrentUser(user!) {
+                showTip(NSLocalizedString("chats_self_not_allow", comment: ""))
+            } else {
+                performSegue(withIdentifier: "chatSegue", sender: self)
+            }
         } else {
             showLoginAlert()
         }

@@ -830,7 +830,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="g3Z-QK-ck2">
-                        <barButtonItem key="rightBarButtonItem" image="tab_chat" id="gGb-iG-V5x">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" image="tab_chat" id="gGb-iG-V5x">
                             <connections>
                                 <segue destination="q8n-zZ-qMO" kind="push" identifier="chatSegue" id="gAB-gA-hsq"/>
                             </connections>
@@ -1815,6 +1815,7 @@
                         <outlet property="contactLabel" destination="2S1-cP-7gH" id="MCf-9N-3pe"/>
                         <outlet property="createAtLabel" destination="jhh-uq-ddu" id="4KH-Yl-v5j"/>
                         <outlet property="emailLabel" destination="Jw2-7U-3tS" id="LY8-zJ-X6e"/>
+                        <outlet property="messagesButton" destination="mz6-sf-ViA" id="hIo-Y6-tSn"/>
                         <outlet property="nameLabel" destination="Qkc-zq-rbh" id="Iuo-mf-gfM"/>
                         <segue destination="q8n-zZ-qMO" kind="push" identifier="chatSegue" id="EM0-1q-ejt"/>
                     </connections>
@@ -2088,7 +2089,7 @@
         <image name="write" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gAB-gA-hsq"/>
+        <segue reference="EM0-1q-ejt"/>
         <segue reference="4oe-Tm-ohe"/>
     </inferredMetricsTieBreakers>
 </document>

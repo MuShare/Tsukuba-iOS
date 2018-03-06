@@ -46,7 +46,7 @@ class PicturesTableViewCell: UITableViewCell {
         priceLabel.text = "￥\(message.price!)"
         
         favoritesLabel.text = "\(message.favorites!)"
-        print(message.favorite)
+
         favoriteButton.isSelected = message.favorite
     }
     

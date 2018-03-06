@@ -10,6 +10,7 @@ import SwiftyUserDefaults
 import Alamofire
 
 extension DefaultsKeys {
+    static let uid = DefaultsKey<String?>("uid")
     static let type = DefaultsKey<String?>("type")
     static let identifier = DefaultsKey<String?>("identifier")
     static let name = DefaultsKey<String?>("name")

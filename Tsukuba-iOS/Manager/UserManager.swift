@@ -38,6 +38,15 @@ class UserManager {
             return Defaults[.token] ?? ""
         }
     }
+    
+    var uid: String {
+        set {
+            Defaults[.uid] = newValue
+        }
+        get {
+            return Defaults[.uid] ?? ""
+        }
+    }
 
     var type: String {
         set {
@@ -110,7 +119,14 @@ class UserManager {
     
     var avatarUploadingProgress: Double! = 0
     
-
+    func isCurrentUser(_ user: User) -> Bool {
+        // If user id is empty, load it from server.
+        if self.uid == "" {
+            self.userRev = 0
+            pullUser(completion:nil)
+        }
+        return user.uid == self.uid
+    }
     
     func pullUser(completion: ((Bool) -> Void)?) {
         let params: Parameters = [
@@ -132,6 +148,9 @@ class UserManager {
                     self.contact = user["contact"].stringValue
                     self.address = user["address"].stringValue
                     self.userRev = user["rev"].intValue
+                    if self.uid == "" {
+                        self.uid = user["uid"].stringValue
+                    }
                 }
                 completion?(true)
             } else {
@@ -180,6 +199,7 @@ class UserManager {
                 self.type = UserTypeEmail;
                 self.token = result["token"].stringValue
                 let user = result["user"]
+                self.uid = user["uid"].stringValue
                 self.identifier = email
                 self.name = user["name"].stringValue
                 self.avatar = user["avatar"].stringValue
@@ -228,6 +248,7 @@ class UserManager {
                 self.type = UserTypeFacebook;
                 self.token = result["token"].stringValue
                 let user = result["user"]
+                self.uid = user["uid"].stringValue
                 self.identifier = user["identifier"].stringValue
                 self.name = user["name"].stringValue
                 self.avatar = user["avatar"].stringValue

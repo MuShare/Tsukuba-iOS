@@ -33,7 +33,6 @@ class MainViewController: UITabBarController {
     
     func checkRoomStatus() {
         chatManager.roomStatus { (success) in
-            print(success)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationType.didSyncRoomStatus.rawValue),
                                             object: nil,
                                             userInfo: nil)

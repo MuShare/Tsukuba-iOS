@@ -79,3 +79,4 @@ report_user_message = "You can report this user if he/she has abusive, sexy or v
 
 chats_chats = "Chats";
 chats_loading = "Loading...";
+chats_self_not_allow = "Do not allow to chat with yourself.";

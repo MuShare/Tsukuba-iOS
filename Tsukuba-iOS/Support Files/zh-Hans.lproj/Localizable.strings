@@ -79,3 +79,4 @@ report_user_message = "如果该用户有粗鲁，色情或者暴力行为，你
 
 chats_chats = "Chats";
 chats_loading = "Loading...";
+chats_self_not_allow = "Do not allow to chat with yourself.";

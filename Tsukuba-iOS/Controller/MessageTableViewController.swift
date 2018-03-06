@@ -4,6 +4,7 @@ import ESPullToRefresh
 class MessageTableViewController: UITableViewController {
     
     let messageManager = MessageManager.sharedInstance
+    let userManager = UserManager.sharedInstance
 
     var messageId: String!
     var message: Message? = nil
@@ -28,6 +29,10 @@ class MessageTableViewController: UITableViewController {
                     self.navigationItem.title = message!.title
                     self.tableView.reloadData()
                     self.tableView.es.stopPullToRefresh(ignoreDate: true, ignoreFooter: true)
+
+                    if !self.userManager.isCurrentUser(message!.author!) {
+                        self.navigationItem.rightBarButtonItem?.isEnabled = true
+                    }
                 }
             }
         }
