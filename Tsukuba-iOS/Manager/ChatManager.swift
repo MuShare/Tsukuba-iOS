@@ -147,4 +147,8 @@ class ChatManager {
         }
     }
     
+    func clearAll() {
+        
+    }
+    
 }

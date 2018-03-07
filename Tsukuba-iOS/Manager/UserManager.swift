@@ -330,7 +330,9 @@ class UserManager {
     
     func logout() {
         self.login = false
+        // Clear all user info.
         self.userRev = 0
+        self.uid = ""
         self.token = ""
         self.type = ""
         self.name = ""
@@ -338,6 +340,9 @@ class UserManager {
         self.identifier = ""
         self.address = ""
         self.contact = ""
+        // Delete all chats and rooms.
+        dao.chatDao.deleteAll()
+        dao.roomDao.deleteAll()
     }
     
     func uploadAvatar(_ image: UIImage, completion: ((Bool) -> Void)?) {

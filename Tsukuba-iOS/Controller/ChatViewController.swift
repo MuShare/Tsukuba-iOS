@@ -50,13 +50,7 @@ class ChatViewController: EditingViewController {
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveChatNotification), name: NSNotification.Name(rawValue: NotificationType.didReceivedChat.rawValue), object: nil)
-        
-        RxKeyboard.instance.frame
-            .drive(onNext: { frame in
-                print(frame)
-            })
-            .disposed(by: disposeBag)
-        
+
         RxKeyboard.instance.visibleHeight
             .drive(onNext: { keyboardVisibleHeight in
                 UIView.animate(withDuration: 0.5, animations: {
