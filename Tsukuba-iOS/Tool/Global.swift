@@ -9,11 +9,11 @@
 import Foundation
 import Alamofire
 
-let DEBUG = true
+let DEBUG = false
 
 // Server base url
 let baseUrl = "https://tsukuba.mushare.cn/"
-//let baseUrl = "http://192.168.42.11:8080/"
+//let baseUrl = "http://10.42.0.166:8080/"
 
 func createUrl(_ relative: String) -> String {
     let requestUrl = baseUrl + relative

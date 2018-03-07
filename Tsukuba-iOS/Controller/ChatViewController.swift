@@ -113,6 +113,7 @@ class ChatViewController: EditingViewController {
     // MARK: Action
     @IBAction func send(_ sender: Any) {
         let content = plainTextField.text!
+        print(content.count)
         if content == "" {
             return
         }
