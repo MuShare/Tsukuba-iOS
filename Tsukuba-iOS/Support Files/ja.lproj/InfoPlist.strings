@@ -7,6 +7,6 @@
 */
 
 CFBundleDisplayName = "つくば同窓";
-NSPhotoLibraryUsageDescription = "Tsukuba eBuy will use your photo library when you want to upload your avatar or pictures in your message.";
-NSCameraUsageDescription = "Tsukuba eBuy will use your camera when you want to upload your avatar or pictures in your message.";
+NSPhotoLibraryUsageDescription = "ユーザーのプロファイル写真のアップロードの際、つくば同窓は写真ライブラリーを使います。";
+NSCameraUsageDescription = "ユーザーのプロファイル写真のアップロードの際、つくば同窓はカメラを使います。";
 FacebookDisplayName = "つくば同窓";

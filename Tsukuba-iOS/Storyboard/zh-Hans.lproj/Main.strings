@@ -199,7 +199,7 @@
 //2018-01-24 11:40:28
 
 /* Class = "UIButton"; normalTitle = "Messages"; ObjectID = "mz6-sf-ViA"; */
-"mz6-sf-ViA.normalTitle" = "Messages";
+"mz6-sf-ViA.normalTitle" = "消息";
 
 //2018-01-29 16:17:16
 
@@ -214,42 +214,36 @@
 //2018-01-30 14:43:21
 
 /* Class = "UIButton"; normalTitle = "Send"; ObjectID = "kkw-c3-znN"; */
-"kkw-c3-znN.normalTitle" = "Send";
+"kkw-c3-znN.normalTitle" = "发送";
 
 //2018-01-30 15:15:47
 
-/* Class = "UITabBarItem"; title = "Chat"; ObjectID = "772-fD-A1M"; */
-//"772-fD-A1M.title" = "Chat";
-
-/* Class = "UITabBarItem"; title = "Item 1"; ObjectID = "pui-hi-GgW"; */
-//"pui-hi-GgW.title" = "Item 1";
-
 /* Class = "UITabBarItem"; title = "Posts"; ObjectID = "ffz-Iq-f3I"; */
-"ffz-Iq-f3I.title" = "Posts";
-
-//2018-01-30 15:31:37
+"ffz-Iq-f3I.title" = "帖子";
 
 /* Class = "UITabBarItem"; title = "Me"; ObjectID = "F6u-YY-uvZ"; */
-"F6u-YY-uvZ.title" = "Me";
+"F6u-YY-uvZ.title" = "我的";
 
-/* Class = "UITabBarItem"; title = "Posts"; ObjectID = "2E6-Hr-tZc"; */
-"2E6-Hr-tZc.title" = "Posts";
+/* Class = "UITabBarItem"; title = "Chats"; ObjectID = "2E6-Hr-tZc"; */
+"2E6-Hr-tZc.title" = "聊天";
 
 //2018-01-30 15:53:37
 
 /* Class = "UILabel"; text = "Message"; ObjectID = "krs-n0-R8U"; */
-"krs-n0-R8U.text" = "Message";
+"krs-n0-R8U.text" = "消息";
 
 /* Class = "UINavigationItem"; title = "Chat"; ObjectID = "zEZ-vJ-oZl"; */
-"zEZ-vJ-oZl.title" = "Chat";
+"zEZ-vJ-oZl.title" = "聊天";
 
 /* Class = "UILabel"; text = "Name"; ObjectID = "aq1-tY-8ZB"; */
-"aq1-tY-8ZB.text" = "Name";
-
-/* Class = "UILabel"; text = "2018/
-"ne0-h5-cTz.text" = "2018/01/01";
+"aq1-tY-8ZB.text" = "姓名";
 
 //2018-03-06 10:59:08
 
 /* Class = "UILabel"; text = "1"; ObjectID = "2ag-VE-ZeV"; */
 "2ag-VE-ZeV.text" = "1";
+
+//2018-03-07 22:34:09
+
+/* Class = "UILabel"; text = "Jan 01, 2018"; ObjectID = "ne0-h5-cTz"; */
+"ne0-h5-cTz.text" = "Jan 01, 2018";
