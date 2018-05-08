@@ -140,7 +140,7 @@ extension ChatViewController: UITableViewDataSource {
         let isSender = (chat.room?.creator)! ? chat.direction : !chat.direction
         let identifier = isSender ?  "senderIdentifier" : "receiverIdentifier"
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ChatTableViewCell
-        cell.fill(avatar: chat.direction ? userManager.avatar : (chat.room?.receiverAvatar)!,
+        cell.fill(avatar: chat.direction ? (chat.room?.receiverAvatar)! : userManager.avatar,
                   message: chat.content!)
         return cell
     }
