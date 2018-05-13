@@ -1,5 +1,6 @@
 import Alamofire
 import SwiftyUserDefaults
+import Starscream
 
 class ChatManager {
     
@@ -7,6 +8,7 @@ class ChatManager {
     
     var dao: DaoManager!
     var config: Config!
+    var socket: WebSocket!
     
     static let sharedInstance: ChatManager = {
         let instance = ChatManager()
@@ -16,6 +18,13 @@ class ChatManager {
     init() {
         dao = DaoManager.sharedInstance
         config = Config.sharedInstance
+        
+        var request = URLRequest(url: URL(string: socketUrl + "?token=\(config.token)")!)
+        request.timeoutInterval = 5
+        
+        socket = WebSocket(request: request)
+        socket.delegate = self
+        socket.connect()
     }
     
     func sendPlainText(receiver: String, content: String, completion: ChatCompletion) {
@@ -23,6 +32,7 @@ class ChatManager {
             "receiver": receiver,
             "content": content
         ]
+        
         Alamofire.request(createUrl("api/chat/text"),
                           method: .post,
                           parameters: params,
@@ -149,6 +159,36 @@ class ChatManager {
     
     func clearAll() {
         
+    }
+    
+}
+
+extension ChatManager: WebSocketDelegate {
+    
+    func websocketDidConnect(socket: WebSocketClient) {
+        print("websocket is connected")
+    }
+    
+    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
+        if let e = error as? WSError {
+            print("websocket is disconnected: \(e.message)")
+        } else if let e = error {
+            print("websocket is disconnected: \(e.localizedDescription)")
+        } else {
+            print("websocket disconnected")
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            socket.connect()
+        }
+    }
+    
+    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
+        print("Received text: \(text)")
+    }
+    
+    func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
+        print("Received data: \(data.count)")
     }
     
 }

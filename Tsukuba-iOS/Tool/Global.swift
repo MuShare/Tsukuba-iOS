@@ -12,8 +12,9 @@ import Alamofire
 let DEBUG = false
 
 // Server base url
-let baseUrl = "https://tsukuba.mushare.cn/"
-//let baseUrl = "http://10.42.0.166:8080/"
+//let baseUrl = "https://tsukuba.mushare.cn/"
+let baseUrl = "http://169.254.150.105:8080/"
+let socketUrl = "ws://169.254.150.105:8080/websocket/chat"
 
 func createUrl(_ relative: String) -> String {
     let requestUrl = baseUrl + relative
