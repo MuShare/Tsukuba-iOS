@@ -17,8 +17,8 @@ import AudioToolbox
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let config = Config.sharedInstance
-    let deviceManager = DeviceManager.sharedInstance
+    let config = Config.shared
+    let deviceManager = DeviceManager.shared
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         

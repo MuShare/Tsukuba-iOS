@@ -9,11 +9,11 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var nodataImageView: UIImageView!
     @IBOutlet weak var nodataLabel: UILabel!
     
-    let dao = DaoManager.sharedInstance
-    let sync = SyncManager.sharedInstance
-    let user = UserManager.sharedInstance
-    let messageManager = MessageManager.sharedInstance
-    let config = Config.sharedInstance
+    let dao = DaoManager.shared
+    let sync = SyncManager.shared
+    let user = UserManager.shared
+    let messageManager = MessageManager.shared
+    let config = Config.shared
     
     var categories: [Category]!
     var cid: String? = nil

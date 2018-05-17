@@ -6,19 +6,10 @@ let UserTypeFacebook = "facebook"
 
 class UserManager {
     
-    var dao: DaoManager!
-    var config: Config!
-    var deviceManager: DeviceManager!
-    
-    static let sharedInstance: UserManager = {
-        let instance = UserManager()
-        return instance
-    }()
-    
+    static let shared = UserManager()
+
     init() {
-        dao = DaoManager.sharedInstance
-        config = Config.sharedInstance
-        deviceManager = DeviceManager.sharedInstance
+
     }
     
     var login: Bool {
@@ -136,7 +127,7 @@ class UserManager {
                           method: .get,
                           parameters: params,
                           encoding: URLEncoding.default,
-                          headers: config.tokenHeader)
+                          headers: Config.shared.tokenHeader)
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             if response.statusOK() {
@@ -184,7 +175,7 @@ class UserManager {
             "deviceToken": Defaults[.deviceToken] ?? "",
             "os": "iOS",
             "version": UIDevice.current.systemVersion,
-            "lan": config.lan
+            "lan": Config.shared.lan
         ]
         Alamofire.request(createUrl("api/user/login/email"),
                           method: .post,
@@ -208,8 +199,8 @@ class UserManager {
                 self.userRev = user["rev"].intValue
                 self.login = true
                 // Upload device token.
-                if self.config.deviceToken != "" {
-                    self.deviceManager.uploadDeviceToken(self.config.deviceToken, completion: nil)
+                if Config.shared.deviceToken != "" {
+                    DeviceManager.shared.uploadDeviceToken(Config.shared.deviceToken, completion: nil)
                 }
                 completion?(true, nil);
             } else {
@@ -232,7 +223,7 @@ class UserManager {
             "deviceToken": Defaults[.deviceToken] ?? "",
             "os": "iOS",
             "version": UIDevice.current.systemVersion,
-            "lan": config.lan
+            "lan": Config.shared.lan
         ]
 
         Alamofire.request(createUrl("/api/user/login/facebook"),
@@ -257,8 +248,8 @@ class UserManager {
                 self.userRev = user["rev"].intValue
                 self.login = true
                 // Upload device token.
-                if self.config.deviceToken != "" {
-                    self.deviceManager.uploadDeviceToken(self.config.deviceToken, completion: nil)
+                if Config.shared.deviceToken != "" {
+                    DeviceManager.shared.uploadDeviceToken(Config.shared.deviceToken, completion: nil)
                 }
                 completion?(true, nil);
             } else {
@@ -275,14 +266,14 @@ class UserManager {
     func reset(email: String, comletion:((Bool, String?) -> Void)?) {
         let params: Parameters = [
             "email": email,
-            "lan": config.lan
+            "lan": Config.shared.lan
         ]
         
         Alamofire.request(createUrl("api/user/modify/password"),
                           method: .get,
                           parameters: params,
                           encoding: URLEncoding.default,
-                          headers: config.tokenHeader)
+                          headers: Config.shared.tokenHeader)
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             if response.statusOK() {
@@ -341,8 +332,8 @@ class UserManager {
         self.address = ""
         self.contact = ""
         // Delete all chats and rooms.
-        dao.chatDao.deleteAll()
-        dao.roomDao.deleteAll()
+        DaoManager.shared.chatDao.deleteAll()
+        DaoManager.shared.roomDao.deleteAll()
     }
     
     func uploadAvatar(_ image: UIImage, completion: ((Bool) -> Void)?) {
@@ -353,7 +344,7 @@ class UserManager {
                          usingThreshold: UInt64.init(),
                          to: createUrl("api/user/avatar"),
                          method: .post,
-                         headers: config.tokenHeader,
+                         headers: Config.shared.tokenHeader,
                          encodingCompletion:
             { encodingResult in
                 switch encodingResult {
@@ -392,7 +383,7 @@ class UserManager {
                           method: .post,
                           parameters: params,
                           encoding: URLEncoding.default,
-                          headers: config.tokenHeader)
+                          headers: Config.shared.tokenHeader)
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             if response.statusOK() {

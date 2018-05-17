@@ -6,18 +6,17 @@ class MyProfileTableViewController: UITableViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var contactTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
-
-    let user = UserManager.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setCustomBack()
         
+        let user = UserManager.shared
         if user.contact == "" || user.address == "" || user.avatar == "" {
             showTip(NSLocalizedString("fill_user_info", comment: ""))
         }
         
-        if user.login {
+        if UserManager.shared.login {
             avatarImageView.kf.setImage(with: user.avatarURL)
             nameTextField.text = user.name
             contactTextField.text = user.contact
@@ -26,8 +25,8 @@ class MyProfileTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if user.login {
-            avatarImageView.kf.setImage(with: user.avatarURL)
+        if UserManager.shared.login {
+            avatarImageView.kf.setImage(with: UserManager.shared.avatarURL)
         }
     }
 
@@ -44,7 +43,7 @@ class MyProfileTableViewController: UITableViewController {
         }
         
         self.replaceBarButtonItemWithActivityIndicator()
-        user.modify(name: nameTextField.text!,
+        UserManager.shared.modify(name: nameTextField.text!,
                     contact: contactTextField.text!,
                     address: addressTextField.text!)
         { (success) in

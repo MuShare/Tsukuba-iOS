@@ -2,16 +2,11 @@ import Alamofire
 import SwiftyUserDefaults
 
 class DeviceManager {
-    
-    var config: Config!
-    
-    static let sharedInstance: DeviceManager = {
-        let instance = DeviceManager()
-        return instance
-    }()
-    
+
+    static let shared = DeviceManager()
+
     init() {
-        config = Config.sharedInstance
+
     }
     
     func uploadDeviceToken(_ token: String, completion: ((Bool) -> Void)?) {
@@ -22,7 +17,7 @@ class DeviceManager {
                           method: .post,
                           parameters: params,
                           encoding: URLEncoding.default,
-                          headers: config.tokenHeader)
+                          headers: Config.shared.tokenHeader)
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             completion?(response.statusOK() ? response.getResult()["success"].boolValue : false)

@@ -10,14 +10,11 @@ class ChatManager {
     var config: Config!
     var socket: WebSocket!
     
-    static let sharedInstance: ChatManager = {
-        let instance = ChatManager()
-        return instance
-    }()
+    static let shared = ChatManager()
     
     init() {
-        dao = DaoManager.sharedInstance
-        config = Config.sharedInstance
+        dao = DaoManager.shared
+        config = Config.shared
         
         var request = URLRequest(url: URL(string: socketUrl + "?token=\(config.token)")!)
         request.timeoutInterval = 5

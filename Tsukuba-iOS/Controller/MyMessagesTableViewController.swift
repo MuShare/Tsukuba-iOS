@@ -5,8 +5,8 @@ class MyMessagesTableViewController: UITableViewController {
     
     var sell = true
     
-    let user = UserManager.sharedInstance
-    let messageManager = MessageManager.sharedInstance
+    let user = UserManager.shared
+    let messageManager = MessageManager.shared
     var messages: [Message] = []
     var selectedMessage: Message!
 

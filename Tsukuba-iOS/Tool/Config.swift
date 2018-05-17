@@ -32,6 +32,8 @@ extension DefaultsKeys {
 
 class Config {
     
+    static let shared = Config()
+    
     var categoryRev: Int {
         set(value) {
             Defaults[.categoryRev] = value
@@ -112,10 +114,5 @@ class Config {
             return Defaults[.deviceToken] ?? ""
         }
     }
-
-    static let sharedInstance: Config = {
-        let instance = Config()
-        return instance
-    }()
     
 }

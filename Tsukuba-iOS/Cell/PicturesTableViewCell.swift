@@ -13,7 +13,7 @@ class PicturesTableViewCell: UITableViewCell {
     @IBOutlet weak var favoritesLabel: UILabel!
     
     var message: Message!
-    let messageManager = MessageManager.sharedInstance
+    let messageManager = MessageManager.shared
     
     let formatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -51,7 +51,7 @@ class PicturesTableViewCell: UITableViewCell {
     }
     
     @IBAction func favoriteMessage(_ sender: Any) {
-        if !UserManager.sharedInstance.login {
+        if !UserManager.shared.login {
             self.parentViewController?.showLoginAlert()
         }
         

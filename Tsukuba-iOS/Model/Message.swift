@@ -52,7 +52,7 @@ class Message {
             for oid in oidsJSONArray {
                 oids.append(oid.stringValue)
             }
-            for option in DaoManager.sharedInstance.optionDao.findInOids(oids) {
+            for option in DaoManager.shared.optionDao.findInOids(oids) {
                 options.append(option)
             }
         }

@@ -12,8 +12,6 @@ class LoginViewController: EditingViewController, NVActivityIndicatorViewable {
     @IBOutlet weak var facebookLoginButton: UIButton!
     @IBOutlet weak var facebookLoadingActivityIndicatorView: UIActivityIndicatorView!
     
-    let user = UserManager.sharedInstance
-    
     override func viewDidLoad() {
         //Set background image
         let backgroundImageView: UIImageView = {
@@ -46,7 +44,7 @@ class LoginViewController: EditingViewController, NVActivityIndicatorViewable {
         finishEdit()
         startAnimating()
         
-        user.login(email: emailTextField.text!, password: passwordTextField.text!) { (success, message) in
+        UserManager.shared.login(email: emailTextField.text!, password: passwordTextField.text!) { (success, message) in
             self.stopAnimating()
             if success {
                 self.dismiss(animated: true, completion: nil)
@@ -71,7 +69,7 @@ class LoginViewController: EditingViewController, NVActivityIndicatorViewable {
                 }
             case .success(_, _, let accessToken):
                 self.startAnimating()
-                self.user.facebookLogin(accessToken.authenticationToken, completion: { (success, message) in
+                UserManager.shared.facebookLogin(accessToken.authenticationToken, completion: { (success, message) in
                     self.stopAnimating()
                     if success {
                         self.dismiss(animated: true, completion: nil)

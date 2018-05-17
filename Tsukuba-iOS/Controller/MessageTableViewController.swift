@@ -3,8 +3,8 @@ import ESPullToRefresh
 
 class MessageTableViewController: UITableViewController {
     
-    let messageManager = MessageManager.sharedInstance
-    let userManager = UserManager.sharedInstance
+    let messageManager = MessageManager.shared
+    let userManager = UserManager.shared
 
     var messageId: String!
     var message: Message? = nil

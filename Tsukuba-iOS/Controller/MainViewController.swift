@@ -10,8 +10,8 @@ import UIKit
 
 class MainViewController: UITabBarController {
     
-    let chatManager = ChatManager.sharedInstance
-    let config = Config.sharedInstance
+    let chatManager = ChatManager.shared
+    let config = Config.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()

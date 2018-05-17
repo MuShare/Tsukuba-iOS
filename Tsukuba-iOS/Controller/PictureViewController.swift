@@ -12,7 +12,7 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var uploadButton: UIButton!
     @IBOutlet weak var picturesCollectionView: UICollectionView!
     
-    let messageManager = MessageManager.sharedInstance
+    let messageManager = MessageManager.shared
     
     var mid: String!
     var doneType: PictureViewControllerDoneType = .dismiss
@@ -102,7 +102,7 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         let picturesCount = pictures.count
         let pid = indexPath.row < picturesCount ? pictures[indexPath.row].pid : pids[indexPath.row - picturesCount]
         cell.startLoading()
-        MessageManager.sharedInstance.removePicture(pid!) { (success) in
+        MessageManager.shared.removePicture(pid!) { (success) in
             if success {
                 if indexPath.row < picturesCount {
                     self.pictures.remove(at: indexPath.row)

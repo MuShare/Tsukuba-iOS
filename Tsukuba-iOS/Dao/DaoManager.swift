@@ -10,10 +10,7 @@ class DaoManager {
     let roomDao: RoomDao!
     let chatDao: ChatDao!
     
-    static let sharedInstance : DaoManager = {
-        let instance = DaoManager()
-        return instance
-    }()
+    static let shared = DaoManager()
     
     init() {
         let delegate = UIApplication.shared.delegate as! AppDelegate

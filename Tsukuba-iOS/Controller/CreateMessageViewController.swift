@@ -4,8 +4,8 @@ import NVActivityIndicatorView
 
 class CreateMessageViewController: FormViewController, NVActivityIndicatorViewable {
 
-    let dao = DaoManager.sharedInstance
-    let messgaeManager = MessageManager.sharedInstance
+    let dao = DaoManager.shared
+    let messgaeManager = MessageManager.shared
     
     var category: Category!
     var selections: [Selection]!

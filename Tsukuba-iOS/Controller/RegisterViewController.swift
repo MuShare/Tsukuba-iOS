@@ -10,7 +10,7 @@ class RegisterViewController: EditingViewController, NVActivityIndicatorViewable
     @IBOutlet weak var registerSuccessImageView: UIImageView!
     @IBOutlet weak var loadingActivityIndicatorView: UIActivityIndicatorView!
     
-    let user = UserManager.sharedInstance
+    let user = UserManager.shared
     
     var registered = false
 

@@ -18,10 +18,6 @@ class ChatViewController: EditingViewController {
     @IBOutlet weak var toolBarView: UIView!
     @IBOutlet weak var sendButton: UIButton!
     
-    let userManager = UserManager.sharedInstance
-    let chatManager = ChatManager.sharedInstance
-    let dao = DaoManager.sharedInstance
-    
     var receiver: User!
     var chats: [Chat] = []
     var room: Room?
@@ -38,15 +34,17 @@ class ChatViewController: EditingViewController {
         
         navigationItem.title = receiver.name
         
-        room = dao.roomDao.getByReceiverId(receiver.uid)
+        room = DaoManager.shared.roomDao.getByReceiverId(receiver.uid)
         if room != nil {
-            chats = dao.chatDao.findByRoom(room!)
-            chatManager.syncChat(room!, completion: { (success, chats, message) in
-                self.chats.append(contentsOf: chats)
-                self.tableView.reloadData()
-                self.gotoBottom(false)
-                self.chatManager.clearUnread(self.room!)
-            })
+            chats = DaoManager.shared.chatDao.findByRoom(room!)
+            ChatManager.shared.syncChat(room!) { [weak self] (success, chats, message) in
+                self?.chats.append(contentsOf: chats)
+                self?.tableView.reloadData()
+                self?.gotoBottom(false)
+                if let room = self?.room {
+                    ChatManager.shared.clearUnread(room)
+                }
+            }
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveChatNotification), name: NSNotification.Name(rawValue: NotificationType.didReceivedChat.rawValue), object: nil)
@@ -103,10 +101,12 @@ class ChatViewController: EditingViewController {
     func didReceiveChatNotification(_ notification: Notification) {
         let receiverId = JSON(notification.userInfo!)["uid"].stringValue
         if receiverId == receiver.uid {
-            chatManager.syncChat(room!, completion: { (success, chats, message) in
-                self.insertChats(chats)
-                self.chatManager.clearUnread(self.room!)
-            })
+            ChatManager.shared.syncChat(room!) { [weak self] (success, chats, message) in
+                self?.insertChats(chats)
+                if let room = self?.room {
+                    ChatManager.shared.clearUnread(room)
+                }
+            }
         }
     }
 
@@ -119,8 +119,8 @@ class ChatViewController: EditingViewController {
         }
         plainTextField.text = ""
         plainTextField.resignFirstResponder()
-        chatManager.sendPlainText(receiver: receiver.uid, content: content) { (success, chats, message) in
-            self.insertChats(chats)
+        ChatManager.shared.sendPlainText(receiver: receiver.uid, content: content) { [weak self] (success, chats, message) in
+            self?.insertChats(chats)
         }
     }
     
@@ -140,7 +140,7 @@ extension ChatViewController: UITableViewDataSource {
         let isSender = (chat.room?.creator)! ? chat.direction : !chat.direction
         let identifier = isSender ?  "senderIdentifier" : "receiverIdentifier"
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ChatTableViewCell
-        cell.fill(avatar: chat.direction ? (chat.room?.receiverAvatar)! : userManager.avatar,
+        cell.fill(avatar: chat.direction ? (chat.room?.receiverAvatar)! : UserManager.shared.avatar,
                   message: chat.content!)
         return cell
     }

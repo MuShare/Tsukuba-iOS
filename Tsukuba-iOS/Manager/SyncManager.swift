@@ -8,14 +8,11 @@ class SyncManager {
     var dao: DaoManager!
     var config: Config!
     
-    static let sharedInstance: SyncManager = {
-        let instance = SyncManager()
-        return instance
-    }()
+    static let shared = SyncManager()
     
     init() {
-        dao = DaoManager.sharedInstance
-        config = Config.sharedInstance
+        dao = DaoManager.shared
+        config = Config.shared
     }
 
     func pullCategory(_ completionHandler: ((Int, Bool) -> Void)?) {

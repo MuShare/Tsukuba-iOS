@@ -11,9 +11,9 @@ import ESPullToRefresh
 
 class RoomsTableViewController: UITableViewController {
     
-    let dao = DaoManager.sharedInstance
-    let userManager = UserManager.sharedInstance
-    let chatManager = ChatManager.sharedInstance
+    let dao = DaoManager.shared
+    let userManager = UserManager.shared
+    let chatManager = ChatManager.shared
     
     var rooms: [Room] = []
     var selectedRoom: Room!

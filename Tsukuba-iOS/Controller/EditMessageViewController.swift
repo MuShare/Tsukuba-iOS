@@ -4,8 +4,8 @@ import NVActivityIndicatorView
 
 class EditMessageViewController: FormViewController, NVActivityIndicatorViewable {
 
-    let dao = DaoManager.sharedInstance
-    let messageManager = MessageManager.sharedInstance
+    let dao = DaoManager.shared
+    let messageManager = MessageManager.shared
     
     var messageId: String!
     var message: Message!

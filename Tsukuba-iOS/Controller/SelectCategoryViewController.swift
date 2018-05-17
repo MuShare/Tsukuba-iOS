@@ -4,8 +4,8 @@ class SelectCategoryViewController: UIViewController, UICollectionViewDataSource
 
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     
-    let dao = DaoManager.sharedInstance
-    let config = Config.sharedInstance
+    let dao = DaoManager.shared
+    let config = Config.shared
     
     var categories: [Category]!
     var selectedCategory: Category!

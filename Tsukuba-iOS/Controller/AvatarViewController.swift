@@ -6,7 +6,7 @@ class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet var uploadButton: UIButton!
     
-    let user = UserManager.sharedInstance
+    let user = UserManager.shared
     let imagePickerController = UIImagePickerController()
     var timer: Timer? = nil
 

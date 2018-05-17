@@ -46,7 +46,7 @@ class ReceiverTableViewCell: UITableViewCell {
     func fill(_ room: Room) {
         avatarImageView.kf.setImage(with: imageURL(room.receiverAvatar!))
         nameLabel.text = room.receiverName!
-        let updateAt = room.updateAt as! Date
+        let updateAt = room.updateAt! as Date
         if calendar.isDateInToday(updateAt) {
             timeLabel.text = timeFormatter.string(for: updateAt)
         } else if calendar.isDateInYesterday(updateAt) {

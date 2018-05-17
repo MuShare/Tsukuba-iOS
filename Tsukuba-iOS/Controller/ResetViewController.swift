@@ -10,7 +10,7 @@ class ResetViewController: EditingViewController, NVActivityIndicatorViewable {
     @IBOutlet weak var tipLabel: UILabel!
 
     
-    let user = UserManager.sharedInstance
+    let user = UserManager.shared
     var submit = false
     
     override func viewDidLoad() {

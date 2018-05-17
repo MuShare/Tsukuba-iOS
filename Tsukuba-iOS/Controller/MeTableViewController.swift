@@ -8,7 +8,7 @@ class MeTableViewController: UITableViewController {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var signOutTableViewCell: UITableViewCell!
     
-    let user = UserManager.sharedInstance
+    let user = UserManager.shared
     var messageSell = true
     
     

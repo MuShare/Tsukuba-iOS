@@ -7,8 +7,8 @@ class MyFavoritesViewController: UIViewController, UICollectionViewDataSource, U
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let messageManager = MessageManager.sharedInstance
-    let config = Config.sharedInstance
+    let messageManager = MessageManager.shared
+    let config = Config.shared
     
     var messages: [Message] = []
     var selectedMessage: Message!
