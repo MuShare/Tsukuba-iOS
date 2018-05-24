@@ -21,5 +21,10 @@ extension UIViewController {
     func closeView(){
         self.navigationController?.popViewController(animated: true)
     }
+    
+    func hideFooterView(for tableView: UITableView) {
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
+        tableView.tableFooterView?.backgroundColor = UIColor.clear
+    }
 
 }

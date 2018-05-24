@@ -10,11 +10,10 @@ class MeTableViewController: UITableViewController {
     
     let user = UserManager.shared
     var messageSell = true
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        hideFooterView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,44 +30,6 @@ class MeTableViewController: UITableViewController {
         }
     }
 
-    // MARK: - Table view data source
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.01
-    }
-    
-    // MARK: - UITableViewDelegate
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)!
-        if cell.reuseIdentifier == nil {
-            return
-        }
-        switch cell.reuseIdentifier! {
-        case "sign":
-            if (user.login) {
-                self.performSegue(withIdentifier:"profileSegue", sender: self)
-            } else {
-                present(UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()!,
-                        animated: true, completion: nil)
-            }
-        case "myMessages":
-            if user.login {
-                performSegue(withIdentifier: "myMessagesSegue", sender: "")
-            } else {
-                showLoginAlert()
-            }
-        case "myFavorites":
-            if user.login {
-                performSegue(withIdentifier: "myFavoritesSegue", sender: "")
-            } else {
-                showLoginAlert()
-            }
-        case "github":
-            UIApplication.shared.openURL(URL.init(string: "https://github.com/MuShare/Tsukuba-iOS")!)
-        default:
-            break
-        }
-    }
-    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
@@ -112,4 +73,39 @@ class MeTableViewController: UITableViewController {
         }
     }
     
+}
+
+// MARK: - UITableViewDelegate
+extension MeTableViewController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)!
+        if cell.reuseIdentifier == nil {
+            return
+        }
+        switch cell.reuseIdentifier! {
+        case "sign":
+            if (user.login) {
+                self.performSegue(withIdentifier:"profileSegue", sender: self)
+            } else {
+                present(UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()!,
+                        animated: true, completion: nil)
+            }
+        case "myMessages":
+            if user.login {
+                performSegue(withIdentifier: "myMessagesSegue", sender: "")
+            } else {
+                showLoginAlert()
+            }
+        case "myFavorites":
+            if user.login {
+                performSegue(withIdentifier: "myFavoritesSegue", sender: "")
+            } else {
+                showLoginAlert()
+            }
+        case "github":
+            UIApplication.shared.openURL(URL.init(string: "https://github.com/MuShare/Tsukuba-iOS")!)
+        default:
+            break
+        }
+    }
 }
