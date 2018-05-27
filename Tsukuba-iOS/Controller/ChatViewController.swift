@@ -146,7 +146,7 @@ extension ChatViewController: UITableViewDataSource {
     }
 }
 
-extension ChatViewController: UITableViewDelegate {
+extension ChatViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y < -20 {
             UIView.animate(withDuration: 0.5, animations: {
