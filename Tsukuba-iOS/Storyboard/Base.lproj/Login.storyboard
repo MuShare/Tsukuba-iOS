@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MCu-Wf-VYP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MCu-Wf-VYP">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -189,6 +189,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.62352941179999999" green="0.38431372549999998" blue="0.6705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="18x-za-O3E" firstAttribute="top" secondItem="MQ0-he-Awb" secondAttribute="bottom" constant="68" id="3DR-RD-5KB"/>
                             <constraint firstAttribute="leadingMargin" secondItem="mq0-GG-mww" secondAttribute="leading" id="49Z-Ie-k9y"/>
@@ -215,6 +216,9 @@
                             <constraint firstItem="MQ0-he-Awb" firstAttribute="centerY" secondItem="Qaq-Ne-xf7" secondAttribute="centerY" id="tJW-t6-yDf"/>
                             <constraint firstItem="GzW-YC-032" firstAttribute="top" secondItem="0pk-vP-wgE" secondAttribute="bottom" constant="20" id="yL8-7V-ucx"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="LOG-0L-8v9" appends="YES" id="vnd-2d-csi"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="V3N-oE-2P2"/>
                     <connections>
@@ -225,6 +229,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IWh-Pe-3T0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="down" id="LOG-0L-8v9">
+                    <connections>
+                        <action selector="swipeDown:" destination="5mo-Rn-c3C" id="Zko-AL-l3C"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="413.60000000000002" y="5030.7346326836587"/>
         </scene>
@@ -261,7 +270,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Or0-vT-Ich">
                                 <rect key="frame" x="16" y="66" width="343" height="593"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <mutableString key="text">You should agree this License Agreement before using the Tsukuba Mate app.
+                                <string key="text">You should agree this License Agreement before using the Tsukuba Mate app.
 
 1. This is an agreement between Licensor and Licensee, who is being licensed to use the Tsukuba Mate app.
 
@@ -285,7 +294,7 @@
 
 11. This License Agreement is governed by the law of [State] applicable to [State] contracts.
 
-12. This License Agreement is valid without Licensor's signature. It becomes effective upon the earlier of Licensee's signature or Licensee's use of the Software.</mutableString>
+12. This License Agreement is valid without Licensor's signature. It becomes effective upon the earlier of Licensee's signature or Licensee's use of the Software.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
