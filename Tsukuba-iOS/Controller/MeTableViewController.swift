@@ -19,10 +19,10 @@ class MeTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         if user.login {
             updateUserInfo()
-            user.pullUser(completion: { (success) in
-                if success {
+            user.pullUser(completion: { [weak self] success in
+                if let `self` = self, success {
                     if (self.user.contact == "" || self.user.address == "") {
-                        self.performSegue(withIdentifier: "profileSegue", sender: self)
+                        self.performSegue(withIdentifier: R.segue.meTableViewController.profileSegue.identifier, sender: self)
                     }
                     self.updateUserInfo()
                 }
@@ -38,28 +38,23 @@ class MeTableViewController: UITableViewController {
     // MARK: - Action
     @IBAction func logout(_ sender: Any) {
         // Sign out
-        let alertController = UIAlertController(title: NSLocalizedString("sign_out_title", comment: ""),
-                                                message: NSLocalizedString("sign_out_message", comment: ""),
+        let alertController = UIAlertController(title: R.string.localizable.sign_out_title(),
+                                                message: R.string.localizable.sign_out_message(),
                                                 preferredStyle: .actionSheet)
         alertController.view.tintColor = Color.main
-        let logout = UIAlertAction(title: NSLocalizedString("yes_name", comment: ""),
-                                   style: .destructive,
-                                   handler:
-        { (action) in
+        let logout = UIAlertAction(title: R.string.localizable.yes_name(), style: .destructive) { action in
             self.user.logout()
-            self.titleLabel.text = NSLocalizedString("me_title", comment: "")
-            self.subtitleLabel.text = NSLocalizedString("me_subtitle", comment: "")
-            self.avatarImageView.image = UIImage(named: "me_user")
-        })
+            self.titleLabel.text = R.string.localizable.me_title()
+            self.subtitleLabel.text = R.string.localizable.me_subtitle()
+            self.avatarImageView.image = R.image.me_user()
+        }
         
-        let cancel = UIAlertAction(title: NSLocalizedString("cancel_name", comment: ""),
-                                   style: .cancel,
-                                   handler: nil)
+        let cancel = UIAlertAction(title: R.string.localizable.cancel_name(),style: .cancel)
         alertController.addAction(logout)
         alertController.addAction(cancel)
         alertController.popoverPresentationController?.sourceView = signOutTableViewCell;
         alertController.popoverPresentationController?.sourceRect = signOutTableViewCell.bounds;
-        self.present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true)
     }
     
     // MARK: - Service
@@ -69,7 +64,7 @@ class MeTableViewController: UITableViewController {
         if user.type == UserTypeEmail {
             subtitleLabel.text = user.identifier
         } else if user.type == UserTypeFacebook {
-            subtitleLabel.text = NSLocalizedString("sign_in_facebook", comment: "")
+            subtitleLabel.text = R.string.localizable.sign_in_facebook()
         }
     }
     
@@ -83,26 +78,25 @@ extension MeTableViewController {
             return
         }
         switch cell.reuseIdentifier! {
-        case "sign":
+        case R.reuseIdentifier.sign.identifier:
             if (user.login) {
-                self.performSegue(withIdentifier:"profileSegue", sender: self)
+                performSegue(withIdentifier:R.segue.meTableViewController.profileSegue.identifier, sender: self)
             } else {
-                present(UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()!,
-                        animated: true, completion: nil)
+                present(R.storyboard.login().instantiateInitialViewController()!, animated: true)
             }
-        case "myMessages":
+        case R.reuseIdentifier.myMessages.identifier:
             if user.login {
-                performSegue(withIdentifier: "myMessagesSegue", sender: "")
+                performSegue(withIdentifier: R.segue.meTableViewController.myMessagesSegue.identifier, sender: "")
             } else {
                 showLoginAlert()
             }
-        case "myFavorites":
+        case R.reuseIdentifier.myFavorites.identifier:
             if user.login {
-                performSegue(withIdentifier: "myFavoritesSegue", sender: "")
+                performSegue(withIdentifier: R.segue.meTableViewController.myFavoritesSegue.identifier, sender: "")
             } else {
                 showLoginAlert()
             }
-        case "github":
+        case R.reuseIdentifier.github.identifier:
             UIApplication.shared.openURL(URL.init(string: "https://github.com/MuShare/Tsukuba-iOS")!)
         default:
             break
