@@ -1,7 +1,7 @@
 import UIKit
 import NVActivityIndicatorView
 
-class ResetViewController: EditingViewController, NVActivityIndicatorViewable {
+class ResetViewController: LoginBaseViewController, NVActivityIndicatorViewable {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var submitButton: UIButton!
@@ -9,20 +9,12 @@ class ResetViewController: EditingViewController, NVActivityIndicatorViewable {
     @IBOutlet weak var sendEmailSuccessImageView: UIImageView!
     @IBOutlet weak var tipLabel: UILabel!
 
-    
     let user = UserManager.shared
     var submit = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //Set background image
-        self.view.insertSubview({
-            let view = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
-            view.image = UIImage(named: "login-bg.jpg")
-            return view
-        }(), at: 0)
-        
+
         self.navigationController?.navigationBar.isHidden = true
     }
     

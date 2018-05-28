@@ -20,6 +20,7 @@ target 'Tsukuba-iOS' do
     pod 'RxKeyboard', '~> 0.8'
     pod 'UILabel+Copyable', '~> 1.0'
     pod 'Starscream', '~> 3.0'
+    pod 'R.swift', '~> 4.0'
 end
 
 post_install do |installer|

@@ -3,7 +3,7 @@ import FacebookCore
 import FacebookLogin
 import NVActivityIndicatorView
 
-class LoginViewController: EditingViewController, NVActivityIndicatorViewable {
+class LoginViewController: LoginBaseViewController, NVActivityIndicatorViewable {
 
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
@@ -12,14 +12,8 @@ class LoginViewController: EditingViewController, NVActivityIndicatorViewable {
     @IBOutlet weak var facebookLoginButton: UIButton!
     @IBOutlet weak var facebookLoadingActivityIndicatorView: UIActivityIndicatorView!
     
-    private lazy var backgroundImageView: UIImageView = {
-        let view = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
-        view.image = UIImage(named: "login-bg.jpg")
-        return view
-    }()
-    
     override func viewDidLoad() {
-        self.view.insertSubview(backgroundImageView, at: 0)
+        super.viewDidLoad()
     }
     
     override func viewDidLayoutSubviews() {

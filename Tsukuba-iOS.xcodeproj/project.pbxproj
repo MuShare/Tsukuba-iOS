@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7792187020B7BD83004E83C1 /* UITableViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7792186F20B7BD83004E83C1 /* UITableViewController+Extension.swift */; };
+		77F1946020BCF6B7001B3F6E /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F1945F20BCF6B6001B3F6E /* R.generated.swift */; };
+		77F1946220BCFBF7001B3F6E /* LoginBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F1946120BCFBF7001B3F6E /* LoginBaseViewController.swift */; };
 		D3A30465DED0A54864830928 /* Pods_Tsukuba_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44E7EC0007342735A1D800F /* Pods_Tsukuba_iOS.framework */; };
 		E4054AE31EC48D29006BCEEC /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4054AE21EC48D29006BCEEC /* ResetViewController.swift */; };
 		E4089FB51EBAE55C0042221D /* DaoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FB31EBAE55C0042221D /* DaoManager.swift */; };
@@ -98,6 +100,8 @@
 		251F3A7B6A78E17CB718E63B /* Pods-Tsukuba-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tsukuba-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tsukuba-iOS/Pods-Tsukuba-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		6069AEC1C44BCF1C385A7547 /* Pods-Tsukuba-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tsukuba-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tsukuba-iOS/Pods-Tsukuba-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		7792186F20B7BD83004E83C1 /* UITableViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewController+Extension.swift"; sourceTree = "<group>"; };
+		77F1945F20BCF6B6001B3F6E /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		77F1946120BCFBF7001B3F6E /* LoginBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBaseViewController.swift; sourceTree = "<group>"; };
 		E4054AE21EC48D29006BCEEC /* ResetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
 		E4089FB31EBAE55C0042221D /* DaoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaoManager.swift; sourceTree = "<group>"; };
 		E4089FB41EBAE55C0042221D /* DaoTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaoTemplate.swift; sourceTree = "<group>"; };
@@ -300,6 +304,7 @@
 				E489721C1EBED40F0064EA13 /* CreateMessageViewController.swift */,
 				E49D240F1EC6F0EB00D3D974 /* EditMessageViewController.swift */,
 				E496A7ED201065B70015DE8D /* LicenseViewController.swift */,
+				77F1946120BCFBF7001B3F6E /* LoginBaseViewController.swift */,
 				E4089FE81EBB3A1F0042221D /* LoginViewController.swift */,
 				E4C0CF12204D2DBB0030C94A /* MainViewController.swift */,
 				E41F7D001EC34CB8002E8184 /* MessagesViewController.swift */,
@@ -382,6 +387,7 @@
 				7792186E20B7BD2E004E83C1 /* Extension */,
 				E4089FD81EBAF0020042221D /* Tool */,
 				E4962BE11EB4B08000DF8CAE /* AppDelegate.swift */,
+				77F1945F20BCF6B6001B3F6E /* R.generated.swift */,
 				E4CA14B91EFBD4CF00289699 /* Tsukuba-iOS-Bridging-Header.h */,
 				E42331771EC030FE00C3A6B0 /* Assets.xcassets */,
 				E4962BF01EB4B08000DF8CAE /* Info.plist */,
@@ -426,11 +432,11 @@
 			buildConfigurationList = E4962C091EB4B08000DF8CAE /* Build configuration list for PBXNativeTarget "Tsukuba-iOS" */;
 			buildPhases = (
 				C9D33EE20E7E99C82C34E7B5 /* [CP] Check Pods Manifest.lock */,
+				E4B52B721EF3DB520030BD2D /* ShellScript */,
 				E4962BDA1EB4B08000DF8CAE /* Sources */,
 				E4962BDB1EB4B08000DF8CAE /* Frameworks */,
 				E4962BDC1EB4B08000DF8CAE /* Resources */,
 				9E1D8D9AF95E3E3B803619D9 /* [CP] Embed Pods Frameworks */,
-				E4B52B721EF3DB520030BD2D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -591,6 +597,7 @@
 				"${BUILT_PRODUCTS_DIR}/ImageSlideshow/ImageSlideshow.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxKeyboard/RxKeyboard.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -616,6 +623,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageSlideshow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxKeyboard.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -661,7 +669,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "python ${SRCROOT}/${TARGET_NAME}/Support\\ Files/AutoGenStrings.py ${SRCROOT}/${TARGET_NAME}/Storyboard";
+			shellScript = "python ${SRCROOT}/${TARGET_NAME}/Support\\ Files/AutoGenStrings.py ${SRCROOT}/${TARGET_NAME}/Storyboard\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/Tsukuba-iOS\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -689,6 +697,7 @@
 				E48DE5531EC2D52C00E5CA25 /* Message.swift in Sources */,
 				E4089FF11EBB4F160042221D /* AvatarViewController.swift in Sources */,
 				E45519431EC453F6006A3B73 /* PicturesTableViewCell.swift in Sources */,
+				77F1946220BCFBF7001B3F6E /* LoginBaseViewController.swift in Sources */,
 				E4089FB61EBAE55C0042221D /* DaoTemplate.swift in Sources */,
 				E45519411EC44856006A3B73 /* MessageTableViewController.swift in Sources */,
 				E41F7D0C1EC36C4B002E8184 /* EditingViewController.swift in Sources */,
@@ -712,6 +721,7 @@
 				E4089FDC1EBAF2190042221D /* Response.swift in Sources */,
 				E4464AFF2022BA44001968B5 /* RoomDao.swift in Sources */,
 				E48DE54F1EC2D30700E5CA25 /* MyMessagesTableViewController.swift in Sources */,
+				77F1946020BCF6B7001B3F6E /* R.generated.swift in Sources */,
 				E4089FBA1EBAE58F0042221D /* OptionDao.swift in Sources */,
 				E46A91642022AFEA00244606 /* ChatManager.swift in Sources */,
 				E4089FDA1EBAF0250042221D /* Global.swift in Sources */,

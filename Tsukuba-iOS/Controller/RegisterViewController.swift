@@ -1,7 +1,7 @@
 import UIKit
 import NVActivityIndicatorView
 
-class RegisterViewController: EditingViewController, NVActivityIndicatorViewable {
+class RegisterViewController: LoginBaseViewController, NVActivityIndicatorViewable {
 
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
@@ -19,14 +19,6 @@ class RegisterViewController: EditingViewController, NVActivityIndicatorViewable
 
         registerButton.layer.borderColor = UIColor.lightGray.cgColor
         self.shownHeight = registerButton.frame.maxY
-        
-        //Set background image
-        let backgroundImageView: UIImageView = {
-            let view = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
-            view.image = UIImage(named: "login-bg.jpg")
-            return view
-        }()
-        self.view.insertSubview(backgroundImageView, at: 0)
     }
     
     override func viewDidLayoutSubviews() {
