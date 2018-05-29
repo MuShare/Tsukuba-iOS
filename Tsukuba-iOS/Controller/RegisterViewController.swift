@@ -40,11 +40,11 @@ class RegisterViewController: LoginBaseViewController, NVActivityIndicatorViewab
             return
         }
         if emailTextField.text == "" || usernameTextField.text == "" || passwordTextField.text == "" {
-            showTip(NSLocalizedString("register_not_validate", comment: ""))
+            showTip(R.string.localizable.register_not_validate())
             return
         }
         if !isEmailAddress(emailTextField.text!) {
-            showTip(NSLocalizedString("email_invalidate", comment: ""))
+            showTip(R.string.localizable.email_invalidate())
             return
         }
         
@@ -63,7 +63,7 @@ class RegisterViewController: LoginBaseViewController, NVActivityIndicatorViewab
                 self.passwordTextField.isHidden = true
                 self.usernameTextField.isHidden = true
                 self.registerSuccessImageView.isHidden = false
-                self.registerButton.setTitle(NSLocalizedString("back_to_login", comment: ""), for: .normal)
+                self.registerButton.setTitle(R.string.localizable.back_to_login(), for: .normal)
             } else {
                 if message != nil {
                     self.showTip(message!)

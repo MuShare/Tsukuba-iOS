@@ -13,7 +13,7 @@ class MyProfileTableViewController: UITableViewController {
         
         let user = UserManager.shared
         if user.contact == "" || user.address == "" || user.avatar == "" {
-            showTip(NSLocalizedString("fill_user_info", comment: ""))
+            showTip(R.string.localizable.fill_user_info())
         }
         
         if UserManager.shared.login {
@@ -38,7 +38,7 @@ class MyProfileTableViewController: UITableViewController {
     // MARK: - Navigation
     @IBAction func saveUser(_ sender: Any) {
         if nameTextField.text == "" || contactTextField.text == "" || addressTextField.text == "" {
-            showTip(NSLocalizedString("modify_has_empty", comment: ""))
+            showTip(R.string.localizable.modify_has_empty())
             return
         }
         

@@ -35,7 +35,7 @@ class LoginViewController: LoginBaseViewController, NVActivityIndicatorViewable 
     
     @IBAction func login(_ sender: Any) {
         if emailTextField.text == "" || !isEmailAddress(emailTextField.text!) || passwordTextField.text == "" {
-            showTip(NSLocalizedString("login_not_validate", comment: ""))
+            showTip(R.string.localizable.login_not_validate())
             return
         }
         

@@ -64,7 +64,7 @@ message_introduction_placeholder = "简单介绍一下这个二手商品";
 message_edit_pictures = "编辑照片";
 message_close_title = "关闭帖子";
 message_close_content = "关闭后别人将看不到此帖子的内容。一旦关闭将不能重开。确定关闭吗？";
-
+create_message_fail = "创建帖子失败，请稍后重试。";
 modify_message_no_privilege = "你没有权限编辑这个消息";
 
 message_like_fail = "无法收藏";

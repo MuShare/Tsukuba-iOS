@@ -44,11 +44,11 @@ class MessageManager {
                 } else {
                     switch response.errorCode() {
                     case .objectId:
-                        completion?(false, NSLocalizedString("error_object_id", comment: ""))
+                        completion?(false, R.string.localizable.error_object_id())
                     case .saveFailed:
-                        completion?(false, NSLocalizedString("error_save_failed", comment: ""))
+                        completion?(false, R.string.localizable.error_save_failed())
                     default:
-                        completion?(false, NSLocalizedString("error_unknown", comment: ""))
+                        completion?(false, R.string.localizable.error_unknown())
                     }
                 }
         }
@@ -76,15 +76,15 @@ class MessageManager {
             } else {
                 switch response.errorCode() {
                 case .objectId:
-                    completion?(false, NSLocalizedString("error_object_id", comment: ""))
+                    completion?(false, R.string.localizable.error_object_id())
                 case .saveFailed:
-                    completion?(false, NSLocalizedString("error_save_failed", comment: ""))
+                    completion?(false, R.string.localizable.error_save_failed())
                 case .invalidParameter:
-                    completion?(false, NSLocalizedString("error_invalid_parameter", comment: ""))
+                    completion?(false, R.string.localizable.error_invalid_parameter())
                 case .modifyMessageNoPrivilege:
-                    completion?(false, NSLocalizedString("modify_message_no_privilege", comment: ""))
+                    completion?(false, R.string.localizable.modify_message_no_privilege())
                 default:
-                    completion?(false, NSLocalizedString("error_unknown", comment: ""))
+                    completion?(false, R.string.localizable.error_unknown())
                 }
             }
         }
@@ -269,11 +269,11 @@ class MessageManager {
             } else {
                 switch response.errorCode() {
                 case .objectId:
-                    completion?(false, NSLocalizedString("error_object_id", comment: ""))
+                    completion?(false, R.string.localizable.error_object_id())
                 case .modifyMessageNoPrivilege:
-                    completion?(false, NSLocalizedString("modify_message_no_privilege", comment: ""))
+                    completion?(false, R.string.localizable.modify_message_no_privilege())
                 default:
-                    completion?(false, NSLocalizedString("error_unknown", comment: ""))
+                    completion?(false, R.string.localizable.error_unknown())
                 }
             }
         }
@@ -294,7 +294,7 @@ class MessageManager {
                 let favorites = response.getResult()["favorites"].intValue
                 completion?(true, favorites ,nil)
             } else {
-                completion?(false, 0, NSLocalizedString("message_like_fail", comment: ""))
+                completion?(false, 0, R.string.localizable.message_like_fail())
             }
         }
     }
@@ -315,7 +315,7 @@ class MessageManager {
                 let favorites = response.getResult()["favorites"].intValue
                 completion?(success, favorites, nil)
             } else {
-                completion?(false, 0, NSLocalizedString("message_unlike_fail", comment: ""))
+                completion?(false, 0, R.string.localizable.message_unlike_fail())
             }
         }
     }

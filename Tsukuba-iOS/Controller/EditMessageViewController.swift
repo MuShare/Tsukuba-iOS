@@ -40,7 +40,7 @@ class EditMessageViewController: FormViewController, NVActivityIndicatorViewable
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "editPictureSegue" {
+        if segue.identifier == R.segue.editMessageViewController.editPictureSegue.identifier {
             let destination = segue.destination as! PictureViewController
             destination.doneType = .pop
             destination.mid = message.mid
@@ -66,8 +66,7 @@ class EditMessageViewController: FormViewController, NVActivityIndicatorViewable
                               title: messageTitle!,
                               introudction: introduction,
                               price: price,
-                              oids: oids)
-        { (success, tip) in
+                              oids: oids) { (success, tip) in
             self.stopAnimating()
             if (success) {
                 self.navigationController?.popViewController(animated: true)
@@ -92,45 +91,40 @@ class EditMessageViewController: FormViewController, NVActivityIndicatorViewable
             +++ Section()
             
             <<< ButtonRow() { row in
-                row.title = NSLocalizedString("message_edit_pictures", comment: "")
-                row.presentationMode = .segueName(segueName: "editPictureSegue", onDismiss: nil)
+                row.title = R.string.localizable.message_edit_pictures()
+                row.presentationMode = .segueName(segueName: R.segue.editMessageViewController.editPictureSegue.identifier, onDismiss: nil)
             }
             
             <<< ButtonRow() { row in
-                row.title = NSLocalizedString("message_close_title", comment: "")
+                row.title = R.string.localizable.message_close_title()
                 row.cellStyle = .value1
                 row.cell.accessoryType = .disclosureIndicator
                 row.cell.tintColor = Color.main
             }.onCellSelection({ (cell, row) in
-                let alertController = UIAlertController(title: NSLocalizedString("message_close_title", comment: ""),
-                                                        message: NSLocalizedString("message_close_content", comment: ""),
+                let alertController = UIAlertController(title: R.string.localizable.message_close_title(),
+                                                        message: R.string.localizable.message_close_content(),
                                                         preferredStyle: .alert)
-                let close = UIAlertAction(title: NSLocalizedString("yes_name", comment: ""),
-                                          style: .destructive,
-                                          handler:
-                { (action) in
+                let close = UIAlertAction(title: R.string.localizable.yes_name(), style: .destructive) { action in
                     self.closeMessage()
-                })
-                let cancel = UIAlertAction(title: NSLocalizedString("cancel_name", comment: ""),
-                                           style: .cancel,
-                                           handler: nil)
+                }
+                let cancel = UIAlertAction(title: R.string.localizable.cancel_name(), style: .cancel)
                 alertController.addAction(close)
                 alertController.addAction(cancel)
                 self.present(alertController, animated: true, completion: nil)
             })
             
-            +++ Section(NSLocalizedString("message_basic_info", comment: ""))
+            +++ Section(R.string.localizable.message_basic_info())
             
             <<< TextRow() { row in
-                row.title = NSLocalizedString("message_title", comment: "")
+                row.title = R.string.localizable.message_title()
                 row.value = message.title!
-                row.placeholder = NSLocalizedString("message_title_placeholder", comment: "")
+                row.placeholder = R.string.localizable.message_title_placeholder()
                 }.onChange({ row in
                     self.messageTitle = row.value
                 })
             
             <<< IntRow(){ row in
-                row.title = NSLocalizedString("message_price", comment: "")
+                row.title = R.string.localizable.message_price()
                 row.value = message.price
                 row.placeholder = "0"
                 }.onChange({ row in
@@ -139,7 +133,7 @@ class EditMessageViewController: FormViewController, NVActivityIndicatorViewable
             
             <<< TextAreaRow() { row in
                 row.value = message.introduction!
-                row.placeholder = NSLocalizedString("message_introduction_placeholder", comment: "")
+                row.placeholder = R.string.localizable.message_introduction_placeholder()
                 }.onChange({ row in
                     self.introduction = row.value ?? ""
                 })

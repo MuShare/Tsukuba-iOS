@@ -35,34 +35,34 @@ class CreateMessageViewController: FormViewController, NVActivityIndicatorViewab
         navigationOptionsBackup = navigationOptions
         
         form
-            +++ Section(NSLocalizedString("message_basic_info", comment: ""))
+            +++ Section(R.string.localizable.message_basic_info())
             
             /**
             <<< SegmentedRow<String>() {
-                $0.title = NSLocalizedString("message_type_choose", comment: "")
-                $0.options = [NSLocalizedString("message_type_sell", comment: ""), NSLocalizedString("message_type_buy", comment: "")]
-                $0.value = NSLocalizedString("message_type_sell", comment: "")
+                $0.title = R.string.localizable.message_type_choose()
+                $0.options = [R.string.localizable.message_type_sell(), R.string.localizable.message_type_buy()]
+                $0.value = R.string.localizable.message_type_sell()
             }.onChange({ (row) in
-                self.sell = (row.value! == NSLocalizedString("message_type_sell", comment: ""))
+                self.sell = (row.value! == R.string.localizable.message_type_sell())
             })
             */
             
             <<< TextRow() {
-                $0.title = NSLocalizedString("message_title", comment: "")
-                $0.placeholder = NSLocalizedString("message_title_placeholder", comment: "")
+                $0.title = R.string.localizable.message_title()
+                $0.placeholder = R.string.localizable.message_title_placeholder()
             }.onChange({ (row) in
                 self.messageTitle = row.value
             })
         
             <<< IntRow(){
-                $0.title = NSLocalizedString("message_price", comment: "")
+                $0.title = R.string.localizable.message_price()
                 $0.placeholder = "0"
             }.onChange({ (row) in
                 self.price = row.value ?? 0
             })
         
             <<< TextAreaRow() {
-                $0.placeholder = NSLocalizedString("message_introduction_placeholder", comment: "")
+                $0.placeholder = R.string.localizable.message_introduction_placeholder()
             }.onChange({ (row) in
                 self.introduction = row.value ?? ""
             })
@@ -84,7 +84,7 @@ class CreateMessageViewController: FormViewController, NVActivityIndicatorViewab
 
     // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "createPictureSegue" {
+        if segue.identifier == R.segue.createMessageViewController.createPictureSegue.identifier {
             let destination = segue.destination as! PictureViewController
             destination.mid = mid
             // Set done type for PictureViewController.
@@ -101,7 +101,7 @@ class CreateMessageViewController: FormViewController, NVActivityIndicatorViewab
     // MARK: Action
     @IBAction func createMessage(_ sender: Any) {
         if messageTitle == nil {
-            showTip(NSLocalizedString("message_title_empty", comment: ""))
+            showTip(R.string.localizable.message_title_empty())
             return
         }
         
@@ -124,9 +124,9 @@ class CreateMessageViewController: FormViewController, NVActivityIndicatorViewab
             self.stopAnimating()
             if success {
                 self.mid = mid!
-                self.performSegue(withIdentifier: "createPictureSegue", sender: self)
+                self.performSegue(withIdentifier: R.segue.createMessageViewController.createPictureSegue.identifier, sender: self)
             } else {
-                self.showTip(NSLocalizedString("create_message_fail", comment: ""))
+                self.showTip(R.string.localizable.create_message_fail())
             }
         }
     }

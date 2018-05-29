@@ -51,7 +51,7 @@ class UserProfileTableViewController: UITableViewController {
         if user.type == UserTypeEmail {
             emailLabel.text = user.identifier
         } else if user.type == UserTypeFacebook {
-            emailLabel.text = NSLocalizedString("sign_in_facebook", comment: "")
+            emailLabel.text = R.string.localizable.sign_in_facebook()
         }
         avatarImageView.kf.setImage(with: imageURL(user.avatar))
         createAtLabel.text = formatter.string(from: user.createAt)
@@ -62,7 +62,7 @@ class UserProfileTableViewController: UITableViewController {
     @IBAction func sendMessages(_ sender: Any) {
         if UserManager.shared.login {
             if UserManager.shared.isCurrentUser(user!) {
-                showTip(NSLocalizedString("chats_self_not_allow", comment: ""))
+                showTip(R.string.localizable.chats_self_not_allow())
             } else {
                 performSegue(withIdentifier: "chatSegue", sender: self)
             }
@@ -72,15 +72,15 @@ class UserProfileTableViewController: UITableViewController {
     }
     
     @IBAction func reportUser(_ sender: Any) {
-        let alertController = UIAlertController(title: NSLocalizedString("report_user_title", comment: ""),
-                                                message: NSLocalizedString("report_user_message", comment: ""),
+        let alertController = UIAlertController(title: R.string.localizable.report_user_title(),
+                                                message: R.string.localizable.report_user_message(),
                                                 preferredStyle: .alert)
-        let report = UIAlertAction(title: NSLocalizedString("report_yes", comment: ""),
+        let report = UIAlertAction(title: R.string.localizable.report_yes(),
                                    style: .destructive)
         { (action) in
-            self.showTip(NSLocalizedString("report_success", comment: ""))
+            self.showTip(R.string.localizable.report_success())
         }
-        let cancel = UIAlertAction(title: NSLocalizedString("cancel_name", comment: ""),
+        let cancel = UIAlertAction(title: R.string.localizable.cancel_name(),
                                    style: .cancel,
                                    handler: nil)
         alertController.addAction(report)

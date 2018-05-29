@@ -48,9 +48,9 @@ class ChatManager {
             } else {
                 switch response.errorCode() {
                 case .sendPlainText:
-                    completion?(false, [], NSLocalizedString("error_object_id", comment: ""))
+                    completion?(false, [], R.string.localizable.error_object_id())
                 default:
-                    completion?(false, [], NSLocalizedString("error_unknown", comment: ""))
+                    completion?(false, [], R.string.localizable.error_unknown())
                 }
             }
         }
@@ -87,7 +87,7 @@ class ChatManager {
             } else {
                 switch response.errorCode() {
                 default:
-                    completion?(false, [], NSLocalizedString("error_unknown", comment: ""))
+                    completion?(false, [], R.string.localizable.error_unknown())
                 }
             }
         }

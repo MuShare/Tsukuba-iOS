@@ -138,7 +138,7 @@ extension ChatViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let chat = chats[indexPath.row]
         let isSender = (chat.room?.creator)! ? chat.direction : !chat.direction
-        let identifier = isSender ?  "senderIdentifier" : "receiverIdentifier"
+        let identifier = isSender ? "senderIdentifier" : "receiverIdentifier"
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ChatTableViewCell
         cell.fill(avatar: chat.direction ? (chat.room?.receiverAvatar)! : UserManager.shared.avatar,
                   message: chat.content!)

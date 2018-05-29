@@ -70,7 +70,7 @@ extension UITextField{
 extension UIViewController {
     
     func showTip(_ tip: String) {
-        showAlert(title: NSLocalizedString("tip_name", comment: ""),
+        showAlert(title: R.string.localizable.tip_name(),
                   content: tip)
     }
     
@@ -79,7 +79,7 @@ extension UIViewController {
                                                 message: content,
                                                 preferredStyle: .alert)
         alertController.view.tintColor = Color.main
-        alertController.addAction(UIAlertAction.init(title: NSLocalizedString("ok_name", comment: ""), style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction.init(title: R.string.localizable.ok_name(), style: .cancel, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
     
@@ -95,18 +95,18 @@ extension UIViewController {
     }
     
     func showLoginAlert() {
-        let alertController = UIAlertController(title: NSLocalizedString("tip_name", comment: ""),
-                                                message: NSLocalizedString("sign_in_at_first", comment: ""),
+        let alertController = UIAlertController(title: R.string.localizable.tip_name(),
+                                                message: R.string.localizable.sign_in_at_first(),
                                                 preferredStyle: .alert)
         alertController.view.tintColor = Color.main
-        let signin = UIAlertAction(title: NSLocalizedString("sign_in_now", comment: ""),
+        let signin = UIAlertAction(title: R.string.localizable.sign_in_now(),
                                    style: .destructive,
                                    handler:
         { (action) in
             self.present(UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()!,
                          animated: true, completion: nil)
         })
-        let later = UIAlertAction(title: NSLocalizedString("later_name", comment: ""),
+        let later = UIAlertAction(title: R.string.localizable.later_name(),
                                   style: .cancel,
                                   handler: nil)
         alertController.addAction(signin)

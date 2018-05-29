@@ -38,7 +38,7 @@ class ResetViewController: LoginBaseViewController, NVActivityIndicatorViewable 
             return
         }
         if !isEmailAddress(emailTextField.text!) {
-            showTip(NSLocalizedString("reset_password_not_validate", comment: ""))
+            showTip(R.string.localizable.reset_password_not_validate())
             return
         }
         
@@ -56,8 +56,8 @@ class ResetViewController: LoginBaseViewController, NVActivityIndicatorViewable 
                 self.emailTextField.isHidden = true
                 // Show success image.
                 self.sendEmailSuccessImageView.isHidden = false
-                self.submitButton.setTitle(NSLocalizedString("back_to_login", comment: ""), for: .normal)
-                self.titleLabel.text = NSLocalizedString("reset_password_check_email", comment: "")
+                self.submitButton.setTitle(R.string.localizable.back_to_login(), for: .normal)
+                self.titleLabel.text = R.string.localizable.reset_password_check_email()
             } else {
                 self.showTip(message!)
             }

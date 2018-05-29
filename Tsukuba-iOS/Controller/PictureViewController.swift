@@ -112,18 +112,18 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
                 }
                 self.picturesCollectionView.deleteItems(at: [indexPath])
             } else {
-                self.showTip(NSLocalizedString("remove_picture_failed", comment: ""))
+                self.showTip(R.string.localizable.remove_picture_failed())
             }
             cell.stopLoading()
         }
     }
     
     @IBAction func uploadPicture(_ sender: Any) {
-        let alertController = UIAlertController(title: NSLocalizedString("upload_message_picture", comment: ""),
-                                                message: NSLocalizedString("photo_tip", comment: ""),
+        let alertController = UIAlertController(title: R.string.localizable.upload_message_picture(),
+                                                message: R.string.localizable.photo_tip(),
                                                 preferredStyle: .actionSheet)
         alertController.view.tintColor = Color.main
-        let takePhoto = UIAlertAction(title: NSLocalizedString("photo_take", comment: ""),
+        let takePhoto = UIAlertAction(title: R.string.localizable.photo_take(),
                                       style: .default)
         { (action) in
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -134,14 +134,14 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
             }
             self.present(self.imagePickerController, animated: true, completion: nil)
         }
-        let choosePhoto = UIAlertAction(title: NSLocalizedString("photo_choose", comment: ""),
+        let choosePhoto = UIAlertAction(title: R.string.localizable.photo_choose(),
                                         style: .default)
         { (action) in
             self.imagePickerController.sourceType = .photoLibrary
             self.imagePickerController.allowsEditing = true
             self.present(self.imagePickerController, animated: true, completion: nil)
         }
-        let cancel = UIAlertAction(title: NSLocalizedString("cancel_name", comment: ""),
+        let cancel = UIAlertAction(title: R.string.localizable.cancel_name(),
                                    style: .cancel,
                                    handler: nil)
         alertController.addAction(takePhoto)

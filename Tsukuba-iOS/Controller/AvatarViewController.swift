@@ -48,7 +48,7 @@ class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, U
             self.timer?.invalidate()
             self.timer = nil
             if success {
-                self.uploadButton.setTitle(NSLocalizedString("upload_profile_photo", comment: ""), for: .normal)
+                self.uploadButton.setTitle(R.string.localizable.upload_profile_photo(), for: .normal)
             }
         }
         
@@ -56,43 +56,37 @@ class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     // MARK: - Action
     @IBAction func uploadAvatar(_ sender: Any) {
-        let alertController = UIAlertController(title: NSLocalizedString("upload_profile_photo", comment: ""),
-                                                message: NSLocalizedString("photo_tip", comment: ""),
+        let alertController = UIAlertController(title: R.string.localizable.upload_profile_photo(),
+                                                message: R.string.localizable.photo_tip(),
                                                 preferredStyle: .actionSheet)
         alertController.view.tintColor = Color.main
-        let takePhoto = UIAlertAction(title: NSLocalizedString("photo_take", comment: ""),
-                                      style: .default)
-        { (action) in
+        let takePhoto = UIAlertAction(title: R.string.localizable.photo_take(), style: .default) { action in
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 self.imagePickerController.sourceType = .camera
                 self.imagePickerController.cameraCaptureMode = .photo
                 self.imagePickerController.cameraDevice = .front
                 self.imagePickerController.allowsEditing = true
             }
-            self.present(self.imagePickerController, animated: true, completion: nil)
+            self.present(self.imagePickerController, animated: true)
         }
-        let choosePhoto = UIAlertAction(title: NSLocalizedString("photo_choose", comment: ""),
-                                        style: .default)
-        { (action) in
+        let choosePhoto = UIAlertAction(title: R.string.localizable.photo_choose(), style: .default) { action in
             self.imagePickerController.sourceType = .photoLibrary
             self.imagePickerController.allowsEditing = true
-            self.present(self.imagePickerController, animated: true, completion: nil)
+            self.present(self.imagePickerController, animated: true)
         }
-        let cancel = UIAlertAction(title: NSLocalizedString("cancel_name", comment: ""),
-                                   style: .cancel,
-                                   handler: nil)
+        let cancel = UIAlertAction(title: R.string.localizable.cancel_name(), style: .cancel)
         alertController.addAction(takePhoto)
         alertController.addAction(choosePhoto)
         alertController.addAction(cancel)
         alertController.popoverPresentationController?.sourceView = uploadButton;
         alertController.popoverPresentationController?.sourceRect = uploadButton.bounds;
-        self.present(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true)
     }
     
     // MARK: - Service
     func updateUploadProgress() {
         let progress = String(format: "%.2f", user.avatarUploadingProgress * 100)
-        uploadButton.setTitle(NSLocalizedString("upload_progress", comment: "") + progress + "%", for: .normal)
+        uploadButton.setTitle(R.string.localizable.upload_progress() + progress + "%", for: .normal)
     }
     
 }

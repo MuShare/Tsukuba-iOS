@@ -57,11 +57,11 @@ class RoomsTableViewController: UITableViewController {
     
     // MARK: Service
     func roomStatusUpdating() {
-        navigationItem.title = NSLocalizedString("chats_loading", comment: "")
+        navigationItem.title = R.string.localizable.chats_loading()
     }
     
     func roomStatusUpdated() {
-        navigationItem.title = NSLocalizedString("chats_chats", comment: "")
+        navigationItem.title = R.string.localizable.chats_chats()
         rooms = dao.roomDao.findAll()
         tableView.reloadData()
     }

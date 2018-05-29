@@ -50,7 +50,7 @@ class ReceiverTableViewCell: UITableViewCell {
         if calendar.isDateInToday(updateAt) {
             timeLabel.text = timeFormatter.string(for: updateAt)
         } else if calendar.isDateInYesterday(updateAt) {
-            timeLabel.text = NSLocalizedString("yesterday_name", comment: "")
+            timeLabel.text = R.string.localizable.yesterday_name()
         } else {
             timeLabel.text = dateFormatter.string(for: updateAt)
         }

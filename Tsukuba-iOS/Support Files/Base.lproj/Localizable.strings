@@ -64,7 +64,7 @@ message_introduction_placeholder = "Introduction for this post.";
 message_edit_pictures = "Edit Pictures";
 message_close_title = "Close Post";
 message_close_content = "Other people cannot see this post if you close it. You cannot reopen it once you closed it. Are you sure to close this post? ";
-
+create_message_fail = "Cannot create a post, try again later.";
 modify_message_no_privilege = "You do not have previlige to edit this post.";
 
 message_like_fail = "Cannot set favorite post.";
