@@ -61,10 +61,13 @@ class MeTableViewController: UITableViewController {
     func updateUserInfo() {
         titleLabel.text = user.name
         avatarImageView.kf.setImage(with: user.avatarURL)
-        if user.type == UserTypeEmail {
+        switch user.type {
+        case UserType.email.identifier:
             subtitleLabel.text = user.identifier
-        } else if user.type == UserTypeFacebook {
+        case UserType.facebook.identifier:
             subtitleLabel.text = R.string.localizable.sign_in_facebook()
+        default:
+            break
         }
     }
     

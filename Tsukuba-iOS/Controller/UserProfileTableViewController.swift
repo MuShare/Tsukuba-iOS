@@ -23,7 +23,8 @@ class UserProfileTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setCustomBack()
+        setCustomBack()
+        hideFooterView()
         
         UserManager.shared.get(uid) { (success, user) in
             self.user = user!
@@ -33,25 +34,24 @@ class UserProfileTableViewController: UITableViewController {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "chatSegue" {
+        if segue.identifier == R.segue.userProfileTableViewController.chatSegue.identifier {
             let destination = segue.destination as! ChatViewController
             destination.receiver = user
         }
     }
 
-    // MARK: - UITableViewDataSource
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.01
-    }
-    
     // MARK: - Service
     func loadUser() {
         navigationItem.title = user.name
         nameLabel.text = user.name
-        if user.type == UserTypeEmail {
+
+        switch user.type {
+        case UserType.email.identifier:
             emailLabel.text = user.identifier
-        } else if user.type == UserTypeFacebook {
+        case UserType.facebook.identifier:
             emailLabel.text = R.string.localizable.sign_in_facebook()
+        default:
+            break
         }
         avatarImageView.kf.setImage(with: imageURL(user.avatar))
         createAtLabel.text = formatter.string(from: user.createAt)
@@ -64,7 +64,7 @@ class UserProfileTableViewController: UITableViewController {
             if UserManager.shared.isCurrentUser(user!) {
                 showTip(R.string.localizable.chats_self_not_allow())
             } else {
-                performSegue(withIdentifier: "chatSegue", sender: self)
+                performSegue(withIdentifier: R.segue.userProfileTableViewController.chatSegue.identifier, sender: self)
             }
         } else {
             showLoginAlert()
@@ -75,17 +75,14 @@ class UserProfileTableViewController: UITableViewController {
         let alertController = UIAlertController(title: R.string.localizable.report_user_title(),
                                                 message: R.string.localizable.report_user_message(),
                                                 preferredStyle: .alert)
-        let report = UIAlertAction(title: R.string.localizable.report_yes(),
-                                   style: .destructive)
-        { (action) in
+        let report = UIAlertAction(title: R.string.localizable.report_yes(), style: .destructive) { action in
             self.showTip(R.string.localizable.report_success())
         }
-        let cancel = UIAlertAction(title: R.string.localizable.cancel_name(),
-                                   style: .cancel,
-                                   handler: nil)
+        let cancel = UIAlertAction(title: R.string.localizable.cancel_name(), style: .cancel)
         alertController.addAction(report)
         alertController.addAction(cancel)
-        self.present(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true)
     }
     
 }
+

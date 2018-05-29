@@ -1,22 +1,30 @@
 import Alamofire
 import SwiftyUserDefaults
 
-let UserTypeEmail = "email"
-let UserTypeFacebook = "facebook"
-
 enum UserType {
     case email
     case facebook
+    
+    var identifier: String {
+        switch self {
+        case .email:
+            return "email"
+        case .facebook:
+            return "facebook"
+        }
+    }
 }
 
-protocol UserManagerDelegate {
-    func didUserLogin()
+protocol UserManagerDelegate: class {
+    func didUserLogin(_ type: UserType)
     func didUserLogout()
 }
 
 class UserManager {
     
     static let shared = UserManager()
+    
+    weak var delegate: UserManagerDelegate?
 
     init() {
 
@@ -192,12 +200,16 @@ class UserManager {
                           parameters: params,
                           encoding: URLEncoding.default,
                           headers: nil)
-        .responseJSON { (responseObject) in
+        .responseJSON { [weak self] responseObject in
+            guard let `self` = self else {
+                completion?(false, nil)
+                return
+            }
             let response = Response(responseObject)
             if response.statusOK() {
                 let result = response.getResult()
                 // Login success, save user information to NSUserDefaults.
-                self.type = UserTypeEmail;
+                self.type = UserType.email.identifier
                 self.token = result["token"].stringValue
                 let user = result["user"]
                 self.uid = user["uid"].stringValue
@@ -212,7 +224,9 @@ class UserManager {
                 if Config.shared.deviceToken != "" {
                     DeviceManager.shared.uploadDeviceToken(Config.shared.deviceToken, completion: nil)
                 }
-                completion?(true, nil);
+                
+                self.delegate?.didUserLogin(.email)
+                completion?(true, nil)
             } else {
                 switch response.errorCode() {
                 case .emailNotExist:
@@ -241,12 +255,16 @@ class UserManager {
                           parameters: params,
                           encoding: URLEncoding.default,
                           headers: nil)
-        .responseJSON(completionHandler: { (responseObject) in
+        .responseJSON { [weak self] responseObject in
+            guard let `self` = self else {
+                completion?(false, nil)
+                return
+            }
             let response = Response(responseObject)
             if response.statusOK() {
                 let result = response.getResult()
                 // Login success, save user information to NSUserDefaults.
-                self.type = UserTypeFacebook;
+                self.type = UserType.facebook.identifier
                 self.token = result["token"].stringValue
                 let user = result["user"]
                 self.uid = user["uid"].stringValue
@@ -261,7 +279,9 @@ class UserManager {
                 if Config.shared.deviceToken != "" {
                     DeviceManager.shared.uploadDeviceToken(Config.shared.deviceToken, completion: nil)
                 }
-                completion?(true, nil);
+                
+                self.delegate?.didUserLogin(.facebook)
+                completion?(true, nil)
             } else {
                 switch response.errorCode() {
                 case .facebookAccessTokenInvalid:
@@ -270,7 +290,7 @@ class UserManager {
                     completion?(false, R.string.localizable.error_unknown())
                 }
             }
-        })
+        }
     }
     
     func reset(email: String, comletion:((Bool, String?) -> Void)?) {
