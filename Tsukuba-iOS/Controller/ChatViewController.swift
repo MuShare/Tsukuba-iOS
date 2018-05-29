@@ -34,7 +34,7 @@ class ChatViewController: EditingViewController {
         
         navigationItem.title = receiver.name
         
-        ChatManager.shared.delegate = self
+        SocketManager.shared.delegate = self
         
         room = DaoManager.shared.roomDao.getByReceiverId(receiver.uid)
         if room != nil {
@@ -142,7 +142,7 @@ extension ChatViewController: UIScrollViewDelegate {
     }
 }
 
-extension ChatViewController: ChatManagerDelegate {
+extension ChatViewController: SocketManagerDelegate {
     
     func didReceiveSocketMessage(_ chat: Chat) {
         print("did received web socket message: \(chat.content ?? "")")

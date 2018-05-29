@@ -47,6 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
+        SocketManager.shared.refreshSocket()
+        
         return true
     }
     

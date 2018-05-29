@@ -1,11 +1,5 @@
 import Alamofire
 import SwiftyUserDefaults
-import SwiftyJSON
-import Starscream
-
-protocol ChatManagerDelegate: class {
-    func didReceiveSocketMessage(_ chat: Chat)
-}
 
 class ChatManager {
     
@@ -13,22 +7,12 @@ class ChatManager {
     
     var dao: DaoManager!
     var config: Config!
-    var socket: WebSocket!
-    
+
     static let shared = ChatManager()
-    
-    weak var delegate: ChatManagerDelegate?
     
     init() {
         dao = DaoManager.shared
         config = Config.shared
-        
-        var request = URLRequest(url: URL(string: socketUrl + "?token=\(config.token)")!)
-        request.timeoutInterval = 5
-        
-        socket = WebSocket(request: request)
-        socket.delegate = self
-        socket.connect()
     }
     
     func sendPlainText(receiver: String, content: String, completion: ChatCompletion) {
@@ -167,37 +151,4 @@ class ChatManager {
     
 }
 
-extension ChatManager: WebSocketDelegate {
-    
-    func websocketDidConnect(socket: WebSocketClient) {
-        print("websocket is connected")
-    }
-    
-    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
-        if let e = error as? WSError {
-            print("websocket is disconnected: \(e.message)")
-        } else if let e = error {
-            print("websocket is disconnected: \(e.localizedDescription)")
-        } else {
-            print("websocket disconnected")
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            socket.connect()
-        }
-    }
-    
-    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
-        let object = JSON.init(parseJSON: text)
-        let chat = self.dao.chatDao.save(object)
-        chat.content = object["content"].stringValue
-        chat.room = self.dao.roomDao.getByRid(object["room"]["rid"].stringValue)
-        self.dao.saveContext()
-        delegate?.didReceiveSocketMessage(chat)
-    }
-    
-    func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
-        print("Received data: \(data.count)")
-    }
-    
-}
+
