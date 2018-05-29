@@ -27,12 +27,14 @@ class ChatViewController: EditingViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setCustomBack()
+        setCustomBack()
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 400
         
         navigationItem.title = receiver.name
+        
+        ChatManager.shared.delegate = self
         
         room = DaoManager.shared.roomDao.getByReceiverId(receiver.uid)
         if room != nil {
@@ -46,16 +48,12 @@ class ChatViewController: EditingViewController {
                 }
             }
         }
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveChatNotification), name: NSNotification.Name(rawValue: NotificationType.didReceivedChat.rawValue), object: nil)
 
-        RxKeyboard.instance.visibleHeight
-            .drive(onNext: { keyboardVisibleHeight in
-                UIView.animate(withDuration: 0.5, animations: {
-                    self.view.frame = CGRect(x: 0, y: -keyboardVisibleHeight, width: self.view.frame.size.width, height: self.view.frame.size.height)
-                })
+        RxKeyboard.instance.visibleHeight.drive(onNext: { keyboardVisibleHeight in
+            UIView.animate(withDuration: 0.5, animations: {
+                self.view.frame = CGRect(x: 0, y: -keyboardVisibleHeight, width: self.view.frame.size.width, height: self.view.frame.size.height)
             })
-            .disposed(by: disposeBag)
+        }).disposed(by: disposeBag)
 
     }
     
@@ -97,19 +95,6 @@ class ChatViewController: EditingViewController {
         self.tableView.scrollToRow(at: IndexPath(row: chats.count - 1, section: 0), at: .bottom, animated: animated)
     }
     
-    // MARK: Notification
-    func didReceiveChatNotification(_ notification: Notification) {
-        let receiverId = JSON(notification.userInfo!)["uid"].stringValue
-        if receiverId == receiver.uid {
-            ChatManager.shared.syncChat(room!) { [weak self] (success, chats, message) in
-                self?.insertChats(chats)
-                if let room = self?.room {
-                    ChatManager.shared.clearUnread(room)
-                }
-            }
-        }
-    }
-
     // MARK: Action
     @IBAction func send(_ sender: Any) {
         let content = plainTextField.text!
@@ -155,4 +140,13 @@ extension ChatViewController: UIScrollViewDelegate {
             })
         }
     }
+}
+
+extension ChatViewController: ChatManagerDelegate {
+    
+    func didReceiveSocketMessage(_ chat: Chat) {
+        print("did received web socket message: \(chat.content ?? "")")
+        insertChats([chat])
+    }
+    
 }

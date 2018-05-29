@@ -1,6 +1,11 @@
 import Alamofire
 import SwiftyUserDefaults
+import SwiftyJSON
 import Starscream
+
+protocol ChatManagerDelegate: class {
+    func didReceiveSocketMessage(_ chat: Chat)
+}
 
 class ChatManager {
     
@@ -11,6 +16,8 @@ class ChatManager {
     var socket: WebSocket!
     
     static let shared = ChatManager()
+    
+    weak var delegate: ChatManagerDelegate?
     
     init() {
         dao = DaoManager.shared
@@ -181,7 +188,12 @@ extension ChatManager: WebSocketDelegate {
     }
     
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
-        print("Received text: \(text)")
+        let object = JSON.init(parseJSON: text)
+        let chat = self.dao.chatDao.save(object)
+        chat.content = object["content"].stringValue
+        chat.room = self.dao.roomDao.getByRid(object["room"]["rid"].stringValue)
+        self.dao.saveContext()
+        delegate?.didReceiveSocketMessage(chat)
     }
     
     func websocketDidReceiveData(socket: WebSocketClient, data: Data) {

@@ -14,7 +14,7 @@ let DEBUG = false
 // Server base url
 let domain = "tsukuba.mushare.cn"
 let baseUrl = "https://" + domain + "/"
-let socketUrl = "ws://" + domain + "/websocket/chat"
+let socketUrl = "ws://" + domain + ":8080/websocket/chat"
 
 func createUrl(_ relative: String) -> String {
     let requestUrl = baseUrl + relative

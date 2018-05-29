@@ -28,7 +28,6 @@ class MessageManager {
             "oids": JSON(oids).rawString()!,
             "price": price,
             "sell": sell
-            
         ]
         
         Alamofire.request(createUrl("api/message/create"),

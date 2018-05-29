@@ -4,6 +4,16 @@ import SwiftyUserDefaults
 let UserTypeEmail = "email"
 let UserTypeFacebook = "facebook"
 
+enum UserType {
+    case email
+    case facebook
+}
+
+protocol UserManagerDelegate {
+    func didUserLogin()
+    func didUserLogout()
+}
+
 class UserManager {
     
     static let shared = UserManager()
