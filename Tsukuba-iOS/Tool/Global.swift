@@ -12,9 +12,11 @@ import Alamofire
 let DEBUG = false
 
 // Server base url
-let domain = "tsukuba.mushare.cn"
-let baseUrl = "https://" + domain + "/"
-let socketUrl = "ws://" + domain + ":8080/websocket/chat"
+let baseUrl = "https://tsukuba.mushare.cn/"
+let socketUrl = "ws://tsukuba.mushare.cn:8080/websocket/chat"
+
+//let baseUrl = "http://192.168.11.2:8080/"
+//let socketUrl = "ws://192.168.11.2:8080/websocket/chat"
 
 func createUrl(_ relative: String) -> String {
     let requestUrl = baseUrl + relative

@@ -52,16 +52,23 @@ extension SocketManager: WebSocketDelegate {
     }
     
     func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
-        if let e = error as? WSError {
-            print("websocket is disconnected: \(e.message)")
+        var reconnect = true
+        if let error = error as? WSError {
+            print("websocket is disconnected: \(error)")
+
+            if error.code == 1003 && error.message == "auth_failed" {
+                reconnect = false
+            }
         } else if let e = error {
             print("websocket is disconnected: \(e.localizedDescription)")
         } else {
             print("websocket disconnected")
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            socket.connect()
+        if reconnect {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                socket.connect()
+            }
         }
     }
     
@@ -87,7 +94,8 @@ extension SocketManager: UserManagerDelegate {
     }
     
     func didUserLogout() {
-        
+        socket.disconnect()
+        socket = nil
     }
     
 }

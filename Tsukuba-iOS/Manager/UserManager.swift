@@ -364,6 +364,8 @@ class UserManager {
         // Delete all chats and rooms.
         DaoManager.shared.chatDao.deleteAll()
         DaoManager.shared.roomDao.deleteAll()
+        
+        delegate?.didUserLogout()
     }
     
     func uploadAvatar(_ image: UIImage, completion: ((Bool) -> Void)?) {
