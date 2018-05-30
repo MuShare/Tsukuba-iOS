@@ -10,5 +10,5 @@ pods:
   bundle install
   bundle exec pod install
 
-xcode_project: Tsukuba-iOS.xcworkspace
-xcode_scheme: Tsukuba-iOS
+script:
+  - set -o pipefail && xcodebuild -workspace Tsukuba-iOS.xcworkspace -scheme Tsukuba-iOS -sdk iphonesimulator build CODE_SIGNING_REQUIRED=NO | xcpretty -c
