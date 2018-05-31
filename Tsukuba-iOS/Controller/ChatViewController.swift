@@ -98,7 +98,10 @@ class ChatViewController: EditingViewController {
     }
     
     func gotoBottom(_ animated: Bool) {
-        self.tableView.scrollToRow(at: IndexPath(row: chats.count - 1, section: 0), at: .bottom, animated: animated)
+        if chats.count > 0 {
+            let indexPath = IndexPath(row: chats.count - 1, section: 0)
+            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: animated)
+        }
     }
     
     // MARK: Notification
