@@ -13,12 +13,19 @@ import Alamofire
 import SwiftyJSON
 import AudioToolbox
 
+extension Notification.Name {
+    static let roomStatusUpdating = Notification.Name("org.mushare.tsukuba.roomStatusUpdating")
+    static let didRoomStatusUpdated = Notification.Name("org.mushare.tsukuba.didRoomStatusUpdated")
+    static let didReceiveNewChat = Notification.Name("org.mushare.tsukuba.didReceiveNewChat")
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let config = Config.shared
-    let deviceManager = DeviceManager.shared
+    
+    var isChatting = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -48,6 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         SocketManager.shared.refreshSocket()
+        SocketManager.shared.delegate = self
         
         return true
     }
@@ -111,7 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSLog("Device token from APNs server is %@.", token);
         }
         config.deviceToken = token
-        deviceManager.uploadDeviceToken(token) { (success) in
+        DeviceManager.shared.uploadDeviceToken(token) { (success) in
             if DEBUG {
                 print("Device upload success = %@", success)
             }
@@ -123,37 +131,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if DEBUG {
             NSLog("Received remote notification, userInfo = %@", userInfo);
         }
-        let info = JSON(userInfo)
-        if let category = info["aps"]["category"].string?.split(separator: ":") {
-            if category.count < 2 {
-                return
-            }
-            let command = category[0]
-            let content = category[1]
-            if command == "chat" {
-                // Play a short sound and vibrate after receiving a chat message.
-                if let soundUrl = Bundle.main.url(forResource: "didReceivedMessage", withExtension: "wav") {
-                    var soundId: SystemSoundID = 0
-                    
-                    AudioServicesCreateSystemSoundID(soundUrl as CFURL, &soundId)
-                    
-                    AudioServicesAddSystemSoundCompletion(soundId, nil, nil, { (soundId, clientData) -> Void in
-                        AudioServicesDisposeSystemSoundID(soundId)
-                    }, nil)
-                    
-                    AudioServicesPlaySystemSound(soundId)
-                }
-                AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-                
-                let userInfo: [String : String] = [
-                    "uid": String(content)
-                ]
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationType.didReceivedChat.rawValue),
-                                                object: nil,
-                                                userInfo: userInfo)
-            }
-            
-        }
+
     }
     
     
@@ -231,3 +209,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate: SocketManagerDelegate {
+    func didReceiveSocketMessage(_ chat: Chat) {
+        print("did received web socket message: \(chat.content ?? "")")
+
+        ChatManager.shared.roomStatus(isLoginCheck: false) { [weak self] success in
+            if self?.isChatting == false {
+                NotificationCenter.default.post(name: .didRoomStatusUpdated, object: self)
+            }
+        }
+        
+        // Play a short sound and vibrate after receiving a chat message.
+        if let soundUrl = R.file.didReceivedMessageWav() {
+            var soundId: SystemSoundID = 0
+            
+            AudioServicesCreateSystemSoundID(soundUrl as CFURL, &soundId)
+            
+            AudioServicesAddSystemSoundCompletion(soundId, nil, nil, { (soundId, clientData) -> Void in
+                AudioServicesDisposeSystemSoundID(soundId)
+            }, nil)
+            
+            AudioServicesPlaySystemSound(soundId)
+        }
+        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+        
+        NotificationCenter.default.post(name: .didReceiveNewChat, object: self, userInfo: [
+            "chat": chat
+        ])
+    }
+}

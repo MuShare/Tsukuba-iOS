@@ -17,6 +17,10 @@ class RoomsTableViewController: UITableViewController {
     
     var rooms: [Room] = []
     var selectedRoom: Room!
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,9 +28,8 @@ class RoomsTableViewController: UITableViewController {
             showLoginAlert()
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(roomStatusUpdating), name: NSNotification.Name(rawValue: NotificationType.didReceivedChat.rawValue), object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(roomStatusUpdated), name: NSNotification.Name(rawValue: NotificationType.didSyncRoomStatus.rawValue), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(roomStatusUpdating), name: .roomStatusUpdating, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(roomStatusUpdated), name: .didRoomStatusUpdated, object: nil)
         
 //        tableView.es.addPullToRefresh {
 //            self.roomStatusUpdating()

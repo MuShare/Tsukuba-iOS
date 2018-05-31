@@ -225,6 +225,7 @@ class UserManager {
                     DeviceManager.shared.uploadDeviceToken(Config.shared.deviceToken, completion: nil)
                 }
                 
+                ChatManager.shared.roomStatus(isLoginCheck: true)
                 self.delegate?.didUserLogin(.email)
                 completion?(true, nil)
             } else {
@@ -280,6 +281,7 @@ class UserManager {
                     DeviceManager.shared.uploadDeviceToken(Config.shared.deviceToken, completion: nil)
                 }
                 
+                ChatManager.shared.roomStatus(isLoginCheck: true)
                 self.delegate?.didUserLogin(.facebook)
                 completion?(true, nil)
             } else {

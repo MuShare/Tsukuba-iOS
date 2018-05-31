@@ -22,7 +22,13 @@ class ChatViewController: EditingViewController {
     var chats: [Chat] = []
     var room: Room?
     
+    let appDelagate = UIApplication.shared.delegate as! AppDelegate
+    
     private let disposeBag = DisposeBag()
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,9 +39,7 @@ class ChatViewController: EditingViewController {
         tableView.estimatedRowHeight = 400
         
         navigationItem.title = receiver.name
-        
-        SocketManager.shared.delegate = self
-        
+
         room = DaoManager.shared.roomDao.getByReceiverId(receiver.uid)
         if room != nil {
             chats = DaoManager.shared.chatDao.findByRoom(room!)
@@ -43,9 +47,6 @@ class ChatViewController: EditingViewController {
                 self?.chats.append(contentsOf: chats)
                 self?.tableView.reloadData()
                 self?.gotoBottom(false)
-                if let room = self?.room {
-                    ChatManager.shared.clearUnread(room)
-                }
             }
         }
 
@@ -55,16 +56,21 @@ class ChatViewController: EditingViewController {
             })
         }).disposed(by: disposeBag)
 
+        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveNewChat), name: .didReceiveNewChat, object: nil)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
+        appDelagate.isChatting = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        ChatManager.shared.clearUnread(room!)
         tabBarController?.tabBar.isHidden = false
+        appDelagate.isChatting = false
     }
     
     override func viewDidLayoutSubviews() {
@@ -93,6 +99,16 @@ class ChatViewController: EditingViewController {
     
     func gotoBottom(_ animated: Bool) {
         self.tableView.scrollToRow(at: IndexPath(row: chats.count - 1, section: 0), at: .bottom, animated: animated)
+    }
+    
+    // MARK: Notification
+    func didReceiveNewChat(_ notification: Notification) {
+        guard let userInfo = notification.userInfo else {
+            return
+        }
+        if let chat = userInfo["chat"] as? Chat {
+            insertChats([chat])
+        }
     }
     
     // MARK: Action
@@ -140,13 +156,4 @@ extension ChatViewController: UIScrollViewDelegate {
             })
         }
     }
-}
-
-extension ChatViewController: SocketManagerDelegate {
-    
-    func didReceiveSocketMessage(_ chat: Chat) {
-        print("did received web socket message: \(chat.content ?? "")")
-        insertChats([chat])
-    }
-    
 }

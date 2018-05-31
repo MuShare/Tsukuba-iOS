@@ -47,7 +47,7 @@ class ChatManager {
         }
     }
     
-    func syncChat(_ room: Room, completion: ChatCompletion) {
+    func syncChat(_ room: Room, completion: ChatCompletion = nil) {
         let params: Parameters = [
             "seq": room.chats
         ]
@@ -92,14 +92,12 @@ class ChatManager {
         room.unread = 0
         self.dao.saveContext()
         
-        // Send didUnreadChanged notification.
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationType.didUnreadChanged.rawValue),
-                                        object: nil,
-                                        userInfo: nil)
+        // Send didRoomStatusUpdated notification.
+        NotificationCenter.default.post(name: .didRoomStatusUpdated, object: nil)
 
     }
     
-    func roomStatus(completion: ((_ success: Bool) -> Void)?) {
+    func roomStatus(isLoginCheck: Bool, completion: ((_ success: Bool) -> Void)? = nil) {
         var url = "api/chat/room/status?"
         for room in self.dao.roomDao.findAll() {
             url.append("rids=" + room.rid! + "&")
@@ -119,18 +117,26 @@ class ChatManager {
                 for object in result["new"].arrayValue {
                     let room = self.dao.roomDao.saveOrUpdate(object)
                     // Set chat - 1 to sync data.
-                    room.chats = room.chats - 1
-                    room.unread = 1
+                    if isLoginCheck {
+                        room.chats = room.chats - 10
+                        if room.chats < 0 {
+                            room.chats = 0
+                        }
+                        room.unread = 0
+                    } else {
+                        room.chats = room.chats - 1
+                        room.unread = 1
+                    }
                     globalUnread += Int(room.unread)
                 }
                 
                 for object in result["exist"].arrayValue {
-                    let room = self.dao.roomDao.getByRid(object["rid"].stringValue)
-                    if room != nil {
-                        room?.lastMessage = object["lastMessage"].stringValue
-                        room?.updateAt = NSDate(timeIntervalSince1970: object["updateAt"].doubleValue / 1000)
-                        room?.unread = object["chats"].int16Value - room!.chats
-                        globalUnread += Int(room!.unread)
+                    if let room = self.dao.roomDao.getByRid(object["rid"].stringValue) {
+                        room.lastMessage = object["lastMessage"].stringValue
+                        room.updateAt = NSDate(timeIntervalSince1970: object["updateAt"].doubleValue / 1000)
+                        room.unread += object["chats"].int16Value - room.chats
+                        room.chats = object["chats"].int16Value
+                        globalUnread += Int(room.unread)
                     }
                 }
                 self.dao.saveContext()
