@@ -131,6 +131,7 @@ class ChatViewController: EditingViewController {
 }
 
 extension ChatViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return chats.count
     }
@@ -141,13 +142,17 @@ extension ChatViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let chat = chats[indexPath.row]
-        let isSender = (chat.room?.creator)! ? chat.direction : !chat.direction
+        guard let room = chat.room else {
+            return UITableViewCell()
+        }
+        let isSender = room.creator ? chat.direction : !chat.direction
         let identifier = isSender ? "senderIdentifier" : "receiverIdentifier"
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ChatTableViewCell
-        cell.fill(avatar: chat.direction ? (chat.room?.receiverAvatar)! : UserManager.shared.avatar,
+        cell.fill(avatar: isSender ? UserManager.shared.avatar : room.receiverAvatar!,
                   message: chat.content!)
         return cell
     }
+    
 }
 
 extension ChatViewController: UIScrollViewDelegate {
