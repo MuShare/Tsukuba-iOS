@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		770955CA20BEA98C00CA0923 /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770955C920BEA98C00CA0923 /* SocketManager.swift */; };
+		77439FD720BFD86600FEE3E0 /* SFSafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77439FD620BFD86600FEE3E0 /* SFSafariViewController.swift */; };
 		7792187020B7BD83004E83C1 /* UITableViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7792186F20B7BD83004E83C1 /* UITableViewController+Extension.swift */; };
 		77F1946020BCF6B7001B3F6E /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F1945F20BCF6B6001B3F6E /* R.generated.swift */; };
 		77F1946220BCFBF7001B3F6E /* LoginBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F1946120BCFBF7001B3F6E /* LoginBaseViewController.swift */; };
@@ -101,6 +102,7 @@
 		251F3A7B6A78E17CB718E63B /* Pods-Tsukuba-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tsukuba-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tsukuba-iOS/Pods-Tsukuba-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		6069AEC1C44BCF1C385A7547 /* Pods-Tsukuba-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tsukuba-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tsukuba-iOS/Pods-Tsukuba-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		770955C920BEA98C00CA0923 /* SocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
+		77439FD620BFD86600FEE3E0 /* SFSafariViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariViewController.swift; sourceTree = "<group>"; };
 		7792186F20B7BD83004E83C1 /* UITableViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewController+Extension.swift"; sourceTree = "<group>"; };
 		77F1945F20BCF6B6001B3F6E /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		77F1946120BCFBF7001B3F6E /* LoginBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBaseViewController.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			children = (
 				E41F7D111EC3EB92002E8184 /* UIViewController+Extension.swift */,
 				7792186F20B7BD83004E83C1 /* UITableViewController+Extension.swift */,
+				77439FD620BFD86600FEE3E0 /* SFSafariViewController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -734,6 +737,7 @@
 				E4C0CF13204D2DBB0030C94A /* MainViewController.swift in Sources */,
 				E41F7D121EC3EB92002E8184 /* UIViewController+Extension.swift in Sources */,
 				E4464AFD2022B9F8001968B5 /* Room.swift in Sources */,
+				77439FD720BFD86600FEE3E0 /* SFSafariViewController.swift in Sources */,
 				E48972231EBF64320064EA13 /* MessageManager.swift in Sources */,
 				E496A7EE201065B70015DE8D /* LicenseViewController.swift in Sources */,
 				E49D24101EC6F0EB00D3D974 /* EditMessageViewController.swift in Sources */,

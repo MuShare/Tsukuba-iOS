@@ -16,18 +16,14 @@ class MainViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UIApplication.shared.statusBarStyle = .lightContent
+        
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveChatNotification), name: NSNotification.Name(rawValue: NotificationType.didReceivedChat.rawValue), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(didUnreadChanged), name: NSNotification.Name(rawValue: NotificationType.didUnreadChanged.rawValue), object: nil)
         
         checkRoomStatus()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
     // MARK: Notification
     func didReceiveChatNotification(_ notification: Notification) {
