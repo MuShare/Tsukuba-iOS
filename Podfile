@@ -14,8 +14,8 @@ target 'Tsukuba-iOS' do
     pod 'SwipeBack', '~> 1.1'
     pod 'ImageSlideshow', '~> 1.3'
     pod 'ImageSlideshow/Kingfisher', '~> 1.3'
-    pod 'NVActivityIndicatorView', '~> 3.6'
-    pod 'Segmentio', '~> 2.1'
+    pod 'NVActivityIndicatorView', '~> 4.2'
+    pod 'Segmentio', '~> 3.0'
     pod 'FaveButton', '~> 2'
     pod 'RxKeyboard', '~> 0.8'
     pod 'UILabel+Copyable', '~> 1.0'
@@ -24,12 +24,12 @@ target 'Tsukuba-iOS' do
 end
 
 post_install do |installer|
-    targets_4 = ['Eureka']
+    targets_3 = ['FaveButton']
 
     installer.pods_project.targets.each do |target|
-        if targets_4.include? target.name
+        if targets_3.include? target.name
             target.build_configurations.each do |config|
-                config.build_settings['SWIFT_VERSION'] = '4.0'
+                config.build_settings['SWIFT_VERSION'] = '3.1'
             end
         end
     end

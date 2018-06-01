@@ -18,7 +18,7 @@ extension UIViewController {
         self.navigationController?.swipeBackEnabled = true
     }
     
-    func closeView(){
+    @objc func closeView(){
         self.navigationController?.popViewController(animated: true)
     }
     

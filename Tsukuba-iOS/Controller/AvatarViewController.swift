@@ -21,9 +21,9 @@ class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         imagePickerController.delegate = self
         imagePickerController.navigationBar.barTintColor = Color.main
-        imagePickerController.navigationBar.tintColor = UIColor.white
+        imagePickerController.navigationBar.tintColor = .white
         imagePickerController.navigationBar.titleTextAttributes = [
-            NSForegroundColorAttributeName : UIColor.white
+            NSAttributedStringKey.foregroundColor : UIColor.white
         ]
     }
     
@@ -84,7 +84,7 @@ class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     // MARK: - Service
-    func updateUploadProgress() {
+    @objc func updateUploadProgress() {
         let progress = String(format: "%.2f", user.avatarUploadingProgress * 100)
         uploadButton.setTitle(R.string.localizable.upload_progress() + progress + "%", for: .normal)
     }

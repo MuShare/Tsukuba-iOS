@@ -105,7 +105,7 @@ class ChatViewController: EditingViewController {
     }
     
     // MARK: Notification
-    func didReceiveNewChat(_ notification: Notification) {
+    @objc func didReceiveNewChat(_ notification: Notification) {
         guard let userInfo = notification.userInfo else {
             return
         }

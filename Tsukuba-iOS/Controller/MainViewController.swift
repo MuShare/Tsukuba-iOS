@@ -28,7 +28,7 @@ class MainViewController: UITabBarController {
     }
 
     // MARK: Notification
-    func didRoomStatusUpdated(_ notification: Notification) {
+    @objc func didRoomStatusUpdated(_ notification: Notification) {
         updateGlobalUnread()
     }
     

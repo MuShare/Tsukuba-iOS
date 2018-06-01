@@ -39,7 +39,7 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         imagePickerController.navigationBar.barTintColor = Color.main
         imagePickerController.navigationBar.tintColor = UIColor.white
         imagePickerController.navigationBar.titleTextAttributes = [
-            NSForegroundColorAttributeName : UIColor.white
+            NSAttributedStringKey.foregroundColor : UIColor.white
         ]
         
         messageManager.loadPictures(mid) { (success, pictures) in
