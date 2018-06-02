@@ -40,41 +40,19 @@ class MyMessagesTableViewController: UITableViewController {
 
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "editMessageSegue" {
-            segue.destination.setValue(selectedMessage.mid, forKey: "messageId")
-        }
-    }
-
-    // MARK: - UITableViewDataSource
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.01
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let message = messages[indexPath.row]
-        let identifier = message.enable ? "myMessageCell" : "closedMessageCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! MyMessageTableViewCell
-        cell.fillWithMessage(message)
-        return cell
-    }
-    
-    // MARK: - UITableViewDelegate
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedMessage = messages[indexPath.row]
-        if selectedMessage.enable {
-            self.performSegue(withIdentifier: "editMessageSegue", sender: self)
+        switch segue.identifier {
+        case R.segue.myMessagesTableViewController.editMessageSegue.identifier:
+            let destination = segue.destination as! EditMessageViewController
+            destination.messageId = selectedMessage.mid
+        default:
+            break
         }
     }
 
     // MARK: - Action
     @IBAction func createMessage(_ sender: Any) {
         if user.login {
-            present(UIStoryboard(name: "Post", bundle: nil).instantiateInitialViewController()!,
-                    animated: true, completion: nil)
+            present(R.storyboard.post().instantiateInitialViewController()!, animated: true)
         } else {
             showLoginAlert()
         }
@@ -93,5 +71,34 @@ class MyMessagesTableViewController: UITableViewController {
         tableView.es_startPullToRefresh()
     }
     */
+    
+}
+
+extension MyMessagesTableViewController {
+    
+    // MARK: - UITableViewDataSource
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.01
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messages.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let message = messages[indexPath.row]
+        let identifier = message.enable ? "myMessageCell" : "closedMessageCell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! MyMessageTableViewCell
+        cell.fillWithMessage(message)
+        return cell
+    }
+    
+    // MARK: - UITableViewDelegate
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedMessage = messages[indexPath.row]
+        if selectedMessage.enable {
+            self.performSegue(withIdentifier: R.segue.myMessagesTableViewController.editMessageSegue.identifier, sender: self)
+        }
+    }
     
 }

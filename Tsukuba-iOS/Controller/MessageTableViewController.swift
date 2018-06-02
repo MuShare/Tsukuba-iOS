@@ -42,17 +42,21 @@ class MessageTableViewController: UITableViewController {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "userProfileSegue" {
-            segue.destination.setValue(message?.author?.uid, forKey: "uid")
-        } else if segue.identifier == "chatSegue" {
+        switch segue.identifier {
+        case R.segue.messageTableViewController.userProfileSegue.identifier:
+            let destination = segue.destination as! UserProfileTableViewController
+            destination.uid = message?.author?.uid
+        case R.segue.messageTableViewController.chatSegue.identifier:
             let destination = segue.destination as! ChatViewController
             destination.receiver = message?.author
+        default:
+            break
         }
     }
 
     // MARK: - Action
     @IBAction func showProfile(_ sender: Any) {
-        self.performSegue(withIdentifier: "userProfileSegue", sender: self)
+        self.performSegue(withIdentifier: R.segue.messageTableViewController.userProfileSegue.identifier, sender: self)
     }
     
     @IBAction func reportPost(_ sender: Any) {

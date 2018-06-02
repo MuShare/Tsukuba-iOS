@@ -1,6 +1,6 @@
 import UIKit
 
-class SelectCategoryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class SelectCategoryViewController: UIViewController {
 
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     
@@ -17,14 +17,43 @@ class SelectCategoryViewController: UIViewController, UICollectionViewDataSource
         // Do any additional setup after loading the view.
         categories = dao.categoryDao.findEnable()
     }
+    
+    // MARK: Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case R.segue.selectCategoryViewController.createMessageSegue.identifier:
+            let destination = segue.destination as! CreateMessageViewController
+            destination.category = selectedCategory
+        default:
+            break
+        }
+    }
 
-    // MARK: UICollectionViewDelegateFlowLayout
+    // MARK: Action
+    @IBAction func choosed(_ sender: Any) {
+        if lastSelectedCell == nil {
+            return
+        }
+        self.performSegue(withIdentifier: R.segue.selectCategoryViewController.createMessageSegue.identifier, sender: self)
+    }
+    
+    @IBAction func close(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+}
+
+extension SelectCategoryViewController: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.size.width / CGFloat(config.columns)
         return CGSize(width: width, height: width + 25)
     }
     
-    // MARK: UICollectionViewDataSource
+}
+
+extension SelectCategoryViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categories.count
     }
@@ -38,34 +67,17 @@ class SelectCategoryViewController: UIViewController, UICollectionViewDataSource
         return cell
     }
 
-    // MARK: UICollectionViewDelegate
+}
+
+extension SelectCategoryViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if lastSelectedCell != nil {
             lastSelectedCell?.iconImageView.kf.setImage(with: URL(string: createUrl(selectedCategory.icon!)))
         }
         lastSelectedCell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell
-        lastSelectedCell?.iconImageView.image = UIImage(named: "category_selected")
+        lastSelectedCell?.iconImageView.image = R.image.category_selected()
         selectedCategory = categories[indexPath.row]
-    }
-    
-    
-    // MARK: Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "createMessageSegue" {
-            segue.destination.setValue(selectedCategory, forKey: "category")
-        }
-    }
-
-    // MARK: Action
-    @IBAction func choosed(_ sender: Any) {
-        if lastSelectedCell == nil {
-            return
-        }
-        self.performSegue(withIdentifier: "createMessageSegue", sender: self)
-    }
-    
-    @IBAction func close(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
     }
     
 }

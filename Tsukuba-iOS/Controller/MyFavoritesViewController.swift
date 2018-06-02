@@ -3,7 +3,7 @@ import ESPullToRefresh
 
 private let reuseIdentifier = "Cell"
 
-class MyFavoritesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate,  UICollectionViewDelegateFlowLayout {
+class MyFavoritesViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -42,32 +42,46 @@ class MyFavoritesViewController: UIViewController, UICollectionViewDataSource, U
 
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "messageSegue" {
-            segue.destination.setValue(selectedMessage.mid, forKey: "messageId")
+        switch segue.identifier {
+        case R.segue.myFavoritesViewController.messageSegue.identifier:
+            let destination = segue.destination as! MessageTableViewController
+            destination.messageId = selectedMessage.mid
+        default:
+            break
         }
     }
     
-    // MARK: - UICollectionViewDelegateFlowLayout
+}
+
+extension MyFavoritesViewController: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.size.width / CGFloat(config.columns) - 2
         return CGSize(width: width, height: width + 50)
     }
+    
+}
 
-    // MARK: - UICollectionViewDataSource
+extension MyFavoritesViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return messages.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "messageCell", for: indexPath) as! MessageCollectionViewCell
         cell.fillWithMessage(messages[indexPath.row])
         return cell
     }
     
-    // MARK: - UICollectionViewDelegate
+}
+
+extension MyFavoritesViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedMessage = messages[indexPath.row]
-        performSegue(withIdentifier: "messageSegue", sender: self)
+        performSegue(withIdentifier: R.segue.myFavoritesViewController.messageSegue.identifier, sender: self)
     }
 
+    
 }

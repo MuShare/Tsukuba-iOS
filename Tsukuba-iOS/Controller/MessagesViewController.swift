@@ -2,7 +2,7 @@ import UIKit
 import ESPullToRefresh
 import Segmentio
 
-class MessagesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate,  UICollectionViewDelegateFlowLayout {
+class MessagesViewController: UIViewController {
     
     @IBOutlet weak var segmentioView: Segmentio!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -90,39 +90,19 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
 
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "messageSegue" {
-            segue.destination.setValue(selectedMessage.mid, forKey: "messageId")
+        switch segue.identifier {
+        case R.segue.messagesViewController.messageSegue.identifier:
+            let destination = segue.destination as! MessageTableViewController
+            destination.messageId = selectedMessage.mid
+        default:
+            break
         }
     }
 
-    // MARK: - UICollectionViewDelegateFlowLayout
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.size.width / CGFloat(config.columns) - 2
-        return CGSize(width: width, height: width + 50)
-    }
-    
-    // MARK: - UICollectionViewDataSource
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return messages.count
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "messageCell", for: indexPath) as! MessageCollectionViewCell
-        cell.fillWithMessage(messages[indexPath.row])
-        return cell
-    }
-
-    // MARK: - UICollectionViewDelegate
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedMessage = messages[indexPath.row]
-        performSegue(withIdentifier: "messageSegue", sender: self)
-    }
-    
     // MARK: - Action
     @IBAction func createMessage(_ sender: Any) {
         if user.login {
-            present(UIStoryboard(name: "Post", bundle: nil).instantiateInitialViewController()!,
-                    animated: true, completion: nil)
+            present(R.storyboard.post().instantiateInitialViewController()!, animated: true, completion: nil)
         } else {
             showLoginAlert()
         }
@@ -186,6 +166,38 @@ class MessagesViewController: UIViewController, UICollectionViewDataSource, UICo
             ),
             animationDuration: 0.1
         )
+    }
+    
+}
+
+extension MessagesViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.size.width / CGFloat(config.columns) - 2
+        return CGSize(width: width, height: width + 50)
+    }
+    
+}
+
+extension MessagesViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return messages.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "messageCell", for: indexPath) as! MessageCollectionViewCell
+        cell.fillWithMessage(messages[indexPath.row])
+        return cell
+    }
+    
+}
+
+extension MessagesViewController: UICollectionViewDelegate {
+ 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedMessage = messages[indexPath.row]
+        performSegue(withIdentifier: R.segue.messagesViewController.messageSegue.identifier, sender: self)
     }
     
 }
