@@ -133,7 +133,7 @@ class ChatManager {
                 for object in result["exist"].arrayValue {
                     if let room = self.dao.roomDao.getByRid(object["rid"].stringValue) {
                         room.lastMessage = object["lastMessage"].stringValue
-                        room.updateAt = NSDate(timeIntervalSince1970: object["updateAt"].doubleValue / 1000)
+                        room.updateAt = Date(timeIntervalSince1970: object["updateAt"].doubleValue / 1000)
                         room.unread += object["chats"].int16Value - room.chats
                         room.chats = object["chats"].int16Value
                         globalUnread += Int(room.unread)

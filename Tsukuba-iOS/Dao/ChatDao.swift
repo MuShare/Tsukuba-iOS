@@ -7,7 +7,7 @@ class ChatDao: DaoTemplate {
         let chat = NSEntityDescription.insertNewObject(forEntityName: NSStringFromClass(Chat.self),
                                                        into: context) as? Chat
         chat?.cid = object["cid"].stringValue
-        chat?.createAt = NSDate(timeIntervalSince1970: object["createAt"].doubleValue / 1000)
+        chat?.createAt = Date(timeIntervalSince1970: object["createAt"].doubleValue / 1000)
         chat?.type = object["type"].int16Value
         chat?.direction = object["direction"].boolValue
         chat?.seq = object["seq"].int16Value

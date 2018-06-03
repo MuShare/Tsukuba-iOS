@@ -11,8 +11,8 @@ class RoomDao: DaoTemplate {
                                                             into: context) as? Room
         }
         room?.rid = rid
-        room?.createAt = NSDate(timeIntervalSince1970: object["createAt"].doubleValue / 1000)
-        room?.updateAt = NSDate(timeIntervalSince1970: object["updateAt"].doubleValue / 1000)
+        room?.createAt = Date(timeIntervalSince1970: object["createAt"].doubleValue / 1000)
+        room?.updateAt = Date(timeIntervalSince1970: object["updateAt"].doubleValue / 1000)
         room?.chats = object["chats"].int16Value
         room?.lastMessage = object["lastMessage"].stringValue
         room?.creator = object["creator"].boolValue

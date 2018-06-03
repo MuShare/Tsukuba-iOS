@@ -197,7 +197,7 @@ extension MessagesViewController: UICollectionViewDelegate {
  
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedMessage = messages[indexPath.row]
-        performSegue(withIdentifier: R.segue.messagesViewController.messageSegue.identifier, sender: self)
+        performSegue(withIdentifier: R.segue.messagesViewController.messageSegue, sender: self)
     }
     
 }

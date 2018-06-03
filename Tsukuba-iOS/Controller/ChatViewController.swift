@@ -68,7 +68,10 @@ class ChatViewController: EditingViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        ChatManager.shared.clearUnread(room!)
+        if let room = room {
+            ChatManager.shared.clearUnread(room)
+        }
+        
         tabBarController?.tabBar.isHidden = false
         appDelagate.isChatting = false
     }

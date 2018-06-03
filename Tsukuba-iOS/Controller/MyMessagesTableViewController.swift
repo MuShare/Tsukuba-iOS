@@ -97,7 +97,7 @@ extension MyMessagesTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedMessage = messages[indexPath.row]
         if selectedMessage.enable {
-            self.performSegue(withIdentifier: R.segue.myMessagesTableViewController.editMessageSegue.identifier, sender: self)
+            self.performSegue(withIdentifier: R.segue.myMessagesTableViewController.editMessageSegue, sender: self)
         }
     }
     

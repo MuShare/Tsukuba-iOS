@@ -22,7 +22,7 @@ class MeTableViewController: UITableViewController {
             user.pullUser(completion: { [weak self] success in
                 if let `self` = self, success {
                     if (self.user.contact == "" || self.user.address == "") {
-                        self.performSegue(withIdentifier: R.segue.meTableViewController.profileSegue.identifier, sender: self)
+                        self.performSegue(withIdentifier: R.segue.meTableViewController.profileSegue, sender: self)
                     }
                     self.updateUserInfo()
                 }
@@ -83,19 +83,19 @@ extension MeTableViewController {
         switch cell.reuseIdentifier! {
         case R.reuseIdentifier.sign.identifier:
             if (user.login) {
-                performSegue(withIdentifier:R.segue.meTableViewController.profileSegue.identifier, sender: self)
+                performSegue(withIdentifier:R.segue.meTableViewController.profileSegue, sender: self)
             } else {
                 present(R.storyboard.login().instantiateInitialViewController()!, animated: true)
             }
         case R.reuseIdentifier.myMessages.identifier:
             if user.login {
-                performSegue(withIdentifier: R.segue.meTableViewController.myMessagesSegue.identifier, sender: "")
+                performSegue(withIdentifier: R.segue.meTableViewController.myMessagesSegue, sender: "")
             } else {
                 showLoginAlert()
             }
         case R.reuseIdentifier.myFavorites.identifier:
             if user.login {
-                performSegue(withIdentifier: R.segue.meTableViewController.myFavoritesSegue.identifier, sender: "")
+                performSegue(withIdentifier: R.segue.meTableViewController.myFavoritesSegue, sender: "")
             } else {
                 showLoginAlert()
             }

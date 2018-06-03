@@ -34,7 +34,7 @@ class SelectCategoryViewController: UIViewController {
         if lastSelectedCell == nil {
             return
         }
-        self.performSegue(withIdentifier: R.segue.selectCategoryViewController.createMessageSegue.identifier, sender: self)
+        self.performSegue(withIdentifier: R.segue.selectCategoryViewController.createMessageSegue, sender: self)
     }
     
     @IBAction func close(_ sender: Any) {
@@ -60,8 +60,7 @@ extension SelectCategoryViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let category = categories[indexPath.row]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoryIdentifier",
-                                                      for: indexPath) as! CategoryCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.categoryIdentifier, for: indexPath)!
         cell.nameLabel.text = category.name
         cell.iconImageView.kf.setImage(with: URL(string: createUrl(category.icon!)))
         return cell
