@@ -17,7 +17,6 @@ target 'Tsukuba-iOS' do
     pod 'NVActivityIndicatorView', '~> 4.2'
     pod 'Segmentio', '~> 3.0'
     pod 'FaveButton', '~> 2'
-    pod 'RxKeyboard', '~> 0.8'
     pod 'UILabel+Copyable', '~> 1.0'
     pod 'Starscream', '~> 3.0'
     pod 'R.swift', '~> 4.0'
