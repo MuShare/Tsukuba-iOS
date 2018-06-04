@@ -64,7 +64,7 @@ class UserProfileTableViewController: UITableViewController {
             if UserManager.shared.isCurrentUser(user!) {
                 showTip(R.string.localizable.chats_self_not_allow())
             } else {
-                performSegue(withIdentifier: R.segue.userProfileTableViewController.chatSegue.identifier, sender: self)
+                performSegue(withIdentifier: R.segue.userProfileTableViewController.chatSegue, sender: self)
             }
         } else {
             showLoginAlert()

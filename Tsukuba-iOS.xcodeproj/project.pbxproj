@@ -12,6 +12,9 @@
 		7792187020B7BD83004E83C1 /* UITableViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7792186F20B7BD83004E83C1 /* UITableViewController+Extension.swift */; };
 		77F1946020BCF6B7001B3F6E /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F1945F20BCF6B6001B3F6E /* R.generated.swift */; };
 		77F1946220BCFBF7001B3F6E /* LoginBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F1946120BCFBF7001B3F6E /* LoginBaseViewController.swift */; };
+		77F2E7D020C52729001E7AB3 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F2E7CF20C52729001E7AB3 /* UIView+Extension.swift */; };
+		77F2E7D220C5274E001E7AB3 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F2E7D120C5274E001E7AB3 /* UITextField+Extension.swift */; };
+		77F2E7D420C52779001E7AB3 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F2E7D320C52779001E7AB3 /* UIDevice+Extension.swift */; };
 		D3A30465DED0A54864830928 /* Pods_Tsukuba_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44E7EC0007342735A1D800F /* Pods_Tsukuba_iOS.framework */; };
 		E4054AE31EC48D29006BCEEC /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4054AE21EC48D29006BCEEC /* ResetViewController.swift */; };
 		E4089FB51EBAE55C0042221D /* DaoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FB31EBAE55C0042221D /* DaoManager.swift */; };
@@ -106,6 +109,9 @@
 		7792186F20B7BD83004E83C1 /* UITableViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewController+Extension.swift"; sourceTree = "<group>"; };
 		77F1945F20BCF6B6001B3F6E /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		77F1946120BCFBF7001B3F6E /* LoginBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBaseViewController.swift; sourceTree = "<group>"; };
+		77F2E7CF20C52729001E7AB3 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		77F2E7D120C5274E001E7AB3 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		77F2E7D320C52779001E7AB3 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 		E4054AE21EC48D29006BCEEC /* ResetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
 		E4089FB31EBAE55C0042221D /* DaoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaoManager.swift; sourceTree = "<group>"; };
 		E4089FB41EBAE55C0042221D /* DaoTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaoTemplate.swift; sourceTree = "<group>"; };
@@ -228,6 +234,9 @@
 				E41F7D111EC3EB92002E8184 /* UIViewController+Extension.swift */,
 				7792186F20B7BD83004E83C1 /* UITableViewController+Extension.swift */,
 				77439FD620BFD86600FEE3E0 /* SFSafariViewController.swift */,
+				77F2E7CF20C52729001E7AB3 /* UIView+Extension.swift */,
+				77F2E7D120C5274E001E7AB3 /* UITextField+Extension.swift */,
+				77F2E7D320C52779001E7AB3 /* UIDevice+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -696,6 +705,7 @@
 				E48931FF201F014400727A6B /* ChatTableViewCell.swift in Sources */,
 				E48DE5531EC2D52C00E5CA25 /* Message.swift in Sources */,
 				E4089FF11EBB4F160042221D /* AvatarViewController.swift in Sources */,
+				77F2E7D020C52729001E7AB3 /* UIView+Extension.swift in Sources */,
 				E45519431EC453F6006A3B73 /* PicturesTableViewCell.swift in Sources */,
 				77F1946220BCFBF7001B3F6E /* LoginBaseViewController.swift in Sources */,
 				E4089FB61EBAE55C0042221D /* DaoTemplate.swift in Sources */,
@@ -707,6 +717,7 @@
 				E41F7D031EC3604C002E8184 /* MessageCollectionViewCell.swift in Sources */,
 				7792187020B7BD83004E83C1 /* UITableViewController+Extension.swift in Sources */,
 				E4B52B6A1EF3A77E0030BD2D /* MyFavoritesViewController.swift in Sources */,
+				77F2E7D420C52779001E7AB3 /* UIDevice+Extension.swift in Sources */,
 				E4089FE21EBAF8F40042221D /* CategoryCollectionViewCell.swift in Sources */,
 				E4054AE31EC48D29006BCEEC /* ResetViewController.swift in Sources */,
 				E41F7D011EC34CB8002E8184 /* MessagesViewController.swift in Sources */,
@@ -722,6 +733,7 @@
 				E4089FDC1EBAF2190042221D /* Response.swift in Sources */,
 				E4464AFF2022BA44001968B5 /* RoomDao.swift in Sources */,
 				E48DE54F1EC2D30700E5CA25 /* MyMessagesTableViewController.swift in Sources */,
+				77F2E7D220C5274E001E7AB3 /* UITextField+Extension.swift in Sources */,
 				77F1946020BCF6B7001B3F6E /* R.generated.swift in Sources */,
 				E4089FBA1EBAE58F0042221D /* OptionDao.swift in Sources */,
 				E46A91642022AFEA00244606 /* ChatManager.swift in Sources */,

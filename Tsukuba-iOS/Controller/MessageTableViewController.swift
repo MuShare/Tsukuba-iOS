@@ -56,7 +56,7 @@ class MessageTableViewController: UITableViewController {
 
     // MARK: - Action
     @IBAction func showProfile(_ sender: Any) {
-        self.performSegue(withIdentifier: R.segue.messageTableViewController.userProfileSegue.identifier, sender: self)
+        self.performSegue(withIdentifier: R.segue.messageTableViewController.userProfileSegue, sender: self)
     }
     
     @IBAction func reportPost(_ sender: Any) {

@@ -119,12 +119,11 @@ class CreateMessageViewController: FormViewController, NVActivityIndicatorViewab
                        sell: sell,
                        price: price,
                        oids: oids,
-                       cid: category.cid!)
-        { (success, mid) in
+                       cid: category.cid!) { (success, mid) in
             self.stopAnimating()
             if success {
                 self.mid = mid!
-                self.performSegue(withIdentifier: R.segue.createMessageViewController.createPictureSegue.identifier, sender: self)
+                self.performSegue(withIdentifier: R.segue.createMessageViewController.createPictureSegue, sender: self)
             } else {
                 self.showTip(R.string.localizable.create_message_fail())
             }

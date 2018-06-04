@@ -80,7 +80,7 @@ extension MyFavoritesViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedMessage = messages[indexPath.row]
-        performSegue(withIdentifier: R.segue.myFavoritesViewController.messageSegue.identifier, sender: self)
+        performSegue(withIdentifier: R.segue.myFavoritesViewController.messageSegue, sender: self)
     }
 
     
