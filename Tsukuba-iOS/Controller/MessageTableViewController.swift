@@ -59,6 +59,14 @@ class MessageTableViewController: UITableViewController {
         self.performSegue(withIdentifier: R.segue.messageTableViewController.userProfileSegue, sender: self)
     }
     
+    @IBAction func chat(_ sender: Any) {
+        if userManager.login {
+            performSegue(withIdentifier: R.segue.messageTableViewController.chatSegue, sender: self)
+        } else {
+            showLoginAlert()
+        }
+    }
+    
     @IBAction func reportPost(_ sender: Any) {
         let alertController = UIAlertController(title: R.string.localizable.report_post_title(),
                                               message: R.string.localizable.report_post_message(),

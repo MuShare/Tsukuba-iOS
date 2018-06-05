@@ -846,12 +846,13 @@
                     <navigationItem key="navigationItem" id="g3Z-QK-ck2">
                         <barButtonItem key="rightBarButtonItem" enabled="NO" image="tab_chat" id="gGb-iG-V5x">
                             <connections>
-                                <segue destination="q8n-zZ-qMO" kind="push" identifier="chatSegue" id="gAB-gA-hsq"/>
+                                <action selector="chat:" destination="Xd0-0a-N5R" id="0VQ-0s-dxe"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="3p3-GW-Cgl" kind="push" identifier="userProfileSegue" id="vQa-em-rns"/>
+                        <segue destination="q8n-zZ-qMO" kind="push" identifier="chatSegue" id="lPl-st-Xr7"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l1r-Sd-FHx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2111,7 +2112,7 @@
         <image name="write" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lwa-RZ-DBT"/>
+        <segue reference="lPl-st-Xr7"/>
         <segue reference="kLV-Sf-9gb"/>
     </inferredMetricsTieBreakers>
 </document>
