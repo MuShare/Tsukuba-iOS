@@ -15,8 +15,8 @@ let DEBUG = false
 let baseUrl = "https://tsukuba.mushare.cn/"
 let socketUrl = "ws://tsukuba.mushare.cn:8080/websocket/chat"
 
-//let baseUrl = "http://192.168.11.2:8080/"
-//let socketUrl = "ws://192.168.11.2:8080/websocket/chat"
+//let baseUrl = "http://111.216.49.168:8080/"
+//let socketUrl = "ws://111.216.49.168:8080/websocket/chat"
 
 func createUrl(_ relative: String) -> String {
     let requestUrl = baseUrl + relative

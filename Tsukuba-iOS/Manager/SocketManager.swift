@@ -10,14 +10,14 @@ import SwiftyJSON
 import Starscream
 
 protocol SocketManagerDelegate: class {
-    func didReceiveSocketMessage(_ chat: Chat)
+    func didReceiveSocketMessage(_ chats: [Chat])
 }
 
 class SocketManager {
     
     static let shared = SocketManager()
     
-    var socket: WebSocket!
+    var socket: WebSocket?
     var dao: DaoManager!
     var config: Config!
     
@@ -39,8 +39,10 @@ class SocketManager {
         request.timeoutInterval = 5
         
         socket = WebSocket(request: request)
-        socket.delegate = self
-        socket.connect()
+        if let socket = socket {
+            socket.delegate = self
+            socket.connect()
+        }
     }
     
 }
@@ -73,15 +75,18 @@ extension SocketManager: WebSocketDelegate {
     }
     
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
-        let object = JSON.init(parseJSON: text)
-        guard let room = self.dao.roomDao.getByRid(object["room"]["rid"].stringValue) else {
-            return
+        var chats: [Chat] = []
+        for object in JSON.init(parseJSON: text).arrayValue {
+            guard let room = self.dao.roomDao.getByRid(object["room"]["rid"].stringValue) else {
+                return
+            }
+            let chat = self.dao.chatDao.save(object)
+            chat.content = object["content"].stringValue
+            chat.room = room
+            chats.append(chat)
         }
-        let chat = self.dao.chatDao.save(object)
-        chat.content = object["content"].stringValue
-        chat.room = room
         self.dao.saveContext()
-        delegate?.didReceiveSocketMessage(chat)
+        delegate?.didReceiveSocketMessage(chats)
     }
     
     func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
@@ -97,7 +102,9 @@ extension SocketManager: UserManagerDelegate {
     }
     
     func didUserLogout() {
-        socket.disconnect()
+        if let socket = socket {
+            socket.disconnect()
+        }
         socket = nil
     }
     

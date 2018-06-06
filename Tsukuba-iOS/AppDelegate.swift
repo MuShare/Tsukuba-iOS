@@ -210,8 +210,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate: SocketManagerDelegate {
-    func didReceiveSocketMessage(_ chat: Chat) {
-        print("did received web socket message: \(chat.content ?? "")")
+    func didReceiveSocketMessage(_ chats: [Chat]) {
+        print("did received web socket messages: \(chats)")
 
         ChatManager.shared.roomStatus(isLoginCheck: false) { [weak self] success in
             if self?.isChatting == false {
@@ -234,7 +234,7 @@ extension AppDelegate: SocketManagerDelegate {
         AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
         
         NotificationCenter.default.post(name: .didReceiveNewChat, object: self, userInfo: [
-            "chat": chat
+            "chat": chats[0]
         ])
     }
 }

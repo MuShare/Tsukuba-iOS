@@ -13,6 +13,10 @@ class ChatManager {
     init() {
         dao = DaoManager.shared
         config = Config.shared
+        
+        roomStatus(isLoginCheck: false) { [weak self] success in
+            NotificationCenter.default.post(name: .didRoomStatusUpdated, object: self)
+        }
     }
     
     func sendPlainText(receiver: String, content: String, completion: ChatCompletion) {
@@ -134,7 +138,7 @@ class ChatManager {
                     if let room = self.dao.roomDao.getByRid(object["rid"].stringValue) {
                         room.lastMessage = object["lastMessage"].stringValue
                         room.updateAt = Date(timeIntervalSince1970: object["updateAt"].doubleValue / 1000)
-                        room.unread += object["chats"].int16Value - room.chats
+                        room.unread = object["chats"].int16Value - room.chats
                         room.chats = object["chats"].int16Value
                         globalUnread += Int(room.unread)
                     }
