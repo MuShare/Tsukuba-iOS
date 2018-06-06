@@ -53,7 +53,7 @@ class UserProfileTableViewController: UITableViewController {
         default:
             break
         }
-        avatarImageView.kf.setImage(with: imageURL(user.avatar))
+        avatarImageView.kf.setImage(with: Config.shared.imageURL(user.avatar))
         createAtLabel.text = formatter.string(from: user.createAt)
         contactLabel.text = user.contact
         addressLabel.text = user.address

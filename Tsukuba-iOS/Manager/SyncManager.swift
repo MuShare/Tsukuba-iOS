@@ -19,7 +19,7 @@ class SyncManager {
         let params: Parameters = [
             "rev": config.categoryRev
         ]
-        Alamofire.request(createUrl("api/category/list"),
+        Alamofire.request(config.createUrl("api/category/list"),
                           method: .get,
                           parameters: params,
                           encoding: URLEncoding.default,
@@ -49,7 +49,7 @@ class SyncManager {
         let params: Parameters = [
             "rev": self.config.selectionRev
         ]
-        Alamofire.request(createUrl("api/selection/list"),
+        Alamofire.request(config.createUrl("api/selection/list"),
                           method: .get,
                           parameters: params,
                           encoding: URLEncoding.default,
@@ -83,7 +83,7 @@ class SyncManager {
         let params: Parameters = [
             "rev": self.config.optionRev
         ]
-        Alamofire.request(createUrl("api/option/list"),
+        Alamofire.request(config.createUrl("api/option/list"),
                           method: .get,
                           parameters: params,
                           encoding: URLEncoding.default,

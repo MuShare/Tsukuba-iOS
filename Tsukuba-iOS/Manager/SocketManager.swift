@@ -35,7 +35,7 @@ class SocketManager {
             print("Web socket has not been conncted due to empty token.")
             return
         }
-        var request = URLRequest(url: URL(string: socketUrl + "?token=\(config.token)")!)
+        var request = URLRequest(url: URL(string: config.socketUrl + "?token=\(config.token)")!)
         request.timeoutInterval = 5
         
         socket = WebSocket(request: request)

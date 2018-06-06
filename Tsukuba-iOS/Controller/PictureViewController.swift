@@ -67,7 +67,7 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         // If index is less than the number of existed pictures' paths, load existed pictures,
         // else load pictures from UIImagePickerController.
         if indexPath.row < pictureCount {
-            cell.pictureImageView.kf.setImage(with: imageURL(pictures[indexPath.row].path))
+            cell.pictureImageView.kf.setImage(with: Config.shared.imageURL(pictures[indexPath.row].path))
             cell.removeButton.isHidden = false
         } else {
             cell.pictureImageView.image = images[indexPath.row - pictureCount]

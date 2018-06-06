@@ -25,7 +25,7 @@ class ChatManager {
             "content": content
         ]
         
-        Alamofire.request(createUrl("api/chat/text"),
+        Alamofire.request(config.createUrl("api/chat/text"),
                           method: .post,
                           parameters: params,
                           encoding: URLEncoding.default,
@@ -55,7 +55,7 @@ class ChatManager {
         let params: Parameters = [
             "seq": room.chats
         ]
-        Alamofire.request(createUrl("api/chat/list/" + room.rid!),
+        Alamofire.request(config.createUrl("api/chat/list/" + room.rid!),
                           method: .get,
                           parameters: params,
                           encoding: URLEncoding.default,
@@ -107,7 +107,7 @@ class ChatManager {
             url.append("rids=" + room.rid! + "&")
         }
     
-        Alamofire.request(createUrl(url),
+        Alamofire.request(config.createUrl(url),
                           method: .get,
                           parameters: nil,
                           encoding: URLEncoding.default,

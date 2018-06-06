@@ -24,7 +24,7 @@ class ChatTableViewCell: UITableViewCell {
         messageBackgroundImageView.image = UIImage(named: "\(type)_background")?.resizableImage(withCapInsets: UIEdgeInsetsMake(28, 20, 15, 20), resizingMode: .stretch)
         messageBackgroundImageView.highlightedImage = UIImage(named: "\(type)_background_highlight")?.resizableImage(withCapInsets: UIEdgeInsetsMake(28, 20, 15, 20), resizingMode: .stretch)
         
-        avatarImageView.kf.setImage(with: imageURL(avatar))
+        avatarImageView.kf.setImage(with: Config.shared.imageURL(avatar))
         messageLabel.text = message
     }
 
