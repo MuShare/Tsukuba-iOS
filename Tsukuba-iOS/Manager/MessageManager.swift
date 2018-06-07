@@ -14,6 +14,7 @@ class MessageManager {
     var updated = false
     
     static let shared = MessageManager()
+    let config = Config.shared
     
     init() {
 
@@ -30,11 +31,11 @@ class MessageManager {
             "sell": sell
         ]
         
-        Alamofire.request(createUrl("api/message/create"),
+        Alamofire.request(config.createUrl("api/message/create"),
                           method: .post,
                           parameters: params,
                           encoding: URLEncoding.default,
-                          headers: Config.shared.tokenHeader)
+                          headers: config.tokenHeader)
             .responseJSON { (responseObject) in
                 let response = Response(responseObject)
                 if response.statusOK() {
@@ -62,11 +63,11 @@ class MessageManager {
             "price": price
         ]
         
-        Alamofire.request(createUrl("api/message/modify"),
+        Alamofire.request(config.createUrl("api/message/modify"),
                           method: .post,
                           parameters: params,
                           encoding: URLEncoding.default,
-                          headers: Config.shared.tokenHeader)
+                          headers: config.tokenHeader)
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             if response.statusOK() {
@@ -90,7 +91,7 @@ class MessageManager {
     }
     
     func loadPictures(_ mid: String, completion: ((Bool, [Picture]) -> Void)?) {
-        Alamofire.request(createUrl("api/message/pictures/" + mid),
+        Alamofire.request(config.createUrl("api/message/pictures/" + mid),
                           method: .get,
                           parameters: nil,
                           encoding: URLEncoding.default,
@@ -113,47 +114,44 @@ class MessageManager {
         let data = UIImageJPEGRepresentation(resizeImage(image: image, newWidth: 480)!, 1.0)
         Alamofire.upload(multipartFormData: { multipartFormData in
             multipartFormData.append(data!, withName: "picture", fileName: UUID().uuidString, mimeType: "image/jpeg")
-        },
-                         usingThreshold: UInt64.init(),
-                         to: createUrl("api/message/picture?mid=" + mid),
-                         method: .post,
-                         headers: Config.shared.tokenHeader,
-                         encodingCompletion:
-            { encodingResult in
-                switch encodingResult {
-                case .success(let upload, _, _):
-                    upload.uploadProgress { progress in
-                        self.pictureUploadingProgress = progress.fractionCompleted
+        }, usingThreshold: UInt64.init(),
+           to: config.createUrl("api/message/picture?mid=" + mid),
+           method: .post,
+           headers: config.tokenHeader,
+           encodingCompletion: { encodingResult in
+            switch encodingResult {
+            case .success(let upload, _, _):
+                upload.uploadProgress { progress in
+                    self.pictureUploadingProgress = progress.fractionCompleted
+                }
+                upload.responseJSON { responseObject in
+                    let response = Response(responseObject)
+                    if response.statusOK() {
+                        let picture = response.getResult()["picture"]
+                        completion?(true, picture)
+                    } else {
+                        completion?(false, nil)
                     }
-                    upload.responseJSON { responseObject in
-                        let response = Response(responseObject)
-                        if response.statusOK() {
-                            let picture = response.getResult()["picture"]
-                            completion?(true, picture)
-                        } else {
-                            completion?(false, nil)
-                        }
-                    }
-                    break
-                case .failure(let encodingError):
-                    if DEBUG {
-                        debugPrint(encodingError)
-                    }
-                    completion?(false, nil)
+                }
+                break
+            case .failure(let encodingError):
+                if DEBUG {
+                    debugPrint(encodingError)
+                }
+                completion?(false, nil)
             }
         })
-        
     }
     
     func removePicture(_ pid: String, completion: ((Bool) -> Void)?) {
         let params: Parameters = [
             "pid": pid
         ]
-        Alamofire.request(createUrl("api/message/picture"),
+        Alamofire.request(config.createUrl("api/message/picture"),
                           method: .delete,
                           parameters: params,
                           encoding: URLEncoding.default,
-                          headers: Config.shared.tokenHeader)
+                          headers: config.tokenHeader)
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             if response.statusOK() {
@@ -168,11 +166,11 @@ class MessageManager {
         let params: Parameters = [
             "sell": sell
         ]
-        Alamofire.request(createUrl("api/message/list/user"),
+        Alamofire.request(config.createUrl("api/message/list/user"),
                           method: .get,
                           parameters: params,
                           encoding: URLEncoding.default,
-                          headers: Config.shared.tokenHeader)
+                          headers: config.tokenHeader)
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             if response.statusOK() {
@@ -191,11 +189,11 @@ class MessageManager {
         let params: Parameters = [
             "sell": sell
         ]
-        Alamofire.request(createUrl("api/message/list/favorites"),
+        Alamofire.request(config.createUrl("api/message/list/favorites"),
                           method: .get,
                           parameters: params,
                           encoding: URLEncoding.default,
-                          headers: Config.shared.tokenHeader)
+                          headers: config.tokenHeader)
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             if response.statusOK() {
@@ -216,11 +214,11 @@ class MessageManager {
             "cid": cid ?? "",
             "seq": seq ?? -1,
         ]
-        Alamofire.request(createUrl("api/message/list"),
+        Alamofire.request(config.createUrl("api/message/list"),
                           method: .get,
                           parameters: params,
                           encoding: URLEncoding.default,
-                          headers: Config.shared.tokenHeader)
+                          headers: config.tokenHeader)
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             if response.statusOK() {
@@ -236,11 +234,11 @@ class MessageManager {
     }
     
     func detail(_ mid: String, completion: ((Bool, Message?) -> Void)?) {
-        Alamofire.request(createUrl("api/message/detail/" + mid),
+        Alamofire.request(config.createUrl("api/message/detail/" + mid),
                           method: .get,
                           parameters: nil,
                           encoding: URLEncoding.default,
-                          headers: Config.shared.tokenHeader)
+                          headers: config.tokenHeader)
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             if response.statusOK() {
@@ -256,11 +254,11 @@ class MessageManager {
         let params: Parameters = [
             "mid": mid
         ]
-        Alamofire.request(createUrl("api/message/close"),
+        Alamofire.request(config.createUrl("api/message/close"),
                           method: .post,
                           parameters: params,
                           encoding: URLEncoding.default,
-                          headers: Config.shared.tokenHeader)
+                          headers: config.tokenHeader)
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             if response.statusOK() {
@@ -282,11 +280,11 @@ class MessageManager {
         let params: Parameters = [
             "mid": mid
         ]
-        Alamofire.request(createUrl("api/favorite/like"),
+        Alamofire.request(config.createUrl("api/favorite/like"),
                           method: .post,
                           parameters: params,
                           encoding: URLEncoding.default,
-                          headers: Config.shared.tokenHeader)
+                          headers: config.tokenHeader)
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             if response.statusOK() {
@@ -302,11 +300,11 @@ class MessageManager {
         let params: Parameters = [
             "mid": mid
         ]
-        Alamofire.request(createUrl("api/favorite/unlike"),
+        Alamofire.request(config.createUrl("api/favorite/unlike"),
                           method: .post,
                           parameters: params,
                           encoding: URLEncoding.default,
-                          headers: Config.shared.tokenHeader)
+                          headers: config.tokenHeader)
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             if response.statusOK() {

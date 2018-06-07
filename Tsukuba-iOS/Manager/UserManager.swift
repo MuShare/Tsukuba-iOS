@@ -24,6 +24,8 @@ class UserManager {
     
     static let shared = UserManager()
     
+    let config = Config.shared
+    
     weak var delegate: UserManagerDelegate?
 
     init() {
@@ -95,7 +97,7 @@ class UserManager {
     
     var avatarURL: URL? {
         get {
-            return login ? URL(string: createUrl(avatar)) : nil
+            return login ? URL(string: config.createUrl(avatar)) : nil
         }
     }
     
@@ -141,11 +143,11 @@ class UserManager {
         let params: Parameters = [
             "rev": self.userRev
         ]
-        Alamofire.request(createUrl("/api/user"),
+        Alamofire.request(config.createUrl("/api/user"),
                           method: .get,
                           parameters: params,
                           encoding: URLEncoding.default,
-                          headers: Config.shared.tokenHeader)
+                          headers: config.tokenHeader)
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             if response.statusOK() {
@@ -169,7 +171,7 @@ class UserManager {
     }
     
     func get(_ uid: String, completion: ((Bool, User?) -> Void)?) {
-        Alamofire.request(createUrl("api/user/" + uid),
+        Alamofire.request(config.createUrl("api/user/" + uid),
                           method: .get,
                           parameters: nil,
                           encoding: URLEncoding.default,
@@ -193,9 +195,9 @@ class UserManager {
             "deviceToken": Defaults[.deviceToken] ?? "",
             "os": "iOS",
             "version": UIDevice.current.systemVersion,
-            "lan": Config.shared.lan
+            "lan": config.lan
         ]
-        Alamofire.request(createUrl("api/user/login/email"),
+        Alamofire.request(config.createUrl("api/user/login/email"),
                           method: .post,
                           parameters: params,
                           encoding: URLEncoding.default,
@@ -221,8 +223,8 @@ class UserManager {
                 self.userRev = user["rev"].intValue
                 self.login = true
                 // Upload device token.
-                if Config.shared.deviceToken != "" {
-                    DeviceManager.shared.uploadDeviceToken(Config.shared.deviceToken, completion: nil)
+                if self.config.deviceToken != "" {
+                    DeviceManager.shared.uploadDeviceToken(self.config.deviceToken, completion: nil)
                 }
                 
                 ChatManager.shared.roomStatus(isLoginCheck: true)
@@ -248,10 +250,10 @@ class UserManager {
             "deviceToken": Defaults[.deviceToken] ?? "",
             "os": "iOS",
             "version": UIDevice.current.systemVersion,
-            "lan": Config.shared.lan
+            "lan": config.lan
         ]
 
-        Alamofire.request(createUrl("/api/user/login/facebook"),
+        Alamofire.request(config.createUrl("/api/user/login/facebook"),
                           method: .post,
                           parameters: params,
                           encoding: URLEncoding.default,
@@ -277,8 +279,8 @@ class UserManager {
                 self.userRev = user["rev"].intValue
                 self.login = true
                 // Upload device token.
-                if Config.shared.deviceToken != "" {
-                    DeviceManager.shared.uploadDeviceToken(Config.shared.deviceToken, completion: nil)
+                if self.config.deviceToken != "" {
+                    DeviceManager.shared.uploadDeviceToken(self.config.deviceToken, completion: nil)
                 }
                 
                 ChatManager.shared.roomStatus(isLoginCheck: true)
@@ -298,14 +300,14 @@ class UserManager {
     func reset(email: String, comletion:((Bool, String?) -> Void)?) {
         let params: Parameters = [
             "email": email,
-            "lan": Config.shared.lan
+            "lan": config.lan
         ]
         
-        Alamofire.request(createUrl("api/user/modify/password"),
+        Alamofire.request(config.createUrl("api/user/modify/password"),
                           method: .get,
                           parameters: params,
                           encoding: URLEncoding.default,
-                          headers: Config.shared.tokenHeader)
+                          headers: config.tokenHeader)
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             if response.statusOK() {
@@ -331,7 +333,7 @@ class UserManager {
             "password": password
         ]
         
-        Alamofire.request(createUrl("api/user/register"),
+        Alamofire.request(config.createUrl("api/user/register"),
                           method: HTTPMethod.post,
                           parameters: parameters,
                           encoding: URLEncoding.default,
@@ -376,9 +378,9 @@ class UserManager {
             multipartFormData.append(data!, withName: "avatar", fileName: UUID().uuidString, mimeType: "image/jpeg")
         },
                          usingThreshold: UInt64.init(),
-                         to: createUrl("api/user/avatar"),
+                         to: config.createUrl("api/user/avatar"),
                          method: .post,
-                         headers: Config.shared.tokenHeader,
+                         headers: config.tokenHeader,
                          encodingCompletion:
             { encodingResult in
                 switch encodingResult {
@@ -413,11 +415,11 @@ class UserManager {
             "address": address
         ]
         
-        Alamofire.request(createUrl("api/user/modify/info"),
+        Alamofire.request(config.createUrl("api/user/modify/info"),
                           method: .post,
                           parameters: params,
                           encoding: URLEncoding.default,
-                          headers: Config.shared.tokenHeader)
+                          headers: config.tokenHeader)
         .responseJSON { (responseObject) in
             let response = Response(responseObject)
             if response.statusOK() {

@@ -16,7 +16,7 @@ class MyMessageTableViewCell: UITableViewCell {
     
     func fillWithMessage(_ message: Message) {
         self.titleLabel.text = message.title
-        self.coverImageView.kf.setImage(with: imageURL(message.cover))
+        self.coverImageView.kf.setImage(with: Config.shared.imageURL(message.cover))
         self.priceLabel.text = "￥\(message.price!)"
         self.updateAtLabel.text = MyMessageTableViewCell.formatter.string(from: message.updateAt)
     }

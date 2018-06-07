@@ -14,6 +14,7 @@ class PicturesTableViewCell: UITableViewCell {
     
     var message: Message!
     let messageManager = MessageManager.shared
+    let config = Config.shared
     
     let formatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -31,16 +32,16 @@ class PicturesTableViewCell: UITableViewCell {
         // Slide view
         var inputs: [InputSource] = []
         for picture in message.pictures {
-            inputs.append(KingfisherSource(urlString: createUrl(picture.path))!)
+            inputs.append(KingfisherSource(urlString: config.createUrl(picture.path))!)
         }
         // If message does not contain any picture, set a input using default cover.
         if inputs.count == 0 {
-            inputs.append(KingfisherSource(urlString: createUrl(message.cover))!)
+            inputs.append(KingfisherSource(urlString: config.createUrl(message.cover))!)
         }
         picturesImageSlideshow.setImageInputs(inputs)
         
         // Author info
-        avatarImageView.kf.setImage(with: imageURL((message.author?.avatar)!))
+        avatarImageView.kf.setImage(with: config.imageURL((message.author?.avatar)!))
         nameButton.setTitle(message.author?.name, for: .normal)
         updateAtLabel.text = formatter.string(from: message.updateAt)
         priceLabel.text = "￥\(message.price!)"

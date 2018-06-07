@@ -62,7 +62,7 @@ extension SelectCategoryViewController: UICollectionViewDataSource {
         let category = categories[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.categoryIdentifier, for: indexPath)!
         cell.nameLabel.text = category.name
-        cell.iconImageView.kf.setImage(with: URL(string: createUrl(category.icon!)))
+        cell.iconImageView.kf.setImage(with: URL(string: config.createUrl(category.icon!)))
         return cell
     }
 
@@ -72,7 +72,7 @@ extension SelectCategoryViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if lastSelectedCell != nil {
-            lastSelectedCell?.iconImageView.kf.setImage(with: URL(string: createUrl(selectedCategory.icon!)))
+            lastSelectedCell?.iconImageView.kf.setImage(with: URL(string: config.createUrl(selectedCategory.icon!)))
         }
         lastSelectedCell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell
         lastSelectedCell?.iconImageView.image = R.image.category_selected()

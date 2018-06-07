@@ -30,6 +30,12 @@ extension DefaultsKeys {
     static let globalUnread = DefaultsKey<Int?>("globalUnread")
 }
 
+enum ServerEnvironment {
+    case local
+    case dev
+    case production
+}
+
 class Config {
     
     static let shared = Config()
@@ -113,6 +119,37 @@ class Config {
         get {
             return Defaults[.deviceToken] ?? ""
         }
+    }
+    
+    var environment: ServerEnvironment? {
+        didSet {
+            guard let env = environment else {
+                return
+            }
+            switch env {
+            case .local:
+                baseUrl = "http://192.168.11.2:8080/"
+                socketUrl = "ws://192.168.11.2:8080/websocket/chat"
+            case .dev:
+                baseUrl = "https://dev.tsukuba.mushare.cn/"
+                socketUrl = "ws://dev.tsukuba.mushare.cn:8080/websocket/chat"
+            case .production:
+                baseUrl = "https://tsukuba.mushare.cn/"
+                socketUrl = "ws://tsukuba.mushare.cn:8080/websocket/chat"
+            }
+        }
+    }
+    
+    var baseUrl: String = "http://127.0.0.1:8080/"
+    var socketUrl: String = "ws://127.0.0.1:8080/websocket/chat/"
+    
+    func createUrl(_ relative: String) -> String {
+        let requestUrl = baseUrl + relative
+        return requestUrl
+    }
+    
+    func imageURL(_ source: String) -> URL? {
+        return URL(string: createUrl(source))
     }
     
 }
