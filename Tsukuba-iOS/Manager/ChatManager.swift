@@ -145,6 +145,8 @@ class ChatManager {
                 }
                 self.dao.saveContext()
                 self.config.globalUnread = globalUnread
+                
+                NotificationCenter.default.post(name: .didRoomStatusUpdated, object: self)
                 completion?(true)
             } else {
                 switch response.errorCode() {

@@ -144,8 +144,8 @@ class ChatViewController: EditingViewController {
         guard let userInfo = notification.userInfo else {
             return
         }
-        if let chat = userInfo["chat"] as? Chat {
-            insertChats([chat])
+        if let chats = userInfo["chats"] as? [Chat] {
+            insertChats(chats)
         }
     }
     
@@ -191,10 +191,11 @@ extension ChatViewController: UITableViewDataSource {
 }
 
 extension ChatViewController: UIScrollViewDelegate {
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y < -20 {
             self.plainTextField.resignFirstResponder()
-            
         }
     }
+    
 }

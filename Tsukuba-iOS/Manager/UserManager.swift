@@ -369,6 +369,9 @@ class UserManager {
         DaoManager.shared.chatDao.deleteAll()
         DaoManager.shared.roomDao.deleteAll()
         
+        config.globalUnread = 0
+        NotificationCenter.default.post(name: .didRoomStatusUpdated, object: self)
+        
         delegate?.didUserLogout()
     }
     

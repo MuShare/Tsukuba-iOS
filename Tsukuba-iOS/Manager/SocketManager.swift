@@ -75,17 +75,24 @@ extension SocketManager: WebSocketDelegate {
     }
     
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
+        let array = JSON.init(parseJSON: text).arrayValue
+        print("did received web socket messages: \(array)")
+
         var chats: [Chat] = []
-        for object in JSON.init(parseJSON: text).arrayValue {
-            guard let room = self.dao.roomDao.getByRid(object["room"]["rid"].stringValue) else {
-                return
-            }
-            let chat = self.dao.chatDao.save(object)
+        for object in array {
+            let chat = self.dao.chatDao.save(object);
             chat.content = object["content"].stringValue
-            chat.room = room
+            chat.room = self.dao.roomDao.getByRid(object["room"]["rid"].stringValue) ??
+                self.dao.roomDao.saveOrUpdate(object["room"])
+            if let room = chat.room {
+                room.chats = chat.seq
+                room.lastMessage = chat.content
+                room.unread += 1
+            }
             chats.append(chat)
         }
         self.dao.saveContext()
+        config.globalUnread += chats.count
         delegate?.didReceiveSocketMessage(chats)
     }
     
