@@ -10,6 +10,9 @@ import SwiftyJSON
 import Starscream
 
 protocol SocketManagerDelegate: class {
+    func socketConecting()
+    func scoketConnected()
+    func socketDisconnected()
     func didReceiveSocketMessage(_ chats: [Chat])
 }
 
@@ -28,6 +31,9 @@ class SocketManager {
         config = Config.shared
         
         UserManager.shared.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: Notification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground), name: Notification.Name.UIApplicationDidEnterBackground, object: nil)
     }
     
     func refreshSocket() {
@@ -41,7 +47,33 @@ class SocketManager {
         socket = WebSocket(request: request)
         if let socket = socket {
             socket.delegate = self
+            connectSocket()
+        }
+    }
+    
+    func connectSocket() {
+        if let socket = socket {
+            delegate?.socketConecting()
             socket.connect()
+        }
+    }
+    
+    // MARK: - Notification
+    @objc func applicationDidBecomeActive() {
+        guard let socket = socket else {
+            return
+        }
+        if !socket.isConnected {
+            connectSocket()
+        }
+    }
+    
+    @objc func applicationDidEnterBackground() {
+        guard let socket = socket else {
+            return
+        }
+        if socket.isConnected {
+            socket.disconnect()
         }
     }
     
@@ -51,6 +83,7 @@ extension SocketManager: WebSocketDelegate {
     
     func websocketDidConnect(socket: WebSocketClient) {
         print("websocket is connected")
+        delegate?.scoketConnected()
     }
     
     func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
@@ -67,9 +100,11 @@ extension SocketManager: WebSocketDelegate {
             print("websocket disconnected")
         }
         
-        if reconnect {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                socket.connect()
+        delegate?.socketDisconnected()
+        
+        if reconnect && !socket.isConnected {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
+                self.connectSocket()
             }
         }
     }
@@ -80,6 +115,9 @@ extension SocketManager: WebSocketDelegate {
 
         var chats: [Chat] = []
         for object in array {
+            if self.dao.chatDao.isChatSaved(object["cid"].stringValue) {
+                continue
+            }
             let chat = self.dao.chatDao.save(object);
             chat.content = object["content"].stringValue
             chat.room = self.dao.roomDao.getByRid(object["room"]["rid"].stringValue) ??

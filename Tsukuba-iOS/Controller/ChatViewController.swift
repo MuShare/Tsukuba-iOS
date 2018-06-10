@@ -52,21 +52,54 @@ class ChatViewController: EditingViewController {
             }
         }
 
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self,
-                                       selector: #selector(ChatViewController.keyboardWillShow),
-                                       name: NSNotification.Name.UIKeyboardWillShow,
-                                       object: nil)
-        notificationCenter.addObserver(self,
-                                       selector: #selector(ChatViewController.keyboardWillHide),
-                                       name: NSNotification.Name.UIKeyboardWillHide,
-                                       object: nil)
         viewHeight = view.frame.size.height - UIApplication.shared.statusBarFrame.size.height - (navigationController?.navigationBar.frame.size.height)!
         
-        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveNewChat), name: .didReceiveNewChat, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatViewController.keyboardWillShow),
+                                               name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatViewController.keyboardWillHide),
+                                               name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveNewChat),
+                                               name: .didReceiveNewChat, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(connecting),
+                                               name: .webSocketConnecting, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(connected),
+                                               name: .didWebSocketConnected, object: nil)
 
     }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let room = room {
+            ChatManager.shared.clearUnread(room)
+        }
+        
+        tabBarController?.tabBar.isHidden = false
+        appDelagate.isChatting = false
+    }
     
+    private func insertChats(_ chats: [Chat]) {
+        if (chats.count == 0) {
+            return
+        }
+        self.chats.append(contentsOf: chats)
+        self.tableView.beginUpdates()
+        var indexPaths: [IndexPath] = []
+        for row in (self.chats.count - chats.count)...(self.chats.count - 1) {
+            indexPaths.append(IndexPath(row: row, section: 0))
+        }
+        self.tableView.insertRows(at: indexPaths, with: .automatic)
+        self.tableView.endUpdates()
+        self.gotoBottom(true)
+    }
+    
+    private func gotoBottom(_ animated: Bool) {
+        if chats.count > 0 {
+            let indexPath = IndexPath(row: chats.count - 1, section: 0)
+            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: animated)
+        }
+    }
+    
+    // MARK: Notification
     @objc func keyboardWillShow(notification: NSNotification) {
         if keyboardShowing {
             return
@@ -107,39 +140,6 @@ class ChatViewController: EditingViewController {
         appDelagate.isChatting = true
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if let room = room {
-            ChatManager.shared.clearUnread(room)
-        }
-        
-        tabBarController?.tabBar.isHidden = false
-        appDelagate.isChatting = false
-    }
-    
-    private func insertChats(_ chats: [Chat]) {
-        if (chats.count == 0) {
-            return
-        }
-        self.chats.append(contentsOf: chats)
-        self.tableView.beginUpdates()
-        var indexPaths: [IndexPath] = []
-        for row in (self.chats.count - chats.count)...(self.chats.count - 1) {
-            indexPaths.append(IndexPath(row: row, section: 0))
-        }
-        self.tableView.insertRows(at: indexPaths, with: .automatic)
-        self.tableView.endUpdates()
-        self.gotoBottom(true)
-    }
-    
-    private func gotoBottom(_ animated: Bool) {
-        if chats.count > 0 {
-            let indexPath = IndexPath(row: chats.count - 1, section: 0)
-            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: animated)
-        }
-    }
-    
-    // MARK: Notification
     @objc func didReceiveNewChat(_ notification: Notification) {
         guard let userInfo = notification.userInfo else {
             return
@@ -147,6 +147,14 @@ class ChatViewController: EditingViewController {
         if let chats = userInfo["chats"] as? [Chat] {
             insertChats(chats)
         }
+    }
+    
+    @objc func connecting() {
+        navigationItem.title = R.string.localizable.chats_loading()
+    }
+    
+    @objc func connected() {
+        navigationItem.title = receiver.name
     }
     
     // MARK: Action

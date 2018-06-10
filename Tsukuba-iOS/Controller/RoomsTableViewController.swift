@@ -28,7 +28,8 @@ class RoomsTableViewController: UITableViewController {
             showLoginAlert()
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(roomStatusUpdating), name: .roomStatusUpdating, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(connecting), name: .webSocketConnecting, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(connected), name: .didWebSocketConnected, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(roomStatusUpdated), name: .didRoomStatusUpdated, object: nil)
         
 //        tableView.es.addPullToRefresh {
@@ -59,12 +60,15 @@ class RoomsTableViewController: UITableViewController {
     }
     
     // MARK: Service
-    @objc func roomStatusUpdating() {
+    @objc func connecting() {
         navigationItem.title = R.string.localizable.chats_loading()
     }
     
-    @objc func roomStatusUpdated() {
+    @objc func connected() {
         navigationItem.title = R.string.localizable.chats_chats()
+    }
+    
+    @objc func roomStatusUpdated() {
         rooms = dao.roomDao.findAll()
         tableView.reloadData()
     }

@@ -14,6 +14,12 @@ class ChatDao: DaoTemplate {
         return chat!
     }
     
+    func isChatSaved(_ cid: String) -> Bool {
+        let request = NSFetchRequest<Chat>(entityName: NSStringFromClass(Chat.self))
+        request.predicate = NSPredicate(format: "cid=%@", cid)
+        return try! context.fetch(request).count > 0
+    }
+    
     func findByRoom(_ room: Room) -> [Chat] {
         let request = NSFetchRequest<Chat>(entityName: NSStringFromClass(Chat.self))
         request.predicate = NSPredicate(format: "room=%@", room)
