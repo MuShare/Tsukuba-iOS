@@ -128,18 +128,22 @@ class Config {
             }
             switch env {
             case .local:
-                baseUrl = "http://192.168.11.2:8080/"
-                socketUrl = "ws://192.168.11.2:8080/websocket/chat"
+                host = "192.168.11.2"
+                baseUrl = "http://" + host + ":8080/"
+                socketUrl = "ws://" + host + ":8080/websocket/chat"
             case .dev:
-                baseUrl = "https://dev.tsukuba.mushare.cn/"
-                socketUrl = "ws://dev.tsukuba.mushare.cn:8080/websocket/chat"
+                host = "dev.tsukuba.mushare.cn"
+                baseUrl = "https://" + host + "/"
+                socketUrl = "ws://" + host + ":8080/websocket/chat"
             case .production:
-                baseUrl = "https://tsukuba.mushare.cn/"
-                socketUrl = "ws://tsukuba.mushare.cn:8080/websocket/chat"
+                host = "tsukuba.mushare.cn"
+                baseUrl = "https://" + host + "/"
+                socketUrl = "ws://" + host + ":8080/websocket/chat"
             }
         }
     }
     
+    var host: String = "127.0.0.1"
     var baseUrl: String = "http://127.0.0.1:8080/"
     var socketUrl: String = "ws://127.0.0.1:8080/websocket/chat/"
     

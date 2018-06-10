@@ -11,8 +11,24 @@ class RoomDao: DaoTemplate {
                                                             into: context) as? Room
         }
         room?.rid = rid
-        room?.createAt = Date(timeIntervalSince1970: object["createAt"].doubleValue / 1000)
-        room?.updateAt = Date(timeIntervalSince1970: object["updateAt"].doubleValue / 1000)
+        room?.createAt = {
+            if let createAt = object["createAt"].double {
+                return Date(timeIntervalSince1970: createAt / 1000)
+            }
+            if let createAt = object["createAt"]["time"].double {
+                return Date(timeIntervalSince1970: createAt / 1000)
+            }
+            return Date()
+        }()
+        room?.updateAt = {
+            if let updateAt = object["updateAt"].double {
+                return Date(timeIntervalSince1970: updateAt / 1000)
+            }
+            if let updateAt = object["updateAt"]["time"].double {
+                return Date(timeIntervalSince1970: updateAt / 1000)
+            }
+            return Date()
+        }()
         room?.chats = object["chats"].int16Value
         room?.lastMessage = object["lastMessage"].stringValue
         room?.creator = object["creator"].boolValue

@@ -66,6 +66,9 @@ class ChatManager {
                 let result = response.getResult()
                 var chats:[Chat] = []
                 for object in result["chats"].arrayValue {
+                    if self.dao.chatDao.isChatSaved(object["cid"].stringValue) {
+                        continue
+                    }
                     let chat = self.dao.chatDao.save(object)
                     chat.content = object["content"].stringValue
                     chat.room = room
@@ -145,6 +148,8 @@ class ChatManager {
                 }
                 self.dao.saveContext()
                 self.config.globalUnread = globalUnread
+                
+                NotificationCenter.default.post(name: .didRoomStatusUpdated, object: self)
                 completion?(true)
             } else {
                 switch response.errorCode() {

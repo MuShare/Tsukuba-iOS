@@ -8,8 +8,10 @@
 
 import UIKit
 import SwiftyJSON
+import RxSwift
+import RxKeyboard
 
-class ChatViewController: EditingViewController {
+class ChatViewController: UIViewController {
     
     private struct Const {
         static let toolBarHeight: CGFloat = 50.0
@@ -28,6 +30,8 @@ class ChatViewController: EditingViewController {
     var viewHeight: CGFloat!
     var keyboardShowing = false
 
+    private let disposeBag = DisposeBag()
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -52,61 +56,48 @@ class ChatViewController: EditingViewController {
             }
         }
 
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self,
-                                       selector: #selector(ChatViewController.keyboardWillShow),
-                                       name: NSNotification.Name.UIKeyboardWillShow,
-                                       object: nil)
-        notificationCenter.addObserver(self,
-                                       selector: #selector(ChatViewController.keyboardWillHide),
-                                       name: NSNotification.Name.UIKeyboardWillHide,
-                                       object: nil)
         viewHeight = view.frame.size.height - UIApplication.shared.statusBarFrame.size.height - (navigationController?.navigationBar.frame.size.height)!
         
-        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveNewChat), name: .didReceiveNewChat, object: nil)
 
-    }
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if keyboardShowing {
-            return
-        }
-        keyboardShowing = true
-        
-        guard let keyboardVisibleHeight = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height else {
-            return
-        }
-        let tableHeight = self.tableView.contentSize.height
-        let hiddenHeight = self.viewHeight - Const.toolBarHeight - keyboardVisibleHeight
-        
-        UIView.animate(withDuration: 0.2) {
-            if tableHeight < hiddenHeight {
-                self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height - keyboardVisibleHeight)
+        NotificationCenter.default.addObserver(self, selector: #selector(didReceiveNewChat),
+                                               name: .didReceiveNewChat, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(connecting),
+                                               name: .webSocketConnecting, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(connected),
+                                               name: .didWebSocketConnected, object: nil)
+
+        RxKeyboard.instance.visibleHeight.drive(onNext: { keyboardVisibleHeight in
+            if keyboardVisibleHeight == 0 {
+                self.keyboardShowing = false
+                UIView.animate(withDuration: 0.2) {
+                    self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: UIScreen.main.bounds.height)
+                }
             } else {
-                self.view.frame = CGRect(x: 0, y: -keyboardVisibleHeight, width: self.view.frame.size.width, height: self.view.frame.size.height)
-                if tableHeight < self.viewHeight - Const.toolBarHeight {
-                    self.tableView.frame = CGRect(x: self.tableView.frame.origin.x,
-                                                  y: self.tableView.frame.origin.y + self.viewHeight - tableHeight - Const.toolBarHeight,
-                                                  width: self.tableView.frame.size.width,
-                                                  height: tableHeight)
+                if self.keyboardShowing {
+                    return
+                }
+                self.keyboardShowing = true
+                
+                let tableHeight = self.tableView.contentSize.height
+                let hiddenHeight = self.viewHeight - Const.toolBarHeight - keyboardVisibleHeight
+                
+                UIView.animate(withDuration: 0.2) {
+                    if tableHeight < hiddenHeight {
+                        self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height - keyboardVisibleHeight)
+                    } else {
+                        self.view.frame = CGRect(x: 0, y: -keyboardVisibleHeight, width: self.view.frame.size.width, height: self.view.frame.size.height)
+                        if tableHeight < self.viewHeight - Const.toolBarHeight {
+                            self.tableView.frame = CGRect(x: self.tableView.frame.origin.x,
+                                                          y: self.tableView.frame.origin.y + self.viewHeight - tableHeight - Const.toolBarHeight,
+                                                          width: self.tableView.frame.size.width,
+                                                          height: tableHeight)
+                        }
+                    }
                 }
             }
-        }
+        }).disposed(by: disposeBag)
     }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        keyboardShowing = false
-        UIView.animate(withDuration: 0.2) {
-            self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: UIScreen.main.bounds.height)
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tabBarController?.tabBar.isHidden = true
-        appDelagate.isChatting = true
-    }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let room = room {
@@ -140,13 +131,35 @@ class ChatViewController: EditingViewController {
     }
     
     // MARK: Notification
+    @objc func keyboardDidShow(notification: NSNotification) {
+        
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+        appDelagate.isChatting = true
+    }
+    
     @objc func didReceiveNewChat(_ notification: Notification) {
         guard let userInfo = notification.userInfo else {
             return
         }
-        if let chat = userInfo["chat"] as? Chat {
-            insertChats([chat])
+        if let chats = userInfo["chats"] as? [Chat] {
+            insertChats(chats)
         }
+    }
+    
+    @objc func connecting() {
+        navigationItem.title = R.string.localizable.chats_loading()
+    }
+    
+    @objc func connected() {
+        navigationItem.title = receiver.name
     }
     
     // MARK: Action
@@ -191,10 +204,11 @@ extension ChatViewController: UITableViewDataSource {
 }
 
 extension ChatViewController: UIScrollViewDelegate {
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y < -20 {
             self.plainTextField.resignFirstResponder()
-            
         }
     }
+    
 }

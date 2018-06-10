@@ -12,7 +12,7 @@ error_token = "User authorization is invalide. Please sign in again!";
 error_object_id = "Object id error.";
 error_save_failed = "Save failed.";
 error_invalid_parameter = "Invalid parameter.";
-error_unknown = "Unknown error.";
+error_unknown = "Unknown error, please try again.";
 error_send_plain_text = "Plain text cannot be sent, try again later.";
 
 me_title = "Sign in / Sign up";

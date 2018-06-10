@@ -20,11 +20,9 @@ class Response {
         if DEBUG && response.data != nil {
             NSLog("Response body:\n\(String.init(data: response.data!, encoding: .utf8)!)")
         }
-        data = response.result.value as! Dictionary<String, Any>!
-        if DEBUG {
-            if data != nil {
-                NSLog("Response with JSON:\n\(data!)")
-            }
+        data = response.result.value as! Dictionary<String, Any>?
+        if DEBUG, let data = data {
+            NSLog("Response with JSON:\n\(data)")
         }
     }
     

@@ -14,7 +14,8 @@ import SwiftyJSON
 import AudioToolbox
 
 extension Notification.Name {
-    static let roomStatusUpdating = Notification.Name("org.mushare.tsukuba.roomStatusUpdating")
+    static let webSocketConnecting = Notification.Name("org.mushare.tsukuba.webSocketConnecting")
+    static let didWebSocketConnected = Notification.Name("org.mushare.tsukuba.didWebSocketConnected")
     static let didRoomStatusUpdated = Notification.Name("org.mushare.tsukuba.didRoomStatusUpdated")
     static let didReceiveNewChat = Notification.Name("org.mushare.tsukuba.didReceiveNewChat")
 }
@@ -212,13 +213,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate: SocketManagerDelegate {
+    
+    func socketConecting() {
+        NotificationCenter.default.post(name: .webSocketConnecting, object: self)
+    }
+    
+    func scoketConnected() {
+        NotificationCenter.default.post(name: .didWebSocketConnected, object: self)
+    }
+    
+    func socketDisconnected() {
+        
+    }
+    
     func didReceiveSocketMessage(_ chats: [Chat]) {
-        print("did received web socket messages: \(chats)")
-
-        ChatManager.shared.roomStatus(isLoginCheck: false) { [weak self] success in
-            if self?.isChatting == false {
-                NotificationCenter.default.post(name: .didRoomStatusUpdated, object: self)
-            }
+        if !isChatting {
+            NotificationCenter.default.post(name: .didRoomStatusUpdated, object: self)
         }
         
         // Play a short sound and vibrate after receiving a chat message.
@@ -236,7 +246,7 @@ extension AppDelegate: SocketManagerDelegate {
         AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
         
         NotificationCenter.default.post(name: .didReceiveNewChat, object: self, userInfo: [
-            "chat": chats[0]
+            "chats": chats
         ])
     }
 }

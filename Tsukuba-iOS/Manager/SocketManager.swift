@@ -8,8 +8,12 @@
 
 import SwiftyJSON
 import Starscream
+import Alamofire
 
 protocol SocketManagerDelegate: class {
+    func socketConecting()
+    func scoketConnected()
+    func socketDisconnected()
     func didReceiveSocketMessage(_ chats: [Chat])
 }
 
@@ -18,16 +22,46 @@ class SocketManager {
     static let shared = SocketManager()
     
     var socket: WebSocket?
-    var dao: DaoManager!
-    var config: Config!
+    var dao: DaoManager
+    var config: Config
+    var reachabilityManager: NetworkReachabilityManager?
     
     weak var delegate: SocketManagerDelegate?
+    
+    
     
     init() {
         dao = DaoManager.shared
         config = Config.shared
-        
+        reachabilityManager = Alamofire.NetworkReachabilityManager(host: config.host)
+        reachabilityManager?.listener = { status in
+            guard let socket = self.socket else {
+                return
+            }
+            switch status {
+            case .notReachable:
+                print("The network is not reachable")
+                socket.disconnect()
+            case .unknown :
+                print("It is unknown whether the network is reachable")
+                
+            case .reachable(.ethernetOrWiFi):
+                print("The network is reachable over the WiFi connection")
+                if !socket.isConnected {
+                    self.connectSocket()
+                }
+            case .reachable(.wwan):
+                print("The network is reachable over the WWAN connection")
+                if !socket.isConnected {
+                    self.connectSocket()
+                }
+            }
+        }
+
         UserManager.shared.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: Notification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground), name: Notification.Name.UIApplicationDidEnterBackground, object: nil)
     }
     
     func refreshSocket() {
@@ -41,7 +75,35 @@ class SocketManager {
         socket = WebSocket(request: request)
         if let socket = socket {
             socket.delegate = self
+            connectSocket()
+        }
+        
+        reachabilityManager?.startListening()
+    }
+    
+    func connectSocket() {
+        if let socket = socket, let delegate = delegate {
+            delegate.socketConecting()
             socket.connect()
+        }
+    }
+    
+    // MARK: - Notification
+    @objc func applicationDidBecomeActive() {
+        guard let socket = socket else {
+            return
+        }
+        if !socket.isConnected {
+            connectSocket()
+        }
+    }
+    
+    @objc func applicationDidEnterBackground() {
+        guard let socket = socket else {
+            return
+        }
+        if socket.isConnected {
+            socket.disconnect()
         }
     }
     
@@ -51,6 +113,7 @@ extension SocketManager: WebSocketDelegate {
     
     func websocketDidConnect(socket: WebSocketClient) {
         print("websocket is connected")
+        delegate?.scoketConnected()
     }
     
     func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
@@ -67,30 +130,52 @@ extension SocketManager: WebSocketDelegate {
             print("websocket disconnected")
         }
         
+        delegate?.socketDisconnected()
+        
         if reconnect {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                socket.connect()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
+                guard let socket = self.socket, let reachabilityManager = self.reachabilityManager else {
+                    return
+                }
+                if !socket.isConnected && reachabilityManager.isReachable {
+                    self.connectSocket()
+                }
             }
         }
     }
     
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
+        let array = JSON.init(parseJSON: text).arrayValue
+        if DEBUG {
+            print("did received web socket messages: \(array)")
+        }
+        
         var chats: [Chat] = []
-        for object in JSON.init(parseJSON: text).arrayValue {
-            guard let room = self.dao.roomDao.getByRid(object["room"]["rid"].stringValue) else {
-                return
+        for object in array {
+            if self.dao.chatDao.isChatSaved(object["cid"].stringValue) {
+                continue
             }
-            let chat = self.dao.chatDao.save(object)
+            let chat = self.dao.chatDao.save(object);
             chat.content = object["content"].stringValue
-            chat.room = room
+            chat.room = self.dao.roomDao.getByRid(object["room"]["rid"].stringValue) ??
+                self.dao.roomDao.saveOrUpdate(object["room"])
+            if let room = chat.room {
+                room.chats = chat.seq
+                room.lastMessage = chat.content
+                room.unread += 1
+            }
             chats.append(chat)
+            config.globalUnread += 1
         }
         self.dao.saveContext()
+        
         delegate?.didReceiveSocketMessage(chats)
     }
     
     func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
-        print("Received data: \(data.count)")
+        if DEBUG {
+            print("Received data: \(data.count)")
+        }
     }
     
 }
