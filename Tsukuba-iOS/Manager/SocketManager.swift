@@ -57,7 +57,6 @@ class SocketManager {
                 }
             }
         }
-        reachabilityManager?.startListening()
 
         UserManager.shared.delegate = self
         
@@ -78,21 +77,23 @@ class SocketManager {
             socket.delegate = self
             connectSocket()
         }
+        
+        reachabilityManager?.startListening()
     }
     
     func connectSocket() {
-        if let socket = socket {
-            delegate?.socketConecting()
+        if let socket = socket, let delegate = delegate {
+            delegate.socketConecting()
             socket.connect()
         }
     }
     
     // MARK: - Notification
     @objc func applicationDidBecomeActive() {
-        guard let socket = socket, let reachabilityManager = self.reachabilityManager else {
+        guard let socket = socket else {
             return
         }
-        if !socket.isConnected && reachabilityManager.isReachable {
+        if !socket.isConnected {
             connectSocket()
         }
     }
@@ -162,9 +163,10 @@ extension SocketManager: WebSocketDelegate {
                 room.unread += 1
             }
             chats.append(chat)
+            config.globalUnread += 1
         }
         self.dao.saveContext()
-        config.globalUnread += chats.count
+        
         delegate?.didReceiveSocketMessage(chats)
     }
     
