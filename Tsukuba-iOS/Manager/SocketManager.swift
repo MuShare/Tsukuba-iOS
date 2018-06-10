@@ -146,8 +146,10 @@ extension SocketManager: WebSocketDelegate {
     
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
         let array = JSON.init(parseJSON: text).arrayValue
-        print("did received web socket messages: \(array)")
-
+        if DEBUG {
+            print("did received web socket messages: \(array)")
+        }
+        
         var chats: [Chat] = []
         for object in array {
             if self.dao.chatDao.isChatSaved(object["cid"].stringValue) {
@@ -171,7 +173,9 @@ extension SocketManager: WebSocketDelegate {
     }
     
     func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
-        print("Received data: \(data.count)")
+        if DEBUG {
+            print("Received data: \(data.count)")
+        }
     }
     
 }

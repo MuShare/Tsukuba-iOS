@@ -70,7 +70,7 @@ class LoginViewController: LoginBaseViewController, NVActivityIndicatorViewable 
                 UserManager.shared.facebookLogin(accessToken.authenticationToken, completion: { (success, message) in
                     self.stopAnimating()
                     if success {
-                        self.dismiss(animated: true, completion: nil)
+                        self.dismiss(animated: true)
                     } else {
                         self.showTip(message!)
                     }

@@ -6,9 +6,6 @@
 //  Copyright © 2017 MuShare. All rights reserved.
 //
 
-import Foundation
-import Alamofire
-
 let DEBUG = false
 
 open class Color: UIColor {

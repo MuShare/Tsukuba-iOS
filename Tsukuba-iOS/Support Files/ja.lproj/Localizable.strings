@@ -12,7 +12,7 @@ error_token = "ユーザー認証は一時的に利用できません。もう�
 error_object_id = "オブジェクトIDエラー";
 error_save_failed = "保存が失敗した";
 error_invalid_parameter = "不正な引数";
-error_unknown = "エラー";
+error_unknown = "未知エラー、もう一度確認してください！";
 error_send_plain_text = "メッセージ送信エラー";
 
 me_title = "サインイン / 新規登録";
