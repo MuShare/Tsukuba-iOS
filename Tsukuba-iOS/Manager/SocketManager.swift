@@ -8,6 +8,7 @@
 
 import SwiftyJSON
 import Starscream
+import Alamofire
 
 protocol SocketManagerDelegate: class {
     func socketConecting()
@@ -21,15 +22,43 @@ class SocketManager {
     static let shared = SocketManager()
     
     var socket: WebSocket?
-    var dao: DaoManager!
-    var config: Config!
+    var dao: DaoManager
+    var config: Config
+    var reachabilityManager: NetworkReachabilityManager?
     
     weak var delegate: SocketManagerDelegate?
+    
+    
     
     init() {
         dao = DaoManager.shared
         config = Config.shared
-        
+        reachabilityManager = Alamofire.NetworkReachabilityManager(host: config.host)
+        reachabilityManager?.listener = { status in
+            guard let socket = self.socket else {
+                return
+            }
+            switch status {
+            case .notReachable:
+                print("The network is not reachable")
+                socket.disconnect()
+            case .unknown :
+                print("It is unknown whether the network is reachable")
+                
+            case .reachable(.ethernetOrWiFi):
+                print("The network is reachable over the WiFi connection")
+                if !socket.isConnected {
+                    self.connectSocket()
+                }
+            case .reachable(.wwan):
+                print("The network is reachable over the WWAN connection")
+                if !socket.isConnected {
+                    self.connectSocket()
+                }
+            }
+        }
+        reachabilityManager?.startListening()
+
         UserManager.shared.delegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: Notification.Name.UIApplicationDidBecomeActive, object: nil)
@@ -60,10 +89,10 @@ class SocketManager {
     
     // MARK: - Notification
     @objc func applicationDidBecomeActive() {
-        guard let socket = socket else {
+        guard let socket = socket, let reachabilityManager = self.reachabilityManager else {
             return
         }
-        if !socket.isConnected {
+        if !socket.isConnected && reachabilityManager.isReachable {
             connectSocket()
         }
     }
@@ -102,9 +131,14 @@ extension SocketManager: WebSocketDelegate {
         
         delegate?.socketDisconnected()
         
-        if reconnect && !socket.isConnected {
+        if reconnect {
             DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
-                self.connectSocket()
+                guard let socket = self.socket, let reachabilityManager = self.reachabilityManager else {
+                    return
+                }
+                if !socket.isConnected && reachabilityManager.isReachable {
+                    self.connectSocket()
+                }
             }
         }
     }
