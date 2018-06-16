@@ -51,7 +51,7 @@ class RoomsTableViewController: UITableViewController {
 
     // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "chatSegue" {
+        if segue.identifier == R.segue.roomsTableViewController.chatSegue.identifier {
             let destination = segue.destination as! ChatViewController
             destination.receiver = User(uid: selectedRoom.receiverId!,
                                         name: selectedRoom.receiverName!,
@@ -86,14 +86,14 @@ extension RoomsTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "receiverIdentifier", for: indexPath) as! ReceiverTableViewCell
-        cell.fill(rooms[indexPath.row])
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.roomIdentifier.identifier, for: indexPath) as! ReceiverTableViewCell
+        cell.room = rooms[indexPath.row]
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedRoom = rooms[indexPath.row]
-        performSegue(withIdentifier: "chatSegue", sender: self)
+        performSegue(withIdentifier: R.segue.roomsTableViewController.chatSegue, sender: self)
     }
     
 }

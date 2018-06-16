@@ -69,8 +69,8 @@ extension MyFavoritesViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "messageCell", for: indexPath) as! MessageCollectionViewCell
-        cell.fillWithMessage(messages[indexPath.row])
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.reuseIdentifier.messageCell.identifier, for: indexPath) as! MessageCollectionViewCell
+        cell.message = messages[indexPath.row]
         return cell
     }
     

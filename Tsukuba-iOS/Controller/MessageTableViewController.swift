@@ -118,21 +118,24 @@ extension MessageTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let message = message else {
+            return UITableViewCell()
+        }
         switch(indexPath.section) {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "picturesCell", for: indexPath) as! PicturesTableViewCell
-            cell.fillWithMessage(message!)
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.pictureCell.identifier, for: indexPath) as! PicturesTableViewCell
+            cell.message = message
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "optionCell", for: indexPath) as! OptionTableViewCell
-            cell.fillWithOption((message?.options[indexPath.row])!)
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.optionCell.identifier, for: indexPath) as! OptionTableViewCell
+            cell.option = message.options[indexPath.row]
             return cell
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "introductionCell", for: indexPath) as! IntroductionTableViewCell
-            cell.introductionLabel.text = message!.introduction
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.introductionCell.identifier, for: indexPath) as! IntroductionTableViewCell
+            cell.introductionLabel.text = message.introduction
             return cell
         case 3:
-            return tableView.dequeueReusableCell(withIdentifier: "reportCell", for: indexPath)
+            return tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.reportCell.identifier, for: indexPath)
         default:
             return UITableViewCell()
         }

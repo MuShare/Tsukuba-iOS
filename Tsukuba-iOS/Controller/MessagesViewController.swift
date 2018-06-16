@@ -187,7 +187,7 @@ extension MessagesViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "messageCell", for: indexPath) as! MessageCollectionViewCell
-        cell.fillWithMessage(messages[indexPath.row])
+        cell.message = messages[indexPath.row]
         return cell
     }
     

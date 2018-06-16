@@ -13,12 +13,17 @@ class MyMessageTableViewCell: UITableViewCell {
         formatter.timeStyle = .medium
         return formatter
     }()
-    
-    func fillWithMessage(_ message: Message) {
-        self.titleLabel.text = message.title
-        self.coverImageView.kf.setImage(with: Config.shared.imageURL(message.cover))
-        self.priceLabel.text = "￥\(message.price!)"
-        self.updateAtLabel.text = MyMessageTableViewCell.formatter.string(from: message.updateAt)
-    }
 
+    var message: Message? {
+        didSet {
+            guard let message = message else {
+                return
+            }
+            titleLabel.text = message.title
+            coverImageView.kf.setImage(with: Config.shared.imageURL(message.cover))
+            priceLabel.text = "￥\(message.price!)"
+            updateAtLabel.text = MyMessageTableViewCell.formatter.string(from: message.updateAt)
+        }
+    }
+    
 }

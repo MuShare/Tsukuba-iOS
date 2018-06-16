@@ -87,9 +87,9 @@ extension MyMessagesTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let message = messages[indexPath.row]
-        let identifier = message.enable ? "myMessageCell" : "closedMessageCell"
+        let identifier = message.enable ? R.reuseIdentifier.myMessageCell.identifier: R.reuseIdentifier.closedMessageCell.identifier
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! MyMessageTableViewCell
-        cell.fillWithMessage(message)
+        cell.message = message
         return cell
     }
     

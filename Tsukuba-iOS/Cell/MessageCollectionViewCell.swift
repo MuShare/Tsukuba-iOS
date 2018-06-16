@@ -6,10 +6,15 @@ class MessageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
-    func fillWithMessage(_ message: Message) {
-        self.titleLabel.text = message.title
-        self.coverImageView.kf.setImage(with: Config.shared.imageURL(message.cover))
-        self.priceLabel.text = "\(message.price!)"
+    var message: Message? {
+        didSet {
+            guard let message = message else {
+                return
+            }
+            titleLabel.text = message.title
+            coverImageView.kf.setImage(with: Config.shared.imageURL(message.cover))
+            priceLabel.text = "\(message.price!)"
+        }
     }
     
 }

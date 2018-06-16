@@ -32,6 +32,31 @@ class ReceiverTableViewCell: UITableViewCell {
     
     let calendar = Calendar.current
     
+    var room: Room? {
+        didSet {
+            guard let room = room else {
+                return
+            }
+            avatarImageView.kf.setImage(with: Config.shared.imageURL(room.receiverAvatar!))
+            nameLabel.text = room.receiverName!
+            let updateAt = room.updateAt! as Date
+            if calendar.isDateInToday(updateAt) {
+                timeLabel.text = timeFormatter.string(for: updateAt)
+            } else if calendar.isDateInYesterday(updateAt) {
+                timeLabel.text = R.string.localizable.yesterday_name()
+            } else {
+                timeLabel.text = dateFormatter.string(for: updateAt)
+            }
+            messageLabel.text = room.lastMessage
+            if room.unread > 0 {
+                unreadLabel.text = "\(room.unread)"
+                unreadLabel.isHidden = false
+            } else {
+                unreadLabel.isHidden = true
+            }
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -41,26 +66,6 @@ class ReceiverTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-    func fill(_ room: Room) {
-        avatarImageView.kf.setImage(with: Config.shared.imageURL(room.receiverAvatar!))
-        nameLabel.text = room.receiverName!
-        let updateAt = room.updateAt! as Date
-        if calendar.isDateInToday(updateAt) {
-            timeLabel.text = timeFormatter.string(for: updateAt)
-        } else if calendar.isDateInYesterday(updateAt) {
-            timeLabel.text = R.string.localizable.yesterday_name()
-        } else {
-            timeLabel.text = dateFormatter.string(for: updateAt)
-        }
-        messageLabel.text = room.lastMessage
-        if room.unread > 0 {
-            unreadLabel.text = "\(room.unread)"
-            unreadLabel.isHidden = false
-        } else {
-            unreadLabel.isHidden = true
-        }
     }
 
 }
