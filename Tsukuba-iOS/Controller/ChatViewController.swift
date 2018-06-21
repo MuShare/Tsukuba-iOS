@@ -150,7 +150,12 @@ class ChatViewController: UIViewController {
             return
         }
         if let chats = userInfo["chats"] as? [Chat] {
-            insertChats(chats)
+            insertChats(chats.filter { (chat) -> Bool in
+                guard let rid = chat.room?.rid, let room = room else {
+                    return false
+                }
+                return room.rid == rid
+            })
         }
     }
     

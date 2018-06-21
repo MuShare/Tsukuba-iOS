@@ -684,7 +684,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "python ${SRCROOT}/${TARGET_NAME}/Support\\ Files/AutoGenStrings.py ${SRCROOT}/${TARGET_NAME}/Storyboard\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/Tsukuba-iOS\"";
+			shellScript = "python ${SRCROOT}/${TARGET_NAME}/Support\\ Files/AutoGenStrings.py ${SRCROOT}/${TARGET_NAME}/Storyboard\n$PODS_ROOT/R.swift/rswift generate $SRCROOT/$TARGET_NAME";
 		};
 /* End PBXShellScriptBuildPhase section */
 
