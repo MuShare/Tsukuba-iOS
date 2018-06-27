@@ -69,14 +69,13 @@ class ChatViewController: UIViewController {
             updateModels(DaoManager.shared.chatDao.findByRoom(room))
             ChatManager.shared.syncChat(room) { [weak self] (success, chats, message) in
                 self?.updateModels(chats)
-//                self?.tableView.reloadData()
-//                self?.gotoBottom(false)
+                self?.tableView.reloadData()
+                self?.gotoBottom(false)
             }
         }
 
         viewHeight = view.frame.size.height - UIApplication.shared.statusBarFrame.size.height - (navigationController?.navigationBar.frame.size.height)!
         
-
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveNewChat),
                                                name: .didReceiveNewChat, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(connecting),

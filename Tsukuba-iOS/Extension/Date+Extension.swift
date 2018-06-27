@@ -26,6 +26,10 @@ extension Date {
         return Calendar.current.isDate(self, equalTo: date, toGranularity: .day)
     }
     
+    var isInThisYea: Bool {
+        return isInSameYear(date: Date())
+    }
+    
     var isInThisWeek: Bool {
         return isInSameWeek(date: Date())
     }

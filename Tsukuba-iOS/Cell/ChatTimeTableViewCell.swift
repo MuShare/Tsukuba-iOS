@@ -10,7 +10,7 @@ import UIKit
 
 class ChatTimeTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var timeLabel: PaddingLabel!
     
     static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -31,14 +31,14 @@ class ChatTimeTableViewCell: UITableViewCell {
             guard let time = time else {
                 return
             }
+            
             if time.isInToday {
                 timeLabel.text = ChatTimeTableViewCell.timeFormatter.string(from: time)
             } else if time.isInYesterday {
-                timeLabel.text = "Yesterday \(ChatTimeTableViewCell.timeFormatter.string(from: time))"
+                timeLabel.text = "\(R.string.localizable.yesterday_name()) \(ChatTimeTableViewCell.timeFormatter.string(from: time))"
             } else {
                 timeLabel.text = ChatTimeTableViewCell.dateFormatter.string(from: time)
             }
-            
         }
     }
 
