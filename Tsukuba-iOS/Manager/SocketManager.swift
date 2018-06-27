@@ -28,8 +28,6 @@ class SocketManager {
     
     weak var delegate: SocketManagerDelegate?
     
-    
-    
     init() {
         dao = DaoManager.shared
         config = Config.shared

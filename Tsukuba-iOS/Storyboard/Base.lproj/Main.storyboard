@@ -1962,6 +1962,31 @@
                                             <outlet property="messageLabel" destination="JR1-Pv-V53" id="pcu-7j-A34"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatTimeIdentifier" rowHeight="26" id="tn9-dc-fR2" customClass="ChatTimeTableViewCell" customModule="Tsukuba_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="154" width="375" height="26"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tn9-dc-fR2" id="dwu-rB-Fpy">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="26"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxz-Aj-2LQ">
+                                                    <rect key="frame" x="15" y="3" width="345" height="23"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" red="0.40840868870000002" green="0.40596312769999998" blue="0.41085424970000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="lxz-Aj-2LQ" firstAttribute="top" secondItem="dwu-rB-Fpy" secondAttribute="top" constant="3" id="5It-K4-Mup"/>
+                                                <constraint firstItem="lxz-Aj-2LQ" firstAttribute="leading" secondItem="dwu-rB-Fpy" secondAttribute="leading" constant="15" id="TzJ-O3-yJD"/>
+                                                <constraint firstAttribute="bottom" secondItem="lxz-Aj-2LQ" secondAttribute="bottom" id="aD0-jz-TfI"/>
+                                                <constraint firstAttribute="trailing" secondItem="lxz-Aj-2LQ" secondAttribute="trailing" constant="15" id="mcm-hA-pVU"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="timeLabel" destination="lxz-Aj-2LQ" id="XZ3-pz-XST"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="q8n-zZ-qMO" id="9md-Qz-w8K"/>
@@ -2039,7 +2064,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tCW-uG-2Jz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="90" y="6008"/>
+            <point key="canvasLocation" x="88.799999999999997" y="6007.6461769115449"/>
         </scene>
         <!--Me-->
         <scene sceneID="iZ7-Q3-vaD">

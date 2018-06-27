@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		770955CA20BEA98C00CA0923 /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770955C920BEA98C00CA0923 /* SocketManager.swift */; };
 		77439FD720BFD86600FEE3E0 /* SFSafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77439FD620BFD86600FEE3E0 /* SFSafariViewController.swift */; };
+		777704D220E368F5003D5EA2 /* ChatTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777704D120E368F5003D5EA2 /* ChatTimeTableViewCell.swift */; };
+		777704D420E36D53003D5EA2 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777704D320E36D53003D5EA2 /* Date+Extension.swift */; };
 		7792187020B7BD83004E83C1 /* UITableViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7792186F20B7BD83004E83C1 /* UITableViewController+Extension.swift */; };
 		77F1946020BCF6B7001B3F6E /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F1945F20BCF6B6001B3F6E /* R.generated.swift */; };
 		77F1946220BCFBF7001B3F6E /* LoginBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F1946120BCFBF7001B3F6E /* LoginBaseViewController.swift */; };
@@ -106,6 +108,8 @@
 		6069AEC1C44BCF1C385A7547 /* Pods-Tsukuba-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tsukuba-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tsukuba-iOS/Pods-Tsukuba-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		770955C920BEA98C00CA0923 /* SocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
 		77439FD620BFD86600FEE3E0 /* SFSafariViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariViewController.swift; sourceTree = "<group>"; };
+		777704D120E368F5003D5EA2 /* ChatTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTimeTableViewCell.swift; sourceTree = "<group>"; };
+		777704D320E36D53003D5EA2 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		7792186F20B7BD83004E83C1 /* UITableViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewController+Extension.swift"; sourceTree = "<group>"; };
 		77F1945F20BCF6B6001B3F6E /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		77F1946120BCFBF7001B3F6E /* LoginBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBaseViewController.swift; sourceTree = "<group>"; };
@@ -237,6 +241,7 @@
 				77F2E7CF20C52729001E7AB3 /* UIView+Extension.swift */,
 				77F2E7D120C5274E001E7AB3 /* UITextField+Extension.swift */,
 				77F2E7D320C52779001E7AB3 /* UIDevice+Extension.swift */,
+				777704D320E36D53003D5EA2 /* Date+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -350,6 +355,7 @@
 				E45519421EC453F6006A3B73 /* PicturesTableViewCell.swift */,
 				E48931FE201F014400727A6B /* ChatTableViewCell.swift */,
 				E438442E20204AC5006E0369 /* ReceiverTableViewCell.swift */,
+				777704D120E368F5003D5EA2 /* ChatTimeTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -746,9 +752,11 @@
 				E4089FDA1EBAF0250042221D /* Global.swift in Sources */,
 				E4962BEA1EB4B08000DF8CAE /* Tsukuba.xcdatamodeld in Sources */,
 				E49D240E1EC69FC900D3D974 /* OptionTableViewCell.swift in Sources */,
+				777704D420E36D53003D5EA2 /* Date+Extension.swift in Sources */,
 				E4C0CF13204D2DBB0030C94A /* MainViewController.swift in Sources */,
 				E41F7D121EC3EB92002E8184 /* UIViewController+Extension.swift in Sources */,
 				E4464AFD2022B9F8001968B5 /* Room.swift in Sources */,
+				777704D220E368F5003D5EA2 /* ChatTimeTableViewCell.swift in Sources */,
 				77439FD720BFD86600FEE3E0 /* SFSafariViewController.swift in Sources */,
 				E48972231EBF64320064EA13 /* MessageManager.swift in Sources */,
 				E496A7EE201065B70015DE8D /* LicenseViewController.swift in Sources */,

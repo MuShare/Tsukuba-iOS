@@ -11,6 +11,23 @@ import SwiftyJSON
 import RxSwift
 import RxKeyboard
 
+enum ChatCellType {
+    case none
+    case time(Date)
+    case plainTextSending(String)
+    case plainTextReceiving(String, String)
+}
+
+class ChatCellModel {
+    
+    var type: ChatCellType = .none
+    
+    init(type: ChatCellType) {
+        self.type = type
+    }
+    
+}
+
 class ChatViewController: UIViewController {
     
     private struct Const {
@@ -23,7 +40,8 @@ class ChatViewController: UIViewController {
     @IBOutlet weak var sendButton: UIButton!
     
     var receiver: User!
-    var chats: [Chat] = []
+    var models: [ChatCellModel] = []
+    var lastCreateAt = Date(timeIntervalSince1970: 0)
     var room: Room?
     
     let appDelagate = UIApplication.shared.delegate as! AppDelegate
@@ -47,12 +65,12 @@ class ChatViewController: UIViewController {
         navigationItem.title = receiver.name
 
         room = DaoManager.shared.roomDao.getByReceiverId(receiver.uid)
-        if room != nil {
-            chats = DaoManager.shared.chatDao.findByRoom(room!)
-            ChatManager.shared.syncChat(room!) { [weak self] (success, chats, message) in
-                self?.chats.append(contentsOf: chats)
-                self?.tableView.reloadData()
-                self?.gotoBottom(false)
+        if let room = room {
+            updateModels(DaoManager.shared.chatDao.findByRoom(room))
+            ChatManager.shared.syncChat(room) { [weak self] (success, chats, message) in
+                self?.updateModels(chats)
+//                self?.tableView.reloadData()
+//                self?.gotoBottom(false)
             }
         }
 
@@ -97,6 +115,12 @@ class ChatViewController: UIViewController {
             }
         }).disposed(by: disposeBag)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+        appDelagate.isChatting = true
+    }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -112,21 +136,24 @@ class ChatViewController: UIViewController {
         if (chats.count == 0) {
             return
         }
-        self.chats.append(contentsOf: chats)
-        self.tableView.beginUpdates()
+        let oldCount = models.count
+        updateModels(chats)
+        
+        tableView.beginUpdates()
         var indexPaths: [IndexPath] = []
-        for row in (self.chats.count - chats.count)...(self.chats.count - 1) {
+        for row in oldCount...(models.count - 1) {
             indexPaths.append(IndexPath(row: row, section: 0))
         }
-        self.tableView.insertRows(at: indexPaths, with: .automatic)
-        self.tableView.endUpdates()
-        self.gotoBottom(true)
+        tableView.insertRows(at: indexPaths, with: .automatic)
+        tableView.endUpdates()
+        
+        gotoBottom(true)
     }
     
     private func gotoBottom(_ animated: Bool) {
-        if chats.count > 0 {
-            let indexPath = IndexPath(row: chats.count - 1, section: 0)
-            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: animated)
+        if models.count > 0 {
+            let indexPath = IndexPath(row: models.count - 1, section: 0)
+            tableView.scrollToRow(at: indexPath, at: .bottom, animated: animated)
         }
     }
     
@@ -138,13 +165,7 @@ class ChatViewController: UIViewController {
     @objc func keyboardWillHide(notification: NSNotification) {
         
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tabBarController?.tabBar.isHidden = true
-        appDelagate.isChatting = true
-    }
-    
+
     @objc func didReceiveNewChat(_ notification: Notification) {
         guard let userInfo = notification.userInfo else {
             return
@@ -181,12 +202,45 @@ class ChatViewController: UIViewController {
         }
     }
     
+    // MARK: - Service
+    private func updateModels(_ chats: [Chat]) {
+        guard let room = room else {
+            return
+        }
+        
+        for chat in chats {
+            guard let createAt = chat.createAt else {
+                continue
+            }
+            if lastCreateAt.isInSameDay(date: createAt) {
+                if lastCreateAt.isInToday {
+                    if createAt.timeIntervalSince(lastCreateAt) > 5 * 60 {
+                        models.append(ChatCellModel(type: .time(createAt)))
+                        lastCreateAt = createAt
+                    }
+                }
+            } else {
+                models.append(ChatCellModel(type: .time(createAt)))
+                lastCreateAt = createAt
+            }
+            
+            // Plain text.
+            let isSender = room.creator ? chat.direction : !chat.direction
+            if isSender {
+                models.append(ChatCellModel(type: .plainTextSending(chat.content!)))
+            } else {
+                models.append(ChatCellModel(type: .plainTextReceiving(room.receiverAvatar!, chat.content!)))
+            }
+
+        }
+    }
+    
 }
 
 extension ChatViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return chats.count
+        return models.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -194,16 +248,24 @@ extension ChatViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let chat = chats[indexPath.row]
-        guard let room = chat.room else {
+        let model = models[indexPath.row]
+        switch model.type {
+        case .time(let time):
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.chatTimeIdentifier, for: indexPath)!
+            cell.time = time
+            return cell
+        case .plainTextSending(let content):
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.chatSenderIdentifier, for: indexPath)!
+            cell.fill(avatar: UserManager.shared.avatar, message: content)
+            return cell
+        case .plainTextReceiving(let avatar, let content):
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.chatReceiverIdentifier, for: indexPath)!
+            cell.fill(avatar: avatar, message: content)
+            return cell
+        case .none:
             return UITableViewCell()
         }
-        let isSender = room.creator ? chat.direction : !chat.direction
-        let identifier = isSender ? R.reuseIdentifier.chatSenderIdentifier.identifier : R.reuseIdentifier.chatReceiverIdentifier.identifier
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! ChatTableViewCell
-        cell.fill(avatar: isSender ? UserManager.shared.avatar : room.receiverAvatar!,
-                  message: chat.content!)
-        return cell
+
     }
     
 }
