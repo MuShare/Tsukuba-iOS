@@ -1962,7 +1962,7 @@
                                             <outlet property="messageLabel" destination="JR1-Pv-V53" id="pcu-7j-A34"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatTimeIdentifier" rowHeight="20" id="tn9-dc-fR2" customClass="ChatTimeTableViewCell" customModule="Tsukuba_iOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="chatTimeIdentifier" rowHeight="20" id="tn9-dc-fR2" customClass="ChatTimeTableViewCell" customModule="Tsukuba_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="154" width="375" height="20"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tn9-dc-fR2" id="dwu-rB-Fpy">
@@ -1971,7 +1971,7 @@
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxz-Aj-2LQ" customClass="PaddingLabel" customModule="Tsukuba_iOS" customModuleProvider="target">
                                                     <rect key="frame" x="158" y="2" width="59" height="16"/>
-                                                    <color key="backgroundColor" red="0.64724327589999997" green="0.64336756770000003" blue="0.65111898420000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="backgroundColor" red="0.73101517979356756" green="0.72391794503829021" blue="0.73811241454884491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -1999,6 +1999,7 @@
                                                 <constraint firstItem="lxz-Aj-2LQ" firstAttribute="centerX" secondItem="dwu-rB-Fpy" secondAttribute="centerX" id="mb9-3u-mGP"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="timeLabel" destination="lxz-Aj-2LQ" id="XZ3-pz-XST"/>
                                         </connections>
