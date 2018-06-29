@@ -210,7 +210,7 @@
 //2018-01-30 14:43:21
 
 /* Class = "UIButton"; normalTitle = "Send"; ObjectID = "kkw-c3-znN"; */
-"kkw-c3-znN.normalTitle" = "送信";
+//"kkw-c3-znN.normalTitle" = "送信";
 
 
 /* Class = "UITabBarItem"; title = "Posts"; ObjectID = "ffz-Iq-f3I"; */

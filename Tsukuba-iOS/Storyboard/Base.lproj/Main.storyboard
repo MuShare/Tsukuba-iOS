@@ -2012,8 +2012,30 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cto-Xu-67M">
                                 <rect key="frame" x="0.0" y="568" width="375" height="50"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JqL-jH-i3X">
+                                        <rect key="frame" x="10" y="8" width="34" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="34" id="Fv0-sH-N8B"/>
+                                            <constraint firstAttribute="height" constant="34" id="sup-S5-yOO"/>
+                                        </constraints>
+                                        <state key="normal" image="send_picture_camera"/>
+                                        <connections>
+                                            <action selector="openCamara:" destination="q8n-zZ-qMO" eventType="touchUpInside" id="vaO-zg-A9L"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IIV-sk-1R9">
+                                        <rect key="frame" x="53" y="8" width="34" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="166-Fm-Fda"/>
+                                            <constraint firstAttribute="width" constant="34" id="duj-f9-ecd"/>
+                                        </constraints>
+                                        <state key="normal" image="send_picture_library"/>
+                                        <connections>
+                                            <action selector="openPhotoLibrary:" destination="q8n-zZ-qMO" eventType="touchUpInside" id="DNR-C9-Khe"/>
+                                        </connections>
+                                    </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UaK-6C-18m">
-                                        <rect key="frame" x="8" y="8" width="291" height="34"/>
+                                        <rect key="frame" x="95" y="8" width="230" height="34"/>
                                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -2027,14 +2049,13 @@
                                             <outlet property="delegate" destination="q8n-zZ-qMO" id="YMt-6k-Jl4"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kkw-c3-znN">
-                                        <rect key="frame" x="307" y="8" width="60" height="34"/>
-                                        <color key="backgroundColor" red="0.62783509492874146" green="0.90512603521347046" blue="0.35352197289466858" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kkw-c3-znN">
+                                        <rect key="frame" x="333" y="8" width="34" height="34"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="OPy-1q-tXm"/>
+                                            <constraint firstAttribute="width" constant="34" id="hMs-oO-a8S"/>
                                             <constraint firstAttribute="height" constant="34" id="yY4-kc-Zc9"/>
                                         </constraints>
-                                        <state key="normal" title="Send">
+                                        <state key="normal" image="send_text">
                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -2049,13 +2070,17 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.95614796876907349" green="0.96106797456741333" blue="0.96868413686752319" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="UaK-6C-18m" firstAttribute="leading" secondItem="cto-Xu-67M" secondAttribute="leading" constant="8" id="7RT-0q-kWM"/>
+                                    <constraint firstItem="IIV-sk-1R9" firstAttribute="leading" secondItem="cto-Xu-67M" secondAttribute="leading" constant="53" id="831-y8-hIX"/>
                                     <constraint firstItem="UaK-6C-18m" firstAttribute="top" secondItem="cto-Xu-67M" secondAttribute="top" constant="8" id="9cn-BZ-1OM"/>
+                                    <constraint firstItem="JqL-jH-i3X" firstAttribute="top" secondItem="cto-Xu-67M" secondAttribute="top" constant="8" id="D6h-ZK-3x4"/>
                                     <constraint firstAttribute="height" constant="50" id="FS6-hc-8am"/>
                                     <constraint firstItem="kkw-c3-znN" firstAttribute="top" secondItem="cto-Xu-67M" secondAttribute="top" constant="8" id="S8D-DG-EXY"/>
+                                    <constraint firstItem="UaK-6C-18m" firstAttribute="leading" secondItem="cto-Xu-67M" secondAttribute="leading" constant="95" id="SAQ-ap-Fqj"/>
                                     <constraint firstAttribute="bottom" secondItem="UaK-6C-18m" secondAttribute="bottom" constant="8" id="SWT-zi-QZ6"/>
+                                    <constraint firstAttribute="trailing" secondItem="UaK-6C-18m" secondAttribute="trailing" constant="50" id="X9m-JN-0dm"/>
                                     <constraint firstAttribute="trailing" secondItem="kkw-c3-znN" secondAttribute="trailing" constant="8" id="e2J-Vm-uG4"/>
-                                    <constraint firstAttribute="trailing" secondItem="UaK-6C-18m" secondAttribute="trailing" constant="76" id="plH-iz-gJ2"/>
+                                    <constraint firstItem="JqL-jH-i3X" firstAttribute="leading" secondItem="cto-Xu-67M" secondAttribute="leading" constant="10" id="eWr-Mx-NKl"/>
+                                    <constraint firstItem="IIV-sk-1R9" firstAttribute="top" secondItem="cto-Xu-67M" secondAttribute="top" constant="8" id="vFn-zn-rzs"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -2144,6 +2169,9 @@
         <image name="me_user" width="60" height="60"/>
         <image name="message" width="30" height="30"/>
         <image name="nodata" width="150" height="150"/>
+        <image name="send_picture_camera" width="34" height="34"/>
+        <image name="send_picture_library" width="34" height="34"/>
+        <image name="send_text" width="34" height="34"/>
         <image name="tab_chat" width="25" height="23"/>
         <image name="tab_chat_highlight" width="25" height="23"/>
         <image name="tab_me" width="23" height="23"/>

@@ -34,6 +34,17 @@ class ChatViewController: UIViewController {
         static let toolBarHeight: CGFloat = 50.0
     }
 
+    private lazy var imagePickerController: UIImagePickerController = {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.navigationBar.barTintColor = Color.main
+        imagePickerController.navigationBar.tintColor = .white
+        imagePickerController.navigationBar.titleTextAttributes = [
+            NSAttributedStringKey.foregroundColor : UIColor.white
+        ]
+        return imagePickerController
+    }()
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var plainTextField: UITextField!
     @IBOutlet weak var toolBarView: UIView!
@@ -201,6 +212,20 @@ class ChatViewController: UIViewController {
         }
     }
     
+    @IBAction func openCamara(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePickerController.sourceType = .camera
+            present(imagePickerController, animated: true)
+        }
+    }
+    
+    @IBAction func openPhotoLibrary(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            imagePickerController.sourceType = .photoLibrary
+            present(imagePickerController, animated: true)
+        }
+    }
+    
     // MARK: - Service
     private func updateModels(_ chats: [Chat]) {
         guard let room = room else {
@@ -276,5 +301,25 @@ extension ChatViewController: UIScrollViewDelegate {
             self.plainTextField.resignFirstResponder()
         }
     }
+    
+}
+
+extension ChatViewController: UIImagePickerControllerDelegate {
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
+        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+            return
+        }
+        print(image)
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+}
+
+extension ChatViewController: UINavigationControllerDelegate {
     
 }
