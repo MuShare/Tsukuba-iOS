@@ -14,8 +14,10 @@ import RxKeyboard
 enum ChatCellType {
     case none
     case time(Date)
-    case plainTextSending(String)
-    case plainTextReceiving(String, String)
+    case plainTextSender(String)
+    case plainTextReceiver(String, String)
+    case pictureSending(UIImage)
+
 }
 
 class ChatCellModel {
@@ -251,9 +253,9 @@ class ChatViewController: UIViewController {
             // Plain text.
             let isSender = room.creator ? chat.direction : !chat.direction
             if isSender {
-                models.append(ChatCellModel(type: .plainTextSending(chat.content!)))
+                models.append(ChatCellModel(type: .plainTextSender(chat.content!)))
             } else {
-                models.append(ChatCellModel(type: .plainTextReceiving(room.receiverAvatar!, chat.content!)))
+                models.append(ChatCellModel(type: .plainTextReceiver(room.receiverAvatar!, chat.content!)))
             }
 
         }
@@ -278,13 +280,18 @@ extension ChatViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.chatTimeIdentifier, for: indexPath)!
             cell.time = time
             return cell
-        case .plainTextSending(let content):
+        case .plainTextSender(let content):
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.chatSenderIdentifier, for: indexPath)!
             cell.fill(avatar: UserManager.shared.avatar, message: content)
             return cell
-        case .plainTextReceiving(let avatar, let content):
+        case .plainTextReceiver(let avatar, let content):
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.chatReceiverIdentifier, for: indexPath)!
             cell.fill(avatar: avatar, message: content)
+            return cell
+        case .pictureSending(let picture):
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.pictureSenderIdentifier, for: indexPath)!
+            cell.avatar = UserManager.shared.avatar
+            cell.pictureImage = picture
             return cell
         case .none:
             return UITableViewCell()
@@ -314,8 +321,19 @@ extension ChatViewController: UIImagePickerControllerDelegate {
         guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             return
         }
-        print(image)
+        
+        
         picker.dismiss(animated: true, completion: nil)
+        
+        ChatManager.shared.sendPicture(image, start: { compressedImage in
+            if let image = compressedImage {
+                self.models.append(ChatCellModel(type: .pictureSending(image)))
+                self.tableView.reloadData()
+                self.gotoBottom(true)
+            }
+        }, completion: { success in
+            
+        })
     }
     
 }

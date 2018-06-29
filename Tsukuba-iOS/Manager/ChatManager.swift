@@ -51,6 +51,41 @@ class ChatManager {
         }
     }
     
+    func sendPicture(_ image: UIImage, start:((UIImage?) -> Void)?, completion: ((Bool) -> Void)?) {
+        guard let data = UIImageJPEGRepresentation(resizeImage(image: image, newWidth: 480)!, 1.0) else {
+            completion?(false)
+            return
+        }
+        start?(UIImage(data: data))
+        
+        Alamofire.upload(multipartFormData: { multipartFormData in
+            multipartFormData.append(data, withName: "picture", fileName: UUID().uuidString, mimeType: "image/jpeg")
+        }, usingThreshold: UInt64.init(), to: config.createUrl("api/chat/picture"), method: .post, headers: config.tokenHeader, encodingCompletion: { encodingResult in
+            switch encodingResult {
+            case .success(let upload, _, _):
+                upload.uploadProgress { progress in
+                    
+                }
+                upload.responseJSON { responseObject in
+                    let response = Response(responseObject)
+                    if response.statusOK() {
+                        let result = response.getResult()
+                        
+                        completion?(true)
+                    } else {
+                        completion?(false)
+                    }
+                }
+            case .failure(let encodingError):
+                if DEBUG {
+                    debugPrint(encodingError)
+                }
+                completion?(false)
+            }
+        })
+        
+    }
+    
     func syncChat(_ room: Room, completion: ChatCompletion = nil) {
         let params: Parameters = [
             "seq": room.chats

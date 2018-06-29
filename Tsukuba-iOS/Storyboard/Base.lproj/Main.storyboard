@@ -2003,6 +2003,93 @@
                                             <outlet property="timeLabel" destination="lxz-Aj-2LQ" id="XZ3-pz-XST"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="pictureReceiverIdentifier" rowHeight="63" id="Dzd-1m-dZ1" customClass="ChatPictureTableViewCell" customModule="Tsukuba_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="174" width="375" height="63"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dzd-1m-dZ1" id="Hx6-Gz-79U">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0wf-82-0cc">
+                                                    <rect key="frame" x="15" y="12" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="A51-zc-z87"/>
+                                                        <constraint firstAttribute="width" constant="40" id="inh-o8-pZH"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YsE-TH-cjN">
+                                                    <rect key="frame" x="63" y="12" width="249" height="40"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="YsE-TH-cjN" secondAttribute="trailing" constant="63" id="Dr5-NC-YRJ"/>
+                                                <constraint firstItem="0wf-82-0cc" firstAttribute="top" secondItem="Hx6-Gz-79U" secondAttribute="top" constant="12" id="G1Y-6Y-euO"/>
+                                                <constraint firstItem="0wf-82-0cc" firstAttribute="leading" secondItem="Hx6-Gz-79U" secondAttribute="leading" constant="15" id="KYV-9j-px2"/>
+                                                <constraint firstAttribute="bottom" secondItem="YsE-TH-cjN" secondAttribute="bottom" constant="11" id="L4Z-VL-gtE"/>
+                                                <constraint firstItem="YsE-TH-cjN" firstAttribute="top" secondItem="Hx6-Gz-79U" secondAttribute="top" constant="12" id="cXL-80-VMf"/>
+                                                <constraint firstItem="YsE-TH-cjN" firstAttribute="leading" secondItem="Hx6-Gz-79U" secondAttribute="leading" constant="63" id="d3x-DX-faf"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                        <connections>
+                                            <outlet property="avatarImageView" destination="0wf-82-0cc" id="8jC-kF-HjO"/>
+                                            <outlet property="pictureImageView" destination="YsE-TH-cjN" id="A60-o0-lu5"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="pictureSenderIdentifier" rowHeight="63" id="deg-eQ-vdK" customClass="ChatPictureTableViewCell" customModule="Tsukuba_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="237" width="375" height="63"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="deg-eQ-vdK" id="Ibt-Vw-NIr">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vxP-lE-Ixm">
+                                                    <rect key="frame" x="63" y="12" width="249" height="40"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yVK-fQ-lIn">
+                                                    <rect key="frame" x="320" y="12" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="4v7-qp-MFU"/>
+                                                        <constraint firstAttribute="height" constant="40" id="k6G-PV-b8i"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="vxP-lE-Ixm" secondAttribute="trailing" constant="63" id="Bau-wv-t6o"/>
+                                                <constraint firstAttribute="trailing" secondItem="yVK-fQ-lIn" secondAttribute="trailing" constant="15" id="MrT-8S-cyX"/>
+                                                <constraint firstAttribute="bottom" secondItem="vxP-lE-Ixm" secondAttribute="bottom" constant="11" id="PBF-3m-4n5"/>
+                                                <constraint firstItem="yVK-fQ-lIn" firstAttribute="top" secondItem="Ibt-Vw-NIr" secondAttribute="top" constant="12" id="aqf-Cr-pp0"/>
+                                                <constraint firstItem="vxP-lE-Ixm" firstAttribute="top" secondItem="Ibt-Vw-NIr" secondAttribute="top" constant="12" id="f3z-m6-hhm"/>
+                                                <constraint firstItem="vxP-lE-Ixm" firstAttribute="leading" secondItem="Ibt-Vw-NIr" secondAttribute="leading" constant="63" id="h9k-qr-xiX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="avatarImageView" destination="yVK-fQ-lIn" id="6ZV-CM-Lpf"/>
+                                            <outlet property="pictureImageView" destination="vxP-lE-Ixm" id="HDo-kx-RSc"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="q8n-zZ-qMO" id="9md-Qz-w8K"/>
