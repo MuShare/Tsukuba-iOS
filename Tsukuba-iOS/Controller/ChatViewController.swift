@@ -17,7 +17,8 @@ enum ChatCellType {
     case plainTextSender(String)
     case plainTextReceiver(String, String)
     case pictureSending(UIImage)
-
+    case pictureSender(String)
+    case pictureReceiver(String, String)
 }
 
 class ChatCellModel {
@@ -82,6 +83,7 @@ class ChatViewController: UIViewController {
             updateModels(DaoManager.shared.chatDao.findByRoom(room))
             ChatManager.shared.syncChat(room) { [weak self] (success, chats, message) in
                 self?.updateModels(chats)
+                // TODO: update new only.
                 self?.tableView.reloadData()
                 self?.gotoBottom(false)
             }
@@ -235,7 +237,9 @@ class ChatViewController: UIViewController {
         }
         
         for chat in chats {
-            guard let createAt = chat.createAt else {
+            guard let createAt = chat.createAt,
+                let content = chat.content,
+                let avatar = room.receiverAvatar else {
                 continue
             }
             if lastCreateAt.isInSameDay(date: createAt) {
@@ -252,11 +256,16 @@ class ChatViewController: UIViewController {
             
             // Plain text.
             let isSender = room.creator ? chat.direction : !chat.direction
-            if isSender {
-                models.append(ChatCellModel(type: .plainTextSender(chat.content!)))
-            } else {
-                models.append(ChatCellModel(type: .plainTextReceiver(room.receiverAvatar!, chat.content!)))
+            var type: ChatCellType = .none
+            switch chat.type {
+            case ChatMessageType.plainText.rawValue:
+                type = isSender ? .plainTextSender(content) : .plainTextReceiver(avatar, content)
+            case ChatMessageType.picture.rawValue:
+                type = isSender ? .pictureSender(content) : .pictureReceiver(avatar, content)
+            default:
+                break
             }
+            models.append(ChatCellModel(type: type))
 
         }
     }
@@ -288,10 +297,21 @@ extension ChatViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.chatReceiverIdentifier, for: indexPath)!
             cell.fill(avatar: avatar, message: content)
             return cell
-        case .pictureSending(let picture):
+        case .pictureSending(let pictureImage):
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.pictureSenderIdentifier, for: indexPath)!
             cell.avatar = UserManager.shared.avatar
-            cell.pictureImage = picture
+            cell.pictureImage = pictureImage
+            return cell
+        
+        case .pictureSender(let pictureUrl):
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.pictureSenderIdentifier, for: indexPath)!
+            cell.avatar = UserManager.shared.avatar
+            cell.picture = pictureUrl
+            return cell
+        case .pictureReceiver(let avatar, let pictureUrl):
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.pictureReceiverIdentifier, for: indexPath)!
+            cell.avatar = avatar
+            cell.picture = pictureUrl
             return cell
         case .none:
             return UITableViewCell()
@@ -325,13 +345,13 @@ extension ChatViewController: UIImagePickerControllerDelegate {
         
         picker.dismiss(animated: true, completion: nil)
         
-        ChatManager.shared.sendPicture(image, start: { compressedImage in
+        ChatManager.shared.sendPicture(receiver: receiver.uid, image: image, start: { compressedImage in
             if let image = compressedImage {
                 self.models.append(ChatCellModel(type: .pictureSending(image)))
                 self.tableView.reloadData()
                 self.gotoBottom(true)
             }
-        }, completion: { success in
+        }, completion: { (success, chats, message) in
             
         })
     }

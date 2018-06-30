@@ -252,3 +252,8 @@
 
 /* Class = "UILabel"; text = "Chat time"; ObjectID = "lxz-Aj-2LQ"; */
 "lxz-Aj-2LQ.text" = "Chat time";
+
+//2018-06-30 13:57:47
+
+/* Class = "UIButton"; normalTitle = "Picture"; ObjectID = "pMo-tF-GRD"; */
+//"pMo-tF-GRD.normalTitle" = "Picture";

@@ -23,8 +23,12 @@ class ChatPictureTableViewCell: UITableViewCell {
     
     var picture: String? {
         didSet {
-            if let picture = picture {
-                pictureImageView.kf.setImage(with: Config.shared.imageURL(picture))
+            guard let picture = picture else {
+                return
+            }
+            let url = Config.shared.imageURL(picture)
+            pictureImageView.kf.setImage(with: url, placeholder: nil, options: [.requestModifier(Config.shared.modifier)]) { image, error, cacheType, imageURL in
+                self.pictureImageView.image = self.resizeImage(image: image!, newWidth: self.pictureImageView.frame.width)
             }
         }
     }
@@ -34,10 +38,18 @@ class ChatPictureTableViewCell: UITableViewCell {
             guard let image = pictureImage else {
                 return
             }
-            print(image.size)
-            pictureImageView.image = image
-
+            pictureImageView.image = resizeImage(image: image, newWidth: pictureImageView.frame.width)
         }
+    }
+    
+    private func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
     }
     
 }

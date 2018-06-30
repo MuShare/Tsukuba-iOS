@@ -1,6 +1,11 @@
 import Alamofire
 import SwiftyUserDefaults
 
+enum ChatMessageType: Int16 {
+    case plainText = 0
+    case picture = 1
+}
+
 class ChatManager {
     
     typealias ChatCompletion = ((_ success: Bool, _ chats: [Chat], _ message: String?) -> Void)?
@@ -51,36 +56,45 @@ class ChatManager {
         }
     }
     
-    func sendPicture(_ image: UIImage, start:((UIImage?) -> Void)?, completion: ((Bool) -> Void)?) {
+    func sendPicture(receiver: String, image: UIImage, start:((UIImage?) -> Void)?, completion: ChatCompletion) {
         guard let data = UIImageJPEGRepresentation(resizeImage(image: image, newWidth: 480)!, 1.0) else {
-            completion?(false)
+            completion?(false, [], R.string.localizable.error_unknown())
             return
         }
         start?(UIImage(data: data))
         
         Alamofire.upload(multipartFormData: { multipartFormData in
             multipartFormData.append(data, withName: "picture", fileName: UUID().uuidString, mimeType: "image/jpeg")
-        }, usingThreshold: UInt64.init(), to: config.createUrl("api/chat/picture"), method: .post, headers: config.tokenHeader, encodingCompletion: { encodingResult in
+        }, usingThreshold: UInt64.init(), to: config.createUrl("api/chat/picture?receiver=\(receiver)"), method: .post, headers: config.tokenHeader, encodingCompletion: { encodingResult in
             switch encodingResult {
             case .success(let upload, _, _):
                 upload.uploadProgress { progress in
-                    
+                    print(progress)
                 }
                 upload.responseJSON { responseObject in
                     let response = Response(responseObject)
                     if response.statusOK() {
                         let result = response.getResult()
-                        
-                        completion?(true)
+                        let chatObject = result["chat"]
+                        let roomObject = chatObject["room"]
+                        let chat = self.dao.chatDao.save(chatObject)
+                        chat.room = self.dao.roomDao.saveOrUpdate(roomObject)
+                        chat.room?.lastMessage = roomObject["lastMessage"].stringValue
+                        chat.content = chatObject["content"].stringValue
+                        self.dao.saveContext()
+                        completion?(true, [chat], nil)
                     } else {
-                        completion?(false)
+                        switch response.errorCode() {
+                        default:
+                            completion?(false, [], R.string.localizable.error_unknown())
+                        }
                     }
                 }
             case .failure(let encodingError):
                 if DEBUG {
                     debugPrint(encodingError)
                 }
-                completion?(false)
+                completion?(false, [], R.string.localizable.error_unknown())
             }
         })
         
