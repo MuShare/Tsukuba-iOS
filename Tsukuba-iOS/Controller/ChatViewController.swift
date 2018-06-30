@@ -82,10 +82,9 @@ class ChatViewController: UIViewController {
         if let room = room {
             updateModels(DaoManager.shared.chatDao.findByRoom(room))
             ChatManager.shared.syncChat(room) { [weak self] (success, chats, message) in
-                self?.updateModels(chats)
-                // TODO: update new only.
-                self?.tableView.reloadData()
-                self?.gotoBottom(false)
+                if chats.count > 0 {
+                    self?.insertChats(chats)
+                }
             }
         }
 

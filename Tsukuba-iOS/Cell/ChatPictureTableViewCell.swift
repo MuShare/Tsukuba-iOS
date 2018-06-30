@@ -27,8 +27,15 @@ class ChatPictureTableViewCell: UITableViewCell {
                 return
             }
             let url = Config.shared.imageURL(picture)
-            pictureImageView.kf.setImage(with: url, placeholder: nil, options: [.requestModifier(Config.shared.modifier)]) { image, error, cacheType, imageURL in
-                self.pictureImageView.image = self.resizeImage(image: image!, newWidth: self.pictureImageView.frame.width)
+            let plcaeholder = R.image.chat_picture_lodingGif()
+            pictureImageView.kf.indicatorType = .activity
+            pictureImageView.kf.setImage(with: url, placeholder: plcaeholder, options: [.requestModifier(Config.shared.modifier)]) { image, error, cacheType, imageURL in
+                if let error = error {
+                    print("Loaing chat picture error: \(error)")
+                }
+                if let image = image {
+                    self.pictureImageView.image = self.resizeImage(image: image, newWidth: self.pictureImageView.frame.width)
+                }
             }
         }
     }

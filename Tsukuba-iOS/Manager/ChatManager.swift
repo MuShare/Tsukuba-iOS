@@ -79,7 +79,7 @@ class ChatManager {
                         let roomObject = chatObject["room"]
                         let chat = self.dao.chatDao.save(chatObject)
                         chat.room = self.dao.roomDao.saveOrUpdate(roomObject)
-                        chat.room?.lastMessage = roomObject["lastMessage"].stringValue
+                        chat.room?.lastMessage = R.string.localizable.last_message_picture()
                         chat.content = chatObject["content"].stringValue
                         self.dao.saveContext()
                         completion?(true, [chat], nil)

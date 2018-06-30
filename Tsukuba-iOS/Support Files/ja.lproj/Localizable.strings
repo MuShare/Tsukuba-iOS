@@ -81,3 +81,5 @@ report_user_message = "このユーザーを告発しますか。";
 chats_chats = "チャット";
 chats_loading = "更新中...";
 chats_self_not_allow = "自分とチャットできません。";
+
+last_message_picture = "[画像]";

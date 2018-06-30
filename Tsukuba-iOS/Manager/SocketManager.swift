@@ -159,8 +159,15 @@ extension SocketManager: WebSocketDelegate {
                 self.dao.roomDao.saveOrUpdate(object["room"])
             if let room = chat.room {
                 room.chats = chat.seq
-                room.lastMessage = chat.content
                 room.unread += 1
+                switch chat.type {
+                case ChatMessageType.plainText.rawValue:
+                    room.lastMessage = chat.content
+                case ChatMessageType.picture.rawValue:
+                    room.lastMessage = R.string.localizable.last_message_picture()
+                default:
+                    break
+                }
             }
             chats.append(chat)
             config.globalUnread += 1
