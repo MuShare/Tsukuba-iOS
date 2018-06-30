@@ -34,6 +34,13 @@ class ChatCellModel {
 
 class ChatViewController: UIViewController {
     
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter
+    }()
+    
     private struct Const {
         static let toolBarHeight: CGFloat = 50.0
     }
@@ -262,7 +269,9 @@ class ChatViewController: UIViewController {
                 type = isSender ? .plainTextSender(content) : .plainTextReceiver(avatar, content)
             case ChatMessageType.picture.rawValue:
                 type = isSender ? .pictureSender(photos.count, content) : .pictureReceiver(photos.count, avatar, content)
-                photos.append(AXPhoto(url: Config.shared.imageURL(content)))
+                photos.append(AXPhoto(attributedTitle: nil,
+                                      attributedDescription: NSAttributedString(string: dateFormatter.string(from: chat.createAt!)),
+                                      url: Config.shared.imageURL(content)))
             default:
                 break
             }
@@ -274,7 +283,9 @@ class ChatViewController: UIViewController {
     private func insertPictureSendingModel(image: UIImage) {
         insertTimeModel(time: Date())
         models.append(ChatCellModel(type: .pictureSending(photos.count, image)))
-        photos.append(AXPhoto(image: image))
+        photos.append(AXPhoto(attributedTitle: nil,
+                              attributedDescription: NSAttributedString(string: dateFormatter.string(from: Date())),
+                              image: image))
     }
     
     private func insertTimeModel(time: Date) {
