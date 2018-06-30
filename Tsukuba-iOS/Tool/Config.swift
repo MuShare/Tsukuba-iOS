@@ -158,6 +158,19 @@ class Config {
     var baseUrl: String = "http://127.0.0.1:8080/"
     var socketUrl: String = "ws://127.0.0.1:8080/websocket/chat/"
     
+    func autoEnvironment() {
+        let production : Bool = {
+            #if DEBUG
+                return false
+            #elseif ADHOC
+                return false
+            #else
+                return true
+            #endif
+        }()
+        environment = production ? .production : .dev
+    }
+    
     func createUrl(_ relative: String) -> String {
         let requestUrl = baseUrl + relative
         return requestUrl
