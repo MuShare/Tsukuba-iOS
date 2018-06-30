@@ -2056,7 +2056,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vxP-lE-Ixm">
+                                                <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vxP-lE-Ixm">
                                                     <rect key="frame" x="63" y="12" width="249" height="40"/>
                                                     <gestureRecognizers/>
                                                     <userDefinedRuntimeAttributes>
@@ -2064,6 +2064,9 @@
                                                             <real key="value" value="5"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="iX1-Wa-MPb" appends="YES" id="NBA-Qb-aMO"/>
+                                                    </connections>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yVK-fQ-lIn">
                                                     <rect key="frame" x="320" y="12" width="40" height="40"/>
@@ -2194,6 +2197,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tCW-uG-2Jz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="iX1-Wa-MPb">
+                    <connections>
+                        <action selector="openPhotoPreviewer:" destination="q8n-zZ-qMO" id="jb6-Rh-vFq"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="88.799999999999997" y="6007.6461769115449"/>
         </scene>

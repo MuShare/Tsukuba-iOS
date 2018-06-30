@@ -8,10 +8,28 @@
 
 import UIKit
 
+protocol ChatPictureTableViewCellDelegate: class {
+    func didOpenPicturePreview()
+}
+
 class ChatPictureTableViewCell: UITableViewCell {
+    
+    weak var delegate: ChatPictureTableViewCellDelegate?
 
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var pictureImageView: UIImageView!
+    
+    private lazy var tapGesture = UITapGestureRecognizer(target: self, action: #selector(openPicturePreview))
+    
+    override func awakeFromNib() {
+        pictureImageView.addGestureRecognizer(tapGesture)
+        pictureImageView.isUserInteractionEnabled = true
+    }
+    
+    @objc private func openPicturePreview() {
+        print("openPicturePreview")
+        delegate?.didOpenPicturePreview()
+    }
     
     var avatar: String? {
         didSet {

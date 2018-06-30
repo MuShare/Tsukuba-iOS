@@ -2,6 +2,7 @@ import Alamofire
 import SwiftyUserDefaults
 
 enum ChatMessageType: Int16 {
+    case pictureSending = -1
     case plainText = 0
     case picture = 1
 }
@@ -77,6 +78,7 @@ class ChatManager {
                         let result = response.getResult()
                         let chatObject = result["chat"]
                         let roomObject = chatObject["room"]
+                        
                         let chat = self.dao.chatDao.save(chatObject)
                         chat.room = self.dao.roomDao.saveOrUpdate(roomObject)
                         chat.room?.lastMessage = R.string.localizable.last_message_picture()
@@ -123,6 +125,7 @@ class ChatManager {
                     chat.room = room
                     chats.append(chat)
                 }
+                    
                 if (chats.count > 0) {
                     let lastChat = chats[chats.count - 1]
                     room.chats = lastChat.seq

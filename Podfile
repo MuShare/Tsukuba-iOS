@@ -22,6 +22,7 @@ target 'Tsukuba-iOS' do
     pod 'R.swift', '~> 4.0'
     pod 'RxKeyboard', '~> 0.8'
     pod 'SnapKit', '~> 4.0'
+    pod 'AXPhotoViewer/Kingfisher', '~> 1.5'
 end
 
 post_install do |installer|

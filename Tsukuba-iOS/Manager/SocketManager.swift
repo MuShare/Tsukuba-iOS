@@ -153,7 +153,8 @@ extension SocketManager: WebSocketDelegate {
             if self.dao.chatDao.isChatSaved(object["cid"].stringValue) {
                 continue
             }
-            let chat = self.dao.chatDao.save(object);
+            let chat = self.dao.chatDao.save(object)
+            
             chat.content = object["content"].stringValue
             chat.room = self.dao.roomDao.getByRid(object["room"]["rid"].stringValue) ??
                 self.dao.roomDao.saveOrUpdate(object["room"])
