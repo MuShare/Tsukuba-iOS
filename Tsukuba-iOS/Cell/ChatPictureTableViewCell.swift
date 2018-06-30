@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ChatPictureTableViewCellDelegate: class {
-    func didOpenPicturePreview()
+    func didOpenPicturePreview(index: Int)
 }
 
 class ChatPictureTableViewCell: UITableViewCell {
@@ -27,44 +27,35 @@ class ChatPictureTableViewCell: UITableViewCell {
     }
     
     @objc private func openPicturePreview() {
-        print("openPicturePreview")
-        delegate?.didOpenPicturePreview()
+        if let delegate = delegate {
+            delegate.didOpenPicturePreview(index: tag)
+        }
     }
     
-    var avatar: String? {
-        didSet {
-            if let avatar = avatar {
-                avatarImageView.kf.setImage(with: Config.shared.imageURL(avatar))
+    func fill(index: Int, avatar: String, pictureUrl: String, delegate: ChatPictureTableViewCellDelegate) {
+        self.delegate = delegate
+        avatarImageView.kf.setImage(with: Config.shared.imageURL(avatar))
+        tag = index
+        
+        let url = Config.shared.imageURL(pictureUrl)
+        let plcaeholder = R.image.chat_picture_lodingGif()
+        pictureImageView.kf.indicatorType = .activity
+        pictureImageView.kf.setImage(with: url, placeholder: plcaeholder, options: [.requestModifier(Config.shared.modifier)]) { image, error, cacheType, imageURL in
+            if let error = error {
+                print("Loaing chat picture error: \(error)")
+            }
+            if let image = image {
+                self.pictureImageView.image = self.resizeImage(image: image, newWidth: self.pictureImageView.frame.width)
             }
         }
     }
     
-    var picture: String? {
-        didSet {
-            guard let picture = picture else {
-                return
-            }
-            let url = Config.shared.imageURL(picture)
-            let plcaeholder = R.image.chat_picture_lodingGif()
-            pictureImageView.kf.indicatorType = .activity
-            pictureImageView.kf.setImage(with: url, placeholder: plcaeholder, options: [.requestModifier(Config.shared.modifier)]) { image, error, cacheType, imageURL in
-                if let error = error {
-                    print("Loaing chat picture error: \(error)")
-                }
-                if let image = image {
-                    self.pictureImageView.image = self.resizeImage(image: image, newWidth: self.pictureImageView.frame.width)
-                }
-            }
-        }
-    }
-    
-    var pictureImage: UIImage? {
-        didSet {
-            guard let image = pictureImage else {
-                return
-            }
-            pictureImageView.image = resizeImage(image: image, newWidth: pictureImageView.frame.width)
-        }
+    func fill(index: Int, avatar: String, pictureImage: UIImage, delegate: ChatPictureTableViewCellDelegate) {
+        self.delegate = delegate
+        avatarImageView.kf.setImage(with: Config.shared.imageURL(avatar))
+        tag = index
+        
+        pictureImageView.image = resizeImage(image: pictureImage, newWidth: pictureImageView.frame.width)
     }
     
     private func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {

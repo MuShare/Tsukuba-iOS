@@ -17,9 +17,9 @@ enum ChatCellType {
     case time(Date)
     case plainTextSender(String)
     case plainTextReceiver(String, String)
-    case pictureSending(UIImage)
-    case pictureSender(String)
-    case pictureReceiver(String, String)
+    case pictureSending(Int, UIImage)
+    case pictureSender(Int, String)
+    case pictureReceiver(Int, String, String)
 }
 
 class ChatCellModel {
@@ -261,7 +261,7 @@ class ChatViewController: UIViewController {
             case ChatMessageType.plainText.rawValue:
                 type = isSender ? .plainTextSender(content) : .plainTextReceiver(avatar, content)
             case ChatMessageType.picture.rawValue:
-                type = isSender ? .pictureSender(content) : .pictureReceiver(avatar, content)
+                type = isSender ? .pictureSender(photos.count, content) : .pictureReceiver(photos.count, avatar, content)
                 photos.append(AXPhoto(url: Config.shared.imageURL(content)))
             default:
                 break
@@ -273,7 +273,7 @@ class ChatViewController: UIViewController {
     
     private func insertPictureSendingModel(image: UIImage) {
         insertTimeModel(time: Date())
-        models.append(ChatCellModel(type: .pictureSending(image)))
+        models.append(ChatCellModel(type: .pictureSending(photos.count, image)))
         photos.append(AXPhoto(image: image))
     }
     
@@ -318,22 +318,17 @@ extension ChatViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.chatReceiverIdentifier, for: indexPath)!
             cell.fill(avatar: avatar, message: content)
             return cell
-        case .pictureSending(let pictureImage):
+        case .pictureSending(let index, let pictureImage):
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.pictureSenderIdentifier, for: indexPath)!
-            cell.avatar = UserManager.shared.avatar
-            cell.pictureImage = pictureImage
-            cell.delegate = self
+            cell.fill(index: index, avatar: UserManager.shared.avatar, pictureImage: pictureImage, delegate: self)
             return cell
-        case .pictureSender(let pictureUrl):
+        case .pictureSender(let index, let pictureUrl):
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.pictureSenderIdentifier, for: indexPath)!
-            cell.avatar = UserManager.shared.avatar
-            cell.picture = pictureUrl
-            cell.delegate = self
+            cell.fill(index: index, avatar: UserManager.shared.avatar, pictureUrl: pictureUrl, delegate: self)
             return cell
-        case .pictureReceiver(let avatar, let pictureUrl):
+        case .pictureReceiver(let index, let avatar, let pictureUrl):
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.pictureReceiverIdentifier, for: indexPath)!
-            cell.avatar = avatar
-            cell.picture = pictureUrl
+            cell.fill(index: index, avatar: avatar, pictureUrl: pictureUrl, delegate: self)
             cell.delegate = self
             return cell
         case .none:
@@ -385,8 +380,8 @@ extension ChatViewController: UINavigationControllerDelegate {
 
 extension ChatViewController: ChatPictureTableViewCellDelegate {
     
-    func didOpenPicturePreview() {
-        let dataSource = AXPhotosDataSource(photos: photos)
+    func didOpenPicturePreview(index: Int) {
+        let dataSource = AXPhotosDataSource(photos: photos, initialPhotoIndex: index)
         let photosViewController = AXPhotosViewController(dataSource: dataSource)
         present(photosViewController, animated: true)
     }
