@@ -2024,7 +2024,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YsE-TH-cjN">
-                                                    <rect key="frame" x="63" y="12" width="249" height="40"/>
+                                                    <rect key="frame" x="63" y="12" width="150" height="40"/>
                                                     <gestureRecognizers/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -2035,10 +2035,10 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="YsE-TH-cjN" secondAttribute="trailing" constant="63" id="Dr5-NC-YRJ"/>
                                                 <constraint firstItem="0wf-82-0cc" firstAttribute="top" secondItem="Hx6-Gz-79U" secondAttribute="top" constant="12" id="G1Y-6Y-euO"/>
                                                 <constraint firstItem="0wf-82-0cc" firstAttribute="leading" secondItem="Hx6-Gz-79U" secondAttribute="leading" constant="15" id="KYV-9j-px2"/>
                                                 <constraint firstAttribute="bottom" secondItem="YsE-TH-cjN" secondAttribute="bottom" constant="11" id="L4Z-VL-gtE"/>
+                                                <constraint firstItem="YsE-TH-cjN" firstAttribute="width" secondItem="Hx6-Gz-79U" secondAttribute="width" multiplier="0.4" id="Tot-xW-SoG"/>
                                                 <constraint firstItem="YsE-TH-cjN" firstAttribute="top" secondItem="Hx6-Gz-79U" secondAttribute="top" constant="12" id="cXL-80-VMf"/>
                                                 <constraint firstItem="YsE-TH-cjN" firstAttribute="leading" secondItem="Hx6-Gz-79U" secondAttribute="leading" constant="63" id="d3x-DX-faf"/>
                                             </constraints>
@@ -2057,7 +2057,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vxP-lE-Ixm">
-                                                    <rect key="frame" x="63" y="12" width="249" height="40"/>
+                                                    <rect key="frame" x="162" y="12" width="150" height="40"/>
                                                     <gestureRecognizers/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -2087,7 +2087,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="vxP-lE-Ixm" secondAttribute="bottom" constant="11" id="PBF-3m-4n5"/>
                                                 <constraint firstItem="yVK-fQ-lIn" firstAttribute="top" secondItem="Ibt-Vw-NIr" secondAttribute="top" constant="12" id="aqf-Cr-pp0"/>
                                                 <constraint firstItem="vxP-lE-Ixm" firstAttribute="top" secondItem="Ibt-Vw-NIr" secondAttribute="top" constant="12" id="f3z-m6-hhm"/>
-                                                <constraint firstItem="vxP-lE-Ixm" firstAttribute="leading" secondItem="Ibt-Vw-NIr" secondAttribute="leading" constant="63" id="h9k-qr-xiX"/>
+                                                <constraint firstItem="vxP-lE-Ixm" firstAttribute="width" secondItem="Ibt-Vw-NIr" secondAttribute="width" multiplier="0.4" id="y6E-Um-Ndm"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
