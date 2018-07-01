@@ -91,7 +91,8 @@ class ChatViewController: UIViewController {
         room = DaoManager.shared.roomDao.getByReceiverId(receiver.uid)
         if let room = room {
             updateModels(DaoManager.shared.chatDao.findByRoom(room))
-            gotoBottom(false)
+            tableView.scrollToBottom(animated: false)
+            
             ChatManager.shared.syncChat(room) { [weak self] (success, chats, message) in
                 if chats.count > 0 {
                     self?.insertChats(chats)
@@ -177,15 +178,7 @@ class ChatViewController: UIViewController {
         }
         tableView.insertRows(at: indexPaths, with: .automatic)
         tableView.endUpdates()
-        
-        gotoBottom(true)
-    }
-    
-    private func gotoBottom(_ animated: Bool) {
-        if models.count > 0 {
-            let indexPath = IndexPath(row: models.count - 1, section: 0)
-            tableView.scrollToRow(at: indexPath, at: .bottom, animated: animated)
-        }
+        tableView.scrollToBottom(animated: true)
     }
     
     // MARK: Notification
@@ -397,4 +390,16 @@ extension ChatViewController: ChatPictureTableViewCellDelegate {
         present(photosViewController, animated: true)
     }
     
+}
+
+extension UITableView {
+    func scrollToBottom(animated: Bool = true) {
+        if numberOfSections > 0 {
+            let row = numberOfRows(inSection: numberOfSections - 1)
+            if row > 0 {
+                let index = IndexPath(row: row - 1, section: numberOfSections - 1)
+                scrollToRow(at: index, at: .bottom, animated: animated)
+            }
+        }
+    }
 }

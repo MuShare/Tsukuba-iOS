@@ -1877,36 +1877,40 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aio-zh-q5F">
                                                     <rect key="frame" x="63" y="12" width="249" height="40"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message content" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xl9-gE-q6W">
-                                                    <rect key="frame" x="84" y="24" width="214" height="18"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CMo-hE-M9A">
+                                                    <rect key="frame" x="84" y="16" width="214" height="30"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="copyingEnabled" value="YES"/>
-                                                    </userDefinedRuntimeAttributes>
-                                                </label>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="message">
+                                                            <attributes>
+                                                                <font key="NSFont" size="15" name=".AppleSystemUIFont"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" calendarEvent="YES"/>
+                                                </textView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="QGY-xA-54L" firstAttribute="leading" secondItem="T3X-Ti-MGy" secondAttribute="leading" constant="15" id="1Xj-Pi-MB7"/>
-                                                <constraint firstItem="xl9-gE-q6W" firstAttribute="top" secondItem="T3X-Ti-MGy" secondAttribute="top" constant="24" id="5Ze-jb-5gQ"/>
+                                                <constraint firstItem="CMo-hE-M9A" firstAttribute="top" secondItem="T3X-Ti-MGy" secondAttribute="top" constant="16" id="2T1-0l-oia"/>
+                                                <constraint firstAttribute="trailing" secondItem="CMo-hE-M9A" secondAttribute="trailing" constant="77" id="MSu-qf-1n0"/>
                                                 <constraint firstItem="aio-zh-q5F" firstAttribute="leading" secondItem="T3X-Ti-MGy" secondAttribute="leading" constant="63" id="OpW-H4-gzF"/>
+                                                <constraint firstItem="CMo-hE-M9A" firstAttribute="leading" secondItem="T3X-Ti-MGy" secondAttribute="leading" constant="84" id="Z1t-Cu-Eq9"/>
                                                 <constraint firstAttribute="trailing" secondItem="aio-zh-q5F" secondAttribute="trailing" constant="63" id="aJi-FT-rNW"/>
-                                                <constraint firstAttribute="trailing" secondItem="xl9-gE-q6W" secondAttribute="trailing" constant="77" id="bmn-k1-5Hh"/>
-                                                <constraint firstItem="xl9-gE-q6W" firstAttribute="leading" secondItem="T3X-Ti-MGy" secondAttribute="leading" constant="84" id="iBy-X9-56O"/>
                                                 <constraint firstAttribute="bottom" secondItem="aio-zh-q5F" secondAttribute="bottom" constant="11" id="l83-Xq-Hym"/>
-                                                <constraint firstAttribute="bottom" secondItem="xl9-gE-q6W" secondAttribute="bottom" constant="21" id="u9J-LN-tTR"/>
                                                 <constraint firstItem="aio-zh-q5F" firstAttribute="top" secondItem="T3X-Ti-MGy" secondAttribute="top" constant="12" id="uW7-mL-Qoz"/>
                                                 <constraint firstItem="QGY-xA-54L" firstAttribute="top" secondItem="T3X-Ti-MGy" secondAttribute="top" constant="12" id="y5E-q9-new"/>
+                                                <constraint firstAttribute="bottom" secondItem="CMo-hE-M9A" secondAttribute="bottom" constant="17" id="zBk-hA-GbI"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                         <connections>
                                             <outlet property="avatarImageView" destination="QGY-xA-54L" id="LDc-Ft-rdg"/>
                                             <outlet property="messageBackgroundImageView" destination="aio-zh-q5F" id="L89-03-i2X"/>
-                                            <outlet property="messageLabel" destination="xl9-gE-q6W" id="8z7-yz-9pb"/>
+                                            <outlet property="messageTextView" destination="CMo-hE-M9A" id="Hpf-Tc-bck"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="chatSenderIdentifier" rowHeight="63" id="k7l-6T-WYs" customClass="ChatTextTableViewCell" customModule="Tsukuba_iOS" customModuleProvider="target">
@@ -1919,16 +1923,6 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dY2-UK-AQR">
                                                     <rect key="frame" x="63" y="12" width="249" height="40"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message content" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JR1-Pv-V53">
-                                                    <rect key="frame" x="77" y="24" width="214" height="18"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="copyingEnabled" value="YES"/>
-                                                    </userDefinedRuntimeAttributes>
-                                                </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UQ7-bk-ioA">
                                                     <rect key="frame" x="320" y="12" width="40" height="40"/>
                                                     <constraints>
@@ -1941,25 +1935,39 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JR1-no-kfd">
+                                                    <rect key="frame" x="77" y="16" width="214" height="30"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="message">
+                                                            <attributes>
+                                                                <font key="NSFont" size="15" name=".AppleSystemUIFont"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" calendarEvent="YES"/>
+                                                </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="JR1-Pv-V53" secondAttribute="bottom" constant="21" id="1tH-iy-LOO"/>
+                                                <constraint firstItem="JR1-no-kfd" firstAttribute="leading" secondItem="038-lv-Ser" secondAttribute="leading" constant="77" id="6EJ-uI-e1a"/>
                                                 <constraint firstAttribute="trailing" secondItem="dY2-UK-AQR" secondAttribute="trailing" constant="63" id="6ng-5c-kY5"/>
                                                 <constraint firstAttribute="bottom" secondItem="dY2-UK-AQR" secondAttribute="bottom" constant="11" id="EVU-6n-H2b"/>
                                                 <constraint firstItem="dY2-UK-AQR" firstAttribute="leading" secondItem="038-lv-Ser" secondAttribute="leading" constant="63" id="N2q-Hn-m0t"/>
-                                                <constraint firstItem="JR1-Pv-V53" firstAttribute="leading" secondItem="038-lv-Ser" secondAttribute="leading" constant="77" id="Nw5-He-mpN"/>
-                                                <constraint firstItem="JR1-Pv-V53" firstAttribute="top" secondItem="038-lv-Ser" secondAttribute="top" constant="24" id="hDR-hH-g6r"/>
-                                                <constraint firstAttribute="trailing" secondItem="JR1-Pv-V53" secondAttribute="trailing" constant="84" id="kQo-wz-Pba"/>
+                                                <constraint firstItem="JR1-no-kfd" firstAttribute="top" secondItem="038-lv-Ser" secondAttribute="top" constant="16" id="nzp-N8-tDS"/>
                                                 <constraint firstAttribute="trailing" secondItem="UQ7-bk-ioA" secondAttribute="trailing" constant="15" id="qbE-nv-boe"/>
+                                                <constraint firstAttribute="trailing" secondItem="JR1-no-kfd" secondAttribute="trailing" constant="84" id="r8R-Nd-Gaq"/>
                                                 <constraint firstItem="dY2-UK-AQR" firstAttribute="top" secondItem="038-lv-Ser" secondAttribute="top" constant="12" id="tbc-zY-bog"/>
                                                 <constraint firstItem="UQ7-bk-ioA" firstAttribute="top" secondItem="038-lv-Ser" secondAttribute="top" constant="12" id="usw-QQ-pgQ"/>
+                                                <constraint firstAttribute="bottom" secondItem="JR1-no-kfd" secondAttribute="bottom" constant="17" id="wDd-nK-qg5"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="avatarImageView" destination="UQ7-bk-ioA" id="4cb-fR-rbV"/>
                                             <outlet property="messageBackgroundImageView" destination="dY2-UK-AQR" id="N0o-D8-YNB"/>
-                                            <outlet property="messageLabel" destination="JR1-Pv-V53" id="pcu-7j-A34"/>
+                                            <outlet property="messageTextView" destination="JR1-no-kfd" id="u8s-dB-8cY"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="chatTimeIdentifier" rowHeight="20" id="tn9-dc-fR2" customClass="ChatTimeTableViewCell" customModule="Tsukuba_iOS" customModuleProvider="target">
