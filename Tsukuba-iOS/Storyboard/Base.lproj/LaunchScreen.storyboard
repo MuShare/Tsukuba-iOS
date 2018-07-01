@@ -29,7 +29,7 @@
                                     <constraint firstAttribute="height" constant="150" id="fco-qG-0Vt"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MuShare Group © 2015 - 2017. All Rights Reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MAF-Qr-PcM">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MuShare Group © 2015 - 2018. All Rights Reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MAF-Qr-PcM">
                                 <rect key="frame" x="16" y="626" width="343" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="MzO-GV-rZc"/>

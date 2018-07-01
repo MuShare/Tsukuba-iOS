@@ -123,7 +123,7 @@ extension MessageTableViewController {
         }
         switch(indexPath.section) {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.pictureCell.identifier, for: indexPath) as! PicturesTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.picturesCell.identifier, for: indexPath) as! PicturesTableViewCell
             cell.message = message
             return cell
         case 1:

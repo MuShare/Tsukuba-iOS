@@ -30,8 +30,6 @@ class ReceiverTableViewCell: UITableViewCell {
         return formatter
     }()
     
-    let calendar = Calendar.current
-    
     var room: Room? {
         didSet {
             guard let room = room else {
@@ -40,9 +38,9 @@ class ReceiverTableViewCell: UITableViewCell {
             avatarImageView.kf.setImage(with: Config.shared.imageURL(room.receiverAvatar!))
             nameLabel.text = room.receiverName!
             let updateAt = room.updateAt! as Date
-            if calendar.isDateInToday(updateAt) {
+            if updateAt.isInToday {
                 timeLabel.text = timeFormatter.string(for: updateAt)
-            } else if calendar.isDateInYesterday(updateAt) {
+            } else if updateAt.isInYesterday {
                 timeLabel.text = R.string.localizable.yesterday_name()
             } else {
                 timeLabel.text = dateFormatter.string(for: updateAt)
