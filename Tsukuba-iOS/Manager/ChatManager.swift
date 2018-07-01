@@ -130,7 +130,14 @@ class ChatManager {
                     let lastChat = chats[chats.count - 1]
                     room.chats = lastChat.seq
                     room.updateAt = lastChat.createAt
-                    room.lastMessage = lastChat.content
+                    switch lastChat.type {
+                    case ChatMessageType.plainText.rawValue:
+                        room.lastMessage = lastChat.content
+                    case ChatMessageType.picture.rawValue:
+                        room.lastMessage = R.string.localizable.last_message_picture()
+                    default:
+                        break
+                    }
                     self.dao.saveContext()
                 }
                 completion?(true, chats, nil)
@@ -191,7 +198,14 @@ class ChatManager {
                 
                 for object in result["exist"].arrayValue {
                     if let room = self.dao.roomDao.getByRid(object["rid"].stringValue) {
-                        room.lastMessage = object["lastMessage"].stringValue
+                        let lastMessage = object["lastMessage"].stringValue
+                        switch lastMessage {
+                        case "[picture]":
+                            room.lastMessage = R.string.localizable.last_message_picture()
+                        default:
+                            room.lastMessage = lastMessage
+                        }
+                        
                         room.updateAt = Date(timeIntervalSince1970: object["updateAt"].doubleValue / 1000)
                         room.unread = object["chats"].int16Value - room.chats
                         room.chats = object["chats"].int16Value
