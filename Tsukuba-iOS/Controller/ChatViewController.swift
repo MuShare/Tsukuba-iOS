@@ -49,7 +49,7 @@ class ChatViewController: UIViewController {
     
     private struct Const {
         static let toolBarHeight: CGFloat = 50.0
-        static let pageSize = 5
+        static let pageSize = 10
         static let timeLabelSmallestInterval: TimeInterval = 5 * 60
     }
 
@@ -213,7 +213,7 @@ class ChatViewController: UIViewController {
             tableView.insertRows(at: indexPaths, with: .automatic)
             tableView.endUpdates()
         case .last:
-            for row in (models.count - updatedCount - 1)...(updatedCount - 1) {
+            for row in (models.count - updatedCount)...(models.count - 1) {
                 indexPaths.append(IndexPath(row: row, section: 0))
             }
             tableView.insertRows(at: indexPaths, with: .automatic)
@@ -224,14 +224,6 @@ class ChatViewController: UIViewController {
     }
     
     // MARK: Notification
-    @objc func keyboardDidShow(notification: NSNotification) {
-        
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        
-    }
-
     @objc func didReceiveNewChat(_ notification: Notification) {
         guard let userInfo = notification.userInfo else {
             return
