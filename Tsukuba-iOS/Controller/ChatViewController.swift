@@ -11,6 +11,7 @@ import SwiftyJSON
 import RxSwift
 import RxKeyboard
 import AXPhotoViewer
+import ESPullToRefresh
 
 enum ChatCellType {
     case none
@@ -20,6 +21,11 @@ enum ChatCellType {
     case pictureSending(Int, UIImage)
     case pictureSender(Int, String)
     case pictureReceiver(Int, String, String)
+}
+
+enum ChatInsertPosition {
+    case first
+    case last
 }
 
 class ChatCellModel {
@@ -43,6 +49,8 @@ class ChatViewController: UIViewController {
     
     private struct Const {
         static let toolBarHeight: CGFloat = 50.0
+        static let pageSize = 5
+        static let timeLabelSmallestInterval: TimeInterval = 5 * 60
     }
 
     private lazy var imagePickerController: UIImagePickerController = {
@@ -63,7 +71,9 @@ class ChatViewController: UIViewController {
     
     var receiver: User!
     var models: [ChatCellModel] = []
+    var firstCreateAt = Date(timeIntervalSince1970: 0)
     var lastCreateAt = Date(timeIntervalSince1970: 0)
+    var smallestSeq = Int16.max
     var room: Room?
     
     var photos: [AXPhoto] = []
@@ -86,12 +96,32 @@ class ChatViewController: UIViewController {
         tableView.isHidden = true
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 400
+        tableView.es.addPullToRefresh {
+            guard let room = self.room else {
+                return
+            }
+
+            self.insertRows(at: .first) { position in
+                let chats = DaoManager.shared.chatDao.findByRoom(room: room, smallerThan: self.smallestSeq, pageSize: Const.pageSize)
+                
+//                for chat in chats {
+//                    print( "\(chat.type), \(chat.content), \(self.dateFormatter.string(from: chat.createAt!))")
+//                }
+                
+                self.updateModels(with: chats, at: position)
+            }
+
+            self.tableView.es.stopPullToRefresh()
+        }
         
         navigationItem.title = receiver.name
 
         room = DaoManager.shared.roomDao.getByReceiverId(receiver.uid)
         if let room = room {
-            updateModels(DaoManager.shared.chatDao.findByRoom(room))
+            // Load the latest messages at first.
+            let chats = DaoManager.shared.chatDao.findByRoom(room: room, pageSize: Const.pageSize)
+            updateModels(with: chats, at: .last)
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 self.tableView.scrollToBottom(animated: false)
                 self.tableView.isHidden = false
@@ -166,24 +196,38 @@ class ChatViewController: UIViewController {
         if (chats.count == 0) {
             return
         }
-        insertRows {
-            updateModels(chats)
+
+        insertRows(at: .last) { position in
+            updateModels(with: chats, at: position)
         }
     }
     
-    private func insertRows(after execution: (() -> Void)) {
+    private func insertRows(at position: ChatInsertPosition, after execution: ((ChatInsertPosition) -> Void)) {
         let oldCount = models.count
-        
-        execution()
+        execution(position)
+        if models.count == oldCount {
+            return
+        }
         
         tableView.beginUpdates()
         var indexPaths: [IndexPath] = []
-        for row in oldCount...(models.count - 1) {
-            indexPaths.append(IndexPath(row: row, section: 0))
+        
+        switch position {
+        case .first:
+            for row in 0...(models.count - oldCount - 1) {
+                indexPaths.append(IndexPath(row: row, section: 0))
+            }
+            tableView.insertRows(at: indexPaths, with: .automatic)
+            tableView.endUpdates()
+        case .last:
+            for row in oldCount...(models.count - 1) {
+                indexPaths.append(IndexPath(row: row, section: 0))
+            }
+            tableView.insertRows(at: indexPaths, with: .automatic)
+            tableView.endUpdates()
+            tableView.scrollToBottom(animated: true)
         }
-        tableView.insertRows(at: indexPaths, with: .automatic)
-        tableView.endUpdates()
-        tableView.scrollToBottom(animated: true)
+        
     }
     
     // MARK: Notification
@@ -246,19 +290,26 @@ class ChatViewController: UIViewController {
     }
     
     // MARK: - Service
-    private func updateModels(_ chats: [Chat]) {
+    private func updateModels(with chats: [Chat], at postion: ChatInsertPosition) {
         guard let room = room else {
             return
         }
         
-        for chat in chats {
+        var sortedChats = chats
+        // Sort chats by seq asc if chats should be inserted after original models.
+        if postion == .last {
+            sortedChats.sort {
+                $0.seq < $1.seq
+            }
+        }
+        
+        for chat in sortedChats {
             guard let createAt = chat.createAt,
                 let content = chat.content,
                 let avatar = room.receiverAvatar else {
                 continue
             }
-            
-            insertTimeModel(time: createAt)
+
             // Plain text.
             let isSender = room.creator ? chat.direction : !chat.direction
             var type: ChatCellType = .none
@@ -273,31 +324,55 @@ class ChatViewController: UIViewController {
             default:
                 break
             }
-            models.append(ChatCellModel(type: type))
 
+            switch postion {
+            case .first:
+                models.insert(ChatCellModel(type: type), at: 0)
+                insertTimeModel(time: createAt, insertBefore: true)
+            case .last:
+                insertTimeModel(time: createAt, insertBefore: false)
+                models.append(ChatCellModel(type: type))
+            }
+            
+            if chat.seq < smallestSeq {
+                smallestSeq = chat.seq
+            }
         }
     }
     
     private func insertPictureSendingModel(image: UIImage) {
-        insertTimeModel(time: Date())
+        insertTimeModel(time: Date(), insertBefore: false)
         models.append(ChatCellModel(type: .pictureSending(photos.count, image)))
         photos.append(AXPhoto(attributedTitle: nil,
                               attributedDescription: NSAttributedString(string: dateFormatter.string(from: Date())),
                               image: image))
     }
     
-    private func insertTimeModel(time: Date) {
-        if lastCreateAt.isInSameDay(date: time) {
-            if lastCreateAt.isInToday {
-                if time.timeIntervalSince(lastCreateAt) > 5 * 60 {
-                    models.append(ChatCellModel(type: .time(time)))
-                    lastCreateAt = time
+    private func insertTimeModel(time: Date, insertBefore: Bool) {
+        if insertBefore {
+            if firstCreateAt.isInSameDay(date: time) {
+                if firstCreateAt.timeIntervalSince(time) > Const.timeLabelSmallestInterval {
+                    models.insert(ChatCellModel(type: .time(time)), at: 0)
+                    firstCreateAt = time
                 }
+            } else {
+                models.insert(ChatCellModel(type: .time(time)), at: 0)
+                firstCreateAt = time
             }
         } else {
-            models.append(ChatCellModel(type: .time(time)))
-            lastCreateAt = time
+            if lastCreateAt.isInSameDay(date: time) {
+                if lastCreateAt.isInToday {
+                    if time.timeIntervalSince(lastCreateAt) > Const.timeLabelSmallestInterval {
+                        models.append(ChatCellModel(type: .time(time)))
+                        lastCreateAt = time
+                    }
+                }
+            } else {
+                models.append(ChatCellModel(type: .time(time)))
+                lastCreateAt = time
+            }
         }
+        
     }
     
 }
@@ -371,7 +446,7 @@ extension ChatViewController: UIImagePickerControllerDelegate {
         
         ChatManager.shared.sendPicture(receiver: receiver.uid, image: image, start: { [weak self] compressedImage in
             if let `self` = self, let image = compressedImage {
-                self.insertRows {
+                self.insertRows(at: .last) { _ in
                     self.insertPictureSendingModel(image: image)
                 }
             }
