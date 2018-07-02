@@ -12,7 +12,7 @@ let keyboardHeight: CGFloat = 300.0
 
 class EditingViewController: UIViewController, UITextFieldDelegate {
     
-    var editingTextField: UITextField!
+    var editingTextField: UITextField?
     var shownHeight: CGFloat = 0.0
     
     override func viewDidLoad() {
@@ -48,6 +48,9 @@ class EditingViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Service
     func finishEdit() {
+        guard let editingTextField = editingTextField else {
+            return
+        }
         if editingTextField.isFirstResponder {
             editingTextField.resignFirstResponder()
         }

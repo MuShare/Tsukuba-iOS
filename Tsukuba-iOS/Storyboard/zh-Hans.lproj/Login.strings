@@ -58,3 +58,11 @@
 /* Class = "UILabel"; text = "Software License Agreement"; ObjectID = "iaJ-gb-DHP"; */
 "iaJ-gb-DHP.text" = "Software License Agreement";
 
+
+//2018-07-02 17:06:10
+
+/* Class = "UITextField"; text = "123"; ObjectID = "MQ0-he-Awb"; */
+"MQ0-he-Awb.text" = "123";
+
+/* Class = "UITextField"; text = "meng@mushare.cn"; ObjectID = "NIY-dt-OSo"; */
+"NIY-dt-OSo.text" = "meng@mushare.cn";

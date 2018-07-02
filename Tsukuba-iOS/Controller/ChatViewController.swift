@@ -96,7 +96,7 @@ class ChatViewController: UIViewController {
         
         tableView.isHidden = true
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 400
+        tableView.estimatedRowHeight = 63
         tableView.es.addPullToRefresh {
             guard let room = self.room else {
                 return
@@ -114,13 +114,7 @@ class ChatViewController: UIViewController {
         if let room = room {
             // Load the latest messages at first.
             let chats = DaoManager.shared.chatDao.findByRoom(room: room, pageSize: Const.pageSize)
-            _ = updateModels(with: chats, at: .last)
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                self.tableView.scrollToBottom(animated: false)
-                self.tableView.isHidden = false
-            }
-            
+            updateModels(with: chats, at: .last)
             
             ChatManager.shared.syncChat(room) { [weak self] (success, chats, message) in
                 if chats.count > 0 {
@@ -168,6 +162,13 @@ class ChatViewController: UIViewController {
                 }
             }
         }).disposed(by: disposeBag)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        tableView.scrollToBottom(animated: false)
+        tableView.isHidden = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -248,16 +249,14 @@ class ChatViewController: UIViewController {
     
     // MARK: Action
     @IBAction func send(_ sender: Any) {
-        let content = plainTextField.text!
+        if let content = plainTextField.text, content != "" {
+            plainTextField.text = ""
+            plainTextField.resignFirstResponder()
+            ChatManager.shared.sendPlainText(receiver: receiver.uid, content: content) { [weak self] (success, chats, message) in
+                self?.insertChats(chats)
+            }
+        }
         
-        if content == "" {
-            return
-        }
-        plainTextField.text = ""
-        plainTextField.resignFirstResponder()
-        ChatManager.shared.sendPlainText(receiver: receiver.uid, content: content) { [weak self] (success, chats, message) in
-            self?.insertChats(chats)
-        }
     }
     
     @IBAction func openCamara(_ sender: Any) {
@@ -275,7 +274,7 @@ class ChatViewController: UIViewController {
     }
     
     // MARK: - Service
-    private func updateModels(with chats: [Chat], at postion: ChatInsertPosition) -> Int {
+    @discardableResult private func updateModels(with chats: [Chat], at postion: ChatInsertPosition) -> Int {
         guard let room = room else {
             return 0
         }
@@ -379,6 +378,17 @@ class ChatViewController: UIViewController {
     
 }
 
+extension ChatViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == plainTextField {
+            send(sendButton)
+        }
+        return true
+    }
+    
+}
+
 extension ChatViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -427,8 +437,10 @@ extension ChatViewController: UITableViewDataSource {
 extension ChatViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y < -20 {
-            self.plainTextField.resignFirstResponder()
+        if scrollView == tableView {
+            if scrollView.contentOffset.y < -20 {
+                self.plainTextField.resignFirstResponder()
+            }
         }
     }
     
