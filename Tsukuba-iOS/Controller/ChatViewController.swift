@@ -93,10 +93,7 @@ class ChatViewController: UIViewController {
         
         setCustomBack()
         navigationItem.title = receiver.name
-        
-//        tableView.isHidden = true
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 63
+
         tableView.es.addPullToRefresh {
             guard let room = self.room else {
                 return
@@ -115,9 +112,10 @@ class ChatViewController: UIViewController {
             // Load the latest messages at first.
             let chats = DaoManager.shared.chatDao.findByRoom(room: room, pageSize: Const.pageSize)
             updateModels(with: chats, at: .last)
-            
-//            tableView.isHidden = false
-            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.tableView.scrollToBottom(animated: false)
+            }
+       
             ChatManager.shared.syncChat(room) { [weak self] (success, chats, message) in
                 if chats.count > 0 {
                     self?.insertChats(chats)
@@ -170,7 +168,7 @@ class ChatViewController: UIViewController {
         super.viewDidAppear(animated)
         
         
-        tableView.scrollToBottom(animated: false)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -370,7 +368,7 @@ class ChatViewController: UIViewController {
                 firstCreateAt = time
             }
         case .last:
-            if lastCreateAt.isInSameDay(date: time) && lastCreateAt.isInToday {
+            if lastCreateAt.isInSameDay(date: time) {
                 if time.timeIntervalSince(lastCreateAt) > Const.timeLabelSmallestInterval {
                     create = true
                     lastCreateAt = time
@@ -485,6 +483,7 @@ extension ChatViewController: UINavigationControllerDelegate {
 extension ChatViewController: ChatPictureTableViewCellDelegate {
     
     func didOpenPicturePreview(index: Int) {
+        
         let dataSource = AXPhotosDataSource(photos: photos, initialPhotoIndex: index)
         let photosViewController = AXPhotosViewController(dataSource: dataSource)
         present(photosViewController, animated: true)
