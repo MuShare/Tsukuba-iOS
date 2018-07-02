@@ -83,6 +83,7 @@ class ChatViewController: UIViewController {
         
         setCustomBack()
         
+        tableView.isHidden = true
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 400
         
@@ -91,7 +92,12 @@ class ChatViewController: UIViewController {
         room = DaoManager.shared.roomDao.getByReceiverId(receiver.uid)
         if let room = room {
             updateModels(DaoManager.shared.chatDao.findByRoom(room))
-            gotoBottom(false)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.tableView.scrollToBottom(animated: false)
+                self.tableView.isHidden = false
+            }
+            
+            
             ChatManager.shared.syncChat(room) { [weak self] (success, chats, message) in
                 if chats.count > 0 {
                     self?.insertChats(chats)
@@ -177,15 +183,7 @@ class ChatViewController: UIViewController {
         }
         tableView.insertRows(at: indexPaths, with: .automatic)
         tableView.endUpdates()
-        
-        gotoBottom(true)
-    }
-    
-    private func gotoBottom(_ animated: Bool) {
-        if models.count > 0 {
-            let indexPath = IndexPath(row: models.count - 1, section: 0)
-            tableView.scrollToRow(at: indexPath, at: .bottom, animated: animated)
-        }
+        tableView.scrollToBottom(animated: true)
     }
     
     // MARK: Notification
@@ -340,7 +338,6 @@ extension ChatViewController: UITableViewDataSource {
         case .pictureReceiver(let index, let avatar, let pictureUrl):
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.pictureReceiverIdentifier, for: indexPath)!
             cell.fill(index: index, avatar: avatar, pictureUrl: pictureUrl, delegate: self)
-            cell.delegate = self
             return cell
         case .none:
             return UITableViewCell()

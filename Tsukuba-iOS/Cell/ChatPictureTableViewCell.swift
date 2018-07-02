@@ -38,7 +38,7 @@ class ChatPictureTableViewCell: UITableViewCell {
         tag = index
         
         let url = Config.shared.imageURL(pictureUrl)
-        let plcaeholder = R.image.chat_picture_lodingGif()
+        let plcaeholder = resizeImage(image: R.image.chat_picture_lodingGif()!, newWidth: pictureImageView.frame.width)
         pictureImageView.kf.indicatorType = .activity
         pictureImageView.kf.setImage(with: url, placeholder: plcaeholder, options: [.requestModifier(Config.shared.modifier)]) { image, error, cacheType, imageURL in
             if let error = error {
