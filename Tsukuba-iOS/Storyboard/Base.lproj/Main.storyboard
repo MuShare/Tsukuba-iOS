@@ -2076,6 +2076,24 @@
                                                         <outletCollection property="gestureRecognizers" destination="iX1-Wa-MPb" appends="YES" id="NBA-Qb-aMO"/>
                                                     </connections>
                                                 </imageView>
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uLr-VN-j9i">
+                                                    <rect key="frame" x="162" y="12" width="150" height="40"/>
+                                                    <subviews>
+                                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="OvC-tG-Mtf">
+                                                            <rect key="frame" x="57" y="2" width="37" height="37"/>
+                                                        </activityIndicatorView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.33333333333333331" alpha="0.62443814212328763" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="OvC-tG-Mtf" firstAttribute="centerX" secondItem="uLr-VN-j9i" secondAttribute="centerX" id="CtY-BZ-65L"/>
+                                                        <constraint firstItem="OvC-tG-Mtf" firstAttribute="centerY" secondItem="uLr-VN-j9i" secondAttribute="centerY" id="lrM-vv-g9i"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yVK-fQ-lIn">
                                                     <rect key="frame" x="320" y="12" width="40" height="40"/>
                                                     <constraints>
@@ -2090,10 +2108,14 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="uLr-VN-j9i" firstAttribute="leading" secondItem="vxP-lE-Ixm" secondAttribute="leading" id="4NR-Ep-6YB"/>
+                                                <constraint firstItem="uLr-VN-j9i" firstAttribute="trailing" secondItem="vxP-lE-Ixm" secondAttribute="trailing" id="7CA-QV-mbC"/>
+                                                <constraint firstItem="uLr-VN-j9i" firstAttribute="top" secondItem="vxP-lE-Ixm" secondAttribute="top" id="AXg-9C-WC9"/>
                                                 <constraint firstAttribute="trailing" secondItem="vxP-lE-Ixm" secondAttribute="trailing" constant="63" id="Bau-wv-t6o"/>
                                                 <constraint firstAttribute="trailing" secondItem="yVK-fQ-lIn" secondAttribute="trailing" constant="15" id="MrT-8S-cyX"/>
                                                 <constraint firstAttribute="bottom" secondItem="vxP-lE-Ixm" secondAttribute="bottom" constant="11" id="PBF-3m-4n5"/>
                                                 <constraint firstItem="yVK-fQ-lIn" firstAttribute="top" secondItem="Ibt-Vw-NIr" secondAttribute="top" constant="12" id="aqf-Cr-pp0"/>
+                                                <constraint firstItem="uLr-VN-j9i" firstAttribute="bottom" secondItem="vxP-lE-Ixm" secondAttribute="bottom" id="f28-37-C0T"/>
                                                 <constraint firstItem="vxP-lE-Ixm" firstAttribute="top" secondItem="Ibt-Vw-NIr" secondAttribute="top" constant="12" id="f3z-m6-hhm"/>
                                                 <constraint firstItem="vxP-lE-Ixm" firstAttribute="width" secondItem="Ibt-Vw-NIr" secondAttribute="width" multiplier="0.4" id="y6E-Um-Ndm"/>
                                             </constraints>
@@ -2101,6 +2123,8 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="avatarImageView" destination="yVK-fQ-lIn" id="6ZV-CM-Lpf"/>
+                                            <outlet property="loadingActivityIndicatorView" destination="OvC-tG-Mtf" id="f90-rU-uj3"/>
+                                            <outlet property="loadingView" destination="uLr-VN-j9i" id="0fY-iN-eVw"/>
                                             <outlet property="pictureImageView" destination="vxP-lE-Ixm" id="HDo-kx-RSc"/>
                                         </connections>
                                     </tableViewCell>

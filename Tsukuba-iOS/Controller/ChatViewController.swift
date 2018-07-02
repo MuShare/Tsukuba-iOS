@@ -467,14 +467,28 @@ extension ChatViewController: UIImagePickerControllerDelegate {
         }
         picker.dismiss(animated: true, completion: nil)
         
+        var sendingCell: ChatPictureTableViewCell? = nil
         ChatManager.shared.sendPicture(receiver: receiver.uid, image: image, start: { [weak self] compressedImage in
             if let `self` = self, let image = compressedImage {
                 self.insertRows(at: .last) { _ in
                     return self.insertPictureSendingModel(image: image)
                 }
+                if let cell = self.tableView.visibleCells.last as? ChatPictureTableViewCell {
+                    cell.startLoading()
+                    sendingCell = cell
+                }
             }
         }, completion: { (success, chats, message) in
+            if !success {
+                if let message = message {
+                    self.showTip(message)
+                }
+                return
+            }
             
+            if let cell = sendingCell {
+                cell.stopLoading()
+            }
         })
     }
     

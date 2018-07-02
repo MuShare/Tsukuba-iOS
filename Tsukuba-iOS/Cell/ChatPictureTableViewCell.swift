@@ -19,6 +19,9 @@ class ChatPictureTableViewCell: UITableViewCell {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var pictureImageView: UIImageView!
     
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var loadingActivityIndicatorView: UIActivityIndicatorView!
+    
     private lazy var tapGesture = UITapGestureRecognizer(target: self, action: #selector(openPicturePreview))
     
     override func awakeFromNib() {
@@ -30,6 +33,16 @@ class ChatPictureTableViewCell: UITableViewCell {
         if let delegate = delegate {
             delegate.didOpenPicturePreview(index: tag)
         }
+    }
+    
+    func startLoading() {
+        loadingView.isHidden = false
+        loadingActivityIndicatorView.startAnimating()
+    }
+    
+    func stopLoading() {
+        loadingView.isHidden = true
+        loadingActivityIndicatorView.stopAnimating()
     }
     
     func fill(index: Int, avatar: String, pictureUrl: String, size: CGSize, delegate: ChatPictureTableViewCellDelegate) {
