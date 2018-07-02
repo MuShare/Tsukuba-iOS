@@ -32,13 +32,19 @@ class ChatPictureTableViewCell: UITableViewCell {
         }
     }
     
-    func fill(index: Int, avatar: String, pictureUrl: String, delegate: ChatPictureTableViewCellDelegate) {
+    func fill(index: Int, avatar: String, pictureUrl: String, size: CGSize, delegate: ChatPictureTableViewCellDelegate) {
         self.delegate = delegate
         avatarImageView.kf.setImage(with: Config.shared.imageURL(avatar))
         tag = index
         
         let url = Config.shared.imageURL(pictureUrl)
-        let plcaeholder = resizeImage(image: R.image.chat_picture_lodingGif()!, newWidth: pictureImageView.frame.width)
+        var plcaeholder: UIImage!
+        if size.width > 0 && size.height > 0 {
+            let newHeight = size.height / size.width * self.pictureImageView.frame.width
+            plcaeholder = resizeImage(image: R.image.chat_picture_lodingGif()!, newWidth: self.pictureImageView.frame.width, newHeight: newHeight)
+        } else {
+            plcaeholder = resizeImage(image: R.image.chat_picture_lodingGif()!, newWidth: pictureImageView.frame.width)
+        }
         pictureImageView.kf.indicatorType = .activity
         pictureImageView.kf.setImage(with: url, placeholder: plcaeholder, options: [.requestModifier(Config.shared.modifier)]) { image, error, cacheType, imageURL in
             if let error = error {
@@ -61,6 +67,14 @@ class ChatPictureTableViewCell: UITableViewCell {
     private func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
         let scale = newWidth / image.size.width
         let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: newWidth, height: newHeight), false, 0)
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
+    
+    private func resizeImage(image: UIImage, newWidth: CGFloat, newHeight: CGFloat) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(CGSize(width: newWidth, height: newHeight), false, 0)
         image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()

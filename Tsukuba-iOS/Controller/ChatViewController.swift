@@ -19,8 +19,8 @@ enum ChatCellType {
     case plainTextSender(String)
     case plainTextReceiver(String, String)
     case pictureSending(Int, UIImage)
-    case pictureSender(Int, String)
-    case pictureReceiver(Int, String, String)
+    case pictureSender(Int, String, CGSize)
+    case pictureReceiver(Int, String, String, CGSize)
 }
 
 enum ChatInsertPosition {
@@ -94,7 +94,7 @@ class ChatViewController: UIViewController {
         setCustomBack()
         navigationItem.title = receiver.name
         
-        tableView.isHidden = true
+//        tableView.isHidden = true
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 63
         tableView.es.addPullToRefresh {
@@ -115,6 +115,8 @@ class ChatViewController: UIViewController {
             // Load the latest messages at first.
             let chats = DaoManager.shared.chatDao.findByRoom(room: room, pageSize: Const.pageSize)
             updateModels(with: chats, at: .last)
+            
+//            tableView.isHidden = false
             
             ChatManager.shared.syncChat(room) { [weak self] (success, chats, message) in
                 if chats.count > 0 {
@@ -167,14 +169,15 @@ class ChatViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        
         tableView.scrollToBottom(animated: false)
-        tableView.isHidden = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
         appDelagate.isChatting = true
+        
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -299,7 +302,8 @@ class ChatViewController: UIViewController {
             case ChatMessageType.plainText.rawValue:
                 type = isSender ? .plainTextSender(content) : .plainTextReceiver(avatar, content)
             case ChatMessageType.picture.rawValue:
-                type = isSender ? .pictureSender(photos.count, content) : .pictureReceiver(photos.count, avatar, content)
+                let size = CGSize(width: chat.pictureWidth, height: chat.pictureWidth)
+                type = isSender ? .pictureSender(photos.count, content, size) : .pictureReceiver(photos.count, avatar, content, size)
                 let photo = AXPhoto(attributedTitle: nil,
                                     attributedDescription: NSAttributedString(string: dateFormatter.string(from: chat.createAt!)),
                                     url: Config.shared.imageURL(content))
@@ -339,14 +343,17 @@ class ChatViewController: UIViewController {
         return insertModels.count
     }
     
-    private func insertPictureSendingModel(image: UIImage) {
+    private func insertPictureSendingModel(image: UIImage) -> Int {
+        var modelAdded = 1
         if let timeModel = timeModel(for: Date(), at: .last) {
             models.append(timeModel)
+            modelAdded += 1
         }
         models.append(ChatCellModel(type: .pictureSending(photos.count, image)))
         photos.append(AXPhoto(attributedTitle: nil,
                               attributedDescription: NSAttributedString(string: dateFormatter.string(from: Date())),
                               image: image))
+        return modelAdded
     }
     
     private func timeModel(for time: Date, at position: ChatInsertPosition) -> ChatCellModel? {
@@ -418,13 +425,13 @@ extension ChatViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.pictureSenderIdentifier, for: indexPath)!
             cell.fill(index: index, avatar: UserManager.shared.avatar, pictureImage: pictureImage, delegate: self)
             return cell
-        case .pictureSender(let index, let pictureUrl):
+        case .pictureSender(let index, let pictureUrl, let size):
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.pictureSenderIdentifier, for: indexPath)!
-            cell.fill(index: index, avatar: UserManager.shared.avatar, pictureUrl: pictureUrl, delegate: self)
+            cell.fill(index: index, avatar: UserManager.shared.avatar, pictureUrl: pictureUrl, size: size, delegate: self)
             return cell
-        case .pictureReceiver(let index, let avatar, let pictureUrl):
+        case .pictureReceiver(let index, let avatar, let pictureUrl, let size):
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.pictureReceiverIdentifier, for: indexPath)!
-            cell.fill(index: index, avatar: avatar, pictureUrl: pictureUrl, delegate: self)
+            cell.fill(index: index, avatar: avatar, pictureUrl: pictureUrl, size: size, delegate: self)
             return cell
         case .none:
             return UITableViewCell()
@@ -461,8 +468,7 @@ extension ChatViewController: UIImagePickerControllerDelegate {
         ChatManager.shared.sendPicture(receiver: receiver.uid, image: image, start: { [weak self] compressedImage in
             if let `self` = self, let image = compressedImage {
                 self.insertRows(at: .last) { _ in
-                    self.insertPictureSendingModel(image: image)
-                    return 1
+                    return self.insertPictureSendingModel(image: image)
                 }
             }
         }, completion: { (success, chats, message) in

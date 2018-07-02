@@ -19,6 +19,8 @@ class ChatDao: DaoTemplate {
         chat?.type = object["type"].int16Value
         chat?.direction = object["direction"].boolValue
         chat?.seq = object["seq"].int16Value
+        chat?.pictureWidth = object["pictureWidth"].doubleValue
+        chat?.pictureHeight = object["pictureHeight"].doubleValue
         return chat!
     }
     

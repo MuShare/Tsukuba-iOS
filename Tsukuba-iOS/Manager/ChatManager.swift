@@ -58,15 +58,18 @@ class ChatManager {
     }
     
     func sendPicture(receiver: String, image: UIImage, start:((UIImage?) -> Void)?, completion: ChatCompletion) {
-        guard let data = UIImageJPEGRepresentation(resizeImage(image: image, newWidth: 480)!, 1.0) else {
+        guard let data = UIImageJPEGRepresentation(resizeImage(image: image, newWidth: 480)!, 1.0),
+            let image = UIImage(data: data) else {
             completion?(false, [], R.string.localizable.error_unknown())
             return
         }
-        start?(UIImage(data: data))
         
+        start?(image)
+        
+        let url = "api/chat/picture?receiver=\(receiver)&width=\(image.size.width)&height=\(image.size.height)"
         Alamofire.upload(multipartFormData: { multipartFormData in
             multipartFormData.append(data, withName: "picture", fileName: UUID().uuidString, mimeType: "image/jpeg")
-        }, usingThreshold: UInt64.init(), to: config.createUrl("api/chat/picture?receiver=\(receiver)"), method: .post, headers: config.tokenHeader, encodingCompletion: { encodingResult in
+        }, usingThreshold: UInt64.init(), to: config.createUrl(url), method: .post, headers: config.tokenHeader, encodingCompletion: { encodingResult in
             switch encodingResult {
             case .success(let upload, _, _):
                 upload.uploadProgress { progress in
