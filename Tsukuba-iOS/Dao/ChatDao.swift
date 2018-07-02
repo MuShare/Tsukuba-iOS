@@ -35,7 +35,13 @@ class ChatDao: DaoTemplate {
         if pageSize < Int.max {
             request.fetchLimit = pageSize
         }
-        return try! context.fetch(request) 
+        if var chats = try? context.fetch(request) {
+            chats.sort {
+                $0.seq < $1.seq
+            }
+            return chats
+        }
+        return []
     }
     
     func deleteAll() {

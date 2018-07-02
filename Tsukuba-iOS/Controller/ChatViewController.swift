@@ -92,6 +92,7 @@ class ChatViewController: UIViewController {
         super.viewDidLoad()
         
         setCustomBack()
+        navigationItem.title = receiver.name
         
         tableView.isHidden = true
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -103,24 +104,17 @@ class ChatViewController: UIViewController {
 
             self.insertRows(at: .first) { position in
                 let chats = DaoManager.shared.chatDao.findByRoom(room: room, smallerThan: self.smallestSeq, pageSize: Const.pageSize)
-                
-//                for chat in chats {
-//                    print( "\(chat.type), \(chat.content), \(self.dateFormatter.string(from: chat.createAt!))")
-//                }
-                
-                self.updateModels(with: chats, at: position)
+                return self.updateModels(with: chats, at: position)
             }
 
             self.tableView.es.stopPullToRefresh()
         }
-        
-        navigationItem.title = receiver.name
 
         room = DaoManager.shared.roomDao.getByReceiverId(receiver.uid)
         if let room = room {
             // Load the latest messages at first.
             let chats = DaoManager.shared.chatDao.findByRoom(room: room, pageSize: Const.pageSize)
-            updateModels(with: chats, at: .last)
+            _ = updateModels(with: chats, at: .last)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 self.tableView.scrollToBottom(animated: false)
@@ -202,10 +196,9 @@ class ChatViewController: UIViewController {
         }
     }
     
-    private func insertRows(at position: ChatInsertPosition, after execution: ((ChatInsertPosition) -> Void)) {
-        let oldCount = models.count
-        execution(position)
-        if models.count == oldCount {
+    private func insertRows(at position: ChatInsertPosition, after execution: ((ChatInsertPosition) -> Int)) {
+        let updatedCount = execution(position)
+        if updatedCount == 0 {
             return
         }
         
@@ -214,13 +207,13 @@ class ChatViewController: UIViewController {
         
         switch position {
         case .first:
-            for row in 0...(models.count - oldCount - 1) {
+            for row in 0...(updatedCount - 1) {
                 indexPaths.append(IndexPath(row: row, section: 0))
             }
             tableView.insertRows(at: indexPaths, with: .automatic)
             tableView.endUpdates()
         case .last:
-            for row in oldCount...(models.count - 1) {
+            for row in (models.count - updatedCount - 1)...(updatedCount - 1) {
                 indexPaths.append(IndexPath(row: row, section: 0))
             }
             tableView.insertRows(at: indexPaths, with: .automatic)
@@ -290,20 +283,17 @@ class ChatViewController: UIViewController {
     }
     
     // MARK: - Service
-    private func updateModels(with chats: [Chat], at postion: ChatInsertPosition) {
+    private func updateModels(with chats: [Chat], at postion: ChatInsertPosition) -> Int {
         guard let room = room else {
-            return
+            return 0
         }
         
-        var sortedChats = chats
-        // Sort chats by seq asc if chats should be inserted after original models.
-        if postion == .last {
-            sortedChats.sort {
-                $0.seq < $1.seq
-            }
+        if postion == .first {
+            firstCreateAt = Date(timeIntervalSince1970: 0)
         }
         
-        for chat in sortedChats {
+        var insertModels: [ChatCellModel] = []
+        for chat in chats {
             guard let createAt = chat.createAt,
                 let content = chat.content,
                 let avatar = room.receiverAvatar else {
@@ -324,55 +314,71 @@ class ChatViewController: UIViewController {
             default:
                 break
             }
-
-            switch postion {
-            case .first:
-                models.insert(ChatCellModel(type: type), at: 0)
-                insertTimeModel(time: createAt, insertBefore: true)
-            case .last:
-                insertTimeModel(time: createAt, insertBefore: false)
-                models.append(ChatCellModel(type: type))
+            
+            if let timeModel = timeModel(for: createAt, at: postion) {
+                insertModels.append(timeModel)
             }
+            insertModels.append(ChatCellModel(type: type))
             
             if chat.seq < smallestSeq {
                 smallestSeq = chat.seq
             }
         }
+        
+        switch postion {
+        case .first:
+            // If the tiem of the last time label is closed to time of the fist time label in the existing models,
+            // Remove the first time label in the existing models.
+            if case let .time(time) = models[0].type {
+                if time.timeIntervalSince(firstCreateAt) < Const.timeLabelSmallestInterval {
+                    models.remove(at: 0)
+                    tableView.beginUpdates()
+                    tableView.deleteRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+                    tableView.endUpdates()
+                }
+            }
+            models.insert(contentsOf: insertModels, at: 0)
+        case .last:
+            models.append(contentsOf: insertModels)
+        }
+        return insertModels.count
     }
     
     private func insertPictureSendingModel(image: UIImage) {
-        insertTimeModel(time: Date(), insertBefore: false)
+        if let timeModel = timeModel(for: Date(), at: .last) {
+            models.append(timeModel)
+        }
         models.append(ChatCellModel(type: .pictureSending(photos.count, image)))
         photos.append(AXPhoto(attributedTitle: nil,
                               attributedDescription: NSAttributedString(string: dateFormatter.string(from: Date())),
                               image: image))
     }
     
-    private func insertTimeModel(time: Date, insertBefore: Bool) {
-        if insertBefore {
+    private func timeModel(for time: Date, at position: ChatInsertPosition) -> ChatCellModel? {
+        var create = false
+        switch position {
+        case .first:
             if firstCreateAt.isInSameDay(date: time) {
-                if firstCreateAt.timeIntervalSince(time) > Const.timeLabelSmallestInterval {
-                    models.insert(ChatCellModel(type: .time(time)), at: 0)
+                if time.timeIntervalSince(firstCreateAt) > Const.timeLabelSmallestInterval {
+                    create = true
                     firstCreateAt = time
                 }
             } else {
-                models.insert(ChatCellModel(type: .time(time)), at: 0)
+                create = true
                 firstCreateAt = time
             }
-        } else {
-            if lastCreateAt.isInSameDay(date: time) {
-                if lastCreateAt.isInToday {
-                    if time.timeIntervalSince(lastCreateAt) > Const.timeLabelSmallestInterval {
-                        models.append(ChatCellModel(type: .time(time)))
-                        lastCreateAt = time
-                    }
+        case .last:
+            if lastCreateAt.isInSameDay(date: time) && lastCreateAt.isInToday {
+                if time.timeIntervalSince(lastCreateAt) > Const.timeLabelSmallestInterval {
+                    create = true
+                    lastCreateAt = time
                 }
             } else {
-                models.append(ChatCellModel(type: .time(time)))
+                create = true
                 lastCreateAt = time
             }
         }
-        
+        return create ? ChatCellModel(type: .time(time)) : nil
     }
     
 }
@@ -448,6 +454,7 @@ extension ChatViewController: UIImagePickerControllerDelegate {
             if let `self` = self, let image = compressedImage {
                 self.insertRows(at: .last) { _ in
                     self.insertPictureSendingModel(image: image)
+                    return 1
                 }
             }
         }, completion: { (success, chats, message) in
