@@ -6,7 +6,7 @@
 //  Copyright © 2017 MuShare. All rights reserved.
 //
 
-let DEBUG = false
+let DEBUG = true
 
 open class Color: UIColor {
     open class var main: UIColor {

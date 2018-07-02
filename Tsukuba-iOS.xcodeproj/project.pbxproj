@@ -13,6 +13,7 @@
 		777704D420E36D53003D5EA2 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777704D320E36D53003D5EA2 /* Date+Extension.swift */; };
 		777704D620E38322003D5EA2 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777704D520E38322003D5EA2 /* PaddingLabel.swift */; };
 		7792187020B7BD83004E83C1 /* UITableViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7792186F20B7BD83004E83C1 /* UITableViewController+Extension.swift */; };
+		77EA3DCA20E62D3000BCB23D /* ChatPictureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EA3DC920E62D3000BCB23D /* ChatPictureTableViewCell.swift */; };
 		77F1946020BCF6B7001B3F6E /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F1945F20BCF6B6001B3F6E /* R.generated.swift */; };
 		77F1946220BCFBF7001B3F6E /* LoginBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F1946120BCFBF7001B3F6E /* LoginBaseViewController.swift */; };
 		77F2E7D020C52729001E7AB3 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F2E7CF20C52729001E7AB3 /* UIView+Extension.swift */; };
@@ -35,6 +36,7 @@
 		E4089FED1EBB3BF90042221D /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FEC1EBB3BF90042221D /* UserManager.swift */; };
 		E4089FEF1EBB4AD80042221D /* MyProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FEE1EBB4AD80042221D /* MyProfileTableViewController.swift */; };
 		E4089FF11EBB4F160042221D /* AvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4089FF01EBB4F160042221D /* AvatarViewController.swift */; };
+		E408DD5A20E76049005684B3 /* chat_picture_loding.gif in Resources */ = {isa = PBXBuildFile; fileRef = E408DD5920E76047005684B3 /* chat_picture_loding.gif */; };
 		E408EEC41EC7672B00E6E596 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E408EEC31EC7672B00E6E596 /* Picture.swift */; };
 		E40F8A0A2046A31300CCDCFE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E40F8A092046A31300CCDCFE /* AudioToolbox.framework */; };
 		E40F8A0C2046A36D00CCDCFE /* didReceivedMessage.wav in Resources */ = {isa = PBXBuildFile; fileRef = E40F8A0B2046A36D00CCDCFE /* didReceivedMessage.wav */; };
@@ -60,7 +62,7 @@
 		E47860741ECC56C30096B39A /* UserProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47860731ECC56C30096B39A /* UserProfileTableViewController.swift */; };
 		E47860761ECC57F00096B39A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47860751ECC57F00096B39A /* User.swift */; };
 		E48931FD201EFBD100727A6B /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48931FC201EFBD100727A6B /* ChatViewController.swift */; };
-		E48931FF201F014400727A6B /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48931FE201F014400727A6B /* ChatTableViewCell.swift */; };
+		E48931FF201F014400727A6B /* ChatTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48931FE201F014400727A6B /* ChatTextTableViewCell.swift */; };
 		E489721D1EBED40F0064EA13 /* CreateMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489721C1EBED40F0064EA13 /* CreateMessageViewController.swift */; };
 		E489721F1EBEF34E0064EA13 /* SelectCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */; };
 		E48972211EBF62280064EA13 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48972201EBF62280064EA13 /* PictureViewController.swift */; };
@@ -113,6 +115,7 @@
 		777704D320E36D53003D5EA2 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		777704D520E38322003D5EA2 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		7792186F20B7BD83004E83C1 /* UITableViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewController+Extension.swift"; sourceTree = "<group>"; };
+		77EA3DC920E62D3000BCB23D /* ChatPictureTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPictureTableViewCell.swift; sourceTree = "<group>"; };
 		77F1945F20BCF6B6001B3F6E /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		77F1946120BCFBF7001B3F6E /* LoginBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBaseViewController.swift; sourceTree = "<group>"; };
 		77F2E7CF20C52729001E7AB3 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
@@ -134,6 +137,7 @@
 		E4089FEC1EBB3BF90042221D /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		E4089FEE1EBB4AD80042221D /* MyProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileTableViewController.swift; sourceTree = "<group>"; };
 		E4089FF01EBB4F160042221D /* AvatarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarViewController.swift; sourceTree = "<group>"; };
+		E408DD5920E76047005684B3 /* chat_picture_loding.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = chat_picture_loding.gif; sourceTree = "<group>"; };
 		E408EEC31EC7672B00E6E596 /* Picture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
 		E40F8A092046A31300CCDCFE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		E40F8A0B2046A36D00CCDCFE /* didReceivedMessage.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = didReceivedMessage.wav; sourceTree = "<group>"; };
@@ -172,7 +176,7 @@
 		E47860731ECC56C30096B39A /* UserProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileTableViewController.swift; sourceTree = "<group>"; };
 		E47860751ECC57F00096B39A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E48931FC201EFBD100727A6B /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		E48931FE201F014400727A6B /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
+		E48931FE201F014400727A6B /* ChatTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTextTableViewCell.swift; sourceTree = "<group>"; };
 		E489721C1EBED40F0064EA13 /* CreateMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateMessageViewController.swift; sourceTree = "<group>"; };
 		E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCategoryViewController.swift; sourceTree = "<group>"; };
 		E48972201EBF62280064EA13 /* PictureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
@@ -350,7 +354,8 @@
 			isa = PBXGroup;
 			children = (
 				E4089FE11EBAF8F40042221D /* CategoryCollectionViewCell.swift */,
-				E48931FE201F014400727A6B /* ChatTableViewCell.swift */,
+				77EA3DC920E62D3000BCB23D /* ChatPictureTableViewCell.swift */,
+				E48931FE201F014400727A6B /* ChatTextTableViewCell.swift */,
 				777704D120E368F5003D5EA2 /* ChatTimeTableViewCell.swift */,
 				E455194A1EC4605B006A3B73 /* IntroductionTableViewCell.swift */,
 				E41F7D021EC3604C002E8184 /* MessageCollectionViewCell.swift */,
@@ -370,6 +375,7 @@
 				E4B52B791EF3DC8E0030BD2D /* InfoPlist.strings */,
 				E4B52B751EF3DBC50030BD2D /* Localizable.strings */,
 				E4B52B641EF2B1200030BD2D /* login-bg.jpg */,
+				E408DD5920E76047005684B3 /* chat_picture_loding.gif */,
 				E40F8A0B2046A36D00CCDCFE /* didReceivedMessage.wav */,
 			);
 			path = "Support Files";
@@ -579,6 +585,7 @@
 				E4B52B711EF3DB310030BD2D /* AutoGenStrings.py in Resources */,
 				E4B52B731EF3DBC50030BD2D /* Localizable.strings in Resources */,
 				E49BFE251EF3EAB5001B1BBA /* Post.storyboard in Resources */,
+				E408DD5A20E76049005684B3 /* chat_picture_loding.gif in Resources */,
 				E4B52B651EF2B1200030BD2D /* login-bg.jpg in Resources */,
 				E42331781EC030FE00C3A6B0 /* Assets.xcassets in Resources */,
 				E4962BE71EB4B08000DF8CAE /* Main.storyboard in Resources */,
@@ -609,12 +616,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Tsukuba-iOS/Pods-Tsukuba-iOS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AXPhotoViewer/AXPhotoViewer.framework",
+				"${BUILT_PRODUCTS_DIR}/AXStateButton/AXStateButton.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/ESPullToRefresh/ESPullToRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/FaveButton/FaveButton.framework",
@@ -626,6 +636,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxKeyboard/RxKeyboard.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Segmentio/Segmentio.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework",
@@ -635,12 +646,15 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AXPhotoViewer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AXStateButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESPullToRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FaveButton.framework",
@@ -652,6 +666,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxKeyboard.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Segmentio.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyUserDefaults.framework",
@@ -718,7 +733,7 @@
 				E4089FB51EBAE55C0042221D /* DaoManager.swift in Sources */,
 				E4464B012022C0F9001968B5 /* ChatDao.swift in Sources */,
 				E4089FE71EBB36440042221D /* MeTableViewController.swift in Sources */,
-				E48931FF201F014400727A6B /* ChatTableViewCell.swift in Sources */,
+				E48931FF201F014400727A6B /* ChatTextTableViewCell.swift in Sources */,
 				E48DE5531EC2D52C00E5CA25 /* Message.swift in Sources */,
 				E4089FF11EBB4F160042221D /* AvatarViewController.swift in Sources */,
 				77F2E7D020C52729001E7AB3 /* UIView+Extension.swift in Sources */,
@@ -741,6 +756,7 @@
 				E4089FB81EBAE5830042221D /* CategoryDao.swift in Sources */,
 				E4089FBC1EBAE59E0042221D /* SelectionDao.swift in Sources */,
 				E455194B1EC4605B006A3B73 /* IntroductionTableViewCell.swift in Sources */,
+				77EA3DCA20E62D3000BCB23D /* ChatPictureTableViewCell.swift in Sources */,
 				E438443120204ADC006E0369 /* RoomsTableViewController.swift in Sources */,
 				E489721D1EBED40F0064EA13 /* CreateMessageViewController.swift in Sources */,
 				E4962BE21EB4B08000DF8CAE /* AppDelegate.swift in Sources */,

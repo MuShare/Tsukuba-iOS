@@ -8,6 +8,7 @@
 
 import SwiftyUserDefaults
 import Alamofire
+import Kingfisher
 
 extension DefaultsKeys {
     static let uid = DefaultsKey<String?>("uid")
@@ -103,6 +104,16 @@ class Config {
         }
     }
     
+    var modifier: AnyModifier {
+        get {
+            return AnyModifier { request in
+                var r = request
+                r.setValue(self.token, forHTTPHeaderField: "token")
+                return r
+            }
+        }
+    }
+    
     var lan: String {
         set {
             Defaults[.lan] = newValue
@@ -128,7 +139,7 @@ class Config {
             }
             switch env {
             case .local:
-                host = "192.168.11.2"
+                host = "192.168.31.3"
                 baseUrl = "http://" + host + ":8080/"
                 socketUrl = "ws://" + host + ":8080/websocket/chat"
             case .dev:
@@ -146,6 +157,19 @@ class Config {
     var host: String = "127.0.0.1"
     var baseUrl: String = "http://127.0.0.1:8080/"
     var socketUrl: String = "ws://127.0.0.1:8080/websocket/chat/"
+    
+    func autoEnvironment() {
+        let production : Bool = {
+            #if DEBUG
+                return false
+            #elseif ADHOC
+                return false
+            #else
+                return true
+            #endif
+        }()
+        environment = production ? .production : .dev
+    }
     
     func createUrl(_ relative: String) -> String {
         let requestUrl = baseUrl + relative

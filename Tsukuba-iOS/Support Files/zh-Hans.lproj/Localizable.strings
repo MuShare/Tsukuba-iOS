@@ -81,3 +81,5 @@ report_user_message = "如果该用户有粗鲁，色情或者暴力行为，你
 chats_chats = "聊天";
 chats_loading = "加载中...";
 chats_self_not_allow = "不允许对自己发起聊天。";
+
+last_message_picture = "[图片]";

@@ -2,7 +2,7 @@
 //  ChatTimeTableViewCell.swift
 //  Tsukuba-iOS
 //
-//  Created by mon.ri on 2018/06/27.
+//  Created by Meng Li on 2018/06/27.
 //  Copyright © 2018 MuShare. All rights reserved.
 //
 

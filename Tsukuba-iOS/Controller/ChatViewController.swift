@@ -10,12 +10,16 @@ import UIKit
 import SwiftyJSON
 import RxSwift
 import RxKeyboard
+import AXPhotoViewer
 
 enum ChatCellType {
     case none
     case time(Date)
-    case plainTextSending(String)
-    case plainTextReceiving(String, String)
+    case plainTextSender(String)
+    case plainTextReceiver(String, String)
+    case pictureSending(Int, UIImage)
+    case pictureSender(Int, String)
+    case pictureReceiver(Int, String, String)
 }
 
 class ChatCellModel {
@@ -30,9 +34,27 @@ class ChatCellModel {
 
 class ChatViewController: UIViewController {
     
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter
+    }()
+    
     private struct Const {
         static let toolBarHeight: CGFloat = 50.0
     }
+
+    private lazy var imagePickerController: UIImagePickerController = {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.navigationBar.barTintColor = Color.main
+        imagePickerController.navigationBar.tintColor = .white
+        imagePickerController.navigationBar.titleTextAttributes = [
+            NSAttributedStringKey.foregroundColor : UIColor.white
+        ]
+        return imagePickerController
+    }()
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var plainTextField: UITextField!
@@ -43,6 +65,8 @@ class ChatViewController: UIViewController {
     var models: [ChatCellModel] = []
     var lastCreateAt = Date(timeIntervalSince1970: 0)
     var room: Room?
+    
+    var photos: [AXPhoto] = []
     
     let appDelagate = UIApplication.shared.delegate as! AppDelegate
     var viewHeight: CGFloat!
@@ -67,10 +91,11 @@ class ChatViewController: UIViewController {
         room = DaoManager.shared.roomDao.getByReceiverId(receiver.uid)
         if let room = room {
             updateModels(DaoManager.shared.chatDao.findByRoom(room))
+            gotoBottom(false)
             ChatManager.shared.syncChat(room) { [weak self] (success, chats, message) in
-                self?.updateModels(chats)
-                self?.tableView.reloadData()
-                self?.gotoBottom(false)
+                if chats.count > 0 {
+                    self?.insertChats(chats)
+                }
             }
         }
 
@@ -135,8 +160,15 @@ class ChatViewController: UIViewController {
         if (chats.count == 0) {
             return
         }
+        insertRows {
+            updateModels(chats)
+        }
+    }
+    
+    private func insertRows(after execution: (() -> Void)) {
         let oldCount = models.count
-        updateModels(chats)
+        
+        execution()
         
         tableView.beginUpdates()
         var indexPaths: [IndexPath] = []
@@ -201,6 +233,20 @@ class ChatViewController: UIViewController {
         }
     }
     
+    @IBAction func openCamara(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePickerController.sourceType = .camera
+            present(imagePickerController, animated: true)
+        }
+    }
+    
+    @IBAction func openPhotoLibrary(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            imagePickerController.sourceType = .photoLibrary
+            present(imagePickerController, animated: true)
+        }
+    }
+    
     // MARK: - Service
     private func updateModels(_ chats: [Chat]) {
         guard let room = room else {
@@ -208,29 +254,51 @@ class ChatViewController: UIViewController {
         }
         
         for chat in chats {
-            guard let createAt = chat.createAt else {
+            guard let createAt = chat.createAt,
+                let content = chat.content,
+                let avatar = room.receiverAvatar else {
                 continue
             }
-            if lastCreateAt.isInSameDay(date: createAt) {
-                if lastCreateAt.isInToday {
-                    if createAt.timeIntervalSince(lastCreateAt) > 5 * 60 {
-                        models.append(ChatCellModel(type: .time(createAt)))
-                        lastCreateAt = createAt
-                    }
-                }
-            } else {
-                models.append(ChatCellModel(type: .time(createAt)))
-                lastCreateAt = createAt
-            }
             
+            insertTimeModel(time: createAt)
             // Plain text.
             let isSender = room.creator ? chat.direction : !chat.direction
-            if isSender {
-                models.append(ChatCellModel(type: .plainTextSending(chat.content!)))
-            } else {
-                models.append(ChatCellModel(type: .plainTextReceiving(room.receiverAvatar!, chat.content!)))
+            var type: ChatCellType = .none
+            switch chat.type {
+            case ChatMessageType.plainText.rawValue:
+                type = isSender ? .plainTextSender(content) : .plainTextReceiver(avatar, content)
+            case ChatMessageType.picture.rawValue:
+                type = isSender ? .pictureSender(photos.count, content) : .pictureReceiver(photos.count, avatar, content)
+                photos.append(AXPhoto(attributedTitle: nil,
+                                      attributedDescription: NSAttributedString(string: dateFormatter.string(from: chat.createAt!)),
+                                      url: Config.shared.imageURL(content)))
+            default:
+                break
             }
+            models.append(ChatCellModel(type: type))
 
+        }
+    }
+    
+    private func insertPictureSendingModel(image: UIImage) {
+        insertTimeModel(time: Date())
+        models.append(ChatCellModel(type: .pictureSending(photos.count, image)))
+        photos.append(AXPhoto(attributedTitle: nil,
+                              attributedDescription: NSAttributedString(string: dateFormatter.string(from: Date())),
+                              image: image))
+    }
+    
+    private func insertTimeModel(time: Date) {
+        if lastCreateAt.isInSameDay(date: time) {
+            if lastCreateAt.isInToday {
+                if time.timeIntervalSince(lastCreateAt) > 5 * 60 {
+                    models.append(ChatCellModel(type: .time(time)))
+                    lastCreateAt = time
+                }
+            }
+        } else {
+            models.append(ChatCellModel(type: .time(time)))
+            lastCreateAt = time
         }
     }
     
@@ -253,13 +321,26 @@ extension ChatViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.chatTimeIdentifier, for: indexPath)!
             cell.time = time
             return cell
-        case .plainTextSending(let content):
+        case .plainTextSender(let content):
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.chatSenderIdentifier, for: indexPath)!
             cell.fill(avatar: UserManager.shared.avatar, message: content)
             return cell
-        case .plainTextReceiving(let avatar, let content):
+        case .plainTextReceiver(let avatar, let content):
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.chatReceiverIdentifier, for: indexPath)!
             cell.fill(avatar: avatar, message: content)
+            return cell
+        case .pictureSending(let index, let pictureImage):
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.pictureSenderIdentifier, for: indexPath)!
+            cell.fill(index: index, avatar: UserManager.shared.avatar, pictureImage: pictureImage, delegate: self)
+            return cell
+        case .pictureSender(let index, let pictureUrl):
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.pictureSenderIdentifier, for: indexPath)!
+            cell.fill(index: index, avatar: UserManager.shared.avatar, pictureUrl: pictureUrl, delegate: self)
+            return cell
+        case .pictureReceiver(let index, let avatar, let pictureUrl):
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.pictureReceiverIdentifier, for: indexPath)!
+            cell.fill(index: index, avatar: avatar, pictureUrl: pictureUrl, delegate: self)
+            cell.delegate = self
             return cell
         case .none:
             return UITableViewCell()
@@ -275,6 +356,45 @@ extension ChatViewController: UIScrollViewDelegate {
         if scrollView.contentOffset.y < -20 {
             self.plainTextField.resignFirstResponder()
         }
+    }
+    
+}
+
+extension ChatViewController: UIImagePickerControllerDelegate {
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
+        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+            return
+        }
+        picker.dismiss(animated: true, completion: nil)
+        
+        ChatManager.shared.sendPicture(receiver: receiver.uid, image: image, start: { [weak self] compressedImage in
+            if let `self` = self, let image = compressedImage {
+                self.insertRows {
+                    self.insertPictureSendingModel(image: image)
+                }
+            }
+        }, completion: { (success, chats, message) in
+            
+        })
+    }
+    
+}
+
+extension ChatViewController: UINavigationControllerDelegate {
+    
+}
+
+extension ChatViewController: ChatPictureTableViewCellDelegate {
+    
+    func didOpenPicturePreview(index: Int) {
+        let dataSource = AXPhotosDataSource(photos: photos, initialPhotoIndex: index)
+        let photosViewController = AXPhotosViewController(dataSource: dataSource)
+        present(photosViewController, animated: true)
     }
     
 }
