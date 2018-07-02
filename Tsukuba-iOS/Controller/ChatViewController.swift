@@ -285,6 +285,7 @@ class ChatViewController: UIViewController {
         }
         
         var insertModels: [ChatCellModel] = []
+        var insertPhotos: [AXPhoto] = []
         for chat in chats {
             guard let createAt = chat.createAt,
                 let content = chat.content,
@@ -300,9 +301,10 @@ class ChatViewController: UIViewController {
                 type = isSender ? .plainTextSender(content) : .plainTextReceiver(avatar, content)
             case ChatMessageType.picture.rawValue:
                 type = isSender ? .pictureSender(photos.count, content) : .pictureReceiver(photos.count, avatar, content)
-                photos.append(AXPhoto(attributedTitle: nil,
-                                      attributedDescription: NSAttributedString(string: dateFormatter.string(from: chat.createAt!)),
-                                      url: Config.shared.imageURL(content)))
+                let photo = AXPhoto(attributedTitle: nil,
+                                    attributedDescription: NSAttributedString(string: dateFormatter.string(from: chat.createAt!)),
+                                    url: Config.shared.imageURL(content))
+                insertPhotos.append(photo)
             default:
                 break
             }
@@ -330,8 +332,10 @@ class ChatViewController: UIViewController {
                 }
             }
             models.insert(contentsOf: insertModels, at: 0)
+            photos.insert(contentsOf: insertPhotos, at: 0)
         case .last:
             models.append(contentsOf: insertModels)
+            photos.append(contentsOf: insertPhotos)
         }
         return insertModels.count
     }
