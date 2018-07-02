@@ -70,18 +70,20 @@ class ChatViewController: UIViewController {
     @IBOutlet weak var sendButton: UIButton!
     
     var receiver: User!
-    var models: [ChatCellModel] = []
-    var firstCreateAt = Date(timeIntervalSince1970: 0)
-    var lastCreateAt = Date(timeIntervalSince1970: 0)
-    var smallestSeq = Int16.max
-    var room: Room?
     
-    var photos: [AXPhoto] = []
+    private var models: [ChatCellModel] = []
+    private var firstCreateAt = Date(timeIntervalSince1970: 0)
+    private var lastCreateAt = Date(timeIntervalSince1970: 0)
+    private var smallestSeq = Int16.max
+    private var room: Room?
     
-    let appDelagate = UIApplication.shared.delegate as! AppDelegate
-    var viewHeight: CGFloat!
-    var keyboardShowing = false
+    private var photos: [AXPhoto] = []
+    
+    private let appDelagate = UIApplication.shared.delegate as! AppDelegate
+    private var viewHeight: CGFloat!
+    private var keyboardShowing = false
 
+    private let dao = DaoManager.shared
     private let disposeBag = DisposeBag()
     
     deinit {
@@ -100,7 +102,7 @@ class ChatViewController: UIViewController {
             }
 
             self.insertRows(at: .first) { position in
-                let chats = DaoManager.shared.chatDao.findByRoom(room: room, smallerThan: self.smallestSeq, pageSize: Const.pageSize)
+                let chats = DaoManager.shared.chatDao.find(in: room, smallerThan: self.smallestSeq, pageSize: Const.pageSize)
                 return self.updateModels(with: chats, at: position)
             }
 
@@ -110,12 +112,20 @@ class ChatViewController: UIViewController {
         room = DaoManager.shared.roomDao.getByReceiverId(receiver.uid)
         if let room = room {
             // Load the latest messages at first.
-            let chats = DaoManager.shared.chatDao.findByRoom(room: room, pageSize: Const.pageSize)
+            let chats = DaoManager.shared.chatDao.find(in: room, pageSize: Const.pageSize)
             updateModels(with: chats, at: .last)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 self.tableView.scrollToBottom(animated: false)
             }
-       
+            
+            // Find all pictures for preview.
+            for picture in dao.chatDao.find(by: ChatMessageType.picture.rawValue, in: room) {
+                let time = dateFormatter.string(from: picture.createAt!)
+                let photo = AXPhoto(attributedTitle: nil,
+                                    attributedDescription: NSAttributedString(string: time),
+                                    url: Config.shared.imageURL(picture.content!))
+                photos.append(photo)
+            }
             ChatManager.shared.syncChat(room) { [weak self] (success, chats, message) in
                 if chats.count > 0 {
                     self?.insertChats(chats)
@@ -285,7 +295,6 @@ class ChatViewController: UIViewController {
         }
         
         var insertModels: [ChatCellModel] = []
-        var insertPhotos: [AXPhoto] = []
         for chat in chats {
             guard let createAt = chat.createAt,
                 let content = chat.content,
@@ -302,10 +311,7 @@ class ChatViewController: UIViewController {
             case ChatMessageType.picture.rawValue:
                 let size = CGSize(width: chat.pictureWidth, height: chat.pictureWidth)
                 type = isSender ? .pictureSender(photos.count, content, size) : .pictureReceiver(photos.count, avatar, content, size)
-                let photo = AXPhoto(attributedTitle: nil,
-                                    attributedDescription: NSAttributedString(string: dateFormatter.string(from: chat.createAt!)),
-                                    url: Config.shared.imageURL(content))
-                insertPhotos.append(photo)
+                
             default:
                 break
             }
@@ -333,10 +339,8 @@ class ChatViewController: UIViewController {
                 }
             }
             models.insert(contentsOf: insertModels, at: 0)
-            photos.insert(contentsOf: insertPhotos, at: 0)
         case .last:
             models.append(contentsOf: insertModels)
-            photos.append(contentsOf: insertPhotos)
         }
         return insertModels.count
     }

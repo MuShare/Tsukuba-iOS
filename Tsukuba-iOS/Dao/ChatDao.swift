@@ -30,7 +30,7 @@ class ChatDao: DaoTemplate {
         return try! context.fetch(request).count > 0
     }
     
-    func findByRoom(room: Room, smallerThan seq: Int16 = Int16.max, pageSize: Int = Int.max) -> [Chat] {
+    func find(in room: Room, smallerThan seq: Int16 = Int16.max, pageSize: Int = Int.max) -> [Chat] {
         let request = NSFetchRequest<Chat>(entityName: NSStringFromClass(Chat.self))
         request.predicate = NSPredicate(format: "room=%@ and seq<%d", room, seq)
         request.sortDescriptors = [NSSortDescriptor(key: "seq", ascending: false)]
@@ -44,6 +44,13 @@ class ChatDao: DaoTemplate {
             return chats
         }
         return []
+    }
+    
+    func find(by type: Int16, in room: Room) -> [Chat] {
+        let request = NSFetchRequest<Chat>(entityName: NSStringFromClass(Chat.self))
+        request.predicate = NSPredicate(format: "room=%@ and type=%d", room, type)
+        request.sortDescriptors = [NSSortDescriptor(key: "seq", ascending: true)]
+        return try! context.fetch(request)
     }
     
     func deleteAll() {
