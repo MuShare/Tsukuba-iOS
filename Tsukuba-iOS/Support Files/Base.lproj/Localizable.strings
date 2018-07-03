@@ -15,6 +15,10 @@ error_invalid_parameter = "Invalid parameter.";
 error_unknown = "Unknown error, please try again.";
 error_send_plain_text = "Plain text cannot be sent, try again later.";
 
+tab_posts_title = "Tsukuba Mate";
+tab_chats_title = "Chats";
+tab_me_title = "Me";
+
 me_title = "Sign in / Sign up";
 me_subtitle = "Welcome to Tsukuba, sign in now!";
 

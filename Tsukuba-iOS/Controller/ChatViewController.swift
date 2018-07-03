@@ -183,7 +183,7 @@ class ChatViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tabBarController?.tabBar.isHidden = true
+
         appDelagate.isChatting = true
         
     }
@@ -193,8 +193,7 @@ class ChatViewController: UIViewController {
         if let room = room {
             ChatManager.shared.clearUnread(room)
         }
-        
-        tabBarController?.tabBar.isHidden = false
+
         appDelagate.isChatting = false
     }
     

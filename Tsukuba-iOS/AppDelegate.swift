@@ -38,6 +38,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print(userInfo)
         }
         
+        // Avoid flash of the navigation bar when pushing a new view controller.
+        window?.backgroundColor = .white
+        
         // Set suitable columns for iPhone and iPad.
         let width = UIScreen.main.bounds.size.width
         if width < 768 {
@@ -59,8 +62,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         SocketManager.shared.refreshSocket()
         SocketManager.shared.delegate = self
-        
-
         
         return true
     }
