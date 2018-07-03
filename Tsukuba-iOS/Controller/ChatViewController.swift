@@ -263,8 +263,10 @@ class ChatViewController: UIViewController {
         if let content = plainTextField.text, content != "" {
             plainTextField.text = ""
             plainTextField.resignFirstResponder()
-            ChatManager.shared.sendPlainText(receiver: receiver.uid, content: content) { [weak self] (success, chats, message) in
-                self?.insertChats(chats)
+            ChatManager.shared.sendPlainText(receiver: receiver.uid, content: content) { [weak self] (success, chat, message) in
+                if let `self` = self, let chat = chat {
+                    self.insertChats([chat])
+                }
             }
         }
         
@@ -478,7 +480,10 @@ extension ChatViewController: UIImagePickerControllerDelegate {
                     sendingCell = cell
                 }
             }
-        }, completion: { (success, chats, message) in
+        }, completion: { [weak self] (success, chat, message) in
+            guard let `self` = self else {
+                return
+            }
             if !success {
                 if let message = message {
                     self.showTip(message)
@@ -486,7 +491,7 @@ extension ChatViewController: UIImagePickerControllerDelegate {
                 return
             }
             
-            if let cell = sendingCell {
+            if let cell = sendingCell, let chat = chat {
                 cell.stopLoading()
             }
         })
