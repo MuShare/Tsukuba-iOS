@@ -2178,6 +2178,7 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.95662969350814819" green="0.96071344614028931" blue="0.96887880563735962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="cto-Xu-67M" secondAttribute="trailing" id="8mT-VY-vZo"/>
                             <constraint firstAttribute="trailing" secondItem="FVc-Mb-ZEj" secondAttribute="trailing" id="WJF-7Q-iwB"/>

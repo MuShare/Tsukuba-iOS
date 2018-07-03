@@ -82,6 +82,7 @@ class ChatViewController: UIViewController {
     private let appDelagate = UIApplication.shared.delegate as! AppDelegate
     private var viewHeight: CGFloat!
     private var keyboardShowing = false
+    private var enableToCloseKeyboard = true
 
     private let dao = DaoManager.shared
     private let disposeBag = DisposeBag()
@@ -176,9 +177,7 @@ class ChatViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        
-        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -261,7 +260,6 @@ class ChatViewController: UIViewController {
     @IBAction func send(_ sender: Any) {
         if let content = plainTextField.text, content != "" {
             plainTextField.text = ""
-            plainTextField.resignFirstResponder()
             ChatManager.shared.sendPlainText(receiver: receiver.uid, content: content) { [weak self] (success, chat, message) in
                 if let `self` = self, let chat = chat {
                     self.insertChats([chat])
@@ -447,11 +445,16 @@ extension ChatViewController: UITableViewDataSource {
 extension ChatViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView == tableView {
-            if scrollView.contentOffset.y < -20 {
-                self.plainTextField.resignFirstResponder()
+        if scrollView == tableView && enableToCloseKeyboard && plainTextField.isFirstResponder {
+            if scrollView.panGestureRecognizer.translation(in: scrollView.superview).y > 30  {
+                enableToCloseKeyboard = false
+                plainTextField.resignFirstResponder()
             }
         }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        enableToCloseKeyboard = true
     }
     
 }
