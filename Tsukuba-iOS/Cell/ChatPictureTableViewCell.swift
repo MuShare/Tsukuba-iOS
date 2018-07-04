@@ -59,7 +59,7 @@ class ChatPictureTableViewCell: UITableViewCell {
                                   innerColor: .white,
                                   size: CGSize(width: pictureImageView.frame.size.width, height: placeholderHeight))
 
-        pictureImageView.kf.indicatorType = .image(imageData: R.image.chat_picture_lodingGif()!.)
+        pictureImageView.kf.indicatorType = .activity
         pictureImageView.kf.setImage(with: Config.shared.imageURL(url), placeholder: plcaeholder) { image, error, cacheType, imageURL in
             if let error = error {
                 print("Loaing chat picture error: \(error)")

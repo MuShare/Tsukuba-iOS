@@ -14,11 +14,8 @@ class Response {
     var data: [String: Any]!
     
     init(_ response: DataResponse<Any>) {
-        if DEBUG && response.response != nil {
-            NSLog("New response, status:\n\(response.response!)")
-        }
-        if DEBUG && response.data != nil {
-            NSLog("Response body:\n\(String.init(data: response.data!, encoding: .utf8)!)")
+        if DEBUG, let res = response.response {
+            NSLog("New response, status:\n\(res)")
         }
         data = response.result.value as! Dictionary<String, Any>?
         if DEBUG, let data = data {
