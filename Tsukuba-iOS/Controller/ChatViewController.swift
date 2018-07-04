@@ -18,9 +18,9 @@ enum ChatCellType {
     case time(Date)
     case plainTextSender(String)
     case plainTextReceiver(String, String)
-    case pictureSending(Int, UIImage)
-    case pictureSender(Int, String, CGSize)
-    case pictureReceiver(Int, String, String, CGSize)
+    case pictureSending(UIImage)
+    case pictureSender(String, CGSize)
+    case pictureReceiver(String, String, CGSize)
 }
 
 enum ChatInsertPosition {
@@ -85,6 +85,7 @@ class ChatViewController: UIViewController {
     private var enableToCloseKeyboard = true
 
     private let dao = DaoManager.shared
+    private let currentUserAvarar = UserManager.shared.avatar
     private let disposeBag = DisposeBag()
     
     deinit {
@@ -309,7 +310,7 @@ class ChatViewController: UIViewController {
                 type = isSender ? .plainTextSender(content) : .plainTextReceiver(avatar, content)
             case ChatMessageType.picture.rawValue:
                 let size = CGSize(width: chat.pictureWidth, height: chat.pictureWidth)
-                type = isSender ? .pictureSender(photos.count, content, size) : .pictureReceiver(photos.count, avatar, content, size)
+                type = isSender ? .pictureSender(content, size) : .pictureReceiver(avatar, content, size)
                 
             default:
                 break
@@ -350,10 +351,10 @@ class ChatViewController: UIViewController {
             models.append(timeModel)
             modelAdded += 1
         }
-        models.append(ChatCellModel(type: .pictureSending(photos.count, image)))
-        photos.append(AXPhoto(attributedTitle: nil,
-                              attributedDescription: NSAttributedString(string: dateFormatter.string(from: Date())),
-                              image: image))
+        models.append(ChatCellModel(type: .pictureSending(image)))
+//        photos.append(AXPhoto(attributedTitle: nil,
+//                              attributedDescription: NSAttributedString(string: dateFormatter.string(from: Date())),
+//                              image: image))
         return modelAdded
     }
     
@@ -422,17 +423,18 @@ extension ChatViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.chatReceiverIdentifier, for: indexPath)!
             cell.fill(avatar: avatar, message: content)
             return cell
-        case .pictureSending(let index, let pictureImage):
+        case .pictureSending(let pictureImage):
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.pictureSenderIdentifier, for: indexPath)!
-            cell.fill(index: index, avatar: UserManager.shared.avatar, pictureImage: pictureImage, delegate: self)
+            cell.fillSending(with: pictureImage, avatar: currentUserAvarar, delegate: self)
             return cell
-        case .pictureSender(let index, let pictureUrl, let size):
+        case .pictureSender(let pictureUrl, let size):
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.pictureSenderIdentifier, for: indexPath)!
-            cell.fill(index: index, avatar: UserManager.shared.avatar, pictureUrl: pictureUrl, size: size, delegate: self)
+            cell.fill(with: pictureUrl, size: size, avatar: currentUserAvarar, delegate: self)
+
             return cell
-        case .pictureReceiver(let index, let avatar, let pictureUrl, let size):
+        case .pictureReceiver(let avatar, let pictureUrl, let size):
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.pictureReceiverIdentifier, for: indexPath)!
-            cell.fill(index: index, avatar: avatar, pictureUrl: pictureUrl, size: size, delegate: self)
+            cell.fill(with: pictureUrl, size: size, avatar: avatar, delegate: self)
             return cell
         case .none:
             return UITableViewCell()
@@ -507,11 +509,16 @@ extension ChatViewController: UINavigationControllerDelegate {
 
 extension ChatViewController: ChatPictureTableViewCellDelegate {
     
-    func didOpenPicturePreview(index: Int) {
-        
-        let dataSource = AXPhotosDataSource(photos: photos, initialPhotoIndex: index)
+    func didOpenPicturePreview(url: String) {
+        let absoluteURL = Config.shared.createUrl(url)
+        let index = photos.index { (photo) -> Bool in
+            if let photoURL = photo.url, photoURL.absoluteString == absoluteURL {
+                return true
+            }
+            return false
+        }
+        let dataSource = AXPhotosDataSource(photos: photos, initialPhotoIndex: index ?? 0)
         let photosViewController = AXPhotosViewController(dataSource: dataSource)
         present(photosViewController, animated: true)
     }
-    
 }
