@@ -121,16 +121,14 @@ class ChatViewController: UIViewController {
             }
             
             // Find all pictures for preview.
-            for picture in dao.chatDao.find(by: ChatMessageType.picture.rawValue, in: room) {
-                let time = dateFormatter.string(from: picture.createAt!)
-                let photo = AXPhoto(attributedTitle: nil,
-                                    attributedDescription: NSAttributedString(string: time),
-                                    url: Config.shared.imageURL(picture.content!))
-                photos.append(photo)
-            }
+            appendPreviewPictures(pictures: dao.chatDao.find(by: ChatMessageType.picture.rawValue, in: room))
+            
             ChatManager.shared.syncChat(room) { [weak self] (success, chats, message) in
-                if chats.count > 0 {
-                    self?.insertChats(chats)
+                if let `self` = self, chats.count > 0 {
+                    self.insertChats(chats)
+                    self.appendPreviewPictures(pictures: chats.filter {
+                        $0.type == ChatMessageType.picture.rawValue
+                    })
                 }
             }
         }
@@ -352,9 +350,6 @@ class ChatViewController: UIViewController {
             modelAdded += 1
         }
         models.append(ChatCellModel(type: .pictureSending(image)))
-//        photos.append(AXPhoto(attributedTitle: nil,
-//                              attributedDescription: NSAttributedString(string: dateFormatter.string(from: Date())),
-//                              image: image))
         return modelAdded
     }
     
@@ -383,6 +378,16 @@ class ChatViewController: UIViewController {
             }
         }
         return create ? ChatCellModel(type: .time(time)) : nil
+    }
+    
+    private func appendPreviewPictures(pictures: [Chat]) {
+        for picture in pictures {
+            let time = dateFormatter.string(from: picture.createAt!)
+            let photo = AXPhoto(attributedTitle: nil,
+                                attributedDescription: NSAttributedString(string: time),
+                                url: Config.shared.imageURL(picture.content!))
+            photos.append(photo)
+        }
     }
     
 }
@@ -497,6 +502,15 @@ extension ChatViewController: UIImagePickerControllerDelegate {
             
             if let cell = sendingCell, let chat = chat {
                 cell.stopLoading()
+                if let url = chat.content {
+                    cell.sendingFinished(url: url)
+                    
+                    let time = self.dateFormatter.string(from: Date())
+                    let photo = AXPhoto(attributedTitle: nil,
+                                        attributedDescription: NSAttributedString(string: time),
+                                        url: Config.shared.imageURL(url))
+                    self.photos.append(photo)
+                }
             }
         })
     }

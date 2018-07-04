@@ -60,7 +60,7 @@ class ChatPictureTableViewCell: UITableViewCell {
             plcaeholder = resizeImage(image: R.image.chat_picture_lodingGif()!, newWidth: pictureImageView.frame.width)
         }
         pictureImageView.kf.indicatorType = .activity
-        pictureImageView.kf.setImage(with: Config.shared.imageURL(url), placeholder: plcaeholder, options: [.requestModifier(Config.shared.modifier)]) { image, error, cacheType, imageURL in
+        pictureImageView.kf.setImage(with: Config.shared.imageURL(url), placeholder: plcaeholder) { image, error, cacheType, imageURL in
             if let error = error {
                 print("Loaing chat picture error: \(error)")
             }
@@ -75,6 +75,10 @@ class ChatPictureTableViewCell: UITableViewCell {
         avatarImageView.kf.setImage(with: Config.shared.imageURL(avatar))
 
         pictureImageView.image = resizeImage(image: image, newWidth: pictureImageView.frame.width)
+    }
+    
+    func sendingFinished(url: String) {
+        self.url = url
     }
     
     private func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {

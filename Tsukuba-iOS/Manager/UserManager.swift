@@ -1,5 +1,6 @@
 import Alamofire
 import SwiftyUserDefaults
+import Kingfisher
 
 enum UserType {
     case email
@@ -44,6 +45,7 @@ class UserManager {
     var token: String {
         set {
             Defaults[.token] = newValue
+            KingfisherManager.shared.defaultOptions = [.requestModifier(Config.shared.modifier)]
         }
         get {
             return Defaults[.token] ?? ""
