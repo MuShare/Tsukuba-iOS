@@ -8,6 +8,12 @@
 
 import UIKit
 
+enum MainTabType {
+    case posts
+    case chats
+    case me
+}
+
 class MainViewController: UITabBarController {
     
     let chatManager = ChatManager.shared
@@ -19,12 +25,21 @@ class MainViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.delegate = self
         
+        updateNavigationBar(with: .posts)
         UIApplication.shared.statusBarStyle = .lightContent
-        
         NotificationCenter.default.addObserver(self, selector: #selector(didRoomStatusUpdated), name: .didRoomStatusUpdated, object: nil)
-        
         updateGlobalUnread()
+    }
+    
+    @objc func createMessage() {
+        print("writePost")
+        guard let viewController = selectedViewController, viewController.isKind(of: MessagesViewController.self) else {
+            return
+        }
+        let messagesViewController = viewController as! MessagesViewController
+        messagesViewController.createMessage()
     }
 
     // MARK: Notification
@@ -34,11 +49,43 @@ class MainViewController: UITabBarController {
     
     // MARK: Service
     private func updateGlobalUnread() {
+        guard let viewControllers = self.viewControllers else {
+            return
+        }
+        let viewController = viewControllers[1]
         if config.globalUnread > 0 {
-            self.viewControllers?[1].tabBarItem.badgeValue = "\(config.globalUnread)"
+            viewController.tabBarItem.badgeValue = "\(config.globalUnread)"
         } else {
-            self.viewControllers?[1].tabBarItem.badgeValue = nil
+            viewController.tabBarItem.badgeValue = nil
+        }
+    }
+    
+    private func updateNavigationBar(with type: MainTabType) {
+        switch type {
+        case .posts:
+            title = R.string.localizable.tab_posts_title()
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: R.image.write(), style: .plain, target: self, action: #selector(createMessage))
+        case .chats:
+            title = R.string.localizable.tab_chats_title()
+            navigationItem.rightBarButtonItem = nil
+        case .me:
+            title = R.string.localizable.tab_me_title()
+            navigationItem.rightBarButtonItem = nil
         }
     }
 
+}
+
+extension MainViewController: UITabBarControllerDelegate {
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if viewController.isKind(of: MessagesViewController.self) {
+            updateNavigationBar(with: .posts)
+        } else if viewController.isKind(of: RoomsTableViewController.self) {
+            updateNavigationBar(with: .chats)
+        } else if viewController.isKind(of: MeTableViewController.self) {
+            updateNavigationBar(with: .me)
+        }
+    }
+    
 }

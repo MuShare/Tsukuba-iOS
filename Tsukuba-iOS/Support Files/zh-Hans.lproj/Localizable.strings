@@ -15,6 +15,10 @@ error_invalid_parameter = "无效的参数";
 error_unknown = "未知错误，请重试！";
 error_send_plain_text = "无法发送文字消息，请稍后重试！";
 
+tab_posts_title = "筑波同校";
+tab_chats_title = "消息";
+tab_me_title = "我的";
+
 me_title = "登陆 / 注册";
 me_subtitle = "欢迎使用，立即登陆！";
 
@@ -81,3 +85,5 @@ report_user_message = "如果该用户有粗鲁，色情或者暴力行为，你
 chats_chats = "聊天";
 chats_loading = "加载中...";
 chats_self_not_allow = "不允许对自己发起聊天。";
+
+last_message_picture = "[图片]";

@@ -1,13 +1,24 @@
 import UIKit
 import Alamofire
 
-class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AvatarViewController: UIViewController {
 
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet var uploadButton: UIButton!
     
+    private lazy var imagePickerController: UIImagePickerController = {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.navigationBar.barTintColor = Color.main
+        imagePickerController.navigationBar.tintColor = .white
+        imagePickerController.navigationBar.titleTextAttributes = [
+            NSAttributedStringKey.foregroundColor : UIColor.white
+        ]
+        return imagePickerController
+    }()
+    
     let user = UserManager.shared
-    let imagePickerController = UIImagePickerController()
+    
     var timer: Timer? = nil
 
     override func viewDidLoad() {
@@ -18,40 +29,6 @@ class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, U
         if user.login {
             avatarImageView.kf.setImage(with: user.avatarURL)
         }
-        
-        imagePickerController.delegate = self
-        imagePickerController.navigationBar.barTintColor = Color.main
-        imagePickerController.navigationBar.tintColor = .white
-        imagePickerController.navigationBar.titleTextAttributes = [
-            NSAttributedStringKey.foregroundColor : UIColor.white
-        ]
-    }
-    
-    // MARK: - UIImagePickerControllerDelegate
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        avatarImageView.image = info[UIImagePickerControllerEditedImage] as? UIImage
-        picker.dismiss(animated: true, completion: nil)
-        
-        uploadButton.isEnabled = false
-        self.navigationItem.leftBarButtonItem?.isEnabled = false
- 
-        timer = Timer.scheduledTimer(
-            timeInterval: 0.1,
-            target      : self,
-            selector    : #selector(updateUploadProgress),
-            userInfo    : nil,
-            repeats     : true)
-        
-        user.uploadAvatar(avatarImageView.image!) { (success) in
-            self.uploadButton.isEnabled = true
-            self.navigationItem.leftBarButtonItem?.isEnabled = true
-            self.timer?.invalidate()
-            self.timer = nil
-            if success {
-                self.uploadButton.setTitle(R.string.localizable.upload_profile_photo(), for: .normal)
-            }
-        }
-        
     }
     
     // MARK: - Action
@@ -88,5 +65,38 @@ class AvatarViewController: UIViewController, UIImagePickerControllerDelegate, U
         let progress = String(format: "%.2f", user.avatarUploadingProgress * 100)
         uploadButton.setTitle(R.string.localizable.upload_progress() + progress + "%", for: .normal)
     }
+    
+}
+
+extension AvatarViewController: UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        avatarImageView.image = info[UIImagePickerControllerEditedImage] as? UIImage
+        picker.dismiss(animated: true, completion: nil)
+        
+        uploadButton.isEnabled = false
+        self.navigationItem.leftBarButtonItem?.isEnabled = false
+        
+        timer = Timer.scheduledTimer(
+            timeInterval: 0.1,
+            target      : self,
+            selector    : #selector(updateUploadProgress),
+            userInfo    : nil,
+            repeats     : true)
+        
+        user.uploadAvatar(avatarImageView.image!) { (success) in
+            self.uploadButton.isEnabled = true
+            self.navigationItem.leftBarButtonItem?.isEnabled = true
+            self.timer?.invalidate()
+            self.timer = nil
+            if success {
+                self.uploadButton.setTitle(R.string.localizable.upload_profile_photo(), for: .normal)
+            }
+        }
+    }
+    
+}
+
+extension AvatarViewController: UINavigationControllerDelegate {
     
 }

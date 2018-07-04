@@ -1,9 +1,16 @@
 import Alamofire
 import SwiftyUserDefaults
 
+enum ChatMessageType: Int16 {
+    case pictureSending = -1
+    case plainText = 0
+    case picture = 1
+}
+
 class ChatManager {
     
-    typealias ChatCompletion = ((_ success: Bool, _ chats: [Chat], _ message: String?) -> Void)?
+    typealias ChatCompletion = ((_ success: Bool, _ chat: Chat?, _ message: String?) -> Void)?
+    typealias ChatsCompletion = ((_ success: Bool, _ chats: [Chat], _ message: String?) -> Void)?
     
     var dao: DaoManager!
     var config: Config!
@@ -39,19 +46,67 @@ class ChatManager {
                 chat.room?.lastMessage = content
                 chat.content = content
                 self.dao.saveContext()
-                completion?(true, [chat], nil)
+                completion?(true, chat, nil)
             } else {
                 switch response.errorCode() {
                 case .sendPlainText:
-                    completion?(false, [], R.string.localizable.error_object_id())
+                    completion?(false, nil, R.string.localizable.error_object_id())
                 default:
-                    completion?(false, [], R.string.localizable.error_unknown())
+                    completion?(false, nil, R.string.localizable.error_unknown())
                 }
             }
         }
     }
     
-    func syncChat(_ room: Room, completion: ChatCompletion = nil) {
+    func sendPicture(receiver: String, image: UIImage, start:((UIImage?) -> Void)?, completion: ChatCompletion) {
+        guard let data = UIImageJPEGRepresentation(resizeImage(image: image, newWidth: 480)!, 1.0),
+            let image = UIImage(data: data) else {
+            completion?(false, nil, R.string.localizable.error_unknown())
+            return
+        }
+        
+        start?(image)
+        
+        let url = "api/chat/picture?receiver=\(receiver)&width=\(image.size.width)&height=\(image.size.height)"
+        Alamofire.upload(multipartFormData: { multipartFormData in
+            multipartFormData.append(data, withName: "picture", fileName: UUID().uuidString, mimeType: "image/jpeg")
+        }, usingThreshold: UInt64.init(), to: config.createUrl(url), method: .post, headers: config.tokenHeader, encodingCompletion: { encodingResult in
+            switch encodingResult {
+            case .success(let upload, _, _):
+                upload.uploadProgress { progress in
+                    print(progress)
+                }
+                upload.responseJSON { responseObject in
+                    let response = Response(responseObject)
+                    if response.statusOK() {
+                        let result = response.getResult()
+                        let chatObject = result["chat"]
+                        let roomObject = chatObject["room"]
+                        
+                        let chat = self.dao.chatDao.save(chatObject)
+                        chat.room = self.dao.roomDao.saveOrUpdate(roomObject)
+                        chat.room?.lastMessage = R.string.localizable.last_message_picture()
+                        chat.content = chatObject["content"].stringValue
+                        self.dao.saveContext()
+                        completion?(true, chat, nil)
+                    } else {
+                        switch response.errorCode() {
+                        default:
+                            completion?(false, nil, R.string.localizable.error_unknown())
+                        }
+                    }
+                }
+            case .failure(let encodingError):
+                if DEBUG {
+                    debugPrint(encodingError)
+                }
+                completion?(false, nil, R.string.localizable.error_unknown())
+            }
+        })
+        
+    }
+    
+    func syncChat(_ room: Room, completion: ChatsCompletion = nil) {
         let params: Parameters = [
             "seq": room.chats
         ]
@@ -74,11 +129,19 @@ class ChatManager {
                     chat.room = room
                     chats.append(chat)
                 }
+                    
                 if (chats.count > 0) {
                     let lastChat = chats[chats.count - 1]
                     room.chats = lastChat.seq
                     room.updateAt = lastChat.createAt
-                    room.lastMessage = lastChat.content
+                    switch lastChat.type {
+                    case ChatMessageType.plainText.rawValue:
+                        room.lastMessage = lastChat.content
+                    case ChatMessageType.picture.rawValue:
+                        room.lastMessage = R.string.localizable.last_message_picture()
+                    default:
+                        break
+                    }
                     self.dao.saveContext()
                 }
                 completion?(true, chats, nil)
@@ -139,7 +202,14 @@ class ChatManager {
                 
                 for object in result["exist"].arrayValue {
                     if let room = self.dao.roomDao.getByRid(object["rid"].stringValue) {
-                        room.lastMessage = object["lastMessage"].stringValue
+                        let lastMessage = object["lastMessage"].stringValue
+                        switch lastMessage {
+                        case "[picture]":
+                            room.lastMessage = R.string.localizable.last_message_picture()
+                        default:
+                            room.lastMessage = lastMessage
+                        }
+                        
                         room.updateAt = Date(timeIntervalSince1970: object["updateAt"].doubleValue / 1000)
                         room.unread = object["chats"].int16Value - room.chats
                         room.chats = object["chats"].int16Value

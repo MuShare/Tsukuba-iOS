@@ -8,15 +8,15 @@
 
 import UIKit
 
-class ChatTableViewCell: UITableViewCell {
+class ChatTextTableViewCell: UITableViewCell {
 
     @IBOutlet weak var avatarImageView: UIImageView!
-    @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var messageTextView: UITextView!
     @IBOutlet weak var messageBackgroundImageView: UIImageView!
     
     func fill(avatar: String, message: String) {
         avatarImageView.kf.setImage(with: Config.shared.imageURL(avatar))
-        messageLabel.text = message
+        messageTextView.text = message
         
         let capInsets = UIEdgeInsetsMake(28, 20, 15, 20)
         switch reuseIdentifier {

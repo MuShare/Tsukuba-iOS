@@ -99,16 +99,15 @@ class MessagesViewController: UIViewController {
         }
     }
 
-    // MARK: - Action
-    @IBAction func createMessage(_ sender: Any) {
+    // MARK: - Service
+    func createMessage() {
         if user.login {
             present(R.storyboard.post().instantiateInitialViewController()!, animated: true, completion: nil)
         } else {
             showLoginAlert()
         }
     }
-
-    // MARK: - Service
+    
     private func loadCategories() {
         var items: [SegmentioItem] = [SegmentioItem(title: R.string.localizable.message_all(),
                                                     image: nil)]

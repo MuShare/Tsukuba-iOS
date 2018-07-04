@@ -19,6 +19,8 @@ class ChatDao: DaoTemplate {
         chat?.type = object["type"].int16Value
         chat?.direction = object["direction"].boolValue
         chat?.seq = object["seq"].int16Value
+        chat?.pictureWidth = object["pictureWidth"].doubleValue
+        chat?.pictureHeight = object["pictureHeight"].doubleValue
         return chat!
     }
     
@@ -28,9 +30,25 @@ class ChatDao: DaoTemplate {
         return try! context.fetch(request).count > 0
     }
     
-    func findByRoom(_ room: Room) -> [Chat] {
+    func find(in room: Room, smallerThan seq: Int16 = Int16.max, pageSize: Int = Int.max) -> [Chat] {
         let request = NSFetchRequest<Chat>(entityName: NSStringFromClass(Chat.self))
-        request.predicate = NSPredicate(format: "room=%@", room)
+        request.predicate = NSPredicate(format: "room=%@ and seq<%d", room, seq)
+        request.sortDescriptors = [NSSortDescriptor(key: "seq", ascending: false)]
+        if pageSize < Int.max {
+            request.fetchLimit = pageSize
+        }
+        if var chats = try? context.fetch(request) {
+            chats.sort {
+                $0.seq < $1.seq
+            }
+            return chats
+        }
+        return []
+    }
+    
+    func find(by type: Int16, in room: Room) -> [Chat] {
+        let request = NSFetchRequest<Chat>(entityName: NSStringFromClass(Chat.self))
+        request.predicate = NSPredicate(format: "room=%@ and type=%d", room, type)
         request.sortDescriptors = [NSSortDescriptor(key: "seq", ascending: true)]
         return try! context.fetch(request)
     }

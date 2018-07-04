@@ -15,6 +15,10 @@ error_invalid_parameter = "不正な引数";
 error_unknown = "未知エラー、もう一度確認してください！";
 error_send_plain_text = "メッセージ送信エラー";
 
+tab_posts_title = "つくば同窓";
+tab_chats_title = "チャット";
+tab_me_title = "設定";
+
 me_title = "サインイン / 新規登録";
 me_subtitle = "つくば同窓にようこそ、すぐサインイン！";
 
@@ -81,3 +85,5 @@ report_user_message = "このユーザーを告発しますか。";
 chats_chats = "チャット";
 chats_loading = "更新中...";
 chats_self_not_allow = "自分とチャットできません。";
+
+last_message_picture = "[画像]";
