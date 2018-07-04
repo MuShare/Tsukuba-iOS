@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		770955CA20BEA98C00CA0923 /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770955C920BEA98C00CA0923 /* SocketManager.swift */; };
+		77252BB020EC822B008B837F /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77252BAF20EC822B008B837F /* Data+Extension.swift */; };
 		77439FD720BFD86600FEE3E0 /* SFSafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77439FD620BFD86600FEE3E0 /* SFSafariViewController.swift */; };
 		777704D220E368F5003D5EA2 /* ChatTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777704D120E368F5003D5EA2 /* ChatTimeTableViewCell.swift */; };
 		777704D420E36D53003D5EA2 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777704D320E36D53003D5EA2 /* Date+Extension.swift */; };
@@ -111,6 +112,7 @@
 		251F3A7B6A78E17CB718E63B /* Pods-Tsukuba-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tsukuba-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tsukuba-iOS/Pods-Tsukuba-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		6069AEC1C44BCF1C385A7547 /* Pods-Tsukuba-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tsukuba-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tsukuba-iOS/Pods-Tsukuba-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		770955C920BEA98C00CA0923 /* SocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
+		77252BAF20EC822B008B837F /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
 		77439FD620BFD86600FEE3E0 /* SFSafariViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariViewController.swift; sourceTree = "<group>"; };
 		777704D120E368F5003D5EA2 /* ChatTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTimeTableViewCell.swift; sourceTree = "<group>"; };
 		777704D320E36D53003D5EA2 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 		7792186E20B7BD2E004E83C1 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				77252BAF20EC822B008B837F /* Data+Extension.swift */,
 				777704D320E36D53003D5EA2 /* Date+Extension.swift */,
 				777704D520E38322003D5EA2 /* PaddingLabel.swift */,
 				77439FD620BFD86600FEE3E0 /* SFSafariViewController.swift */,
@@ -720,6 +723,7 @@
 			files = (
 				E47860741ECC56C30096B39A /* UserProfileTableViewController.swift in Sources */,
 				E4089FEF1EBB4AD80042221D /* MyProfileTableViewController.swift in Sources */,
+				77252BB020EC822B008B837F /* Data+Extension.swift in Sources */,
 				E48931FD201EFBD100727A6B /* ChatViewController.swift in Sources */,
 				E4089FE91EBB3A1F0042221D /* LoginViewController.swift in Sources */,
 				777704D620E38322003D5EA2 /* PaddingLabel.swift in Sources */,
