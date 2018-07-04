@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		770955CA20BEA98C00CA0923 /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770955C920BEA98C00CA0923 /* SocketManager.swift */; };
 		77252BB020EC822B008B837F /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77252BAF20EC822B008B837F /* Data+Extension.swift */; };
+		77252BB720EC8B25008B837F /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77252BB520EC8B25008B837F /* Interface.storyboard */; };
+		77252BB920EC8B28008B837F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77252BB820EC8B28008B837F /* Assets.xcassets */; };
+		77252BC020EC8B29008B837F /* Tsukuba-watchOS Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 77252BBF20EC8B28008B837F /* Tsukuba-watchOS Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		77252BC520EC8B29008B837F /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77252BC420EC8B29008B837F /* InterfaceController.swift */; };
+		77252BC720EC8B29008B837F /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77252BC620EC8B29008B837F /* ExtensionDelegate.swift */; };
+		77252BC920EC8B29008B837F /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77252BC820EC8B29008B837F /* NotificationController.swift */; };
+		77252BCB20EC8B29008B837F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77252BCA20EC8B29008B837F /* Assets.xcassets */; };
+		77252BD020EC8B29008B837F /* Tsukuba-watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 77252BB320EC8B25008B837F /* Tsukuba-watchOS.app */; };
 		77439FD720BFD86600FEE3E0 /* SFSafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77439FD620BFD86600FEE3E0 /* SFSafariViewController.swift */; };
 		777704D220E368F5003D5EA2 /* ChatTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777704D120E368F5003D5EA2 /* ChatTimeTableViewCell.swift */; };
 		777704D420E36D53003D5EA2 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777704D320E36D53003D5EA2 /* Date+Extension.swift */; };
@@ -92,6 +100,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		77252BC120EC8B29008B837F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E4962BD61EB4B08000DF8CAE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 77252BBE20EC8B28008B837F;
+			remoteInfo = "Tsukuba-watchOS Extension";
+		};
+		77252BCE20EC8B29008B837F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E4962BD61EB4B08000DF8CAE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 77252BB220EC8B25008B837F;
+			remoteInfo = "Tsukuba-watchOS";
+		};
 		E4962BF61EB4B08000DF8CAE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E4962BD61EB4B08000DF8CAE /* Project object */;
@@ -108,11 +130,47 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		77252BD620EC8B29008B837F /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				77252BC020EC8B29008B837F /* Tsukuba-watchOS Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		77252BD820EC8B29008B837F /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				77252BD020EC8B29008B837F /* Tsukuba-watchOS.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		251F3A7B6A78E17CB718E63B /* Pods-Tsukuba-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tsukuba-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tsukuba-iOS/Pods-Tsukuba-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		6069AEC1C44BCF1C385A7547 /* Pods-Tsukuba-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tsukuba-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tsukuba-iOS/Pods-Tsukuba-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		770955C920BEA98C00CA0923 /* SocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
 		77252BAF20EC822B008B837F /* Data+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
+		77252BB320EC8B25008B837F /* Tsukuba-watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tsukuba-watchOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		77252BB620EC8B25008B837F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		77252BB820EC8B28008B837F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		77252BBA20EC8B28008B837F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77252BBF20EC8B28008B837F /* Tsukuba-watchOS Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Tsukuba-watchOS Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		77252BC420EC8B29008B837F /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		77252BC620EC8B29008B837F /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		77252BC820EC8B29008B837F /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		77252BCA20EC8B29008B837F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		77252BCC20EC8B29008B837F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77252BCD20EC8B29008B837F /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		77439FD620BFD86600FEE3E0 /* SFSafariViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariViewController.swift; sourceTree = "<group>"; };
 		777704D120E368F5003D5EA2 /* ChatTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTimeTableViewCell.swift; sourceTree = "<group>"; };
 		777704D320E36D53003D5EA2 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
@@ -216,6 +274,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		77252BBC20EC8B28008B837F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E4962BDB1EB4B08000DF8CAE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -242,6 +307,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		77252BB420EC8B25008B837F /* Tsukuba-watchOS */ = {
+			isa = PBXGroup;
+			children = (
+				77252BB520EC8B25008B837F /* Interface.storyboard */,
+				77252BB820EC8B28008B837F /* Assets.xcassets */,
+				77252BBA20EC8B28008B837F /* Info.plist */,
+			);
+			path = "Tsukuba-watchOS";
+			sourceTree = "<group>";
+		};
+		77252BC320EC8B29008B837F /* Tsukuba-watchOS Extension */ = {
+			isa = PBXGroup;
+			children = (
+				77252BC420EC8B29008B837F /* InterfaceController.swift */,
+				77252BC620EC8B29008B837F /* ExtensionDelegate.swift */,
+				77252BC820EC8B29008B837F /* NotificationController.swift */,
+				77252BCA20EC8B29008B837F /* Assets.xcassets */,
+				77252BCC20EC8B29008B837F /* Info.plist */,
+				77252BCD20EC8B29008B837F /* PushNotificationPayload.apns */,
+			);
+			path = "Tsukuba-watchOS Extension";
+			sourceTree = "<group>";
+		};
 		7792186E20B7BD2E004E83C1 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,6 +478,8 @@
 		E4962BD51EB4B08000DF8CAE = {
 			isa = PBXGroup;
 			children = (
+				77252BB420EC8B25008B837F /* Tsukuba-watchOS */,
+				77252BC320EC8B29008B837F /* Tsukuba-watchOS Extension */,
 				A0941B9AB6A83BA8AAE365F0 /* Frameworks */,
 				A80F46868D81B8F88D072248 /* Pods */,
 				E4962BDF1EB4B08000DF8CAE /* Products */,
@@ -405,6 +495,8 @@
 				E4962BDE1EB4B08000DF8CAE /* Tsukuba-iOS.app */,
 				E4962BF51EB4B08000DF8CAE /* Tsukuba-iOSTests.xctest */,
 				E4962C001EB4B08000DF8CAE /* Tsukuba-iOSUITests.xctest */,
+				77252BB320EC8B25008B837F /* Tsukuba-watchOS.app */,
+				77252BBF20EC8B28008B837F /* Tsukuba-watchOS Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -463,6 +555,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		77252BB220EC8B25008B837F /* Tsukuba-watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 77252BD720EC8B29008B837F /* Build configuration list for PBXNativeTarget "Tsukuba-watchOS" */;
+			buildPhases = (
+				77252BB120EC8B25008B837F /* Resources */,
+				77252BD620EC8B29008B837F /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				77252BC220EC8B29008B837F /* PBXTargetDependency */,
+			);
+			name = "Tsukuba-watchOS";
+			productName = "Tsukuba-watchOS";
+			productReference = 77252BB320EC8B25008B837F /* Tsukuba-watchOS.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		77252BBE20EC8B28008B837F /* Tsukuba-watchOS Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 77252BD520EC8B29008B837F /* Build configuration list for PBXNativeTarget "Tsukuba-watchOS Extension" */;
+			buildPhases = (
+				77252BBB20EC8B28008B837F /* Sources */,
+				77252BBC20EC8B28008B837F /* Frameworks */,
+				77252BBD20EC8B28008B837F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Tsukuba-watchOS Extension";
+			productName = "Tsukuba-watchOS Extension";
+			productReference = 77252BBF20EC8B28008B837F /* Tsukuba-watchOS Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		E4962BDD1EB4B08000DF8CAE /* Tsukuba-iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E4962C091EB4B08000DF8CAE /* Build configuration list for PBXNativeTarget "Tsukuba-iOS" */;
@@ -473,10 +599,12 @@
 				E4962BDB1EB4B08000DF8CAE /* Frameworks */,
 				E4962BDC1EB4B08000DF8CAE /* Resources */,
 				9E1D8D9AF95E3E3B803619D9 /* [CP] Embed Pods Frameworks */,
+				77252BD820EC8B29008B837F /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				77252BCF20EC8B29008B837F /* PBXTargetDependency */,
 			);
 			name = "Tsukuba-iOS";
 			productName = "Tsukuba-iOS";
@@ -525,10 +653,20 @@
 		E4962BD61EB4B08000DF8CAE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
+				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = MuShare;
 				TargetAttributes = {
+					77252BB220EC8B25008B837F = {
+						CreatedOnToolsVersion = 9.4.1;
+						DevelopmentTeam = 6ANM44X2CJ;
+						ProvisioningStyle = Automatic;
+					};
+					77252BBE20EC8B28008B837F = {
+						CreatedOnToolsVersion = 9.4.1;
+						DevelopmentTeam = 6ANM44X2CJ;
+						ProvisioningStyle = Automatic;
+					};
 					E4962BDD1EB4B08000DF8CAE = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 6ANM44X2CJ;
@@ -575,11 +713,30 @@
 				E4962BDD1EB4B08000DF8CAE /* Tsukuba-iOS */,
 				E4962BF41EB4B08000DF8CAE /* Tsukuba-iOSTests */,
 				E4962BFF1EB4B08000DF8CAE /* Tsukuba-iOSUITests */,
+				77252BB220EC8B25008B837F /* Tsukuba-watchOS */,
+				77252BBE20EC8B28008B837F /* Tsukuba-watchOS Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		77252BB120EC8B25008B837F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77252BB920EC8B28008B837F /* Assets.xcassets in Resources */,
+				77252BB720EC8B25008B837F /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		77252BBD20EC8B28008B837F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77252BCB20EC8B29008B837F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E4962BDC1EB4B08000DF8CAE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -717,6 +874,16 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		77252BBB20EC8B28008B837F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				77252BC920EC8B29008B837F /* NotificationController.swift in Sources */,
+				77252BC720EC8B29008B837F /* ExtensionDelegate.swift in Sources */,
+				77252BC520EC8B29008B837F /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E4962BDA1EB4B08000DF8CAE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -810,6 +977,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		77252BC220EC8B29008B837F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 77252BBE20EC8B28008B837F /* Tsukuba-watchOS Extension */;
+			targetProxy = 77252BC120EC8B29008B837F /* PBXContainerItemProxy */;
+		};
+		77252BCF20EC8B29008B837F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 77252BB220EC8B25008B837F /* Tsukuba-watchOS */;
+			targetProxy = 77252BCE20EC8B29008B837F /* PBXContainerItemProxy */;
+		};
 		E4962BF71EB4B08000DF8CAE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E4962BDD1EB4B08000DF8CAE /* Tsukuba-iOS */;
@@ -823,6 +1000,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		77252BB520EC8B25008B837F /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				77252BB620EC8B25008B837F /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		E4962BE51EB4B08000DF8CAE /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -892,6 +1077,128 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		77252BD120EC8B29008B837F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6ANM44X2CJ;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IBSC_MODULE = Tsukuba_watchOS_Extension;
+				INFOPLIST_FILE = "Tsukuba-watchOS/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.mushare.Tsukuba-iOS.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Debug;
+		};
+		77252BD220EC8B29008B837F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6ANM44X2CJ;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IBSC_MODULE = Tsukuba_watchOS_Extension;
+				INFOPLIST_FILE = "Tsukuba-watchOS/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.mushare.Tsukuba-iOS.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Release;
+		};
+		77252BD320EC8B29008B837F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6ANM44X2CJ;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Tsukuba-watchOS Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.mushare.Tsukuba-iOS.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Debug;
+		};
+		77252BD420EC8B29008B837F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6ANM44X2CJ;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "Tsukuba-watchOS Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.mushare.Tsukuba-iOS.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Release;
+		};
 		E4962C071EB4B08000DF8CAE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1087,6 +1394,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		77252BD520EC8B29008B837F /* Build configuration list for PBXNativeTarget "Tsukuba-watchOS Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				77252BD320EC8B29008B837F /* Debug */,
+				77252BD420EC8B29008B837F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		77252BD720EC8B29008B837F /* Build configuration list for PBXNativeTarget "Tsukuba-watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				77252BD120EC8B29008B837F /* Debug */,
+				77252BD220EC8B29008B837F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E4962BD91EB4B08000DF8CAE /* Build configuration list for PBXProject "Tsukuba-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
