@@ -307,7 +307,7 @@ class ChatViewController: UIViewController {
             case ChatMessageType.plainText.rawValue:
                 type = isSender ? .plainTextSender(content) : .plainTextReceiver(avatar, content)
             case ChatMessageType.picture.rawValue:
-                let size = CGSize(width: chat.pictureWidth, height: chat.pictureWidth)
+                let size = CGSize(width: chat.pictureWidth, height: chat.pictureHeight)
                 type = isSender ? .pictureSender(content, size) : .pictureReceiver(avatar, content, size)
                 
             default:
