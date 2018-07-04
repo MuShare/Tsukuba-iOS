@@ -9,6 +9,10 @@ enum ChatMessageType: Int16 {
 
 class ChatManager {
     
+    private struct Const {
+        static let pictureMaxWidth: CGFloat = 600
+    }
+    
     typealias ChatCompletion = ((_ success: Bool, _ chat: Chat?, _ message: String?) -> Void)?
     typealias ChatsCompletion = ((_ success: Bool, _ chats: [Chat], _ message: String?) -> Void)?
     
@@ -59,13 +63,13 @@ class ChatManager {
     }
     
     func sendPicture(receiver: String, image: UIImage, start:((UIImage?) -> Void)?, completion: ChatCompletion) {
-        guard let data = UIImageJPEGRepresentation(resizeImage(image: image, newWidth: 480)!, 1.0),
-            let image = UIImage(data: data) else {
+        guard let compressedImage = image.resize(width: Const.pictureMaxWidth),
+            let data = UIImageJPEGRepresentation(compressedImage, 1) else {
             completion?(false, nil, R.string.localizable.error_unknown())
             return
         }
         
-        start?(image)
+        start?(compressedImage)
         
         let url = "api/chat/picture?receiver=\(receiver)&width=\(image.size.width)&height=\(image.size.height)"
         Alamofire.upload(multipartFormData: { multipartFormData in

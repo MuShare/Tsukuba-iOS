@@ -74,7 +74,9 @@ class ChatPictureTableViewCell: UITableViewCell {
         self.delegate = delegate
         avatarImageView.kf.setImage(with: Config.shared.imageURL(avatar))
 
-        pictureImageView.image = resizeImage(image: image, newWidth: pictureImageView.frame.width)
+        if let compressedImage = image.resize(width: pictureImageView.frame.width) {
+            pictureImageView.image = compressedImage
+        }
     }
     
     func sendingFinished(url: String) {

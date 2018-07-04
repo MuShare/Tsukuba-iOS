@@ -125,9 +125,6 @@ class ChatViewController: UIViewController {
             ChatManager.shared.syncChat(room) { [weak self] (success, chats, message) in
                 if let `self` = self, chats.count > 0 {
                     self.insertChats(chats)
-                    self.appendPreviewPictures(pictures: chats.filter {
-                        $0.type == ChatMessageType.picture.rawValue
-                    })
                 }
             }
         }
@@ -199,6 +196,10 @@ class ChatViewController: UIViewController {
             insertRows(at: .last) { position in
                 updateModels(with: chats, at: position)
             }
+            
+            appendPreviewPictures(pictures: chats.filter {
+                $0.type == ChatMessageType.picture.rawValue
+            })
         }
     }
     
