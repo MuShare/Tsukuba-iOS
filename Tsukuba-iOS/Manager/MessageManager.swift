@@ -3,6 +3,10 @@ import SwiftyJSON
 
 class MessageManager {
     
+    private struct Const {
+        static let messagePictureMaxWidth: CGFloat = 480
+    }
+    
     typealias FavoriteCompletion = ((_ success: Bool, _ favorites: Int, _ message: String?) -> Void)?
     typealias MessagesCompletion = ((Bool, [Message]) -> Void)?
     
@@ -111,9 +115,13 @@ class MessageManager {
     }
     
     func uploadPicture(_ image: UIImage, mid: String, completion: ((Bool, JSON?) -> Void)?) {
-        let data = UIImageJPEGRepresentation(resizeImage(image: image, newWidth: 480)!, 1.0)
+        guard let compressedImage = image.resize(width: Const.messagePictureMaxWidth),
+            let data = UIImageJPEGRepresentation(compressedImage, 1.0) else {
+            completion?(false, nil)
+            return
+        }
         Alamofire.upload(multipartFormData: { multipartFormData in
-            multipartFormData.append(data!, withName: "picture", fileName: UUID().uuidString, mimeType: "image/jpeg")
+            multipartFormData.append(data, withName: "picture", fileName: UUID().uuidString, mimeType: "image/jpeg")
         }, usingThreshold: UInt64.init(),
            to: config.createUrl("api/message/picture?mid=" + mid),
            method: .post,

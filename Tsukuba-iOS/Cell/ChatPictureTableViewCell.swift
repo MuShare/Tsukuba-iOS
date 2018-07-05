@@ -51,21 +51,21 @@ class ChatPictureTableViewCell: UITableViewCell {
         self.url = url
         avatarImageView.kf.setImage(with: Config.shared.imageURL(avatar))
         
-        
-        var plcaeholder: UIImage!
+        var placeholderHeight = pictureImageView.frame.size.width
         if size.width > 0 && size.height > 0 {
-            let newHeight = size.height / size.width * self.pictureImageView.frame.width
-            plcaeholder = resizeImage(image: R.image.chat_picture_lodingGif()!, newWidth: self.pictureImageView.frame.width, newHeight: newHeight)
-        } else {
-            plcaeholder = resizeImage(image: R.image.chat_picture_lodingGif()!, newWidth: pictureImageView.frame.width)
+            placeholderHeight *= size.height / size.width
         }
+        let plcaeholder = UIImage(outerColor: .darkGray,
+                                  innerColor: .white,
+                                  size: CGSize(width: pictureImageView.frame.size.width, height: placeholderHeight))
+
         pictureImageView.kf.indicatorType = .activity
         pictureImageView.kf.setImage(with: Config.shared.imageURL(url), placeholder: plcaeholder) { image, error, cacheType, imageURL in
             if let error = error {
                 print("Loaing chat picture error: \(error)")
             }
             if let image = image {
-                self.pictureImageView.image = self.resizeImage(image: image, newWidth: self.pictureImageView.frame.width)
+                self.pictureImageView.image = image.resize(width: self.pictureImageView.frame.width)
             }
         }
     }
@@ -74,29 +74,13 @@ class ChatPictureTableViewCell: UITableViewCell {
         self.delegate = delegate
         avatarImageView.kf.setImage(with: Config.shared.imageURL(avatar))
 
-        pictureImageView.image = resizeImage(image: image, newWidth: pictureImageView.frame.width)
+        if let compressedImage = image.resize(width: pictureImageView.frame.width) {
+            pictureImageView.image = compressedImage
+        }
     }
     
     func sendingFinished(url: String) {
         self.url = url
-    }
-    
-    private func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
-        let scale = newWidth / image.size.width
-        let newHeight = image.size.height * scale
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: newWidth, height: newHeight), false, 0)
-        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage!
-    }
-    
-    private func resizeImage(image: UIImage, newWidth: CGFloat, newHeight: CGFloat) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: newWidth, height: newHeight), false, 0)
-        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage!
     }
     
 }
