@@ -39,11 +39,16 @@ class RegisterViewController: LoginBaseViewController, NVActivityIndicatorViewab
             _ = self.navigationController?.popViewController(animated: true)
             return
         }
-        if emailTextField.text == "" || usernameTextField.text == "" || passwordTextField.text == "" {
+        guard let email = emailTextField.text,
+            let username = usernameTextField.text,
+            let password = passwordTextField.text else {
+            return
+        }
+        if email == "" || username == "" || password == "" {
             showTip(R.string.localizable.register_not_validate())
             return
         }
-        if !isEmailAddress(emailTextField.text!) {
+        if !email.isEmailAddress {
             showTip(R.string.localizable.email_invalidate())
             return
         }
@@ -51,9 +56,9 @@ class RegisterViewController: LoginBaseViewController, NVActivityIndicatorViewab
         finishEdit()
         startAnimating()
         
-        user.register(email: emailTextField.text!,
-                      name: usernameTextField.text!,
-                      password: passwordTextField.text!)
+        user.register(email: email,
+                      name: username,
+                      password: password)
         { (success, message) in
             self.stopAnimating()
             

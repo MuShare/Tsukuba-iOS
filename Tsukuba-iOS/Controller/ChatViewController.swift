@@ -82,6 +82,7 @@ class ChatViewController: UIViewController {
     private let appDelagate = UIApplication.shared.delegate as! AppDelegate
     private var viewHeight: CGFloat!
     private var keyboardShowing = false
+    private var currentKeyboardHeight: CGFloat = 0
     private var enableToCloseKeyboard = true
 
     private let dao = DaoManager.shared
@@ -99,13 +100,11 @@ class ChatViewController: UIViewController {
         navigationItem.title = receiver.name
 
         tableView.es.addPullToRefresh {
-            guard let room = self.room else {
-                return
-            }
-
-            self.insertRows(at: .first) { position in
-                let chats = DaoManager.shared.chatDao.find(in: room, smallerThan: self.smallestSeq, pageSize: Const.pageSize)
-                return self.updateModels(with: chats, at: position)
+            if let room = self.room {
+                self.insertRows(at: .first) { position in
+                    let chats = DaoManager.shared.chatDao.find(in: room, smallerThan: self.smallestSeq, pageSize: Const.pageSize)
+                    return self.updateModels(with: chats, at: position)
+                }
             }
 
             self.tableView.es.stopPullToRefresh()
@@ -126,9 +125,6 @@ class ChatViewController: UIViewController {
             ChatManager.shared.syncChat(room) { [weak self] (success, chats, message) in
                 if let `self` = self, chats.count > 0 {
                     self.insertChats(chats)
-                    self.appendPreviewPictures(pictures: chats.filter {
-                        $0.type == ChatMessageType.picture.rawValue
-                    })
                 }
             }
         }
@@ -144,16 +140,16 @@ class ChatViewController: UIViewController {
 
         RxKeyboard.instance.visibleHeight.drive(onNext: { keyboardVisibleHeight in
             if keyboardVisibleHeight == 0 {
-                self.keyboardShowing = false
+                self.currentKeyboardHeight = 0
                 UIView.animate(withDuration: 0.2) {
                     self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: UIScreen.main.bounds.height)
                 }
             } else {
-                if self.keyboardShowing {
+                if keyboardVisibleHeight <= self.currentKeyboardHeight {
                     return
                 }
-                self.keyboardShowing = true
-                
+                self.currentKeyboardHeight = keyboardVisibleHeight
+
                 let tableHeight = self.tableView.contentSize.height
                 let hiddenHeight = self.viewHeight - Const.toolBarHeight - keyboardVisibleHeight
                 
@@ -196,12 +192,14 @@ class ChatViewController: UIViewController {
     }
     
     private func insertChats(_ chats: [Chat]) {
-        if (chats.count == 0) {
-            return
-        }
-
-        insertRows(at: .last) { position in
-            updateModels(with: chats, at: position)
+        if (chats.count > 0) {
+            insertRows(at: .last) { position in
+                updateModels(with: chats, at: position)
+            }
+            
+            appendPreviewPictures(pictures: chats.filter {
+                $0.type == ChatMessageType.picture.rawValue
+            })
         }
     }
     
@@ -284,6 +282,12 @@ class ChatViewController: UIViewController {
     
     // MARK: - Service
     @discardableResult private func updateModels(with chats: [Chat], at postion: ChatInsertPosition) -> Int {
+        // Set room if there is no messages before.
+        if room == nil {
+            if chats.count > 0 {
+                room = chats[0].room
+            }
+        }
         guard let room = room else {
             return 0
         }
@@ -307,7 +311,7 @@ class ChatViewController: UIViewController {
             case ChatMessageType.plainText.rawValue:
                 type = isSender ? .plainTextSender(content) : .plainTextReceiver(avatar, content)
             case ChatMessageType.picture.rawValue:
-                let size = CGSize(width: chat.pictureWidth, height: chat.pictureWidth)
+                let size = CGSize(width: chat.pictureWidth, height: chat.pictureHeight)
                 type = isSender ? .pictureSender(content, size) : .pictureReceiver(avatar, content, size)
                 
             default:

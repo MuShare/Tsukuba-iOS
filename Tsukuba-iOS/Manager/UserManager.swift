@@ -23,6 +23,10 @@ protocol UserManagerDelegate: class {
 
 class UserManager {
     
+    private struct Const {
+        static let avatarMaxWidth: CGFloat = 480
+    }
+    
     static let shared = UserManager()
     
     let config = Config.shared
@@ -373,16 +377,14 @@ class UserManager {
     }
     
     func uploadAvatar(_ image: UIImage, completion: ((Bool) -> Void)?) {
-        let data = UIImageJPEGRepresentation(resizeImage(image: image, newWidth: 480)!, 1.0)
+        guard let compressedImage = image.resize(width: Const.avatarMaxWidth),
+            let data = UIImageJPEGRepresentation(compressedImage, 1.0) else {
+            completion?(false)
+            return
+        }
         Alamofire.upload(multipartFormData:{ multipartFormData in
-            multipartFormData.append(data!, withName: "avatar", fileName: UUID().uuidString, mimeType: "image/jpeg")
-        },
-                         usingThreshold: UInt64.init(),
-                         to: config.createUrl("api/user/avatar"),
-                         method: .post,
-                         headers: config.tokenHeader,
-                         encodingCompletion:
-            { encodingResult in
+            multipartFormData.append(data, withName: "avatar", fileName: UUID().uuidString, mimeType: "image/jpeg")
+        }, usingThreshold: UInt64.init(), to: config.createUrl("api/user/avatar"), method: .post, headers: config.tokenHeader, encodingCompletion: { encodingResult in
                 switch encodingResult {
                 case .success(let upload, _, _):
                     upload.uploadProgress { progress in
