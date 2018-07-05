@@ -29,6 +29,7 @@
 		77EA3DD820E9D7AC00BCB23D /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EA3DD720E9D7AC00BCB23D /* UITableView+Extension.swift */; };
 		77F1946020BCF6B7001B3F6E /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F1945F20BCF6B6001B3F6E /* R.generated.swift */; };
 		77F1946220BCFBF7001B3F6E /* LoginBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F1946120BCFBF7001B3F6E /* LoginBaseViewController.swift */; };
+		77F2307C20EDB0DC000CC4D1 /* RoomRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F2307A20EDAFDA000CC4D1 /* RoomRowController.swift */; };
 		77F2E7D020C52729001E7AB3 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F2E7CF20C52729001E7AB3 /* UIView+Extension.swift */; };
 		77F2E7D220C5274E001E7AB3 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F2E7D120C5274E001E7AB3 /* UITextField+Extension.swift */; };
 		77F2E7D420C52779001E7AB3 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F2E7D320C52779001E7AB3 /* UIDevice+Extension.swift */; };
@@ -185,6 +186,7 @@
 		77EA3DD720E9D7AC00BCB23D /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		77F1945F20BCF6B6001B3F6E /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		77F1946120BCFBF7001B3F6E /* LoginBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBaseViewController.swift; sourceTree = "<group>"; };
+		77F2307A20EDAFDA000CC4D1 /* RoomRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomRowController.swift; sourceTree = "<group>"; };
 		77F2E7CF20C52729001E7AB3 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		77F2E7D120C5274E001E7AB3 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		77F2E7D320C52779001E7AB3 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 		77252BC320EC8B29008B837F /* Tsukuba-watchOS Extension */ = {
 			isa = PBXGroup;
 			children = (
+				77F2307A20EDAFDA000CC4D1 /* RoomRowController.swift */,
 				77252BC420EC8B29008B837F /* InterfaceController.swift */,
 				77252BC620EC8B29008B837F /* ExtensionDelegate.swift */,
 				77252BC820EC8B29008B837F /* NotificationController.swift */,
@@ -887,6 +890,7 @@
 				77252BC920EC8B29008B837F /* NotificationController.swift in Sources */,
 				77252BC720EC8B29008B837F /* ExtensionDelegate.swift in Sources */,
 				77252BC520EC8B29008B837F /* InterfaceController.swift in Sources */,
+				77F2307C20EDB0DC000CC4D1 /* RoomRowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
