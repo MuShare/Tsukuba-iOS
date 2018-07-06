@@ -1842,11 +1842,13 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aio-zh-q5F">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aio-zh-q5F">
                                                     <rect key="frame" x="63" y="12" width="249" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CMo-hE-M9A">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CMo-hE-M9A">
                                                     <rect key="frame" x="84" y="16" width="214" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="message">
@@ -1863,15 +1865,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="QGY-xA-54L" firstAttribute="leading" secondItem="T3X-Ti-MGy" secondAttribute="leading" constant="15" id="1Xj-Pi-MB7"/>
-                                                <constraint firstItem="CMo-hE-M9A" firstAttribute="top" secondItem="T3X-Ti-MGy" secondAttribute="top" constant="16" id="2T1-0l-oia"/>
-                                                <constraint firstAttribute="trailing" secondItem="CMo-hE-M9A" secondAttribute="trailing" constant="77" id="MSu-qf-1n0"/>
-                                                <constraint firstItem="aio-zh-q5F" firstAttribute="leading" secondItem="T3X-Ti-MGy" secondAttribute="leading" constant="63" id="OpW-H4-gzF"/>
-                                                <constraint firstItem="CMo-hE-M9A" firstAttribute="leading" secondItem="T3X-Ti-MGy" secondAttribute="leading" constant="84" id="Z1t-Cu-Eq9"/>
-                                                <constraint firstAttribute="trailing" secondItem="aio-zh-q5F" secondAttribute="trailing" constant="63" id="aJi-FT-rNW"/>
-                                                <constraint firstAttribute="bottom" secondItem="aio-zh-q5F" secondAttribute="bottom" constant="11" id="l83-Xq-Hym"/>
-                                                <constraint firstItem="aio-zh-q5F" firstAttribute="top" secondItem="T3X-Ti-MGy" secondAttribute="top" constant="12" id="uW7-mL-Qoz"/>
                                                 <constraint firstItem="QGY-xA-54L" firstAttribute="top" secondItem="T3X-Ti-MGy" secondAttribute="top" constant="12" id="y5E-q9-new"/>
-                                                <constraint firstAttribute="bottom" secondItem="CMo-hE-M9A" secondAttribute="bottom" constant="17" id="zBk-hA-GbI"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
