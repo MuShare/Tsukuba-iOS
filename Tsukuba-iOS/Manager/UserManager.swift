@@ -1,5 +1,6 @@
 import Alamofire
 import SwiftyUserDefaults
+import SwiftyJSON
 
 enum UserType {
     case email
@@ -21,6 +22,10 @@ protocol UserManagerDelegate: class {
 }
 
 class UserManager {
+    
+    private struct Const {
+        static let avatarMaxWidth: CGFloat = 480
+    }
     
     static let shared = UserManager()
     
@@ -187,6 +192,16 @@ class UserManager {
         }
     }
     
+    private func setupUser(_ user: JSON) {
+        uid = user["uid"].stringValue
+        identifier = user["identifier"].stringValue
+        name = user["name"].stringValue
+        avatar = user["avatar"].stringValue
+        contact = user["contact"].stringValue
+        address = user["address"].stringValue
+        userRev = user["rev"].intValue
+    }
+    
     func login(email: String, password: String, completion: ((Bool, String?) -> Void)?) {
         let params: Parameters = [
             "email": email,
@@ -213,20 +228,13 @@ class UserManager {
                 // Login success, save user information to NSUserDefaults.
                 self.type = UserType.email.identifier
                 self.token = result["token"].stringValue
-                let user = result["user"]
-                self.uid = user["uid"].stringValue
-                self.identifier = email
-                self.name = user["name"].stringValue
-                self.avatar = user["avatar"].stringValue
-                self.contact = user["contact"].stringValue
-                self.address = user["address"].stringValue
-                self.userRev = user["rev"].intValue
+                self.setupUser(result["user"])
                 self.login = true
                 // Upload device token.
                 if self.config.deviceToken != "" {
                     DeviceManager.shared.uploadDeviceToken(self.config.deviceToken, completion: nil)
                 }
-                
+                self.config.setupKingshifer()
                 ChatManager.shared.roomStatus(isLoginCheck: true)
                 self.delegate?.didUserLogin(.email)
                 completion?(true, nil)
@@ -269,20 +277,13 @@ class UserManager {
                 // Login success, save user information to NSUserDefaults.
                 self.type = UserType.facebook.identifier
                 self.token = result["token"].stringValue
-                let user = result["user"]
-                self.uid = user["uid"].stringValue
-                self.identifier = user["identifier"].stringValue
-                self.name = user["name"].stringValue
-                self.avatar = user["avatar"].stringValue
-                self.contact = user["contact"].stringValue
-                self.address = user["address"].stringValue
-                self.userRev = user["rev"].intValue
+                self.setupUser(result["user"])
                 self.login = true
                 // Upload device token.
                 if self.config.deviceToken != "" {
                     DeviceManager.shared.uploadDeviceToken(self.config.deviceToken, completion: nil)
                 }
-                
+                self.config.setupKingshifer()
                 ChatManager.shared.roomStatus(isLoginCheck: true)
                 self.delegate?.didUserLogin(.facebook)
                 completion?(true, nil)
@@ -376,16 +377,14 @@ class UserManager {
     }
     
     func uploadAvatar(_ image: UIImage, completion: ((Bool) -> Void)?) {
-        let data = UIImageJPEGRepresentation(resizeImage(image: image, newWidth: 480)!, 1.0)
+        guard let compressedImage = image.resize(width: Const.avatarMaxWidth),
+            let data = UIImageJPEGRepresentation(compressedImage, 1.0) else {
+            completion?(false)
+            return
+        }
         Alamofire.upload(multipartFormData:{ multipartFormData in
-            multipartFormData.append(data!, withName: "avatar", fileName: UUID().uuidString, mimeType: "image/jpeg")
-        },
-                         usingThreshold: UInt64.init(),
-                         to: config.createUrl("api/user/avatar"),
-                         method: .post,
-                         headers: config.tokenHeader,
-                         encodingCompletion:
-            { encodingResult in
+            multipartFormData.append(data, withName: "avatar", fileName: UUID().uuidString, mimeType: "image/jpeg")
+        }, usingThreshold: UInt64.init(), to: config.createUrl("api/user/avatar"), method: .post, headers: config.tokenHeader, encodingCompletion: { encodingResult in
                 switch encodingResult {
                 case .success(let upload, _, _):
                     upload.uploadProgress { progress in

@@ -18,9 +18,9 @@ enum ChatCellType {
     case time(Date)
     case plainTextSender(String)
     case plainTextReceiver(String, String)
-    case pictureSending(Int, UIImage)
-    case pictureSender(Int, String, CGSize)
-    case pictureReceiver(Int, String, String, CGSize)
+    case pictureSending(UIImage)
+    case pictureSender(String, CGSize)
+    case pictureReceiver(String, String, CGSize)
 }
 
 enum ChatInsertPosition {
@@ -82,9 +82,11 @@ class ChatViewController: UIViewController {
     private let appDelagate = UIApplication.shared.delegate as! AppDelegate
     private var viewHeight: CGFloat!
     private var keyboardShowing = false
+    private var currentKeyboardHeight: CGFloat = 0
     private var enableToCloseKeyboard = true
 
     private let dao = DaoManager.shared
+    private let currentUserAvarar = UserManager.shared.avatar
     private let disposeBag = DisposeBag()
     
     deinit {
@@ -98,13 +100,11 @@ class ChatViewController: UIViewController {
         navigationItem.title = receiver.name
 
         tableView.es.addPullToRefresh {
-            guard let room = self.room else {
-                return
-            }
-
-            self.insertRows(at: .first) { position in
-                let chats = DaoManager.shared.chatDao.find(in: room, smallerThan: self.smallestSeq, pageSize: Const.pageSize)
-                return self.updateModels(with: chats, at: position)
+            if let room = self.room {
+                self.insertRows(at: .first) { position in
+                    let chats = DaoManager.shared.chatDao.find(in: room, smallerThan: self.smallestSeq, pageSize: Const.pageSize)
+                    return self.updateModels(with: chats, at: position)
+                }
             }
 
             self.tableView.es.stopPullToRefresh()
@@ -120,16 +120,11 @@ class ChatViewController: UIViewController {
             }
             
             // Find all pictures for preview.
-            for picture in dao.chatDao.find(by: ChatMessageType.picture.rawValue, in: room) {
-                let time = dateFormatter.string(from: picture.createAt!)
-                let photo = AXPhoto(attributedTitle: nil,
-                                    attributedDescription: NSAttributedString(string: time),
-                                    url: Config.shared.imageURL(picture.content!))
-                photos.append(photo)
-            }
+            appendPreviewPictures(pictures: dao.chatDao.find(by: ChatMessageType.picture.rawValue, in: room))
+            
             ChatManager.shared.syncChat(room) { [weak self] (success, chats, message) in
-                if chats.count > 0 {
-                    self?.insertChats(chats)
+                if let `self` = self, chats.count > 0 {
+                    self.insertChats(chats)
                 }
             }
         }
@@ -145,16 +140,16 @@ class ChatViewController: UIViewController {
 
         RxKeyboard.instance.visibleHeight.drive(onNext: { keyboardVisibleHeight in
             if keyboardVisibleHeight == 0 {
-                self.keyboardShowing = false
+                self.currentKeyboardHeight = 0
                 UIView.animate(withDuration: 0.2) {
                     self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: UIScreen.main.bounds.height)
                 }
             } else {
-                if self.keyboardShowing {
+                if keyboardVisibleHeight <= self.currentKeyboardHeight {
                     return
                 }
-                self.keyboardShowing = true
-                
+                self.currentKeyboardHeight = keyboardVisibleHeight
+
                 let tableHeight = self.tableView.contentSize.height
                 let hiddenHeight = self.viewHeight - Const.toolBarHeight - keyboardVisibleHeight
                 
@@ -197,12 +192,14 @@ class ChatViewController: UIViewController {
     }
     
     private func insertChats(_ chats: [Chat]) {
-        if (chats.count == 0) {
-            return
-        }
-
-        insertRows(at: .last) { position in
-            updateModels(with: chats, at: position)
+        if (chats.count > 0) {
+            insertRows(at: .last) { position in
+                updateModels(with: chats, at: position)
+            }
+            
+            appendPreviewPictures(pictures: chats.filter {
+                $0.type == ChatMessageType.picture.rawValue
+            })
         }
     }
     
@@ -285,6 +282,12 @@ class ChatViewController: UIViewController {
     
     // MARK: - Service
     @discardableResult private func updateModels(with chats: [Chat], at postion: ChatInsertPosition) -> Int {
+        // Set room if there is no messages before.
+        if room == nil {
+            if chats.count > 0 {
+                room = chats[0].room
+            }
+        }
         guard let room = room else {
             return 0
         }
@@ -308,8 +311,8 @@ class ChatViewController: UIViewController {
             case ChatMessageType.plainText.rawValue:
                 type = isSender ? .plainTextSender(content) : .plainTextReceiver(avatar, content)
             case ChatMessageType.picture.rawValue:
-                let size = CGSize(width: chat.pictureWidth, height: chat.pictureWidth)
-                type = isSender ? .pictureSender(photos.count, content, size) : .pictureReceiver(photos.count, avatar, content, size)
+                let size = CGSize(width: chat.pictureWidth, height: chat.pictureHeight)
+                type = isSender ? .pictureSender(content, size) : .pictureReceiver(avatar, content, size)
                 
             default:
                 break
@@ -350,10 +353,7 @@ class ChatViewController: UIViewController {
             models.append(timeModel)
             modelAdded += 1
         }
-        models.append(ChatCellModel(type: .pictureSending(photos.count, image)))
-        photos.append(AXPhoto(attributedTitle: nil,
-                              attributedDescription: NSAttributedString(string: dateFormatter.string(from: Date())),
-                              image: image))
+        models.append(ChatCellModel(type: .pictureSending(image)))
         return modelAdded
     }
     
@@ -382,6 +382,16 @@ class ChatViewController: UIViewController {
             }
         }
         return create ? ChatCellModel(type: .time(time)) : nil
+    }
+    
+    private func appendPreviewPictures(pictures: [Chat]) {
+        for picture in pictures {
+            let time = dateFormatter.string(from: picture.createAt!)
+            let photo = AXPhoto(attributedTitle: nil,
+                                attributedDescription: NSAttributedString(string: time),
+                                url: Config.shared.imageURL(picture.content!))
+            photos.append(photo)
+        }
     }
     
 }
@@ -422,17 +432,18 @@ extension ChatViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.chatReceiverIdentifier, for: indexPath)!
             cell.fill(avatar: avatar, message: content)
             return cell
-        case .pictureSending(let index, let pictureImage):
+        case .pictureSending(let pictureImage):
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.pictureSenderIdentifier, for: indexPath)!
-            cell.fill(index: index, avatar: UserManager.shared.avatar, pictureImage: pictureImage, delegate: self)
+            cell.fillSending(with: pictureImage, avatar: currentUserAvarar, delegate: self)
             return cell
-        case .pictureSender(let index, let pictureUrl, let size):
+        case .pictureSender(let pictureUrl, let size):
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.pictureSenderIdentifier, for: indexPath)!
-            cell.fill(index: index, avatar: UserManager.shared.avatar, pictureUrl: pictureUrl, size: size, delegate: self)
+            cell.fill(with: pictureUrl, size: size, avatar: currentUserAvarar, delegate: self)
+
             return cell
-        case .pictureReceiver(let index, let avatar, let pictureUrl, let size):
+        case .pictureReceiver(let avatar, let pictureUrl, let size):
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.pictureReceiverIdentifier, for: indexPath)!
-            cell.fill(index: index, avatar: avatar, pictureUrl: pictureUrl, size: size, delegate: self)
+            cell.fill(with: pictureUrl, size: size, avatar: avatar, delegate: self)
             return cell
         case .none:
             return UITableViewCell()
@@ -495,6 +506,15 @@ extension ChatViewController: UIImagePickerControllerDelegate {
             
             if let cell = sendingCell, let chat = chat {
                 cell.stopLoading()
+                if let url = chat.content {
+                    cell.sendingFinished(url: url)
+                    
+                    let time = self.dateFormatter.string(from: Date())
+                    let photo = AXPhoto(attributedTitle: nil,
+                                        attributedDescription: NSAttributedString(string: time),
+                                        url: Config.shared.imageURL(url))
+                    self.photos.append(photo)
+                }
             }
         })
     }
@@ -507,11 +527,16 @@ extension ChatViewController: UINavigationControllerDelegate {
 
 extension ChatViewController: ChatPictureTableViewCellDelegate {
     
-    func didOpenPicturePreview(index: Int) {
-        
-        let dataSource = AXPhotosDataSource(photos: photos, initialPhotoIndex: index)
+    func didOpenPicturePreview(url: String) {
+        let absoluteURL = Config.shared.createUrl(url)
+        let index = photos.index { (photo) -> Bool in
+            if let photoURL = photo.url, photoURL.absoluteString == absoluteURL {
+                return true
+            }
+            return false
+        }
+        let dataSource = AXPhotosDataSource(photos: photos, initialPhotoIndex: index ?? 0)
         let photosViewController = AXPhotosViewController(dataSource: dataSource)
         present(photosViewController, animated: true)
     }
-    
 }

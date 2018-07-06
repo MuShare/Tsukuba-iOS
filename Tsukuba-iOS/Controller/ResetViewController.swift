@@ -37,7 +37,10 @@ class ResetViewController: LoginBaseViewController, NVActivityIndicatorViewable 
             _ = self.navigationController?.popViewController(animated: true)
             return
         }
-        if !isEmailAddress(emailTextField.text!) {
+        guard let email = emailTextField.text else {
+            return
+        }
+        if !email.isEmailAddress {
             showTip(R.string.localizable.reset_password_not_validate())
             return
         }
@@ -45,7 +48,7 @@ class ResetViewController: LoginBaseViewController, NVActivityIndicatorViewable 
         finishEdit()
         startAnimating()
     
-        user.reset(email: emailTextField.text!) { (success, message) in
+        user.reset(email: email) { (success, message) in
             self.stopAnimating()
 
             if (success) {

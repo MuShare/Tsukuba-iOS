@@ -180,4 +180,25 @@ class Config {
         return URL(string: createUrl(source))
     }
     
+    func setupKingshifer() {
+        KingfisherManager.shared.defaultOptions = [.requestModifier(Config.shared.modifier)]
+    }
+    
+    func setupColumns(_ width: CGFloat) {
+        if width < 768 {
+            columns = 3
+        } else {
+            columns = 4
+        }
+    }
+    
+    func setupLanguage(_ newLan: String) {
+        if lan != newLan {
+            lan = newLan
+            categoryRev = 0
+            optionRev = 0
+            selectionRev = 0
+        }
+    }
+    
 }

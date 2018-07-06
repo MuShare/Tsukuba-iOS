@@ -11,7 +11,7 @@ let DEBUG = true
 open class Color: UIColor {
     open class var main: UIColor {
         get {
-            return RGB(0x9f62ab)
+            return UIColor(hex: 0x9f62ab)
         }
     }
 }
@@ -31,4 +31,24 @@ enum ErrorCode: Int {
     case modifyMessageNoPrivilege = 2021
     case savePicture = 2041
     case sendPlainText = 3011
+}
+
+func ClassByName(name : String) ->  AnyClass? {
+    var result : AnyClass? = nil
+    if let bundle = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String {
+        let className = bundle + "." + name
+        result = NSClassFromString(className)
+    }
+    return result
+}
+
+// MARK: - JSON String
+func JSONStringWithObject(_ object: Any) -> String? {
+    do {
+        let jsonData = try JSONSerialization.data(withJSONObject: object, options: .init(rawValue: 0))
+        return String.init(data: jsonData, encoding: .utf8)
+    } catch {
+        print(error.localizedDescription)
+        return nil
+    }
 }
