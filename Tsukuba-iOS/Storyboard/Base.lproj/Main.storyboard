@@ -1888,9 +1888,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dY2-UK-AQR">
-                                                    <rect key="frame" x="63" y="12" width="249" height="40"/>
-                                                </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UQ7-bk-ioA">
                                                     <rect key="frame" x="320" y="12" width="40" height="40"/>
                                                     <constraints>
@@ -1903,8 +1900,13 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JR1-no-kfd">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dY2-UK-AQR">
+                                                    <rect key="frame" x="63" y="12" width="249" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JR1-no-kfd">
                                                     <rect key="frame" x="77" y="16" width="214" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="message">
@@ -1919,16 +1921,8 @@
                                                 </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="JR1-no-kfd" firstAttribute="leading" secondItem="038-lv-Ser" secondAttribute="leading" constant="77" id="6EJ-uI-e1a"/>
-                                                <constraint firstAttribute="trailing" secondItem="dY2-UK-AQR" secondAttribute="trailing" constant="63" id="6ng-5c-kY5"/>
-                                                <constraint firstAttribute="bottom" secondItem="dY2-UK-AQR" secondAttribute="bottom" constant="11" id="EVU-6n-H2b"/>
-                                                <constraint firstItem="dY2-UK-AQR" firstAttribute="leading" secondItem="038-lv-Ser" secondAttribute="leading" constant="63" id="N2q-Hn-m0t"/>
-                                                <constraint firstItem="JR1-no-kfd" firstAttribute="top" secondItem="038-lv-Ser" secondAttribute="top" constant="16" id="nzp-N8-tDS"/>
                                                 <constraint firstAttribute="trailing" secondItem="UQ7-bk-ioA" secondAttribute="trailing" constant="15" id="qbE-nv-boe"/>
-                                                <constraint firstAttribute="trailing" secondItem="JR1-no-kfd" secondAttribute="trailing" constant="84" id="r8R-Nd-Gaq"/>
-                                                <constraint firstItem="dY2-UK-AQR" firstAttribute="top" secondItem="038-lv-Ser" secondAttribute="top" constant="12" id="tbc-zY-bog"/>
                                                 <constraint firstItem="UQ7-bk-ioA" firstAttribute="top" secondItem="038-lv-Ser" secondAttribute="top" constant="12" id="usw-QQ-pgQ"/>
-                                                <constraint firstAttribute="bottom" secondItem="JR1-no-kfd" secondAttribute="bottom" constant="17" id="wDd-nK-qg5"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

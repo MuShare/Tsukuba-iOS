@@ -426,11 +426,11 @@ extension ChatViewController: UITableViewDataSource {
             return cell
         case .plainTextSender(let content):
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.chatSenderIdentifier, for: indexPath)!
-            cell.fill(avatar: UserManager.shared.avatar, message: content)
+            cell.fill(with: .send, avatar: UserManager.shared.avatar, message: content)
             return cell
         case .plainTextReceiver(let avatar, let content):
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.chatReceiverIdentifier, for: indexPath)!
-            cell.fill(avatar: avatar, message: content)
+            cell.fill(with: .receive, avatar: avatar, message: content)
             return cell
         case .pictureSending(let pictureImage):
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.pictureSenderIdentifier, for: indexPath)!
