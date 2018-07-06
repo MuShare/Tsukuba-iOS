@@ -9,7 +9,7 @@
 extension UITableViewController {
     
     func hideFooterView() {
-        self.hideFooterView(for: tableView)
+        tableView.hideFooterView()
     }
     
 }

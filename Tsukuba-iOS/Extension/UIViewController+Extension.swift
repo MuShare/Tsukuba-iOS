@@ -21,11 +21,6 @@ extension UIViewController {
     @objc func closeView(){
         self.navigationController?.popViewController(animated: true)
     }
-    
-    func hideFooterView(for tableView: UITableView) {
-        tableView.tableFooterView = UIView(frame: CGRect.zero)
-        tableView.tableFooterView?.backgroundColor = UIColor.clear
-    }
 
     func showTip(_ tip: String) {
         showAlert(title: R.string.localizable.tip_name(),
