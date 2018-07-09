@@ -291,7 +291,7 @@ class ChatViewController: UIViewController {
         guard let room = room else {
             return 0
         }
-        
+ 
         if postion == .first {
             firstCreateAt = Date(timeIntervalSince1970: 0)
         }
@@ -306,6 +306,7 @@ class ChatViewController: UIViewController {
 
             // Plain text.
             let isSender = room.creator ? chat.direction : !chat.direction
+            
             var type: ChatCellType = .none
             switch chat.type {
             case ChatMessageType.plainText.rawValue:

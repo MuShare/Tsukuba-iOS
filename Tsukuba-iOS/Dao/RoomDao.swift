@@ -31,8 +31,8 @@ class RoomDao: DaoTemplate {
         }()
         room?.chats = object["chats"].int16Value
         room?.lastMessage = object["lastMessage"].stringValue
-        room?.creator = object["creator"].boolValue
-        let receiver = object[(room?.creator)! ? "receiver" : "sender"]
+        room?.creator = object["sender"]["uid"].stringValue == UserManager.shared.uid
+        let receiver = object["receiver"]["uid"].stringValue == UserManager.shared.uid ? object["sender"] : object["receiver"]
         room?.receiverId = receiver["uid"].stringValue
         room?.receiverName = receiver["name"].stringValue
         room?.receiverAvatar = receiver["avatar"].stringValue

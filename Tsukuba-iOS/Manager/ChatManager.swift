@@ -190,6 +190,13 @@ class ChatManager {
                 
                 for object in result["new"].arrayValue {
                     let room = self.dao.roomDao.saveOrUpdate(object)
+                    let lastMessage = object["lastMessage"].stringValue
+                    switch lastMessage {
+                    case "[picture]":
+                        room.lastMessage = R.string.localizable.last_message_picture()
+                    default:
+                        room.lastMessage = lastMessage
+                    }
                     // Set chat - 1 to sync data.
                     if isLoginCheck {
                         room.chats = room.chats - 10
