@@ -1,7 +1,7 @@
 import UIKit
 
-class UserProfileTableViewController: UITableViewController {
-
+class UserProfileViewController: UITableViewController {
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
@@ -31,14 +31,6 @@ class UserProfileTableViewController: UITableViewController {
             self.loadUser()
         }
     }
-    
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == R.segue.userProfileTableViewController.chatSegue.identifier {
-            let destination = segue.destination as! ChatViewController
-            destination.receiver = user
-        }
-    }
 
     // MARK: - Service
     func loadUser() {
@@ -64,7 +56,10 @@ class UserProfileTableViewController: UITableViewController {
             if UserManager.shared.isCurrentUser(user!) {
                 showTip(R.string.localizable.chats_self_not_allow())
             } else {
-                performSegue(withIdentifier: R.segue.userProfileTableViewController.chatSegue, sender: self)
+                if let chatViewController = R.storyboard.chat.chatViewController() {
+                    chatViewController.receiver = user
+                    navigationController?.pushViewController(chatViewController, animated: true)
+                }
             }
         } else {
             showLoginAlert()

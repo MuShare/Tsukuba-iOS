@@ -9,7 +9,9 @@
 import UIKit
 import ESPullToRefresh
 
-class RoomsTableViewController: UITableViewController {
+class RoomsViewController: UIViewController {
+    
+    @IBOutlet weak var tableView: UITableView!
     
     let dao = DaoManager.shared
     let userManager = UserManager.shared
@@ -24,6 +26,9 @@ class RoomsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.hideFooterView()
+        
         if !userManager.login {
             showLoginAlert()
         }
@@ -48,16 +53,6 @@ class RoomsTableViewController: UITableViewController {
         rooms = dao.roomDao.findAll()
         tableView.reloadData()
     }
-
-    // MARK: Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == R.segue.roomsTableViewController.chatSegue.identifier {
-            let destination = segue.destination as! ChatViewController
-            destination.receiver = User(uid: selectedRoom.receiverId!,
-                                        name: selectedRoom.receiverName!,
-                                        avatar: selectedRoom.receiverAvatar!)
-        }
-    }
     
     // MARK: Service
     @objc func connecting() {
@@ -75,25 +70,30 @@ class RoomsTableViewController: UITableViewController {
 
 }
 
-extension RoomsTableViewController {
+extension RoomsViewController: UITableViewDataSource {
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rooms.count
     }
     
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0.01
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.roomIdentifier.identifier, for: indexPath) as! ReceiverTableViewCell
         cell.room = rooms[indexPath.row]
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedRoom = rooms[indexPath.row]
-        performSegue(withIdentifier: R.segue.roomsTableViewController.chatSegue, sender: self)
+}
+
+extension RoomsViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let room = rooms[indexPath.row]
+        if let chatViewController = R.storyboard.chat.chatViewController() {
+            chatViewController.receiver = User(uid: room.receiverId!,
+                                               name: room.receiverName!,
+                                               avatar: room.receiverAvatar!)
+            navigationController?.pushViewController(chatViewController, animated: true)
+        }
     }
     
 }

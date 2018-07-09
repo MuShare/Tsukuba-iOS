@@ -44,11 +44,8 @@ class MessageTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case R.segue.messageTableViewController.userProfileSegue.identifier:
-            let destination = segue.destination as! UserProfileTableViewController
+            let destination = segue.destination as! UserProfileViewController
             destination.uid = message?.author?.uid
-        case R.segue.messageTableViewController.chatSegue.identifier:
-            let destination = segue.destination as! ChatViewController
-            destination.receiver = message?.author
         default:
             break
         }
@@ -61,7 +58,10 @@ class MessageTableViewController: UITableViewController {
     
     @IBAction func chat(_ sender: Any) {
         if userManager.login {
-            performSegue(withIdentifier: R.segue.messageTableViewController.chatSegue, sender: self)
+            if let chatViewController = R.storyboard.chat.chatViewController() {
+                chatViewController.receiver = message?.author
+                navigationController?.pushViewController(chatViewController, animated: true)
+            }
         } else {
             showLoginAlert()
         }

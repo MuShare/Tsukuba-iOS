@@ -198,13 +198,10 @@
 "ne0-h5-cTz.text" = "Jan 01, 2018";
 
 /* Class = "UILabel"; text = "Chat time"; ObjectID = "lxz-Aj-2LQ"; */
-"lxz-Aj-2LQ.text" = "Chat time";
+//"lxz-Aj-2LQ.text" = "Chat time";
 
 /* Class = "UITabBarItem"; title = "Posts"; ObjectID = "ztZ-SX-a83"; */
 "ztZ-SX-a83.title" = "ポスト";
-
-/* Class = "UITabBarItem"; title = "Chats"; ObjectID = "5cy-rd-Dyu"; */
-"5cy-rd-Dyu.title" = "チャット";
 
 /* Class = "UITabBarItem"; title = "Posts"; ObjectID = "wlz-9M-kXv"; */
 "wlz-9M-kXv.title" = "ポスト";
@@ -212,3 +209,5 @@
 /* Class = "UITabBarItem"; title = "Me"; ObjectID = "m54-gR-7ft"; */
 "m54-gR-7ft.title" = "設定";
 
+/* Class = "UITabBarItem"; title = "Chats"; ObjectID = "fKh-9V-okV"; */
+"fKh-9V-okV.title" = "チャット";
