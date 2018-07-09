@@ -68,9 +68,6 @@
 /* Class = "UILabel"; text = "Title"; ObjectID = "SJv-rf-c8d"; */
 "SJv-rf-c8d.text" = "标题";
 
-/* Class = "UINavigationItem"; title = "Me"; ObjectID = "Ssb-t2-Cvz"; */
-//"Ssb-t2-Cvz.title" = "我";
-
 /* Class = "UILabel"; text = "Selection"; ObjectID = "Uej-GD-XFj"; */
 "Uej-GD-XFj.text" = "选项";
 
@@ -204,14 +201,14 @@
 "lxz-Aj-2LQ.text" = "Chat time";
 
 /* Class = "UITabBarItem"; title = "Posts"; ObjectID = "ztZ-SX-a83"; */
-"ztZ-SX-a83.title" = "Posts";
+"ztZ-SX-a83.title" = "帖子";
 
 /* Class = "UITabBarItem"; title = "Chats"; ObjectID = "5cy-rd-Dyu"; */
-"5cy-rd-Dyu.title" = "Chats";
+"5cy-rd-Dyu.title" = "消息";
 
 /* Class = "UITabBarItem"; title = "Posts"; ObjectID = "wlz-9M-kXv"; */
-"wlz-9M-kXv.title" = "Posts";
+"wlz-9M-kXv.title" = "帖子";
 
 /* Class = "UITabBarItem"; title = "Me"; ObjectID = "m54-gR-7ft"; */
-"m54-gR-7ft.title" = "Me";
+"m54-gR-7ft.title" = "我的";
 
