@@ -10,6 +10,16 @@ import UIKit
 
 extension UIViewController {
     
+    var bottomPadding: CGFloat {
+        var bottomPadding: CGFloat = 0
+        if #available(iOS 11.0, *) {
+            if let window = UIApplication.shared.keyWindow {
+                bottomPadding = window.safeAreaInsets.bottom
+            }
+        }
+        return bottomPadding
+    }
+    
     func setCustomBack() {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back"),
                                                                 style: .plain,
@@ -20,11 +30,6 @@ extension UIViewController {
     
     @objc func closeView(){
         self.navigationController?.popViewController(animated: true)
-    }
-    
-    func hideFooterView(for tableView: UITableView) {
-        tableView.tableFooterView = UIView(frame: CGRect.zero)
-        tableView.tableFooterView?.backgroundColor = UIColor.clear
     }
 
     func showTip(_ tip: String) {
@@ -60,16 +65,10 @@ extension UIViewController {
                                                 message: R.string.localizable.sign_in_at_first(),
                                                 preferredStyle: .alert)
         alertController.view.tintColor = Color.main
-        let signin = UIAlertAction(title: R.string.localizable.sign_in_now(),
-                                   style: .destructive,
-                                   handler:
-            { (action) in
-                self.present(UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()!,
-                             animated: true, completion: nil)
-        })
-        let later = UIAlertAction(title: R.string.localizable.later_name(),
-                                  style: .cancel,
-                                  handler: nil)
+        let signin = UIAlertAction(title: R.string.localizable.sign_in_now(), style: .destructive) { action in
+            self.present(R.storyboard.login.instantiateInitialViewController()!, animated: true)
+        }
+        let later = UIAlertAction(title: R.string.localizable.later_name(),style: .cancel, handler: nil)
         alertController.addAction(signin)
         alertController.addAction(later)
         present(alertController, animated: true, completion: nil)
