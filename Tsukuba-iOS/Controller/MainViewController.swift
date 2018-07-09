@@ -81,7 +81,7 @@ extension MainViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if viewController.isKind(of: MessagesViewController.self) {
             updateNavigationBar(with: .posts)
-        } else if viewController.isKind(of: RoomsTableViewController.self) {
+        } else if viewController.isKind(of: RoomsViewController.self) {
             updateNavigationBar(with: .chats)
         } else if viewController.isKind(of: MeTableViewController.self) {
             updateNavigationBar(with: .me)
