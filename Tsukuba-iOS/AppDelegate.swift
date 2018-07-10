@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let config = Config.shared
     
     var isChatting = false
+    var waitingRoomId: String? = nil
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -128,6 +129,11 @@ extension AppDelegate: SocketManagerDelegate {
         NotificationCenter.default.post(name: .didReceiveNewChat, object: self, userInfo: [
             "chats": chats
         ])
+        
+        if let roomId = waitingRoomId, let room = DaoManager.shared.roomDao.getByRid(roomId) {
+            waitingRoomId = nil
+            openChatRoom(room)
+        }
     }
     
 }
@@ -138,23 +144,29 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         switch response.notification.request.content.notificationType {
         case .chat(let roomId):
             guard let room = DaoManager.shared.roomDao.getByRid(roomId) else {
+                // If the room has not be found, save the room id temporarily.
+                waitingRoomId = roomId
                 return
             }
-            if let rootViewController = window?.rootViewController as? UINavigationController {
-                rootViewController.popToRootViewController(animated: false)
-                if let mainViewController = rootViewController.viewControllers[0] as? MainViewController {
-                    mainViewController.changeTab(with: .chats)
-                    if let chatViewController = R.storyboard.chat.chatViewController() {
-                        chatViewController.receiver = User(uid: room.receiverId!,
-                                                           name: room.receiverName!,
-                                                           avatar: room.receiverAvatar!)
-                        mainViewController.navigationController?.pushViewController(chatViewController, animated: true)
-                    }
-                }
-            }
+            openChatRoom(room)
             break
         case .unknown:
             break
+        }
+    }
+    
+    func openChatRoom(_ room: Room) {
+        if let rootViewController = window?.rootViewController as? UINavigationController {
+            rootViewController.popToRootViewController(animated: false)
+            if let mainViewController = rootViewController.viewControllers[0] as? MainViewController {
+                mainViewController.changeTab(with: .chats)
+                if let chatViewController = R.storyboard.chat.chatViewController() {
+                    chatViewController.receiver = User(uid: room.receiverId!,
+                                                       name: room.receiverName!,
+                                                       avatar: room.receiverAvatar!)
+                    mainViewController.navigationController?.pushViewController(chatViewController, animated: true)
+                }
+            }
         }
     }
     
