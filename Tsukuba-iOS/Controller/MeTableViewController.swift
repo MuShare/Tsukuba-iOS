@@ -21,8 +21,8 @@ class MeTableViewController: UITableViewController {
             updateUserInfo()
             user.pullUser(completion: { [weak self] success in
                 if let `self` = self, success {
-                    if (self.user.contact == "" || self.user.address == "") {
-                        self.performSegue(withIdentifier: R.segue.meTableViewController.profileSegue, sender: self)
+                    if (self.user.contact == "" || self.user.address == "" || self.user.avatar == "") {
+                        self.showTip(R.string.localizable.fill_user_info())
                     }
                     self.updateUserInfo()
                 }
@@ -89,18 +89,20 @@ extension MeTableViewController {
             }
         case R.reuseIdentifier.myMessages.identifier:
             if user.login {
-                performSegue(withIdentifier: R.segue.meTableViewController.myMessagesSegue, sender: "")
+                performSegue(withIdentifier: R.segue.meTableViewController.myMessagesSegue, sender: self)
             } else {
                 showLoginAlert()
             }
         case R.reuseIdentifier.myFavorites.identifier:
             if user.login {
-                performSegue(withIdentifier: R.segue.meTableViewController.myFavoritesSegue, sender: "")
+                performSegue(withIdentifier: R.segue.meTableViewController.myFavoritesSegue, sender: self)
             } else {
                 showLoginAlert()
             }
         case R.reuseIdentifier.github.identifier:
-            UIApplication.shared.openURL(URL.init(string: "https://github.com/MuShare/Tsukuba-iOS")!)
+            if let url = URL(string: "https://github.com/MuShare/Tsukuba-iOS") {
+                UIApplication.shared.open(url, options: [:])
+            }
         default:
             break
         }
