@@ -89,12 +89,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-    
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        if DEBUG {
-            NSLog("Received remote notification, userInfo = %@", userInfo);
-        }
-    }
 
 }
 
@@ -135,14 +129,29 @@ extension AppDelegate: SocketManagerDelegate {
             "chats": chats
         ])
     }
+    
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         switch response.notification.request.content.notificationType {
-        case .chat(let receiverId):
-            print("open a chat with " + receiverId)
+        case .chat(let roomId):
+            guard let room = DaoManager.shared.roomDao.getByRid(roomId) else {
+                return
+            }
+            if let rootViewController = window?.rootViewController as? UINavigationController {
+                rootViewController.popToRootViewController(animated: false)
+                if let mainViewController = rootViewController.viewControllers[0] as? MainViewController {
+                    mainViewController.changeTab(with: .chats)
+                    if let chatViewController = R.storyboard.chat.chatViewController() {
+                        chatViewController.receiver = User(uid: room.receiverId!,
+                                                           name: room.receiverName!,
+                                                           avatar: room.receiverAvatar!)
+                        mainViewController.navigationController?.pushViewController(chatViewController, animated: true)
+                    }
+                }
+            }
             break
         case .unknown:
             break
