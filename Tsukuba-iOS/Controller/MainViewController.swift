@@ -8,10 +8,10 @@
 
 import UIKit
 
-enum MainTabType {
-    case posts
-    case chats
-    case me
+enum MainTabType: Int {
+    case posts = 0
+    case chats = 1
+    case me = 2
 }
 
 class MainViewController: UITabBarController {
@@ -34,7 +34,6 @@ class MainViewController: UITabBarController {
     }
     
     @objc func createMessage() {
-        print("writePost")
         guard let viewController = selectedViewController, viewController.isKind(of: MessagesViewController.self) else {
             return
         }
@@ -74,6 +73,10 @@ class MainViewController: UITabBarController {
         }
     }
 
+    func changeTab(with type: MainTabType) {
+        selectedIndex = type.rawValue
+        updateNavigationBar(with: type)
+    }
 }
 
 extension MainViewController: UITabBarControllerDelegate {
