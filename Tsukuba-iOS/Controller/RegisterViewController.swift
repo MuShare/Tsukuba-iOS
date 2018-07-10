@@ -18,7 +18,7 @@ class RegisterViewController: LoginBaseViewController, NVActivityIndicatorViewab
         super.viewDidLoad()
 
         registerButton.layer.borderColor = UIColor.lightGray.cgColor
-        self.shownHeight = registerButton.frame.maxY
+        shownHeight = registerButton.frame.maxY
     }
     
     override func viewDidLayoutSubviews() {
@@ -26,17 +26,24 @@ class RegisterViewController: LoginBaseViewController, NVActivityIndicatorViewab
         if UIDevice.current.isX() {
             minY += 100
         }
-        self.shownHeight = minY
+        shownHeight = minY
     }
     
     // MARK: - Action
     @IBAction func back(_ sender: Any) {
-        _ = self.navigationController?.popViewController(animated: true)
+        if registered {
+            if let loginViewController = navigationController?.viewControllers[0] as? LoginViewController {
+                loginViewController.emailTextField.text = emailTextField.text
+                loginViewController.passwordTextField.text = passwordTextField.text
+            }
+        }
+        
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func register(_ sender: Any) {
         if registered {
-            _ = self.navigationController?.popViewController(animated: true)
+            back(registerButton)
             return
         }
         guard let email = emailTextField.text,
@@ -56,10 +63,10 @@ class RegisterViewController: LoginBaseViewController, NVActivityIndicatorViewab
         finishEdit()
         startAnimating()
         
-        user.register(email: email,
-                      name: username,
-                      password: password)
-        { (success, message) in
+        user.register(email: email, name: username, password: password) { [weak self] (success, message) in
+            guard let `self` = self else {
+                return
+            }
             self.stopAnimating()
             
             if (success) {
