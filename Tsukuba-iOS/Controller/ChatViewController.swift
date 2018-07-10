@@ -113,17 +113,6 @@ class ChatViewController: UIViewController {
         view.addSubview(inputBar)
         createConstraints()
 
-        tableView.es.addPullToRefresh {
-            if let room = self.room {
-                self.insertRows(at: .first) { position in
-                    let chats = DaoManager.shared.chatDao.find(in: room, smallerThan: self.smallestSeq, pageSize: Const.pageSize)
-                    return self.updateModels(with: chats, at: position)
-                }
-            }
-
-            self.tableView.es.stopPullToRefresh()
-        }
-
         room = DaoManager.shared.roomDao.getByReceiverId(receiver.uid)
         if let room = room {
             // Load the latest messages at first.
@@ -140,6 +129,38 @@ class ChatViewController: UIViewController {
                 if let `self` = self, chats.count > 0 {
                     self.insertChats(chats)
                 }
+            }
+        }
+        
+        tableView.es.addPullToRefresh {
+            guard let room = self.room else {
+                self.tableView.es.stopPullToRefresh()
+                return
+            }
+            
+            let chats = DaoManager.shared.chatDao.find(in: room, smallerThan: self.smallestSeq, pageSize: Const.pageSize)
+            self.insertRows(at: .first) { position in
+                return self.updateModels(with: chats, at: position)
+            }
+            
+            if chats.count == Const.pageSize || self.smallestSeq == 1 {
+                self.tableView.es.stopPullToRefresh()
+                return
+            }
+            
+            // Load more chats from server.
+            let seq = self.smallestSeq - Int16(Const.pageSize - 1)
+            let pageSize = Const.pageSize - chats.count
+            ChatManager.shared.syncChat(room, from: seq, with: pageSize) { [weak self] (success, chats, message) in
+                guard let `self` = self else {
+                    return
+                }
+                if success {
+                    self.insertRows(at: .first) { position in
+                        return self.updateModels(with: chats, at: position)
+                    }
+                }
+                self.tableView.es.stopPullToRefresh()
             }
         }
         
