@@ -156,6 +156,10 @@ class ChatViewController: UIViewController {
                     return
                 }
                 if success {
+                    self.appendPreviewPictures(pictures: chats.filter {
+                        $0.type == ChatMessageType.picture.rawValue
+                    }, at: .first)
+                    
                     self.insertRows(at: .first) { position in
                         return self.updateModels(with: chats, at: position)
                     }
@@ -400,13 +404,25 @@ class ChatViewController: UIViewController {
         return create ? ChatCellModel(type: .time(time)) : nil
     }
     
-    private func appendPreviewPictures(pictures: [Chat]) {
-        for picture in pictures {
+    private func appendPreviewPictures(pictures: [Chat], at position: ChatInsertPosition = .last) {
+        var sorted = pictures
+        if position == .first {
+            sorted.sort {
+                $0.seq > $1.seq
+            }
+        }
+        
+        for picture in sorted {
             let time = dateFormatter.string(from: picture.createAt!)
             let photo = AXPhoto(attributedTitle: nil,
                                 attributedDescription: NSAttributedString(string: time),
                                 url: Config.shared.imageURL(picture.content!))
-            photos.append(photo)
+            switch position {
+            case .first:
+                photos.insert(photo, at: 0)
+            case .last:
+                photos.append(photo)
+            }
         }
     }
     
