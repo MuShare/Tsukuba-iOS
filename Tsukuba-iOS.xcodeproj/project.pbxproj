@@ -19,6 +19,7 @@
 		7792187020B7BD83004E83C1 /* UITableViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7792186F20B7BD83004E83C1 /* UITableViewController+Extension.swift */; };
 		77A8DCA120F307E5000FFC02 /* ChatInputBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A8DCA020F307E5000FFC02 /* ChatInputBarView.swift */; };
 		77A8DCA320F34527000FFC02 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77A8DCA220F34527000FFC02 /* Chat.storyboard */; };
+		77A8DCA520F4713A000FFC02 /* UNNotificationContent+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A8DCA420F4713A000FFC02 /* UNNotificationContent+Extension.swift */; };
 		77EA3DCA20E62D3000BCB23D /* ChatPictureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EA3DC920E62D3000BCB23D /* ChatPictureTableViewCell.swift */; };
 		77EA3DD820E9D7AC00BCB23D /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EA3DD720E9D7AC00BCB23D /* UITableView+Extension.swift */; };
 		77F1946020BCF6B7001B3F6E /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F1945F20BCF6B6001B3F6E /* R.generated.swift */; };
@@ -127,6 +128,7 @@
 		7792186F20B7BD83004E83C1 /* UITableViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewController+Extension.swift"; sourceTree = "<group>"; };
 		77A8DCA020F307E5000FFC02 /* ChatInputBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputBarView.swift; sourceTree = "<group>"; };
 		77A8DCA220F34527000FFC02 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
+		77A8DCA420F4713A000FFC02 /* UNNotificationContent+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UNNotificationContent+Extension.swift"; sourceTree = "<group>"; };
 		77EA3DC920E62D3000BCB23D /* ChatPictureTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPictureTableViewCell.swift; sourceTree = "<group>"; };
 		77EA3DD720E9D7AC00BCB23D /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		77F1945F20BCF6B6001B3F6E /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 				77F2E7D120C5274E001E7AB3 /* UITextField+Extension.swift */,
 				77F2E7CF20C52729001E7AB3 /* UIView+Extension.swift */,
 				E41F7D111EC3EB92002E8184 /* UIViewController+Extension.swift */,
+				77A8DCA420F4713A000FFC02 /* UNNotificationContent+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -769,6 +772,7 @@
 				E4B52B6A1EF3A77E0030BD2D /* MyFavoritesViewController.swift in Sources */,
 				77F2E7D420C52779001E7AB3 /* UIDevice+Extension.swift in Sources */,
 				E4089FE21EBAF8F40042221D /* CategoryCollectionViewCell.swift in Sources */,
+				77A8DCA520F4713A000FFC02 /* UNNotificationContent+Extension.swift in Sources */,
 				E4054AE31EC48D29006BCEEC /* ResetViewController.swift in Sources */,
 				77A8DCA120F307E5000FFC02 /* ChatInputBarView.swift in Sources */,
 				E41F7D011EC34CB8002E8184 /* MessagesViewController.swift in Sources */,
@@ -1014,7 +1018,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Tsukuba-iOS/Tsukuba-iOS.entitlements";
 				DEVELOPMENT_TEAM = 6ANM44X2CJ;
 				INFOPLIST_FILE = "Tsukuba-iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.mushare.Tsukuba-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1033,7 +1037,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Tsukuba-iOS/Tsukuba-iOS.entitlements";
 				DEVELOPMENT_TEAM = 6ANM44X2CJ;
 				INFOPLIST_FILE = "Tsukuba-iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.mushare.Tsukuba-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";

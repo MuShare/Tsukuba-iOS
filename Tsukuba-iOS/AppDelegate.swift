@@ -12,6 +12,7 @@ import FacebookCore
 import Alamofire
 import SwiftyJSON
 import AudioToolbox
+import UserNotifications
 
 extension Notification.Name {
     static let webSocketConnecting = Notification.Name("org.mushare.tsukuba.webSocketConnecting")
@@ -36,10 +37,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set suitable columns for iPhone and iPad.
         config.setupColumns(UIScreen.main.bounds.size.width)
 
-        UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings.init(types: [.alert, .badge, .sound], categories: nil))
-        UIApplication.shared.registerForRemoteNotifications()
-        if let userInfo = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] {
-            print(userInfo)
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .alert, .sound]) { (granted, error) in
+            if granted {
+                DispatchQueue.main.async {
+                    application.registerForRemoteNotifications()
+                }
+            }
         }
         
         // Avoid flash of the navigation bar when pushing a new view controller.
@@ -50,13 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SocketManager.shared.refreshSocket()
         SocketManager.shared.delegate = self
  
-        return true
-    }
-    
-    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-        if let userInfo = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] {
-            
-        }
         return true
     }
 
@@ -98,8 +95,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSLog("Received remote notification, userInfo = %@", userInfo);
         }
     }
-    
-    
 
 }
 
@@ -140,4 +135,18 @@ extension AppDelegate: SocketManagerDelegate {
             "chats": chats
         ])
     }
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        switch response.notification.request.content.notificationType {
+        case .chat(let receiverId):
+            print("open a chat with " + receiverId)
+            break
+        case .unknown:
+            break
+        }
+    }
+    
 }
