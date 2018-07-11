@@ -28,7 +28,7 @@
         <!--Login View Controller-->
         <scene sceneID="njO-Wx-jGq">
             <objects>
-                <viewController id="5mo-Rn-c3C" customClass="LoginViewController" customModule="Tsukuba_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="5mo-Rn-c3C" customClass="LoginViewController" customModule="Tsukuba_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mxh-BW-EaG"/>
                         <viewControllerLayoutGuide type="bottom" id="GzW-YC-032"/>

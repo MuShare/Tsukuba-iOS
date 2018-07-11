@@ -21,16 +21,16 @@ class LoginViewController: LoginBaseViewController, NVActivityIndicatorViewable 
         if UIDevice.current.isX() {
             minY += 100
         }
-        self.shownHeight = minY
+        shownHeight = minY
     }
 
     // MARK: - Action
     @IBAction func close(_ sender: Any) {
-        self.dismiss(animated: true)
+        dismiss(animated: true)
     }
     
     @IBAction func swipeDown(_ sender: UISwipeGestureRecognizer) {
-        self.dismiss(animated: true)
+        dismiss(animated: true)
     }
     
     @IBAction func login(_ sender: Any) {

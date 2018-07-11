@@ -113,17 +113,6 @@ class ChatViewController: UIViewController {
         view.addSubview(inputBar)
         createConstraints()
 
-        tableView.es.addPullToRefresh {
-            if let room = self.room {
-                self.insertRows(at: .first) { position in
-                    let chats = DaoManager.shared.chatDao.find(in: room, smallerThan: self.smallestSeq, pageSize: Const.pageSize)
-                    return self.updateModels(with: chats, at: position)
-                }
-            }
-
-            self.tableView.es.stopPullToRefresh()
-        }
-
         room = DaoManager.shared.roomDao.getByReceiverId(receiver.uid)
         if let room = room {
             // Load the latest messages at first.
@@ -140,6 +129,42 @@ class ChatViewController: UIViewController {
                 if let `self` = self, chats.count > 0 {
                     self.insertChats(chats)
                 }
+            }
+        }
+        
+        tableView.es.addPullToRefresh {
+            guard let room = self.room else {
+                self.tableView.es.stopPullToRefresh()
+                return
+            }
+            
+            let chats = DaoManager.shared.chatDao.find(in: room, smallerThan: self.smallestSeq, pageSize: Const.pageSize)
+            self.insertRows(at: .first) { position in
+                return self.updateModels(with: chats, at: position)
+            }
+            
+            if chats.count == Const.pageSize || self.smallestSeq == 1 {
+                self.tableView.es.stopPullToRefresh()
+                return
+            }
+            
+            // Load more chats from server.
+            let seq = self.smallestSeq - Int16(Const.pageSize - 1)
+            let pageSize = Const.pageSize - chats.count
+            ChatManager.shared.syncChat(room, from: seq, with: pageSize) { [weak self] (success, chats, message) in
+                guard let `self` = self else {
+                    return
+                }
+                if success {
+                    self.appendPreviewPictures(pictures: chats.filter {
+                        $0.type == ChatMessageType.picture.rawValue
+                    }, at: .first)
+                    
+                    self.insertRows(at: .first) { position in
+                        return self.updateModels(with: chats, at: position)
+                    }
+                }
+                self.tableView.es.stopPullToRefresh()
             }
         }
         
@@ -379,13 +404,25 @@ class ChatViewController: UIViewController {
         return create ? ChatCellModel(type: .time(time)) : nil
     }
     
-    private func appendPreviewPictures(pictures: [Chat]) {
-        for picture in pictures {
+    private func appendPreviewPictures(pictures: [Chat], at position: ChatInsertPosition = .last) {
+        var sorted = pictures
+        if position == .first {
+            sorted.sort {
+                $0.seq > $1.seq
+            }
+        }
+        
+        for picture in sorted {
             let time = dateFormatter.string(from: picture.createAt!)
             let photo = AXPhoto(attributedTitle: nil,
                                 attributedDescription: NSAttributedString(string: time),
                                 url: Config.shared.imageURL(picture.content!))
-            photos.append(photo)
+            switch position {
+            case .first:
+                photos.insert(photo, at: 0)
+            case .last:
+                photos.append(photo)
+            }
         }
     }
     
