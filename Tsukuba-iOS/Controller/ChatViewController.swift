@@ -107,6 +107,8 @@ class ChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.register(ChatPictureTableViewCell.self, forCellReuseIdentifier: "ChatPictureTableViewCell")
+        
         setCustomBack()
         navigationItem.title = receiver.name
         
@@ -482,16 +484,15 @@ extension ChatViewController: UITableViewDataSource {
             cell.fill(with: .receive, avatar: avatar, message: content)
             return cell
         case .pictureSending(let pictureImage):
-            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.pictureSenderIdentifier, for: indexPath)!
-            cell.fillSending(with: pictureImage, avatar: currentUserAvarar, delegate: self)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ChatPictureTableViewCell", for: indexPath) as! ChatPictureTableViewCell
+            cell.fill(with: pictureImage, avatar: currentUserAvarar, delegate: self)
             return cell
         case .pictureSender(let pictureUrl, let size):
-            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.pictureSenderIdentifier, for: indexPath)!
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ChatPictureTableViewCell", for: indexPath) as! ChatPictureTableViewCell
             cell.fill(with: pictureUrl, size: size, avatar: currentUserAvarar, delegate: self)
-
             return cell
         case .pictureReceiver(let avatar, let pictureUrl, let size):
-            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.pictureReceiverIdentifier, for: indexPath)!
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ChatPictureTableViewCell", for: indexPath) as! ChatPictureTableViewCell
             cell.fill(with: pictureUrl, size: size, avatar: avatar, delegate: self)
             return cell
         case .none:

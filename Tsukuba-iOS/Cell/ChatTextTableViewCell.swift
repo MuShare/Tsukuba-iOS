@@ -13,9 +13,11 @@ enum ChatTextCellDirection {
     case send
     case receive
 }
+
 class ChatTextTableViewCell: UITableViewCell {
     
     private struct Const {
+        
         struct backgroud {
             static let horizontalMargin: CGFloat = 63
             static let topMargin: CGFloat = 12
@@ -32,6 +34,7 @@ class ChatTextTableViewCell: UITableViewCell {
         
         static let maxMessageWidth = UIScreen.main.bounds.width - 2.0 * Const.backgroud.horizontalMargin
             - Const.message.leadingMargin - Const.message.trailingMargin
+        
     }
     
     @IBOutlet weak var avatarImageView: UIImageView!
