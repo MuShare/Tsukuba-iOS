@@ -48,7 +48,7 @@ class ChatViewController: UIViewController {
     }()
     
     private struct Const {
-        static let toolBarHeight: CGFloat = 50.0
+        static let inputBarHeight: CGFloat = 50.0
         static let pageSize = 10
         static let timeLabelSmallestInterval: TimeInterval = 5 * 60
     }
@@ -63,11 +63,14 @@ class ChatViewController: UIViewController {
         ]
         return imagePickerController
     }()
+    
+    private lazy var inputBar: ChatInputBarView = {
+        let barView = ChatInputBarView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: Const.inputBarHeight))
+        barView.delegate = self
+        return barView
+    }()
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var plainTextField: UITextField!
-    @IBOutlet weak var toolBarView: UIView!
-    @IBOutlet weak var sendButton: UIButton!
     
     var receiver: User!
     
@@ -93,22 +96,22 @@ class ChatViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
+    var navStatusHeight: CGFloat {
+        var height = UIApplication.shared.statusBarFrame.size.height
+        if let navigation = navigationController {
+            height += navigation.navigationBar.frame.size.height
+        }
+        return height
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setCustomBack()
         navigationItem.title = receiver.name
-
-        tableView.es.addPullToRefresh {
-            if let room = self.room {
-                self.insertRows(at: .first) { position in
-                    let chats = DaoManager.shared.chatDao.find(in: room, smallerThan: self.smallestSeq, pageSize: Const.pageSize)
-                    return self.updateModels(with: chats, at: position)
-                }
-            }
-
-            self.tableView.es.stopPullToRefresh()
-        }
+        
+        view.addSubview(inputBar)
+        createConstraints()
 
         room = DaoManager.shared.roomDao.getByReceiverId(receiver.uid)
         if let room = room {
@@ -128,8 +131,42 @@ class ChatViewController: UIViewController {
                 }
             }
         }
-
-        viewHeight = view.frame.size.height - UIApplication.shared.statusBarFrame.size.height - (navigationController?.navigationBar.frame.size.height)!
+        
+        tableView.es.addPullToRefresh {
+            guard let room = self.room else {
+                self.tableView.es.stopPullToRefresh()
+                return
+            }
+            
+            let chats = DaoManager.shared.chatDao.find(in: room, smallerThan: self.smallestSeq, pageSize: Const.pageSize)
+            self.insertRows(at: .first) { position in
+                return self.updateModels(with: chats, at: position)
+            }
+            
+            if chats.count == Const.pageSize || self.smallestSeq == 1 {
+                self.tableView.es.stopPullToRefresh()
+                return
+            }
+            
+            // Load more chats from server.
+            let seq = self.smallestSeq - Int16(Const.pageSize - 1)
+            let pageSize = Const.pageSize - chats.count
+            ChatManager.shared.syncChat(room, from: seq, with: pageSize) { [weak self] (success, chats, message) in
+                guard let `self` = self else {
+                    return
+                }
+                if success {
+                    self.appendPreviewPictures(pictures: chats.filter {
+                        $0.type == ChatMessageType.picture.rawValue
+                    }, at: .first)
+                    
+                    self.insertRows(at: .first) { position in
+                        return self.updateModels(with: chats, at: position)
+                    }
+                }
+                self.tableView.es.stopPullToRefresh()
+            }
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(didReceiveNewChat),
                                                name: .didReceiveNewChat, object: nil)
@@ -142,28 +179,19 @@ class ChatViewController: UIViewController {
             if keyboardVisibleHeight == 0 {
                 self.currentKeyboardHeight = 0
                 UIView.animate(withDuration: 0.2) {
-                    self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: UIScreen.main.bounds.height)
+                    self.inputBar.snp.updateConstraints {
+                        $0.bottom.equalToSuperview().offset(-self.bottomPadding)
+                    }
                 }
             } else {
-                if keyboardVisibleHeight <= self.currentKeyboardHeight {
+                if keyboardVisibleHeight < self.currentKeyboardHeight {
                     return
                 }
                 self.currentKeyboardHeight = keyboardVisibleHeight
-
-                let tableHeight = self.tableView.contentSize.height
-                let hiddenHeight = self.viewHeight - Const.toolBarHeight - keyboardVisibleHeight
                 
                 UIView.animate(withDuration: 0.2) {
-                    if tableHeight < hiddenHeight {
-                        self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height - keyboardVisibleHeight)
-                    } else {
-                        self.view.frame = CGRect(x: 0, y: -keyboardVisibleHeight, width: self.view.frame.size.width, height: self.view.frame.size.height)
-                        if tableHeight < self.viewHeight - Const.toolBarHeight {
-                            self.tableView.frame = CGRect(x: self.tableView.frame.origin.x,
-                                                          y: self.tableView.frame.origin.y + self.viewHeight - tableHeight - Const.toolBarHeight,
-                                                          width: self.tableView.frame.size.width,
-                                                          height: tableHeight)
-                        }
+                    self.inputBar.snp.updateConstraints {
+                        $0.bottom.equalToSuperview().offset(-self.bottomPadding - keyboardVisibleHeight)
                     }
                 }
             }
@@ -190,6 +218,24 @@ class ChatViewController: UIViewController {
 
         appDelagate.isChatting = false
     }
+    
+    private func createConstraints() {
+        
+        inputBar.snp.makeConstraints {
+            $0.left.equalToSuperview()
+            $0.right.equalToSuperview()
+            $0.bottom.equalToSuperview().offset(-bottomPadding)
+            $0.height.equalTo(50)
+        }
+        
+        tableView.snp.makeConstraints {
+            $0.left.equalToSuperview()
+            $0.right.equalToSuperview()
+            $0.top.equalToSuperview().offset(navStatusHeight)
+            $0.bottom.equalTo(inputBar.snp.top)
+        }
+    }
+    
     
     private func insertChats(_ chats: [Chat]) {
         if (chats.count > 0) {
@@ -253,33 +299,6 @@ class ChatViewController: UIViewController {
         navigationItem.title = receiver.name
     }
     
-    // MARK: Action
-    @IBAction func send(_ sender: Any) {
-        if let content = plainTextField.text, content != "" {
-            plainTextField.text = ""
-            ChatManager.shared.sendPlainText(receiver: receiver.uid, content: content) { [weak self] (success, chat, message) in
-                if let `self` = self, let chat = chat {
-                    self.insertChats([chat])
-                }
-            }
-        }
-        
-    }
-    
-    @IBAction func openCamara(_ sender: Any) {
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            imagePickerController.sourceType = .camera
-            present(imagePickerController, animated: true)
-        }
-    }
-    
-    @IBAction func openPhotoLibrary(_ sender: Any) {
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-            imagePickerController.sourceType = .photoLibrary
-            present(imagePickerController, animated: true)
-        }
-    }
-    
     // MARK: - Service
     @discardableResult private func updateModels(with chats: [Chat], at postion: ChatInsertPosition) -> Int {
         // Set room if there is no messages before.
@@ -291,7 +310,7 @@ class ChatViewController: UIViewController {
         guard let room = room else {
             return 0
         }
-        
+ 
         if postion == .first {
             firstCreateAt = Date(timeIntervalSince1970: 0)
         }
@@ -306,6 +325,7 @@ class ChatViewController: UIViewController {
 
             // Plain text.
             let isSender = room.creator ? chat.direction : !chat.direction
+            
             var type: ChatCellType = .none
             switch chat.type {
             case ChatMessageType.plainText.rawValue:
@@ -384,28 +404,57 @@ class ChatViewController: UIViewController {
         return create ? ChatCellModel(type: .time(time)) : nil
     }
     
-    private func appendPreviewPictures(pictures: [Chat]) {
-        for picture in pictures {
+    private func appendPreviewPictures(pictures: [Chat], at position: ChatInsertPosition = .last) {
+        var sorted = pictures
+        if position == .first {
+            sorted.sort {
+                $0.seq > $1.seq
+            }
+        }
+        
+        for picture in sorted {
             let time = dateFormatter.string(from: picture.createAt!)
             let photo = AXPhoto(attributedTitle: nil,
                                 attributedDescription: NSAttributedString(string: time),
                                 url: Config.shared.imageURL(picture.content!))
-            photos.append(photo)
+            switch position {
+            case .first:
+                photos.insert(photo, at: 0)
+            case .last:
+                photos.append(photo)
+            }
         }
     }
     
 }
 
-extension ChatViewController: UITextFieldDelegate {
+extension ChatViewController: ChatInputBarDelegate {
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == plainTextField {
-            send(sendButton)
+    func didOpenCamara() {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePickerController.sourceType = .camera
+            present(imagePickerController, animated: true)
         }
-        return true
+    }
+    
+    func didOpenPhotoLibrary() {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            imagePickerController.sourceType = .photoLibrary
+            present(imagePickerController, animated: true)
+        }
+    }
+    
+    func didSendPlainText(_ text: String) {
+        ChatManager.shared.sendPlainText(receiver: receiver.uid, content: text) { [weak self] (success, chat, message) in
+            if let `self` = self, let chat = chat {
+                self.insertChats([chat])
+            }
+        }
     }
     
 }
+
+
 
 extension ChatViewController: UITableViewDataSource {
     
@@ -426,11 +475,11 @@ extension ChatViewController: UITableViewDataSource {
             return cell
         case .plainTextSender(let content):
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.chatSenderIdentifier, for: indexPath)!
-            cell.fill(avatar: UserManager.shared.avatar, message: content)
+            cell.fill(with: .send, avatar: UserManager.shared.avatar, message: content)
             return cell
         case .plainTextReceiver(let avatar, let content):
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.chatReceiverIdentifier, for: indexPath)!
-            cell.fill(avatar: avatar, message: content)
+            cell.fill(with: .receive, avatar: avatar, message: content)
             return cell
         case .pictureSending(let pictureImage):
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.pictureSenderIdentifier, for: indexPath)!
@@ -456,14 +505,14 @@ extension ChatViewController: UITableViewDataSource {
 extension ChatViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView == tableView && enableToCloseKeyboard && plainTextField.isFirstResponder {
-            if scrollView.panGestureRecognizer.translation(in: scrollView.superview).y > 30  {
+        if scrollView == tableView && enableToCloseKeyboard && inputBar.isFirstResponder {
+            if scrollView.panGestureRecognizer.translation(in: scrollView.superview).y > 15  {
                 enableToCloseKeyboard = false
-                plainTextField.resignFirstResponder()
+                inputBar.resignFirstResponder()
             }
         }
     }
-    
+
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         enableToCloseKeyboard = true
     }
@@ -539,4 +588,5 @@ extension ChatViewController: ChatPictureTableViewCellDelegate {
         let photosViewController = AXPhotosViewController(dataSource: dataSource)
         present(photosViewController, animated: true)
     }
+    
 }

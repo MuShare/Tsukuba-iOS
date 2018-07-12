@@ -150,14 +150,14 @@ extension SocketManager: WebSocketDelegate {
         
         var chats: [Chat] = []
         for object in array {
-            if self.dao.chatDao.isChatSaved(object["cid"].stringValue) {
+            if dao.chatDao.isChatSaved(object["cid"].stringValue) {
                 continue
             }
-            let chat = self.dao.chatDao.save(object)
+            let chat = dao.chatDao.save(object)
             
             chat.content = object["content"].stringValue
-            chat.room = self.dao.roomDao.getByRid(object["room"]["rid"].stringValue) ??
-                self.dao.roomDao.saveOrUpdate(object["room"])
+            chat.room = dao.roomDao.getByRid(object["room"]["rid"].stringValue) ??
+                dao.roomDao.saveOrUpdate(object["room"])
             if let room = chat.room {
                 room.chats = chat.seq
                 room.unread += 1
@@ -173,7 +173,7 @@ extension SocketManager: WebSocketDelegate {
             chats.append(chat)
             config.globalUnread += 1
         }
-        self.dao.saveContext()
+        dao.saveContext()
         
         delegate?.didReceiveSocketMessage(chats)
     }

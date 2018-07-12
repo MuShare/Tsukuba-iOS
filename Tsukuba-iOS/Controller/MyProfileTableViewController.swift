@@ -12,11 +12,7 @@ class MyProfileTableViewController: UITableViewController {
         self.setCustomBack()
         
         let user = UserManager.shared
-        if user.contact == "" || user.address == "" || user.avatar == "" {
-            showTip(R.string.localizable.fill_user_info())
-        }
-        
-        if UserManager.shared.login {
+        if user.login {
             avatarImageView.kf.setImage(with: user.avatarURL)
             nameTextField.text = user.name
             contactTextField.text = user.contact

@@ -25,6 +25,9 @@
 		777704D420E36D53003D5EA2 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777704D320E36D53003D5EA2 /* Date+Extension.swift */; };
 		777704D620E38322003D5EA2 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777704D520E38322003D5EA2 /* PaddingLabel.swift */; };
 		7792187020B7BD83004E83C1 /* UITableViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7792186F20B7BD83004E83C1 /* UITableViewController+Extension.swift */; };
+		77A8DCA120F307E5000FFC02 /* ChatInputBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A8DCA020F307E5000FFC02 /* ChatInputBarView.swift */; };
+		77A8DCA320F34527000FFC02 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77A8DCA220F34527000FFC02 /* Chat.storyboard */; };
+		77A8DCA520F4713A000FFC02 /* UNNotificationContent+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A8DCA420F4713A000FFC02 /* UNNotificationContent+Extension.swift */; };
 		77EA3DCA20E62D3000BCB23D /* ChatPictureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EA3DC920E62D3000BCB23D /* ChatPictureTableViewCell.swift */; };
 		77EA3DD820E9D7AC00BCB23D /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EA3DD720E9D7AC00BCB23D /* UITableView+Extension.swift */; };
 		77F1946020BCF6B7001B3F6E /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F1945F20BCF6B6001B3F6E /* R.generated.swift */; };
@@ -61,7 +64,7 @@
 		E41F7D121EC3EB92002E8184 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41F7D111EC3EB92002E8184 /* UIViewController+Extension.swift */; };
 		E42331781EC030FE00C3A6B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E42331771EC030FE00C3A6B0 /* Assets.xcassets */; };
 		E438442F20204AC5006E0369 /* ReceiverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E438442E20204AC5006E0369 /* ReceiverTableViewCell.swift */; };
-		E438443120204ADC006E0369 /* RoomsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E438443020204ADC006E0369 /* RoomsTableViewController.swift */; };
+		E438443120204ADC006E0369 /* RoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E438443020204ADC006E0369 /* RoomsViewController.swift */; };
 		E4387D5B1FD7B58F006A342D /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4387D5A1FD7B58F006A342D /* AboutViewController.swift */; };
 		E43B6F8A2063AE5A000A9662 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43B6F892063AE5A000A9662 /* DeviceManager.swift */; };
 		E4464AFD2022B9F8001968B5 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4464AFC2022B9F8001968B5 /* Room.swift */; };
@@ -72,7 +75,7 @@
 		E45519431EC453F6006A3B73 /* PicturesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45519421EC453F6006A3B73 /* PicturesTableViewCell.swift */; };
 		E455194B1EC4605B006A3B73 /* IntroductionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E455194A1EC4605B006A3B73 /* IntroductionTableViewCell.swift */; };
 		E46A91642022AFEA00244606 /* ChatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46A91632022AFEA00244606 /* ChatManager.swift */; };
-		E47860741ECC56C30096B39A /* UserProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47860731ECC56C30096B39A /* UserProfileTableViewController.swift */; };
+		E47860741ECC56C30096B39A /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47860731ECC56C30096B39A /* UserProfileViewController.swift */; };
 		E47860761ECC57F00096B39A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47860751ECC57F00096B39A /* User.swift */; };
 		E48931FD201EFBD100727A6B /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48931FC201EFBD100727A6B /* ChatViewController.swift */; };
 		E48931FF201F014400727A6B /* ChatTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48931FE201F014400727A6B /* ChatTextTableViewCell.swift */; };
@@ -182,6 +185,9 @@
 		777704D320E36D53003D5EA2 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		777704D520E38322003D5EA2 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		7792186F20B7BD83004E83C1 /* UITableViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewController+Extension.swift"; sourceTree = "<group>"; };
+		77A8DCA020F307E5000FFC02 /* ChatInputBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputBarView.swift; sourceTree = "<group>"; };
+		77A8DCA220F34527000FFC02 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
+		77A8DCA420F4713A000FFC02 /* UNNotificationContent+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UNNotificationContent+Extension.swift"; sourceTree = "<group>"; };
 		77EA3DC920E62D3000BCB23D /* ChatPictureTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPictureTableViewCell.swift; sourceTree = "<group>"; };
 		77EA3DD720E9D7AC00BCB23D /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		77F1945F20BCF6B6001B3F6E /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
@@ -217,7 +223,7 @@
 		E41F7D111EC3EB92002E8184 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		E42331771EC030FE00C3A6B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E438442E20204AC5006E0369 /* ReceiverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiverTableViewCell.swift; sourceTree = "<group>"; };
-		E438443020204ADC006E0369 /* RoomsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsTableViewController.swift; sourceTree = "<group>"; };
+		E438443020204ADC006E0369 /* RoomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomsViewController.swift; sourceTree = "<group>"; };
 		E4387D4A1FD7B1EE006A342D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		E4387D4B1FD7B1EF006A342D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Login.strings; sourceTree = "<group>"; };
 		E4387D4C1FD7B1EF006A342D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
@@ -241,7 +247,7 @@
 		E45519421EC453F6006A3B73 /* PicturesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicturesTableViewCell.swift; sourceTree = "<group>"; };
 		E455194A1EC4605B006A3B73 /* IntroductionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroductionTableViewCell.swift; sourceTree = "<group>"; };
 		E46A91632022AFEA00244606 /* ChatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatManager.swift; sourceTree = "<group>"; };
-		E47860731ECC56C30096B39A /* UserProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileTableViewController.swift; sourceTree = "<group>"; };
+		E47860731ECC56C30096B39A /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		E47860751ECC57F00096B39A /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E48931FC201EFBD100727A6B /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		E48931FE201F014400727A6B /* ChatTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTextTableViewCell.swift; sourceTree = "<group>"; };
@@ -351,6 +357,7 @@
 				77F2E7D120C5274E001E7AB3 /* UITextField+Extension.swift */,
 				77F2E7CF20C52729001E7AB3 /* UIView+Extension.swift */,
 				E41F7D111EC3EB92002E8184 /* UIViewController+Extension.swift */,
+				77A8DCA420F4713A000FFC02 /* UNNotificationContent+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -421,6 +428,7 @@
 				777704D520E38322003D5EA2 /* PaddingLabel.swift */,
 				E4089FDB1EBAF2190042221D /* Response.swift */,
 				77439FD620BFD86600FEE3E0 /* SFSafariViewController.swift */,
+				77A8DCA020F307E5000FFC02 /* ChatInputBarView.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -446,9 +454,9 @@
 				E48972201EBF62280064EA13 /* PictureViewController.swift */,
 				E41F7D091EC36C2A002E8184 /* RegisterViewController.swift */,
 				E4054AE21EC48D29006BCEEC /* ResetViewController.swift */,
-				E438443020204ADC006E0369 /* RoomsTableViewController.swift */,
+				E438443020204ADC006E0369 /* RoomsViewController.swift */,
 				E489721E1EBEF34E0064EA13 /* SelectCategoryViewController.swift */,
-				E47860731ECC56C30096B39A /* UserProfileTableViewController.swift */,
+				E47860731ECC56C30096B39A /* UserProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -557,6 +565,7 @@
 				E49BFE221EF3EAA7001B1BBA /* Login.storyboard */,
 				E4962BE51EB4B08000DF8CAE /* Main.storyboard */,
 				E49BFE271EF3EAB5001B1BBA /* Post.storyboard */,
+				77A8DCA220F34527000FFC02 /* Chat.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -756,6 +765,7 @@
 				E49BFE201EF3EAA7001B1BBA /* Login.storyboard in Resources */,
 				E4B52B711EF3DB310030BD2D /* AutoGenStrings.py in Resources */,
 				E4B52B731EF3DBC50030BD2D /* Localizable.strings in Resources */,
+				77A8DCA320F34527000FFC02 /* Chat.storyboard in Resources */,
 				E49BFE251EF3EAB5001B1BBA /* Post.storyboard in Resources */,
 				E408DD5A20E76049005684B3 /* chat_picture_loding.gif in Resources */,
 				E4B52B651EF2B1200030BD2D /* login-bg.jpg in Resources */,
@@ -808,12 +818,12 @@
 				"${BUILT_PRODUCTS_DIR}/RxKeyboard/RxKeyboard.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Segmentio/Segmentio.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeBack/SwipeBack.framework",
 				"${BUILT_PRODUCTS_DIR}/UIImageView+Extension/UIImageView_Extension.framework",
-				"${BUILT_PRODUCTS_DIR}/UILabel+Copyable/UILabel_Copyable.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -837,12 +847,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxKeyboard.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Segmentio.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyUserDefaults.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeBack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIImageView_Extension.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UILabel_Copyable.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -898,7 +908,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E47860741ECC56C30096B39A /* UserProfileTableViewController.swift in Sources */,
+				E47860741ECC56C30096B39A /* UserProfileViewController.swift in Sources */,
 				E4089FEF1EBB4AD80042221D /* MyProfileTableViewController.swift in Sources */,
 				77252BB020EC822B008B837F /* Data+Extension.swift in Sources */,
 				E48931FD201EFBD100727A6B /* ChatViewController.swift in Sources */,
@@ -933,14 +943,16 @@
 				E4B52B6A1EF3A77E0030BD2D /* MyFavoritesViewController.swift in Sources */,
 				77F2E7D420C52779001E7AB3 /* UIDevice+Extension.swift in Sources */,
 				E4089FE21EBAF8F40042221D /* CategoryCollectionViewCell.swift in Sources */,
+				77A8DCA520F4713A000FFC02 /* UNNotificationContent+Extension.swift in Sources */,
 				E4054AE31EC48D29006BCEEC /* ResetViewController.swift in Sources */,
+				77A8DCA120F307E5000FFC02 /* ChatInputBarView.swift in Sources */,
 				E41F7D011EC34CB8002E8184 /* MessagesViewController.swift in Sources */,
 				E4387D5B1FD7B58F006A342D /* AboutViewController.swift in Sources */,
 				E4089FB81EBAE5830042221D /* CategoryDao.swift in Sources */,
 				E4089FBC1EBAE59E0042221D /* SelectionDao.swift in Sources */,
 				E455194B1EC4605B006A3B73 /* IntroductionTableViewCell.swift in Sources */,
 				77EA3DCA20E62D3000BCB23D /* ChatPictureTableViewCell.swift in Sources */,
-				E438443120204ADC006E0369 /* RoomsTableViewController.swift in Sources */,
+				E438443120204ADC006E0369 /* RoomsViewController.swift in Sources */,
 				E489721D1EBED40F0064EA13 /* CreateMessageViewController.swift in Sources */,
 				E4962BE21EB4B08000DF8CAE /* AppDelegate.swift in Sources */,
 				E47860761ECC57F00096B39A /* User.swift in Sources */,
@@ -1317,7 +1329,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Tsukuba-iOS/Tsukuba-iOS.entitlements";
 				DEVELOPMENT_TEAM = 6ANM44X2CJ;
 				INFOPLIST_FILE = "Tsukuba-iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.mushare.Tsukuba-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1336,7 +1348,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Tsukuba-iOS/Tsukuba-iOS.entitlements";
 				DEVELOPMENT_TEAM = 6ANM44X2CJ;
 				INFOPLIST_FILE = "Tsukuba-iOS/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.mushare.Tsukuba-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";

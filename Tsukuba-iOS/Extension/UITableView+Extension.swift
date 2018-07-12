@@ -9,6 +9,7 @@
 import UIKit
 
 extension UITableView {
+    
     func scrollToBottom(animated: Bool = true) {
         if numberOfSections > 0 {
             let row = numberOfRows(inSection: numberOfSections - 1)
@@ -18,4 +19,10 @@ extension UITableView {
             }
         }
     }
+    
+    func hideFooterView() {
+        tableFooterView = UIView(frame: .zero)
+        tableFooterView?.backgroundColor = .clear
+    }
+    
 }

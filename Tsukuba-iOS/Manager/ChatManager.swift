@@ -110,9 +110,10 @@ class ChatManager {
         
     }
     
-    func syncChat(_ room: Room, completion: ChatsCompletion = nil) {
+    func syncChat(_ room: Room, from seq: Int16, with pageSize: Int, completion: ChatsCompletion = nil) {
         let params: Parameters = [
-            "seq": room.chats
+            "seq": seq,
+            "pageSize": pageSize
         ]
         Alamofire.request(config.createUrl("api/chat/list/" + room.rid!),
                           method: .get,
@@ -133,7 +134,7 @@ class ChatManager {
                     chat.room = room
                     chats.append(chat)
                 }
-                    
+                
                 if (chats.count > 0) {
                     let lastChat = chats[chats.count - 1]
                     room.chats = lastChat.seq
@@ -156,6 +157,10 @@ class ChatManager {
                 }
             }
         }
+    }
+    
+    func syncChat(_ room: Room, completion: ChatsCompletion = nil) {
+        syncChat(room, from: room.chats, with: -1, completion: completion)
     }
     
     func clearUnread(_ room: Room) {
@@ -190,6 +195,13 @@ class ChatManager {
                 
                 for object in result["new"].arrayValue {
                     let room = self.dao.roomDao.saveOrUpdate(object)
+                    let lastMessage = object["lastMessage"].stringValue
+                    switch lastMessage {
+                    case "[picture]":
+                        room.lastMessage = R.string.localizable.last_message_picture()
+                    default:
+                        room.lastMessage = lastMessage
+                    }
                     // Set chat - 1 to sync data.
                     if isLoginCheck {
                         room.chats = room.chats - 10

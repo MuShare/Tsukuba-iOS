@@ -29,4 +29,9 @@ extension String {
         return nil
     }
     
+    func width(with font: UIFont) -> CGFloat {
+        let attributes = [NSAttributedStringKey.font: font]
+        return self.size(withAttributes: attributes).width
+    }
+    
 }

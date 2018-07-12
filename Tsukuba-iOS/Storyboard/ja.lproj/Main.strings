@@ -77,9 +77,6 @@
 /* Class = "UILabel"; text = "Title"; ObjectID = "SJv-rf-c8d"; */
 "SJv-rf-c8d.text" = "タイトル";
 
-/* Class = "UINavigationItem"; title = "Me"; ObjectID = "Ssb-t2-Cvz"; */
-//"Ssb-t2-Cvz.title" = "設定";
-
 /* Class = "UILabel"; text = "Selection"; ObjectID = "Uej-GD-XFj"; */
 "Uej-GD-XFj.text" = "種類";
 
@@ -200,19 +197,17 @@
 /* Class = "UILabel"; text = "Jan 01, 2018"; ObjectID = "ne0-h5-cTz"; */
 "ne0-h5-cTz.text" = "Jan 01, 2018";
 
-
 /* Class = "UILabel"; text = "Chat time"; ObjectID = "lxz-Aj-2LQ"; */
-"lxz-Aj-2LQ.text" = "Chat time";
+//"lxz-Aj-2LQ.text" = "Chat time";
 
 /* Class = "UITabBarItem"; title = "Posts"; ObjectID = "ztZ-SX-a83"; */
-"ztZ-SX-a83.title" = "Posts";
-
-/* Class = "UITabBarItem"; title = "Chats"; ObjectID = "5cy-rd-Dyu"; */
-"5cy-rd-Dyu.title" = "Chats";
+"ztZ-SX-a83.title" = "ポスト";
 
 /* Class = "UITabBarItem"; title = "Posts"; ObjectID = "wlz-9M-kXv"; */
-"wlz-9M-kXv.title" = "Posts";
+"wlz-9M-kXv.title" = "ポスト";
 
 /* Class = "UITabBarItem"; title = "Me"; ObjectID = "m54-gR-7ft"; */
-"m54-gR-7ft.title" = "Me";
+"m54-gR-7ft.title" = "設定";
 
+/* Class = "UITabBarItem"; title = "Chats"; ObjectID = "fKh-9V-okV"; */
+"fKh-9V-okV.title" = "チャット";
