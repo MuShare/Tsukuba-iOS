@@ -9,7 +9,6 @@
 import WatchKit
 import Foundation
 
-
 class InterfaceController: WKInterfaceController {
 
     @IBOutlet var roomTable: WKInterfaceTable!
@@ -24,9 +23,11 @@ class InterfaceController: WKInterfaceController {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         
-        roomTable.setNumberOfRows(1, withRowType: "roomCell")
-        let row = roomTable.rowController(at: 0) as! RoomRowController
-        row.nameLabel.setText("Test")
+        for i in 0...(roomTable.numberOfRows - 1) {
+            let row = roomTable.rowController(at: i) as! RoomRowController
+            row.nameLabel.setText("Test \(i)")
+        }
+        
     }
     
     override func didDeactivate() {

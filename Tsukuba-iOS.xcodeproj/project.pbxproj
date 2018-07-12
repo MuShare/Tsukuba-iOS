@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3165E0CEB9BD3BA30CBEC816 /* Pods_Tsukuba_watchOS_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5CAC74E338979C143D33CCA /* Pods_Tsukuba_watchOS_Extension.framework */; };
 		770955CA20BEA98C00CA0923 /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770955C920BEA98C00CA0923 /* SocketManager.swift */; };
 		77252BB020EC822B008B837F /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77252BAF20EC822B008B837F /* Data+Extension.swift */; };
 		77252BB720EC8B25008B837F /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77252BB520EC8B25008B837F /* Interface.storyboard */; };
@@ -159,9 +160,21 @@
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		77561AB420F73FC100BC9143 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		161F5A77FAC5969B7FBF7990 /* Pods_TsukubaWatchKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TsukubaWatchKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1917FCEC31571DF03C2C41AD /* Pods-Tsukuba-watchOS Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tsukuba-watchOS Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tsukuba-watchOS Extension/Pods-Tsukuba-watchOS Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		251F3A7B6A78E17CB718E63B /* Pods-Tsukuba-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tsukuba-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tsukuba-iOS/Pods-Tsukuba-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		6069AEC1C44BCF1C385A7547 /* Pods-Tsukuba-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tsukuba-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tsukuba-iOS/Pods-Tsukuba-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		770955C920BEA98C00CA0923 /* SocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
@@ -196,6 +209,9 @@
 		77F2E7CF20C52729001E7AB3 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		77F2E7D120C5274E001E7AB3 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		77F2E7D320C52779001E7AB3 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
+		9EA947BCE90A2BEF0B29941F /* Pods-Tsukuba-watchOS Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tsukuba-watchOS Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tsukuba-watchOS Extension/Pods-Tsukuba-watchOS Extension.release.xcconfig"; sourceTree = "<group>"; };
+		A2753507B75FCA0E76A271C7 /* Pods_Tsukuba_watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tsukuba_watchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5CAC74E338979C143D33CCA /* Pods_Tsukuba_watchOS_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tsukuba_watchOS_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4054AE21EC48D29006BCEEC /* ResetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
 		E4089FB31EBAE55C0042221D /* DaoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaoManager.swift; sourceTree = "<group>"; };
 		E4089FB41EBAE55C0042221D /* DaoTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaoTemplate.swift; sourceTree = "<group>"; };
@@ -286,10 +302,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		54AC4E2728E4DC72FB94E24C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		77252BBC20EC8B28008B837F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3165E0CEB9BD3BA30CBEC816 /* Pods_Tsukuba_watchOS_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +391,9 @@
 			children = (
 				E40F8A092046A31300CCDCFE /* AudioToolbox.framework */,
 				F44E7EC0007342735A1D800F /* Pods_Tsukuba_iOS.framework */,
+				161F5A77FAC5969B7FBF7990 /* Pods_TsukubaWatchKit.framework */,
+				A2753507B75FCA0E76A271C7 /* Pods_Tsukuba_watchOS.framework */,
+				A5CAC74E338979C143D33CCA /* Pods_Tsukuba_watchOS_Extension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -376,6 +403,8 @@
 			children = (
 				251F3A7B6A78E17CB718E63B /* Pods-Tsukuba-iOS.debug.xcconfig */,
 				6069AEC1C44BCF1C385A7547 /* Pods-Tsukuba-iOS.release.xcconfig */,
+				1917FCEC31571DF03C2C41AD /* Pods-Tsukuba-watchOS Extension.debug.xcconfig */,
+				9EA947BCE90A2BEF0B29941F /* Pods-Tsukuba-watchOS Extension.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -579,6 +608,7 @@
 			buildPhases = (
 				77252BB120EC8B25008B837F /* Resources */,
 				77252BD620EC8B29008B837F /* Embed App Extensions */,
+				54AC4E2728E4DC72FB94E24C /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -594,9 +624,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 77252BD520EC8B29008B837F /* Build configuration list for PBXNativeTarget "Tsukuba-watchOS Extension" */;
 			buildPhases = (
+				64F6676774F3E0D45A1E9A16 /* [CP] Check Pods Manifest.lock */,
 				77252BBB20EC8B28008B837F /* Sources */,
 				77252BBC20EC8B28008B837F /* Frameworks */,
 				77252BBD20EC8B28008B837F /* Resources */,
+				77561AB420F73FC100BC9143 /* Embed Frameworks */,
+				7ECE4DE1B5933D48073B838B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -791,6 +824,44 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		64F6676774F3E0D45A1E9A16 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Tsukuba-watchOS Extension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7ECE4DE1B5933D48073B838B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Tsukuba-watchOS Extension/Pods-Tsukuba-watchOS Extension-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire-watchOS/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON-watchOS/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tsukuba-watchOS Extension/Pods-Tsukuba-watchOS Extension-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9E1D8D9AF95E3E3B803619D9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -800,7 +871,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Tsukuba-iOS/Pods-Tsukuba-iOS-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AXPhotoViewer/AXPhotoViewer.framework",
 				"${BUILT_PRODUCTS_DIR}/AXStateButton/AXStateButton.framework",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire-iOS/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/ESPullToRefresh/ESPullToRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
@@ -820,7 +891,7 @@
 				"${BUILT_PRODUCTS_DIR}/Segmentio/Segmentio.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON-iOS/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeBack/SwipeBack.framework",
 				"${BUILT_PRODUCTS_DIR}/UIImageView+Extension/UIImageView_Extension.framework",
@@ -1165,6 +1236,7 @@
 		};
 		77252BD320EC8B29008B837F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1917FCEC31571DF03C2C41AD /* Pods-Tsukuba-watchOS Extension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1189,12 +1261,13 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Debug;
 		};
 		77252BD420EC8B29008B837F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9EA947BCE90A2BEF0B29941F /* Pods-Tsukuba-watchOS Extension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1219,7 +1292,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Release;
 		};

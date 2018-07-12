@@ -1,7 +1,7 @@
 use_frameworks!
-platform :ios, '9.0'
 
 target 'Tsukuba-iOS' do
+    platform :ios, '10.0'
     pod 'Alamofire', '~> 4.2'
     pod 'AXPhotoViewer/Kingfisher', '~> 1.5'
     pod 'Eureka', '~> 4.0'
@@ -21,6 +21,12 @@ target 'Tsukuba-iOS' do
     pod 'SwipeBack', '~> 1.1'
     pod 'UIImageView+Extension', '~> 0.2'
     pod 'SnapKit', '~> 4.0'
+end
+
+target 'Tsukuba-watchOS Extension' do
+    platform :watchos, '4.0'
+    pod 'Alamofire', '~> 4.2'
+    pod 'SwiftyJSON', '~> 3.1'
 end
 
 post_install do |installer|

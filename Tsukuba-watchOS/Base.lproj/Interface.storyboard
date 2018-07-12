@@ -16,7 +16,7 @@
                     <items>
                         <table alignment="left" id="fJj-fD-mkW">
                             <items>
-                                <tableRow identifier="roomCell" id="NNh-Aq-A64" customClass="RoomRowController">
+                                <tableRow identifier="roomCell" id="NNh-Aq-A64" customClass="RoomRowController" customModule="Tsukuba_watchOS_Extension">
                                     <group key="rootItem" width="1" alignment="left" id="lAE-4j-6Qg">
                                         <items>
                                             <imageView width="41" alignment="left" id="4Gu-8z-YFe"/>
