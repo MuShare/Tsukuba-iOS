@@ -18,6 +18,12 @@ class ChatTextTableViewCell: UITableViewCell {
     
     private struct Const {
         
+        struct avatar {
+            static let width: CGFloat = 40
+            static let top: CGFloat = 12
+            static let leading: CGFloat = 15
+        }
+
         struct backgroud {
             static let horizontalMargin: CGFloat = 63
             static let topMargin: CGFloat = 12
@@ -37,9 +43,39 @@ class ChatTextTableViewCell: UITableViewCell {
         
     }
     
-    @IBOutlet weak var avatarImageView: UIImageView!
-    @IBOutlet weak var messageTextView: UITextView!
-    @IBOutlet weak var messageBackgroundImageView: UIImageView!
+    private lazy var avatarImageView: UIImageView = {
+        let imageView = UIImageView(frame: .zero)
+        imageView.cornerRadius = 5
+        return imageView
+    }()
+    
+    private lazy var messageTextView: UITextView = {
+        let textView = UITextView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        textView.isSelectable = true
+        textView.isEditable = false
+        textView.dataDetectorTypes = [.address, .phoneNumber, .link, .calendarEvent]
+        return textView
+    }()
+    
+    private lazy var messageBackgroundImageView: UIImageView = {
+        let imageView = UIImageView(frame: .zero)
+
+        return imageView
+    }()
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        selectionStyle = .none
+        
+        addSubview(avatarImageView)
+        addSubview(messageTextView)
+        addSubview(messageBackgroundImageView)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     func fill(with direction: ChatTextCellDirection, avatar: String, message: String) {
         var messageWidth = Const.maxMessageWidth
@@ -48,6 +84,13 @@ class ChatTextTableViewCell: UITableViewCell {
         }
         switch direction {
         case .send:
+            avatarImageView.snp.updateConstraints {
+                $0.topMargin.equalTo(Const.avatar.top)
+                $0.width.equalTo(Const.avatar.width)
+                $0.height.equalTo(Const.avatar.width)
+                $0.trailingMargin.equalTo(-Const.avatar.leading)
+            }
+            
             messageBackgroundImageView.snp.updateConstraints {
                 $0.width.equalTo(min(messageWidth, Const.maxMessageWidth) + Const.message.leadingMargin + Const.message.trailingMargin)
                 $0.trailingMargin.equalTo(-Const.backgroud.horizontalMargin)
@@ -62,6 +105,13 @@ class ChatTextTableViewCell: UITableViewCell {
                 $0.bottom.equalTo(messageBackgroundImageView).offset(-Const.message.bottomMargin)
             }
         case .receive:
+            avatarImageView.snp.updateConstraints {
+                $0.topMargin.equalTo(Const.avatar.top)
+                $0.width.equalTo(Const.avatar.width)
+                $0.height.equalTo(Const.avatar.width)
+                $0.leadingMargin.equalTo(Const.avatar.leading)
+            }
+            
             messageBackgroundImageView.snp.updateConstraints {
                 $0.width.equalTo(min(messageWidth, Const.maxMessageWidth) + Const.message.leadingMargin + Const.message.trailingMargin)
                 $0.leadingMargin.equalTo(Const.backgroud.horizontalMargin)
@@ -75,11 +125,12 @@ class ChatTextTableViewCell: UITableViewCell {
                 $0.top.equalTo(messageBackgroundImageView).offset(Const.message.topMargin)
                 $0.bottom.equalTo(messageBackgroundImageView).offset(-Const.message.bottomMargin)
             }
-            break
         }
         
         avatarImageView.kf.setImage(with: Config.shared.imageURL(avatar))
-        messageTextView.text = message
+        messageTextView.attributedText = NSAttributedString(string: message, attributes: [
+            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15, weight: .regular)
+        ])
         
         let capInsets = UIEdgeInsetsMake(28, 20, 15, 20)
         switch reuseIdentifier {
@@ -92,8 +143,7 @@ class ChatTextTableViewCell: UITableViewCell {
         default:
             break
         }
-        
-        
+
     }
 
 }

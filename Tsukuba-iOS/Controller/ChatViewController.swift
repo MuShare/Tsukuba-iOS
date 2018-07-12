@@ -52,6 +52,12 @@ class ChatViewController: UIViewController {
         static let pageSize = 10
         static let timeLabelSmallestInterval: TimeInterval = 5 * 60
     }
+    
+    struct ChatTableViewCellIdentifier {
+        static let plainText = "ChatTextTableViewCell"
+        static let picture = "ChatPictureTableViewCell"
+        static let time = "ChatTimeTableViewCell"
+    }
 
     private lazy var imagePickerController: UIImagePickerController = {
         let imagePickerController = UIImagePickerController()
@@ -107,7 +113,9 @@ class ChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(ChatPictureTableViewCell.self, forCellReuseIdentifier: "ChatPictureTableViewCell")
+        tableView.register(ChatTextTableViewCell.self, forCellReuseIdentifier: ChatTableViewCellIdentifier.plainText)
+        tableView.register(ChatPictureTableViewCell.self, forCellReuseIdentifier: ChatTableViewCellIdentifier.picture)
+        tableView.register(ChatTimeTableViewCell.self, forCellReuseIdentifier: ChatTableViewCellIdentifier.time)
         
         setCustomBack()
         navigationItem.title = receiver.name
@@ -456,8 +464,6 @@ extension ChatViewController: ChatInputBarDelegate {
     
 }
 
-
-
 extension ChatViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -476,23 +482,23 @@ extension ChatViewController: UITableViewDataSource {
             cell.time = time
             return cell
         case .plainTextSender(let content):
-            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.chatSenderIdentifier, for: indexPath)!
+            let cell = tableView.dequeueReusableCell(withIdentifier: ChatTableViewCellIdentifier.plainText, for: indexPath) as! ChatTextTableViewCell
             cell.fill(with: .send, avatar: UserManager.shared.avatar, message: content)
             return cell
         case .plainTextReceiver(let avatar, let content):
-            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.chatReceiverIdentifier, for: indexPath)!
+            let cell = tableView.dequeueReusableCell(withIdentifier: ChatTableViewCellIdentifier.plainText, for: indexPath) as! ChatTextTableViewCell
             cell.fill(with: .receive, avatar: avatar, message: content)
             return cell
         case .pictureSending(let pictureImage):
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ChatPictureTableViewCell", for: indexPath) as! ChatPictureTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: ChatTableViewCellIdentifier.picture, for: indexPath) as! ChatPictureTableViewCell
             cell.fill(with: pictureImage, avatar: currentUserAvarar, delegate: self)
             return cell
         case .pictureSender(let pictureUrl, let size):
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ChatPictureTableViewCell", for: indexPath) as! ChatPictureTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: ChatTableViewCellIdentifier.picture, for: indexPath) as! ChatPictureTableViewCell
             cell.fill(with: pictureUrl, size: size, avatar: currentUserAvarar, delegate: self)
             return cell
         case .pictureReceiver(let avatar, let pictureUrl, let size):
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ChatPictureTableViewCell", for: indexPath) as! ChatPictureTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: ChatTableViewCellIdentifier.picture, for: indexPath) as! ChatPictureTableViewCell
             cell.fill(with: pictureUrl, size: size, avatar: avatar, delegate: self)
             return cell
         case .none:
