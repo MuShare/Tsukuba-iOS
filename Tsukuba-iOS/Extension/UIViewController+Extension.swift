@@ -42,7 +42,7 @@ extension UIViewController {
             let alertController = UIAlertController(title: title,
                                                     message: content,
                                                     preferredStyle: .alert)
-            alertController.view.tintColor = Color.main
+            alertController.view.tintColor = .main
             alertController.addAction(UIAlertAction.init(title: R.string.localizable.ok_name(), style: .cancel))
             self?.present(alertController, animated: true)
         }
@@ -64,7 +64,7 @@ extension UIViewController {
         let alertController = UIAlertController(title: R.string.localizable.tip_name(),
                                                 message: R.string.localizable.sign_in_at_first(),
                                                 preferredStyle: .alert)
-        alertController.view.tintColor = Color.main
+        alertController.view.tintColor = .main
         let signin = UIAlertAction(title: R.string.localizable.sign_in_now(), style: .destructive) { action in
             self.present(R.storyboard.login.instantiateInitialViewController()!, animated: true)
         }

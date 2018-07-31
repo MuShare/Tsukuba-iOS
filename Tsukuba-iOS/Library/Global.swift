@@ -8,11 +8,9 @@
 
 let DEBUG = false
 
-open class Color: UIColor {
+extension UIColor {
     open class var main: UIColor {
-        get {
-            return UIColor(hex: 0x9f62ab)
-        }
+        return UIColor(hex: 0x9f62ab)
     }
 }
 

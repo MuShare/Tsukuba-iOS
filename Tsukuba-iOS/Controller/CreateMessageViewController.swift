@@ -26,9 +26,9 @@ class CreateMessageViewController: FormViewController, NVActivityIndicatorViewab
         selections = dao.selectionDao.findEnableByCategory(category)
         
         self.setCustomBack()
-        self.view.tintColor = Color.main
+        self.view.tintColor = .main
         ListCheckRow<String>.defaultCellSetup = { cell, row in
-            cell.tintColor = Color.main
+            cell.tintColor = .main
         }
         
         navigationOptions = RowNavigationOptions.Enabled.union(.SkipCanNotBecomeFirstResponderRow)

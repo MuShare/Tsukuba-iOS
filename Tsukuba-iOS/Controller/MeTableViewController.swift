@@ -41,7 +41,7 @@ class MeTableViewController: UITableViewController {
         let alertController = UIAlertController(title: R.string.localizable.sign_out_title(),
                                                 message: R.string.localizable.sign_out_message(),
                                                 preferredStyle: .actionSheet)
-        alertController.view.tintColor = Color.main
+        alertController.view.tintColor = .main
         let logout = UIAlertAction(title: R.string.localizable.yes_name(), style: .destructive) { action in
             self.user.logout()
             self.titleLabel.text = R.string.localizable.me_title()

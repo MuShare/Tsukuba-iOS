@@ -22,9 +22,9 @@ class EditMessageViewController: FormViewController, NVActivityIndicatorViewable
         super.viewDidLoad()
         
         self.setCustomBack()
-        self.view.tintColor = Color.main
+        self.view.tintColor = .main
         ListCheckRow<String>.defaultCellSetup = { cell, row in
-            cell.tintColor = Color.main
+            cell.tintColor = .main
         }
         
         messageManager.detail(messageId) { (success, message) in
@@ -99,7 +99,7 @@ class EditMessageViewController: FormViewController, NVActivityIndicatorViewable
                 row.title = R.string.localizable.message_close_title()
                 row.cellStyle = .value1
                 row.cell.accessoryType = .disclosureIndicator
-                row.cell.tintColor = Color.main
+                row.cell.tintColor = .main
             }.onCellSelection({ (cell, row) in
                 let alertController = UIAlertController(title: R.string.localizable.message_close_title(),
                                                         message: R.string.localizable.message_close_content(),

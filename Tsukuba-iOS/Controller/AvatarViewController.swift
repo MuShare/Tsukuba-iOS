@@ -9,7 +9,7 @@ class AvatarViewController: UIViewController {
     private lazy var imagePickerController: UIImagePickerController = {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
-        imagePickerController.navigationBar.barTintColor = Color.main
+        imagePickerController.navigationBar.barTintColor = .main
         imagePickerController.navigationBar.tintColor = .white
         imagePickerController.navigationBar.titleTextAttributes = [
             NSAttributedStringKey.foregroundColor : UIColor.white
@@ -36,7 +36,7 @@ class AvatarViewController: UIViewController {
         let alertController = UIAlertController(title: R.string.localizable.upload_profile_photo(),
                                                 message: R.string.localizable.photo_tip(),
                                                 preferredStyle: .actionSheet)
-        alertController.view.tintColor = Color.main
+        alertController.view.tintColor = .main
         let takePhoto = UIAlertAction(title: R.string.localizable.photo_take(), style: .default) { action in
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 self.imagePickerController.sourceType = .camera

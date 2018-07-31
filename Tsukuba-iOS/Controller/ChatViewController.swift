@@ -56,7 +56,7 @@ class ChatViewController: UIViewController {
     private lazy var imagePickerController: UIImagePickerController = {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
-        imagePickerController.navigationBar.barTintColor = Color.main
+        imagePickerController.navigationBar.barTintColor = .main
         imagePickerController.navigationBar.tintColor = .white
         imagePickerController.navigationBar.titleTextAttributes = [
             NSAttributedStringKey.foregroundColor : UIColor.white

@@ -132,12 +132,12 @@ class MessagesViewController: UIViewController {
                 type: .bottom,
                 ratio: 1,
                 height: 4,
-                color: Color.main
+                color: .main
             ),
             horizontalSeparatorOptions: SegmentioHorizontalSeparatorOptions(
                 type: SegmentioHorizontalSeparatorType.bottom, // Top, Bottom, TopAndBottom
                 height: 0,
-                color: Color.main
+                color: .main
             ),
             verticalSeparatorOptions: SegmentioVerticalSeparatorOptions(
                 ratio: 0.6, // from 0.1 to 1
@@ -155,7 +155,7 @@ class MessagesViewController: UIViewController {
                 selectedState: SegmentioState(
                     backgroundColor: .clear,
                     titleFont: UIFont.systemFont(ofSize: UIFont.smallSystemFontSize),
-                    titleTextColor: Color.main
+                    titleTextColor: .main
                 ),
                 highlightedState: SegmentioState(
                     backgroundColor: UIColor.lightGray.withAlphaComponent(0.6),

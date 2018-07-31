@@ -36,7 +36,7 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
         
         imagePickerController.delegate = self
-        imagePickerController.navigationBar.barTintColor = Color.main
+        imagePickerController.navigationBar.barTintColor = .main
         imagePickerController.navigationBar.tintColor = UIColor.white
         imagePickerController.navigationBar.titleTextAttributes = [
             NSAttributedStringKey.foregroundColor : UIColor.white
@@ -122,7 +122,7 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         let alertController = UIAlertController(title: R.string.localizable.upload_message_picture(),
                                                 message: R.string.localizable.photo_tip(),
                                                 preferredStyle: .actionSheet)
-        alertController.view.tintColor = Color.main
+        alertController.view.tintColor = .main
         let takePhoto = UIAlertAction(title: R.string.localizable.photo_take(),
                                       style: .default)
         { (action) in
