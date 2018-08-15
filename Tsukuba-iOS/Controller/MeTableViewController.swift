@@ -52,8 +52,8 @@ class MeTableViewController: UITableViewController {
         let cancel = UIAlertAction(title: R.string.localizable.cancel_name(),style: .cancel)
         alertController.addAction(logout)
         alertController.addAction(cancel)
-        alertController.popoverPresentationController?.sourceView = signOutTableViewCell;
-        alertController.popoverPresentationController?.sourceRect = signOutTableViewCell.bounds;
+        alertController.popoverPresentationController?.sourceView = signOutTableViewCell
+        alertController.popoverPresentationController?.sourceRect = signOutTableViewCell.bounds
         present(alertController, animated: true)
     }
     

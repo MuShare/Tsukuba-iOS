@@ -55,8 +55,8 @@ class AvatarViewController: UIViewController {
         alertController.addAction(takePhoto)
         alertController.addAction(choosePhoto)
         alertController.addAction(cancel)
-        alertController.popoverPresentationController?.sourceView = uploadButton;
-        alertController.popoverPresentationController?.sourceRect = uploadButton.bounds;
+        alertController.popoverPresentationController?.sourceView = uploadButton
+        alertController.popoverPresentationController?.sourceRect = uploadButton.bounds
         self.present(alertController, animated: true)
     }
     
