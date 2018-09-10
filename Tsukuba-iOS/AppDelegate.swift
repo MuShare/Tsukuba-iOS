@@ -28,8 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let config = Config.shared
     
     var isChatting = false
-    var waitingRoomId: String? = nil
-
+    var waitingRoomId: String? 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         config.autoEnvironment()
