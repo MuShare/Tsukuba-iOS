@@ -378,7 +378,7 @@ class UserManager {
     
     func uploadAvatar(_ image: UIImage, completion: ((Bool) -> Void)?) {
         guard let compressedImage = image.resize(width: Const.avatarMaxWidth),
-            let data = UIImageJPEGRepresentation(compressedImage, 1.0) else {
+            let data = compressedImage.jpegData(compressionQuality: 1.0) else {
             completion?(false)
             return
         }

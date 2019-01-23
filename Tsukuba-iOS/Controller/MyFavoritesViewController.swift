@@ -21,7 +21,7 @@ class MyFavoritesViewController: UIViewController {
         
         if #available(iOS 11.0, *) {
             collectionView.contentInsetAdjustmentBehavior = .never
-            collectionView.contentInset = UIEdgeInsetsMake(44, 0, 49, 0)
+            collectionView.contentInset = UIEdgeInsets(top: 44, left: 0, bottom: 49, right: 0)
             collectionView.scrollIndicatorInsets = collectionView.contentInset
         }
         

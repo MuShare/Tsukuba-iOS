@@ -724,13 +724,17 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
 			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
 			);
 			outputPaths = (
+				$SRCROOT/$TARGET_NAME/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "python ${SRCROOT}/${TARGET_NAME}/Support\\ Files/AutoGenStrings.py ${SRCROOT}/${TARGET_NAME}/Storyboard\n$PODS_ROOT/R.swift/rswift generate $SRCROOT/$TARGET_NAME";
+			shellScript = "python ${SRCROOT}/${TARGET_NAME}/Support\\ Files/AutoGenStrings.py ${SRCROOT}/${TARGET_NAME}/Storyboard\n$PODS_ROOT/R.swift/rswift generate $SRCROOT/$TARGET_NAME/R.generated.swift\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

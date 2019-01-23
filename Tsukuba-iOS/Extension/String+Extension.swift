@@ -30,7 +30,7 @@ extension String {
     }
     
     func width(with font: UIFont) -> CGFloat {
-        let attributes = [NSAttributedStringKey.font: font]
+        let attributes = [NSAttributedString.Key.font: font]
         return self.size(withAttributes: attributes).width
     }
     

@@ -16,11 +16,11 @@ class MessageTableViewController: UITableViewController {
         
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
-            tableView.contentInset = UIEdgeInsetsMake(UIApplication.shared.statusBarFrame.size.height + 44, 0, 49, 0)
+            tableView.contentInset = UIEdgeInsets(top: UIApplication.shared.statusBarFrame.size.height + 44, left: 0, bottom: 49, right: 0)
             tableView.scrollIndicatorInsets = tableView.contentInset
         }
         
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 400
         tableView.es.addPullToRefresh {
             self.messageManager.detail(self.messageId) { [weak self] (success, message) in
@@ -111,7 +111,7 @@ extension MessageTableViewController {
         case 0:
             return UIScreen.main.bounds.size.width + 45
         case 1, 2, 3:
-            return UITableViewAutomaticDimension
+            return UITableView.automaticDimension
         default:
             return 0
         }

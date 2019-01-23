@@ -78,7 +78,7 @@ class ChatTextTableViewCell: UITableViewCell {
         avatarImageView.kf.setImage(with: Config.shared.imageURL(avatar))
         messageTextView.text = message
         
-        let capInsets = UIEdgeInsetsMake(28, 20, 15, 20)
+        let capInsets = UIEdgeInsets(top: 28, left: 20, bottom: 15, right: 20)
         switch reuseIdentifier {
         case R.reuseIdentifier.chatSenderIdentifier.identifier:
             messageBackgroundImageView.image = R.image.sender_background()?.resizableImage(withCapInsets: capInsets, resizingMode: .stretch)

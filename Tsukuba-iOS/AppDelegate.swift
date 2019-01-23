@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var isChatting = false
     var waitingRoomId: String? 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         config.autoEnvironment()
         config.setupKingshifer()
@@ -68,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DaoManager.shared.saveContext()
     }
     
-    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
         return SDKApplicationDelegate.shared.application(application, open: url, options: options)
     }
     

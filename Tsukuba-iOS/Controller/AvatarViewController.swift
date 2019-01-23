@@ -12,7 +12,7 @@ class AvatarViewController: UIViewController {
         imagePickerController.navigationBar.barTintColor = .main
         imagePickerController.navigationBar.tintColor = .white
         imagePickerController.navigationBar.titleTextAttributes = [
-            NSAttributedStringKey.foregroundColor : UIColor.white
+            NSAttributedString.Key.foregroundColor : UIColor.white
         ]
         return imagePickerController
     }()
@@ -70,8 +70,8 @@ class AvatarViewController: UIViewController {
 
 extension AvatarViewController: UIImagePickerControllerDelegate {
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        avatarImageView.image = info[UIImagePickerControllerEditedImage] as? UIImage
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        avatarImageView.image = info[.editedImage] as? UIImage
         picker.dismiss(animated: true, completion: nil)
         
         uploadButton.isEnabled = false
@@ -97,6 +97,4 @@ extension AvatarViewController: UIImagePickerControllerDelegate {
     
 }
 
-extension AvatarViewController: UINavigationControllerDelegate {
-    
-}
+extension AvatarViewController: UINavigationControllerDelegate {}

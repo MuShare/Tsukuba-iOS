@@ -7,7 +7,7 @@ enum PictureViewControllerDoneType: Int {
     case pop2 = 2
 }
 
-class PictureViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class PictureViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var uploadButton: UIButton!
     @IBOutlet weak var picturesCollectionView: UICollectionView!
@@ -39,7 +39,7 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         imagePickerController.navigationBar.barTintColor = .main
         imagePickerController.navigationBar.tintColor = UIColor.white
         imagePickerController.navigationBar.titleTextAttributes = [
-            NSAttributedStringKey.foregroundColor : UIColor.white
+            NSAttributedString.Key.foregroundColor : UIColor.white
         ]
         
         messageManager.loadPictures(mid) { (success, pictures) in
@@ -78,21 +78,6 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
             uploadingCell = cell
         }
         return cell
-    }
-    
-    // MARK: - UIImagePickerControllerDelegate
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let image = info[UIImagePickerControllerEditedImage] as! UIImage
-        images.append(image)
-        picker.dismiss(animated: true, completion: nil)
-        picturesCollectionView.reloadData()
-        
-        messageManager.uploadPicture(image, mid: mid) { (success, picture) in
-            if success {
-                self.pids.append((picture?["pid"].stringValue)!)
-                self.uploadingCell.stopLoading()
-            }
-        }
     }
     
     // MARK: - Action
@@ -172,4 +157,23 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
+}
+
+extension PictureViewController: UINavigationControllerDelegate {}
+
+extension PictureViewController: UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.editedImage] as! UIImage
+        images.append(image)
+        picker.dismiss(animated: true, completion: nil)
+        picturesCollectionView.reloadData()
+        
+        messageManager.uploadPicture(image, mid: mid) { (success, picture) in
+            if success {
+                self.pids.append((picture?["pid"].stringValue)!)
+                self.uploadingCell.stopLoading()
+            }
+        }
+    }
 }

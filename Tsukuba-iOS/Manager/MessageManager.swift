@@ -116,7 +116,7 @@ class MessageManager {
     
     func uploadPicture(_ image: UIImage, mid: String, completion: ((Bool, JSON?) -> Void)?) {
         guard let compressedImage = image.resize(width: Const.messagePictureMaxWidth),
-            let data = UIImageJPEGRepresentation(compressedImage, 1.0) else {
+            let data = compressedImage.jpegData(compressionQuality: 1) else {
             completion?(false, nil)
             return
         }

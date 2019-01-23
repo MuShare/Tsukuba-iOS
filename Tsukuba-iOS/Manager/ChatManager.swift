@@ -64,7 +64,7 @@ class ChatManager {
     
     func sendPicture(receiver: String, image: UIImage, start:((UIImage?) -> Void)?, completion: ChatCompletion) {
         guard let compressedImage = image.resize(width: Const.pictureMaxWidth),
-            let data = UIImageJPEGRepresentation(compressedImage, 1) else {
+            let data = compressedImage.jpegData(compressionQuality: 1) else {
             completion?(false, nil, R.string.localizable.error_unknown())
             return
         }

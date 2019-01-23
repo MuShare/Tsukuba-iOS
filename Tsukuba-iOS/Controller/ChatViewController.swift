@@ -59,7 +59,7 @@ class ChatViewController: UIViewController {
         imagePickerController.navigationBar.barTintColor = .main
         imagePickerController.navigationBar.tintColor = .white
         imagePickerController.navigationBar.titleTextAttributes = [
-            NSAttributedStringKey.foregroundColor : UIColor.white
+            NSAttributedString.Key.foregroundColor : UIColor.white
         ]
         return imagePickerController
     }()
@@ -463,7 +463,7 @@ extension ChatViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -525,8 +525,8 @@ extension ChatViewController: UIImagePickerControllerDelegate {
         picker.dismiss(animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
-        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.originalImage] as? UIImage else {
             return
         }
         picker.dismiss(animated: true, completion: nil)

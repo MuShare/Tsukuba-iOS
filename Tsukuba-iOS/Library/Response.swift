@@ -38,7 +38,9 @@ class Response {
         if data == nil {
             return .badRequest
         }
-        let code = data["errorCode"] as! Int
+        guard let code = data["errorCode"] as? Int else {
+            return .badRequest
+        }
         return ErrorCode(rawValue: code) ?? .badRequest
     }
     
