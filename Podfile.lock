@@ -1,0 +1,141 @@
+PODS:
+  - Alamofire (4.9.1)
+  - AXPhotoViewer/Core (1.7.0):
+    - AXStateButton (>= 1.1.3)
+    - FLAnimatedImage (>= 1.0.0)
+    - FLAnimatedImage-tvOS (>= 1.0.16)
+  - AXPhotoViewer/Kingfisher (1.7.0):
+    - AXPhotoViewer/Core
+    - Kingfisher (>= 3.10.0)
+  - AXStateButton (1.1.4)
+  - ESPullToRefresh (2.9)
+  - Eureka (5.1.0)
+  - FacebookCore (0.9.0):
+    - FBSDKCoreKit (~> 5.0)
+  - FacebookLogin (0.9.0):
+    - FacebookCore (~> 0.9.0)
+    - FBSDKCoreKit (~> 5.0)
+    - FBSDKLoginKit (~> 5.0)
+  - FaveButton (3.2.0)
+  - FBSDKCoreKit (5.12.0):
+    - FBSDKCoreKit/Basics (= 5.12.0)
+    - FBSDKCoreKit/Core (= 5.12.0)
+  - FBSDKCoreKit/Basics (5.12.0)
+  - FBSDKCoreKit/Core (5.12.0):
+    - FBSDKCoreKit/Basics
+  - FBSDKLoginKit (5.11.1):
+    - FBSDKLoginKit/Login (= 5.11.1)
+  - FBSDKLoginKit/Login (5.11.1):
+    - FBSDKCoreKit (~> 5.0)
+  - FLAnimatedImage (1.0.12)
+  - ImageSlideshow/Core (1.7.0)
+  - ImageSlideshow/Kingfisher (1.7.0):
+    - ImageSlideshow/Core
+    - Kingfisher (> 3.0)
+  - Kingfisher (4.10.1)
+  - NVActivityIndicatorView (4.8.0):
+    - NVActivityIndicatorView/Presenter (= 4.8.0)
+  - NVActivityIndicatorView/Presenter (4.8.0)
+  - R.swift (5.1.0):
+    - R.swift.Library (~> 5.1.0)
+  - R.swift.Library (5.1.0)
+  - RxCocoa (5.0.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxKeyboard (1.0.0):
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxRelay (5.0.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.1)
+  - Segmentio (4.1)
+  - SnapKit (4.2.0)
+  - Starscream (3.1.1)
+  - SwiftyJSON (5.0.0)
+  - SwiftyUserDefaults (4.0.0)
+  - SwipeBack (1.1.1)
+  - "UIImageView+Extension (0.2.6)"
+
+DEPENDENCIES:
+  - Alamofire
+  - AXPhotoViewer/Kingfisher
+  - ESPullToRefresh
+  - Eureka
+  - FacebookCore
+  - FacebookLogin
+  - FaveButton
+  - ImageSlideshow/Kingfisher
+  - Kingfisher
+  - NVActivityIndicatorView
+  - R.swift
+  - RxKeyboard
+  - Segmentio
+  - SnapKit
+  - Starscream
+  - SwiftyJSON
+  - SwiftyUserDefaults
+  - SwipeBack
+  - "UIImageView+Extension"
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AXPhotoViewer
+    - AXStateButton
+    - ESPullToRefresh
+    - Eureka
+    - FacebookCore
+    - FacebookLogin
+    - FaveButton
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FLAnimatedImage
+    - ImageSlideshow
+    - Kingfisher
+    - NVActivityIndicatorView
+    - R.swift
+    - R.swift.Library
+    - RxCocoa
+    - RxKeyboard
+    - RxRelay
+    - RxSwift
+    - Segmentio
+    - SnapKit
+    - Starscream
+    - SwiftyJSON
+    - SwiftyUserDefaults
+    - SwipeBack
+    - "UIImageView+Extension"
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  AXPhotoViewer: 530af2fdd8eca4336f509c4c3463826b3f12a4c2
+  AXStateButton: 6c515a433e37551505046429b5be04c12daa8c07
+  ESPullToRefresh: ce058a36454a5032519cc9d8b45da217728cf104
+  Eureka: 18a5076dcf0c41f9cd9748aa1c42f4d11434bdae
+  FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
+  FacebookLogin: 6cee9fd6e1fe976fe8f7eec199e27b28b14f5d63
+  FaveButton: c818ab3d04d22a7615e93f08c7b35932acb3f735
+  FBSDKCoreKit: fa3ac4dc9b1afc9ae70b3de4dd704d1b6aeeed0d
+  FBSDKLoginKit: 0e4572e0279e477103b57978e3ea05fac1dd673d
+  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
+  ImageSlideshow: f8eec5e37a980f60923b585ff23b0e140fd24018
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
+  R.swift: 8cbc4fc69b740305b6a17c8a8ed968eb788962d9
+  R.swift.Library: fa85ce1e0d0b7e818cd9e080df910ba54d2776cc
+  RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
+  RxKeyboard: 6683c4344304a00f943c158bd8a43ce5469c82a7
+  RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
+  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
+  Segmentio: ab29def64e1bff6e6e9b97671788a99bed3f1d9f
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  SwiftyUserDefaults: 6a1951df1daa19337862b677dd9a4b9bd4c288cd
+  SwipeBack: d6759601b40da1f4161033feb30ab475d7d04322
+  "UIImageView+Extension": bc26c60a9c8cd6fb515ae1e37377a6f0988e76d8
+
+PODFILE CHECKSUM: b0e4cd18872c8341e09e375fdf35da12dc9e7a0b
+
+COCOAPODS: 1.8.4

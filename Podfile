@@ -24,17 +24,12 @@ target 'Tsukuba-iOS' do
 end
 
 post_install do |installer|
-    targets_3 = ['FaveButton']
-    targets_4 = ['ESPullToRefresh']
+    targets_4 = ['FaveButton']
 
     installer.pods_project.targets.each do |target|
-        if targets_3.include? target.name
+        if targets_4.include? target.name
             target.build_configurations.each do |config|
-                config.build_settings['SWIFT_VERSION'] = '3.1'
-            end
-        elsif targets_4.include? target.name
-            target.build_configurations.each do |config|
-                config.build_settings['SWIFT_VERSION'] = '4.0'
+                config.build_settings['SWIFT_VERSION'] = '4.2'
             end
         end
     end

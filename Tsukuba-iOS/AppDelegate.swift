@@ -2,13 +2,13 @@
 //  AppDelegate.swift
 //  Tsukuba-iOS
 //
-//  Created by 李大爷的电脑 on 29/04/2017.
+//  Created by Meng Li on 29/04/2017.
 //  Copyright © 2017 MuShare. All rights reserved.
 //
 
 import UIKit
 import CoreData
-import FacebookCore
+import FBSDKCoreKit
 import Alamofire
 import SwiftyJSON
 import AudioToolbox
@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Avoid flash of the navigation bar when pushing a new view controller.
         window?.backgroundColor = .white
 
-        SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        FBSDKCoreKit.ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         SocketManager.shared.refreshSocket()
         SocketManager.shared.delegate = self
@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        AppEventsLogger.activate(application)
+        AppEvents.activateApp()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -69,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
-        return SDKApplicationDelegate.shared.application(application, open: url, options: options)
+        return FBSDKCoreKit.ApplicationDelegate.shared.application(application, open: url, options: options)
     }
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
